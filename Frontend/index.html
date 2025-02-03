@@ -386,16 +386,28 @@ function editProduct(id, name, price, description, quantity, image) {
 
 // 📦 Fetch and display products
 function fetchProducts() {
-    fetch('http://192.168.1.65/backend/fetch_product.php')
+    const shopOwnerId = localStorage.getItem('shop_owner_id'); // Get logged-in shop owner ID
+
+    if (!shopOwnerId) {
+        console.error("❌ No shop owner ID found. Cannot fetch products.");
+        return;
+    }
+
+    fetch(`http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`)
         .then(response => response.json())
         .then(products => {
+            if (!Array.isArray(products)) {
+                console.error("❌ Invalid response from server:", products);
+                return;
+            }
+
             const productList = document.getElementById('productList');
             productList.innerHTML = '';
 
             products.forEach(product => {
                 const productItem = document.createElement('div');
                 productItem.className = 'list-item';
-                productItem.id = `product-${product.id}`; // 🔥 Add unique ID here
+                productItem.id = `product-${product.id}`;
                 productItem.innerHTML = `
                     <div>
                         <img src="${product.image}" alt="Product Image" style="width:100px; height:100px; object-fit:cover;">
@@ -411,6 +423,8 @@ function fetchProducts() {
         })
         .catch(error => console.error('❌ Error fetching products:', error));
 }
+
+
 
 
 // ✅ Move `fetchProducts()` above this function

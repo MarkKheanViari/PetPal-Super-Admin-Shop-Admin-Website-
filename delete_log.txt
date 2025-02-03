@@ -6,3 +6,4 @@ DELETE request received: {"product_id":37,"shop_owner_id":4}
 DELETE request received: {"product_id":38,"shop_owner_id":4}
 DELETE request received: {"product_id":34,"shop_owner_id":2}
 DELETE request received: {"product_id":35,"shop_owner_id":2}
+DELETE request received: {"product_id":48,"shop_owner_id":1}
