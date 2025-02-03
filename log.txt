@@ -3,3 +3,14 @@ Delete request received: []
 Delete request received: []
 Delete request received: []
 Delete request received: []
+Delete request received: {"product_id":33,"shop_owner_id":4}
+Delete request received: {"product_id":33,"shop_owner_id":4}
+Delete request received: {"product_id":33,"shop_owner_id":4}
+Delete request received: {"product_id":33,"shop_owner_id":4}
+Delete request received: {"product_id":33,"shop_owner_id":4}
+Delete request received: {"product_id":33,"shop_owner_id":4}
+Delete request received: {"product_id":33,"shop_owner_id":4}
+Delete request received: {"product_id":33,"shop_owner_id":2}
+Delete request received: {"product_id":34,"shop_owner_id":4}
+Delete request received: {"product_id":34,"shop_owner_id":4}
+Delete request received: {"product_id":34,"shop_owner_id":4}

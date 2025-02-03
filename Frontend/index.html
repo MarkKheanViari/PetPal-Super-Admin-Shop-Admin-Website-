@@ -235,35 +235,6 @@
         setTimeout(() => errorDiv.remove(), 5000);
     }
 
-    // 📦 Fetch and display products
-    function fetchProducts() {
-    fetch('http://192.168.161.55/backend/fetch_product.php')
-        .then(response => response.json())
-        .then(products => {
-            const productList = document.getElementById('productList');
-            productList.innerHTML = '';
-
-            products.forEach(product => {
-                const productItem = document.createElement('div');
-                productItem.className = 'list-item';
-                productItem.innerHTML = `
-                    <div>
-                        <img src="${product.image}" alt="Product Image" style="width:100px; height:100px; object-fit:cover;">
-                        <strong>${product.name}</strong> - $${product.price}
-                        <p>Description: ${product.description}</p>
-                        <p>Stock: ${product.quantity}</p>
-                    </div>
-                    <button onclick="editProduct(${product.id}, '${product.name}', '${product.price}', '${product.description}', '${product.quantity}', '${product.image}')" class="edit-btn">Edit</button>
-                    <button onclick="deleteProduct(${product.id})" class="delete-btn">Delete</button> <!-- ✅ Delete button -->
-                `;
-                productList.appendChild(productItem);
-            });
-        })
-        .catch(error => console.error('❌ Error fetching products:', error));
-}
-
-
-
     // 📝 Handle product update submission
     document.getElementById('editProductForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -272,7 +243,7 @@
     formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));
 
     try {
-        const response = await fetch('http://192.168.161.55/backend/update_product.php', {
+        const response = await fetch('http://192.168.1.65/backend/update_product.php', {
             method: 'POST',
             body: formData
         });
@@ -305,7 +276,7 @@
             formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));
 
             try {
-                const response = await fetch('http://192.168.161.55/backend/add_product.php', {
+                const response = await fetch('http://192.168.1.65/backend/add_product.php', {
                     method: 'POST',
                     body: formData,
                 });
@@ -336,7 +307,7 @@
         try {
             console.log('Updating service:', id, 'to status:', status);
 
-            const response = await fetch('http://192.168.161.55/backend/update_service_status.php', {
+            const response = await fetch('http://192.168.1.65/backend/update_service_status.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -413,6 +384,36 @@ function editProduct(id, name, price, description, quantity, image) {
     window.location.href = 'login.html'; // Redirect to login page after logout
 }
 
+// 📦 Fetch and display products
+function fetchProducts() {
+    fetch('http://192.168.1.65/backend/fetch_product.php')
+        .then(response => response.json())
+        .then(products => {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+
+            products.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.className = 'list-item';
+                productItem.id = `product-${product.id}`; // 🔥 Add unique ID here
+                productItem.innerHTML = `
+                    <div>
+                        <img src="${product.image}" alt="Product Image" style="width:100px; height:100px; object-fit:cover;">
+                        <strong>${product.name}</strong> - $${product.price}
+                        <p>Description: ${product.description}</p>
+                        <p>Stock: ${product.quantity}</p>
+                    </div>
+                    <button onclick="editProduct(${product.id}, '${product.name}', '${product.price}', '${product.description}', '${product.quantity}', '${product.image}')" class="edit-btn">Edit</button>
+                    <button onclick="deleteProduct(${product.id})" class="delete-btn">Delete</button>
+                `;
+                productList.appendChild(productItem);
+            });
+        })
+        .catch(error => console.error('❌ Error fetching products:', error));
+}
+
+
+// ✅ Move `fetchProducts()` above this function
 function deleteProduct(productId) {
     if (!confirm("Are you sure you want to delete this product?")) {
         return;
@@ -420,16 +421,14 @@ function deleteProduct(productId) {
 
     const shopOwnerId = localStorage.getItem('shop_owner_id'); 
 
-    console.log("Attempting to delete product:", productId, "for shop owner:", shopOwnerId);
-
-    fetch('http://192.168.161.55/backend/delete_product.php', {
+    fetch('http://192.168.1.65/backend/delete_product.php', {  
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            product_id: productId,
-            shop_owner_id: shopOwnerId
+            product_id: parseInt(productId, 10),  
+            shop_owner_id: parseInt(shopOwnerId, 10)
         })
     })
     .then(response => response.json())
@@ -437,7 +436,16 @@ function deleteProduct(productId) {
         console.log("Response received:", data);
         if (data.success) {
             alert('✅ Product deleted successfully!');
-            fetchProducts(); // Refresh products
+
+            // ✅ REMOVE PRODUCT FROM UI
+            document.getElementById(`product-${productId}`)?.remove();
+
+            // ✅ FORCE MOBILE APP TO REFRESH PRODUCTS
+            fetch('http://192.168.1.65/backend/fetch_product.php?refresh=true')
+                .then(() => console.log("Mobile app will fetch latest products"));
+
+            // ✅ WAIT FOR 1 SECOND, THEN REFRESH LIST
+            setTimeout(fetchProducts, 1000);
         } else {
             alert('❌ Failed to delete product: ' + data.error);
         }
@@ -448,10 +456,16 @@ function deleteProduct(productId) {
     });
 }
 
+
+
+
+
+
+
 function fetchServices() {
     console.log("Fetching services..."); // Debug log
 
-    fetch('http://192.168.161.55/backend/fetch_services.php')
+    fetch('http://192.168.1.65/backend/fetch_services.php')
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error! Status: " + response.status);
@@ -502,7 +516,7 @@ document.getElementById('serviceForm').addEventListener('submit', async (e) => {
     formData.append('shop_owner_id', localStorage.getItem('shop_owner_id')); // Attach shop owner ID
 
     try {
-        const response = await fetch('http://192.168.161.55/backend/add_service.php', {
+        const response = await fetch('http://192.168.1.65/backend/add_service.php', {
             method: 'POST',
             body: formData
         });

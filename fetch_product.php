@@ -9,7 +9,7 @@ $result = $conn->query($sql);
 $products = [];
 while ($row = $result->fetch_assoc()) {
     // ✅ Ensure image URL is correct
-    $row['image'] = !empty($row['image']) ? "http://192.168.161.55/backend/uploads/" . $row['image'] : "http://192.168.161.55/backend/uploads/default.png";
+    $row['image'] = !empty($row['image']) ? "http://192.168.1.65/backend/uploads/" . $row['image'] : "http://192.168.1.65/backend/uploads/default.png";
     $products[] = $row;
 }
 
