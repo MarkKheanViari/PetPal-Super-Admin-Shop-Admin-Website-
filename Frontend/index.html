@@ -470,25 +470,10 @@ function deleteProduct(productId) {
     });
 }
 
-
-
-
-
-
-
 function fetchServices() {
-    console.log("Fetching services...");
-
     fetch('http://192.168.1.65/backend/fetch_services.php')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(services => {
-            console.log("Received services:", services);
-
             const serviceList = document.getElementById('serviceList');
             serviceList.innerHTML = '';
 
@@ -518,9 +503,6 @@ function fetchServices() {
             alert("Failed to fetch services: " + error.message);
         });
 }
-
-
-
 
 // Call fetchServices when the page loads
 document.addEventListener('DOMContentLoaded', () => {
@@ -561,9 +543,35 @@ document.getElementById('serviceForm').addEventListener('submit', async (e) => {
     }
 });
 
+function fetchServiceRequests() {
+    fetch('http://192.168.1.65/backend/fetch_service_request.php')
+        .then(response => response.json())
+        .then(requests => {
+            const serviceList = document.getElementById('serviceList');
+            serviceList.innerHTML = '';
 
+            if (!Array.isArray(requests) || requests.length === 0) {
+                serviceList.innerHTML = '<p>No service requests found.</p>';
+                return;
+            }
 
-    </script>
-        
+            requests.forEach(request => {
+                const requestItem = document.createElement('div');
+                requestItem.className = 'list-item';
+                requestItem.innerHTML = `
+                    <strong>Service:</strong> ${request.service_name} <br>
+                    <strong>User:</strong> ${request.username} <br>
+                    <strong>Date:</strong> ${request.selected_date} <br>
+                    <strong>Status:</strong> <span class="status-${request.status.toLowerCase()}">${request.status}</span> <br>
+                    <button onclick="updateRequestStatus(${request.id}, 'confirmed')">Confirm</button>
+                    <button onclick="updateRequestStatus(${request.id}, 'declined')">Decline</button>
+                `;
+                serviceList.appendChild(requestItem);
+            });
+        })
+        .catch(error => console.error('❌ Error fetching service requests:', error));
+}
+
+</script>     
 </body>
 </html>
