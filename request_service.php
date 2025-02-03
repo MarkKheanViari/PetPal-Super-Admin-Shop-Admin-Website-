@@ -1,85 +1,31 @@
-
 <?php
-include 'db.php';
+include 'db.php'; 
 
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type');
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json");
 
-try {
-    $json = file_get_contents('php://input');
-    $data = json_decode($json);
+$data = json_decode(file_get_contents("php://input"), true);
 
-    if (!$data || !isset($data->service_id) || !isset($data->user_id) || !isset($data->status) || !isset($data->selected_date)) {
-        throw new Exception("Missing required fields");
-    }
-
-    $service_id = intval($data->service_id);
-    $user_id = intval($data->user_id);
-    $status = $data->status;
-    $selected_date = $data->selected_date;
-
-    // Start transaction
-    $conn->begin_transaction();
-
-    try {
-        // Check if service is already requested for this date
-        $stmt = $conn->prepare("
-            SELECT id FROM service_requests 
-            WHERE service_id = ? 
-            AND selected_date = ?
-            AND status != 'declined'
-        ");
-        $stmt->bind_param("is", $service_id, $selected_date);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            throw new Exception("Service is already booked for this date");
-        }
-
-        // Insert service request
-        $stmt = $conn->prepare("
-            INSERT INTO service_requests (service_id, mobile_user_id, status, selected_date) 
-            VALUES (?, ?, ?, ?)
-        ");
-        $stmt->bind_param("iiss", $service_id, $user_id, $status, $selected_date);
-        
-        if (!$stmt->execute()) {
-            throw new Exception("Failed to create service request");
-        }
-
-        // Update service status
-        $stmt = $conn->prepare("
-            UPDATE services 
-            SET status = ? 
-            WHERE id = ?
-        ");
-        $stmt->bind_param("si", $status, $service_id);
-        
-        if (!$stmt->execute()) {
-            throw new Exception("Failed to update service status");
-        }
-
-        $conn->commit();
-
-        echo json_encode([
-            "success" => true,
-            "message" => "Service request submitted successfully"
-        ]);
-
-    } catch (Exception $e) {
-        $conn->rollback();
-        throw $e;
-    }
-
-} catch (Exception $e) {
-    error_log("Error in request_service.php: " . $e->getMessage());
-    http_response_code(500);
-    echo json_encode([
-        "success" => false,
-        "message" => $e->getMessage()
-    ]);
+if (!isset($data['customer_id'], $data['service_id'], $data['selected_date'])) {
+    echo json_encode(["success" => false, "error" => "Missing required fields"]);
+    exit();
 }
+
+$customer_id = intval($data['customer_id']);
+$service_id = intval($data['service_id']);
+$selected_date = $data['selected_date'];
+$status = "Pending";
+
+$sql = "INSERT INTO service_requests (customer_id, service_id, selected_date, status) VALUES (?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("iiss", $customer_id, $service_id, $selected_date, $status);
+
+if ($stmt->execute()) {
+    echo json_encode(["success" => true, "message" => "Service request submitted"]);
+} else {
+    echo json_encode(["success" => false, "error" => "Database error"]);
+}
+
+$stmt->close();
+$conn->close();
 ?>
