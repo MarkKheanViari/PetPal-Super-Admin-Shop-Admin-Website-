@@ -1,37 +1,33 @@
 <?php
-require 'db.php'; // Ensure database connection
-
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
 
-// Get service request ID
-$request_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+require_once "db.php";
 
-if ($request_id === 0) {
-    echo json_encode(["error" => "Invalid request ID"]);
+// Handle preflight request
+if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") {
+    http_response_code(204);
     exit();
 }
 
-// Check if status is still pending
-$sql = "SELECT status FROM service_requests WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $request_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
-
-if (!$row || $row['status'] !== 'pending') {
-    echo json_encode(["error" => "Cannot cancel a confirmed or declined request"]);
+// Read JSON input
+$data = json_decode(file_get_contents("php://input"), true);
+if (!isset($data['id'])) {
+    echo json_encode(["success" => false, "message" => "Missing request ID"]);
     exit();
 }
 
-// Delete the request
-$sql = "DELETE FROM service_requests WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $request_id);
+$id = intval($data['id']);
 
-if ($stmt->execute()) {
-    echo json_encode(["success" => true]);
+// ✅ Cancel by deleting the request (or update status to 'canceled' instead)
+$query = "DELETE FROM service_requests WHERE id = $id"; 
+if ($conn->query($query) === TRUE) {
+    echo json_encode(["success" => true, "message" => "Request cancelled successfully"]);
 } else {
-    echo json_encode(["error" => "Failed to cancel request"]);
+    echo json_encode(["success" => false, "message" => "Failed to cancel request: " . $conn->error]);
 }
+
+$conn->close();
 ?>

@@ -536,10 +536,10 @@ function fetchServiceRequests() {
     fetch('http://192.168.1.65/backend/fetch_service_request.php')
         .then(response => response.json())
         .then(requests => {
-            console.log("✅ Fetched Data:", requests);
+            console.log("✅ Fetched Data:", requests); // ✅ Debugging log
 
             const serviceRequestList = document.getElementById('serviceRequestList');
-            serviceRequestList.innerHTML = ''; // Clear previous requests
+            serviceRequestList.innerHTML = ''; 
 
             if (!Array.isArray(requests) || requests.length === 0) {
                 serviceRequestList.innerHTML = '<p>No pending service requests.</p>';
@@ -557,8 +557,8 @@ function fetchServiceRequests() {
                         <strong>Status:</strong> <span class="status-${request.status.toLowerCase()}">${request.status}</span>
                     </div>
                     <div class="service-actions">
-                        <button class="confirm-btn" onclick="updateRequestStatus(${request.id}, 'confirmed')">Confirm</button>
-                        <button class="decline-btn" onclick="updateRequestStatus(${request.id}, 'declined')">Decline</button>
+                        <button class="confirm-btn" data-id="${request.id}" onclick="updateRequestStatus(${request.id}, 'confirmed')">Confirm</button>
+                        <button class="decline-btn" data-id="${request.id}" onclick="updateRequestStatus(${request.id}, 'declined')">Decline</button>
                     </div>
                 `;
                 serviceRequestList.appendChild(requestItem);
@@ -566,6 +566,8 @@ function fetchServiceRequests() {
         })
         .catch(error => console.error("❌ Error fetching service requests:", error));
 }
+
+
 
 
 // Ensure function only runs once on page load
@@ -644,6 +646,7 @@ async function updateRequestStatus(id, status) {
         showToast('❌ Failed to update status: ' + error.message, true);
     }
 }
+
 
 
 
