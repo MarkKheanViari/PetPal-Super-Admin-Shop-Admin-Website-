@@ -1,30 +1,37 @@
 <?php
-include 'db.php'; 
-
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: *"); // Allow any domain to access
+header("Access-Control-Allow-Methods: POST, OPTIONS"); // Allow POST requests
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
 
-$data = json_decode(file_get_contents("php://input"), true);
-
-if (!isset($data['shop_owner_id'], $data['service_id'], $data['status'])) {
-    echo json_encode(["success" => false, "error" => "Missing required fields"]);
+// Handle preflight request
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
     exit();
 }
 
-$shop_owner_id = intval($data['shop_owner_id']);
-$service_id = intval($data['service_id']);
-$status = $data['status'];
+require_once "db.php";
 
-$sql = "UPDATE services SET status = ? WHERE id = ? AND shop_owner_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("sii", $status, $service_id, $shop_owner_id);
+// Validate request
+$data = json_decode(file_get_contents("php://input"), true);
 
-if ($stmt->execute()) {
-    echo json_encode(["success" => true, "message" => "Service status updated"]);
-} else {
-    echo json_encode(["success" => false, "error" => "Failed to update service status"]);
+if (!isset($data['id']) || !isset($data['status'])) {
+    echo json_encode(["success" => false, "message" => "Invalid request"]);
+    exit();
 }
 
-$stmt->close();
+$id = intval($data['id']);
+$status = $conn->real_escape_string($data['status']);
+
+// Update service request status
+$query = "UPDATE service_requests SET status = '$status' WHERE id = $id";
+$result = $conn->query($query);
+
+if ($result) {
+    echo json_encode(["success" => true, "message" => "Status updated successfully"]);
+} else {
+    echo json_encode(["success" => false, "message" => "Failed to update status"]);
+}
+
 $conn->close();
 ?>

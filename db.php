@@ -1,10 +1,16 @@
 
 <?php
-// Database configuration
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$dbname = 'marketplace';
+$host = "localhost";  // ✅ Or your actual database host
+$user = "root";       // ✅ Database username
+$pass = "";           // ✅ Database password
+$dbname = "marketplace";  // ✅ Your database name
+
+$conn = new mysqli($host, $user, $pass, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die(json_encode(["success" => false, "message" => "Database Connection Failed: " . $conn->connect_error]));
+}
 
 // Enable error reporting for debugging
 error_reporting(E_ALL);

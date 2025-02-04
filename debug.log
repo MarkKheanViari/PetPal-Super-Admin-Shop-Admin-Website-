@@ -1,0 +1,587 @@
+Array
+(
+    [service_id] => 1
+    [user_id] => 10
+    [selected_date] => 2024-02-04
+)
+Array
+(
+    [service_id] => 1
+    [user_id] => 10
+    [selected_date] => 2024-02-04
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 1
+    [user_id] => 10
+    [selected_date] => 2024-02-04
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 1
+    [user_id] => 1
+    [selected_date] => 2025-01-1
+)
+Attempting to insert request into database
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [service_id] => 1
+            [user_id] => 1
+            [selected_date] => 2025-01-01
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [service_id] => 1
+            [user_id] => 10
+            [selected_date] => 2024-02-04
+            [status] => pending
+        )
+
+)
+Array
+(
+    [service_id] => 1
+    [user_id] => 1
+    [selected_date] => 2025-01-1
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 1
+    [user_id] => 1
+    [selected_date] => 2028-01-1
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 2
+    [user_id] => 1
+    [selected_date] => 2025-01-1
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 1
+    [user_id] => 1
+    [selected_date] => 2025-01-1
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 2
+    [user_id] => 1
+    [selected_date] => 2030-01-1
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 2
+    [user_id] => 1
+    [selected_date] => 2025-08-1
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 1
+    [user_id] => 1
+    [selected_date] => 2030-01-1
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 1
+    [user_id] => 1
+    [selected_date] => 2025-01-1
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 1
+    [user_id] => 1
+    [selected_date] => 2025-01-1
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 1
+    [user_id] => 1
+    [selected_date] => 2025-01-1
+)
+Attempting to insert request into database
+Array
+(
+    [service_id] => 2
+    [user_id] => 1
+    [selected_date] => 2025-01-2
+)
+Attempting to insert request into database

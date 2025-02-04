@@ -140,6 +140,29 @@
             border-radius: 4px;
             margin-bottom: 1rem;
         }
+
+        .toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.toast.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.toast.error {
+    background: #dc3545;
+}
+
     </style>
 </head>
 <body>
@@ -198,7 +221,13 @@
     <div class="section">
         <h2>Service Requests</h2>
         <div id="serviceList"></div>
+        <div id="serviceRequestList"></div>
     </div>
+
+    <div id="toast" class="toast hidden">
+        <span id="toastMessage"></span>
+    </div>
+    
     
 
     <script>
@@ -297,48 +326,6 @@
                 alert('Failed to add product: ' + error.message);
             }
         });
-    }
-
-    // 📌 Update service status
-    async function updateServiceStatus(event, id, status) {
-        const button = event.target;
-        button.disabled = true;
-
-        try {
-            console.log('Updating service:', id, 'to status:', status);
-
-            const response = await fetch('http://192.168.1.65/backend/update_service_status.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    id: id,
-                    status: status,
-                    shop_owner_id: localStorage.getItem('shop_owner_id')
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log('Update response:', data);
-
-            if (data.success) {
-                alert('Status updated successfully!');
-                fetchServices();
-            } else {
-                throw new Error(data.message || 'Failed to update status');
-            }
-        } catch (error) {
-            console.error('Error updating status:', error);
-            showError('Failed to update status: ' + error.message);
-        } finally {
-            button.disabled = false;
-        }
     }
 
     if (checkAuth()) {
@@ -544,14 +531,18 @@ document.getElementById('serviceForm').addEventListener('submit', async (e) => {
 });
 
 function fetchServiceRequests() {
+    console.log("🔄 Fetching service requests...");
+
     fetch('http://192.168.1.65/backend/fetch_service_request.php')
         .then(response => response.json())
         .then(requests => {
-            const serviceList = document.getElementById('serviceList');
-            serviceList.innerHTML = '';
+            console.log("✅ Fetched Data:", requests);
+
+            const serviceRequestList = document.getElementById('serviceRequestList');
+            serviceRequestList.innerHTML = ''; // Clear previous requests
 
             if (!Array.isArray(requests) || requests.length === 0) {
-                serviceList.innerHTML = '<p>No service requests found.</p>';
+                serviceRequestList.innerHTML = '<p>No pending service requests.</p>';
                 return;
             }
 
@@ -559,18 +550,111 @@ function fetchServiceRequests() {
                 const requestItem = document.createElement('div');
                 requestItem.className = 'list-item';
                 requestItem.innerHTML = `
-                    <strong>Service:</strong> ${request.service_name} <br>
-                    <strong>User:</strong> ${request.username} <br>
-                    <strong>Date:</strong> ${request.selected_date} <br>
-                    <strong>Status:</strong> <span class="status-${request.status.toLowerCase()}">${request.status}</span> <br>
-                    <button onclick="updateRequestStatus(${request.id}, 'confirmed')">Confirm</button>
-                    <button onclick="updateRequestStatus(${request.id}, 'declined')">Decline</button>
+                    <div class="service-info">
+                        <strong>Service:</strong> ${request.service_name} <br>
+                        <strong>Customer:</strong> ${request.user_name} <br>
+                        <strong>Date:</strong> ${request.selected_date} <br>
+                        <strong>Status:</strong> <span class="status-${request.status.toLowerCase()}">${request.status}</span>
+                    </div>
+                    <div class="service-actions">
+                        <button class="confirm-btn" onclick="updateRequestStatus(${request.id}, 'confirmed')">Confirm</button>
+                        <button class="decline-btn" onclick="updateRequestStatus(${request.id}, 'declined')">Decline</button>
+                    </div>
                 `;
-                serviceList.appendChild(requestItem);
+                serviceRequestList.appendChild(requestItem);
             });
         })
-        .catch(error => console.error('❌ Error fetching service requests:', error));
+        .catch(error => console.error("❌ Error fetching service requests:", error));
 }
+
+
+// Ensure function only runs once on page load
+document.addEventListener('DOMContentLoaded', () => {
+    fetchServiceRequests(); 
+    setInterval(fetchServiceRequests, 30000); // Refresh every 30 seconds
+});
+
+
+
+function displayServiceRequests(requests) {
+    const serviceRequestList = document.getElementById('serviceRequestList');
+    serviceRequestList.innerHTML = '';
+
+    if (!Array.isArray(requests) || requests.length === 0) {
+        serviceRequestList.innerHTML = '<p>No pending service requests.</p>';
+        return;
+    }
+
+    requests.forEach(request => {
+        const requestItem = document.createElement('div');
+        requestItem.className = 'list-item';
+        requestItem.innerHTML = `
+            <div class="service-info">
+                <strong>Service:</strong> ${request.service_name} <br>
+                <strong>Customer:</strong> ${request.user_name} <br>
+                <strong>Date:</strong> ${request.selected_date} <br>
+                <strong>Status:</strong> <span class="status-${request.status.toLowerCase()}">${request.status}</span>
+            </div>
+            <div class="service-actions">
+                <button class="confirm-btn" onclick="updateRequestStatus(${request.id}, 'confirmed')">Confirm</button>
+                <button class="decline-btn" onclick="updateRequestStatus(${request.id}, 'declined')">Decline</button>
+            </div>
+        `;
+        serviceRequestList.appendChild(requestItem);
+    });
+}
+
+// ✅ Ensure function is outside DOMContentLoaded
+function showToast(message, isError = false) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.remove("hidden");
+    toast.classList.toggle("error", isError);
+
+    setTimeout(() => {
+        toast.classList.add("hidden");
+    }, 3000); // Hide after 3 seconds
+}
+
+async function updateRequestStatus(id, status) {
+    try {
+        const response = await fetch('http://192.168.1.65/backend/update_service_status.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: id, status: status })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('✅ Update response:', data);
+
+        if (data.success) {
+            showToast(`Service request ${status} successfully!`);
+            fetchServiceRequests(); // Refresh the service requests list
+        } else {
+            throw new Error(data.message || 'Failed to update status');
+        }
+    } catch (error) {
+        console.error('❌ Error updating status:', error);
+        showToast('❌ Failed to update status: ' + error.message, true);
+    }
+}
+
+
+
+
+// ✅ Ensure function runs after page load
+document.addEventListener('DOMContentLoaded', () => {
+    fetchServiceRequests();
+    setInterval(fetchServiceRequests, 30000); // Refresh every 30 seconds
+});
+
+
 
 </script>     
 </body>

@@ -1,23 +1,37 @@
 <?php
-include 'db.php';
-
+header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
-$query = "SELECT sr.id, s.service_name, u.username, sr.selected_date, sr.status 
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once "db.php";
+
+// Corrected SQL Query
+$query = "SELECT sr.id, s.service_name, mu.username AS user_name, sr.selected_date, sr.status 
           FROM service_requests sr
           JOIN services s ON sr.service_id = s.id
-          JOIN mobile_users u ON sr.user_id = u.id
-          ORDER BY sr.created_at DESC";
+          JOIN mobile_users mu ON sr.user_id = mu.id
+          WHERE sr.status = 'pending'
+          ORDER BY sr.id DESC";
+
 
 $result = $conn->query($query);
-$requests = [];
 
-while ($row = $result->fetch_assoc()) {
-    $requests[] = $row;
+// If query fails, return an error message
+if (!$result) {
+    echo json_encode(["success" => false, "message" => "Database error: " . $conn->error]);
+    exit;
 }
 
-// Log output for debugging
-error_log("✅ Fetched Service Requests: " . print_r($requests, true));
+// Fetch Data
+$service_requests = [];
+while ($row = $result->fetch_assoc()) {
+    $service_requests[] = $row;
+}
 
-echo json_encode($requests);
+// Return JSON response
+echo json_encode($service_requests, JSON_PRETTY_PRINT);
+$conn->close();
 ?>
