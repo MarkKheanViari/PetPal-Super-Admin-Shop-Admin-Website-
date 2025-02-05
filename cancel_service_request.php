@@ -1,33 +1,30 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
+require_once "db.php"; // Ensure database connection
 
-require_once "db.php";
-
-// Handle preflight request
-if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") {
-    http_response_code(204);
-    exit();
-}
-
-// Read JSON input
+// Read the request body
 $data = json_decode(file_get_contents("php://input"), true);
-if (!isset($data['id'])) {
-    echo json_encode(["success" => false, "message" => "Missing request ID"]);
-    exit();
+
+// Check if service_id is provided
+if (!isset($data['service_id'])) {
+    echo json_encode(["success" => false, "message" => "Missing service_id"]);
+    exit;
 }
 
-$id = intval($data['id']);
+$service_id = intval($data['service_id']);
 
-// ✅ Cancel by deleting the request (or update status to 'canceled' instead)
-$query = "DELETE FROM service_requests WHERE id = $id"; 
-if ($conn->query($query) === TRUE) {
-    echo json_encode(["success" => true, "message" => "Request cancelled successfully"]);
+// Update the service request status to "canceled"
+$query = "UPDATE service_requests SET status='canceled' WHERE id=?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $service_id);
+
+if ($stmt->execute()) {
+    echo json_encode(["success" => true, "message" => "Service request canceled"]);
 } else {
-    echo json_encode(["success" => false, "message" => "Failed to cancel request: " . $conn->error]);
+    echo json_encode(["success" => false, "message" => "Database error: " . $conn->error]);
 }
 
+$stmt->close();
 $conn->close();
 ?>

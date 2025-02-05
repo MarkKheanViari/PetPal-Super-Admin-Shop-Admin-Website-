@@ -1,52 +1,49 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
-require_once "db.php";
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// Handle preflight (OPTIONS) request
-if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") {
-    http_response_code(204);
-    exit();
+require_once "db.php"; // Ensure database connection
+
+// Read raw POST data
+$inputJSON = file_get_contents("php://input");
+file_put_contents("debug_log.txt", "[" . date("Y-m-d H:i:s") . "] Raw Input: " . $inputJSON . PHP_EOL, FILE_APPEND);
+
+$input = json_decode($inputJSON, true);
+
+// Check if JSON is valid
+if (!$input || !isset($input["id"]) || !isset($input["status"])) {
+    die(json_encode(["success" => false, "message" => "Invalid JSON input"]));
 }
 
-// Read JSON input
-$data = json_decode(file_get_contents("php://input"), true);
+$requestId = intval($input["id"]);
+$status = $conn->real_escape_string($input["status"]);
 
-if (!isset($data['id']) || !isset($data['status'])) {
-    echo json_encode(["success" => false, "message" => "Invalid request - Missing parameters"]);
-    exit();
+// Check if request ID exists
+$checkQuery = "SELECT * FROM service_requests WHERE id = ?";
+$stmt = $conn->prepare($checkQuery);
+$stmt->bind_param("i", $requestId);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 0) {
+    die(json_encode(["success" => false, "message" => "Service request not found"]));
 }
 
-$id = intval($data['id']);
-$status = $conn->real_escape_string($data['status']);
+// Update status
+$updateQuery = "UPDATE service_requests SET status = ? WHERE id = ?";
+$stmt = $conn->prepare($updateQuery);
+$stmt->bind_param("si", $status, $requestId);
 
-// Debugging logs
-error_log("Received ID: $id, Status: $status");
-
-// Ensure only allowed statuses are updated
-$allowedStatuses = ["pending", "confirmed", "declined"];
-if (!in_array($status, $allowedStatuses)) {
-    echo json_encode(["success" => false, "message" => "Invalid status value"]);
-    exit();
-}
-
-// Check if the ID exists before updating
-$checkQuery = "SELECT * FROM service_requests WHERE id = $id";
-$checkResult = $conn->query($checkQuery);
-if ($checkResult->num_rows == 0) {
-    echo json_encode(["success" => false, "message" => "No matching ID found"]);
-    exit();
-}
-
-// Force the status update
-$query = "UPDATE service_requests SET status = '$status' WHERE id = $id";
-if ($conn->query($query) === TRUE) {
-    echo json_encode(["success" => true, "message" => "Status updated successfully"]);
+if ($stmt->execute()) {
+    echo json_encode(["success" => true, "message" => "Service request updated successfully"]);
 } else {
-    echo json_encode(["success" => false, "message" => "Database update failed: " . $conn->error]);
+    echo json_encode(["success" => false, "message" => "Failed to update request"]);
 }
 
 $conn->close();

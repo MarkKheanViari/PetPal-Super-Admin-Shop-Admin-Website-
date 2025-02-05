@@ -1,37 +1,35 @@
-
 <?php
-$host = "localhost";  // ✅ Or your actual database host
+$host = "localhost";  // ✅ Database host
 $user = "root";       // ✅ Database username
 $pass = "";           // ✅ Database password
 $dbname = "marketplace";  // ✅ Your database name
 
-$conn = new mysqli($host, $user, $pass, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-    die(json_encode(["success" => false, "message" => "Database Connection Failed: " . $conn->connect_error]));
-}
-
-// Enable error reporting for debugging
+// ✅ Enable error reporting for debugging (DO NOT USE IN PRODUCTION)
 error_reporting(E_ALL);
-ini_set('display_errors', 0); // Disable error output in JSON response
+ini_set('display_errors', 0); // Keep this disabled in production
 
 try {
-    $conn = new mysqli($host, $user, $password, $dbname);
-    
+    // ✅ Properly initialize the database connection
+    $conn = new mysqli($host, $user, $pass, $dbname);
+
+    // ✅ Check if connection fails
     if ($conn->connect_error) {
         throw new Exception("Connection failed: " . $conn->connect_error);
     }
-    
-    // Set charset to ensure proper encoding
+
+    // ✅ Set charset for proper encoding
     $conn->set_charset("utf8mb4");
-    
+
 } catch (Exception $e) {
+    // ✅ Log error for debugging
     error_log("Database connection error: " . $e->getMessage());
+
+    // ✅ Return JSON error response
     header('Content-Type: application/json');
     http_response_code(500);
     die(json_encode([
-        "error" => true,
+        "success" => false,
         "message" => "Database connection failed"
     ]));
 }

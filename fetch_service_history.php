@@ -1,35 +1,46 @@
 <?php
-require 'db.php';
-
+header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
-$user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : 0;
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-if ($user_id === 0) {
-    echo json_encode(["error" => "User ID is required"]);
-    exit();
+require_once "db.php";
+
+// Check if user_id is provided
+if (!isset($_GET['user_id'])) {
+    die(json_encode(["success" => false, "message" => "Missing user_id"]));
 }
 
-$sql = "SELECT sr.id, sr.selected_date, sr.status, s.service_name
-        FROM service_requests sr
-        JOIN services s ON sr.service_id = s.id
-        WHERE sr.user_id = ? ORDER BY sr.selected_date DESC";
+$user_id = intval($_GET['user_id']);
 
-$stmt = $conn->prepare($sql);
+// Fetch service history
+$query = "SELECT sr.id, s.service_name, sr.selected_date, sr.status 
+          FROM service_requests sr
+          JOIN services s ON sr.service_id = s.id
+          WHERE sr.mobile_user_id = ?
+          ORDER BY sr.selected_date DESC";
+
+$stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$history = [];
-
+$service_history = [];
 while ($row = $result->fetch_assoc()) {
-    $history[] = [
-        "id" => $row["id"],
-        "service_name" => $row["service_name"],
-        "selected_date" => $row["selected_date"],
-        "status" => $row["status"]
-    ];
+    $service_history[] = $row;
 }
 
-echo json_encode(["history" => $history]);
+// Debug log
+file_put_contents("debug_log.txt", "[" . date("Y-m-d H:i:s") . "] Service History: " . json_encode($service_history) . PHP_EOL, FILE_APPEND);
+
+// Check if data exists
+if (empty($service_history)) {
+    echo json_encode(["success" => false, "message" => "No service history found"]);
+    exit;
+}
+
+echo json_encode($service_history, JSON_PRETTY_PRINT);
+$conn->close();
 ?>

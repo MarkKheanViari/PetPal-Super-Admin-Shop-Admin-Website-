@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "New Item",
+        "price": "500.00",
+        "description": "Bago lang eto",
+        "quantity": 50,
+        "image": "http:\/\/192.168.1.65\/backend\/uploads\/1738588465_catfood.jpg"
+    },
+    {
+        "id": 2,
+        "name": "321",
+        "price": "321.00",
+        "description": "321",
+        "quantity": 321,
+        "image": "http:\/\/192.168.1.65\/backend\/uploads\/1738666154_ITE 393 (Eval).png"
+    }
+]
