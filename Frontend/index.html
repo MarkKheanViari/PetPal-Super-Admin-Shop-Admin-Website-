@@ -386,34 +386,48 @@ function fetchProducts() {
 
     fetch(`http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`)
         .then(response => response.json())
-        .then(products => {
-            if (!Array.isArray(products)) {
-                console.error("❌ Invalid response from server:", products);
+        .then(data => {
+            if (!data.success || !Array.isArray(data.products)) {
+                console.error("❌ Invalid response from server:", data);
                 return;
             }
 
-            const productList = document.getElementById('productList');
-            productList.innerHTML = '';
-
-            products.forEach(product => {
-                const productItem = document.createElement('div');
-                productItem.className = 'list-item';
-                productItem.id = `product-${product.id}`;
-                productItem.innerHTML = `
-                    <div>
-                        <img src="${product.image}" alt="Product Image" style="width:100px; height:100px; object-fit:cover;">
-                        <strong>${product.name}</strong> - $${product.price}
-                        <p>Description: ${product.description}</p>
-                        <p>Stock: ${product.quantity}</p>
-                    </div>
-                    <button onclick="editProduct(${product.id}, '${product.name}', '${product.price}', '${product.description}', '${product.quantity}', '${product.image}')" class="edit-btn">Edit</button>
-                    <button onclick="deleteProduct(${product.id})" class="delete-btn">Delete</button>
-                `;
-                productList.appendChild(productItem);
-            });
+            displayProducts(data.products); // ✅ Display only this shop owner's products
         })
         .catch(error => console.error('❌ Error fetching products:', error));
 }
+
+
+// ✅ Extracted function for better readability
+function displayProducts(products) {
+    const productList = document.getElementById('productList');
+    productList.innerHTML = ''; // Clear existing content
+
+    products.forEach(product => {
+        const productItem = document.createElement('div');
+        productItem.className = 'list-item';
+        productItem.id = `product-${product.id}`;
+
+        productItem.innerHTML = `
+            <div>
+                <img src="${product.image.replace("\\", "")}" alt="Product Image" 
+                     style="width:100px; height:100px; object-fit:cover;">
+                <strong>${product.name}</strong> - ₱${product.price}
+                <p>Description: ${product.description}</p>
+                <p>Stock: ${product.quantity}</p>
+            </div>
+            <button onclick="editProduct(${product.id}, '${product.name}', '${product.price}', 
+                    '${product.description}', '${product.quantity}', '${product.image}')" 
+                    class="edit-btn">Edit</button>
+            <button onclick="deleteProduct(${product.id})" class="delete-btn">Delete</button>
+        `;
+
+        productList.appendChild(productItem);
+    });
+
+    console.log("✅ Products displayed successfully.");
+}
+
 
 
 
