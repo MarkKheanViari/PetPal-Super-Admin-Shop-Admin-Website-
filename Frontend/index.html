@@ -478,14 +478,16 @@ function deleteProduct(productId) {
 function fetchServices() {
     fetch('http://192.168.1.65/backend/fetch_services.php')
         .then(response => response.json())
-        .then(services => {
-            const serviceList = document.getElementById('serviceList');
-            serviceList.innerHTML = '';
-
-            if (!Array.isArray(services)) {
-                console.error("Invalid response format:", services);
+        .then(data => {
+            if (!data.success || !Array.isArray(data.services)) {
+                console.error("Invalid response format:", data);
+                alert("Failed to load services.");
                 return;
             }
+
+            const services = data.services;
+            const serviceList = document.getElementById('serviceList');
+            serviceList.innerHTML = '';
 
             if (services.length === 0) {
                 serviceList.innerHTML = '<p>No services available.</p>';
@@ -508,6 +510,7 @@ function fetchServices() {
             alert("Failed to fetch services: " + error.message);
         });
 }
+
 
 // Call fetchServices when the page loads
 document.addEventListener('DOMContentLoaded', () => {

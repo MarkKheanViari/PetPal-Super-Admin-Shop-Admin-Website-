@@ -1,4 +1,3 @@
-
 <?php
 include 'db.php';
 
@@ -11,13 +10,19 @@ try {
     $json = file_get_contents('php://input');
     $data = json_decode($json);
 
-    if (!$data || !isset($data->username) || !isset($data->email) || !isset($data->password)) {
+    // Debugging log to see the received data
+    file_put_contents("debug_log.txt", json_encode($data, JSON_PRETTY_PRINT), FILE_APPEND);
+
+    if (!$data || !isset($data->username) || !isset($data->email) || !isset($data->password) || !isset($data->location) || !isset($data->age) || !isset($data->contact_number)) {
         throw new Exception('Missing required fields');
     }
 
     $username = $data->username;
     $email = $data->email;
     $password = password_hash($data->password, PASSWORD_DEFAULT);
+    $location = $data->location;
+    $age = intval($data->age); // Ensure age is an integer
+    $contact_number = $data->contact_number;
 
     // Check if username already exists
     $stmt = $conn->prepare("SELECT id FROM mobile_users WHERE username = ?");
@@ -35,12 +40,12 @@ try {
         throw new Exception('Email already exists');
     }
 
-    // Insert new user
-    $stmt = $conn->prepare("INSERT INTO mobile_users (username, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $email, $password);
-    
+    // Insert new user with additional fields
+    $stmt = $conn->prepare("INSERT INTO mobile_users (username, email, password, location, age, contact_number) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $username, $email, $password, $location, $age, $contact_number);
+
     if (!$stmt->execute()) {
-        throw new Exception('Registration failed');
+        throw new Exception('Database error: ' . $stmt->error);
     }
 
     echo json_encode([
@@ -56,4 +61,3 @@ try {
     ]);
 }
 ?>
-

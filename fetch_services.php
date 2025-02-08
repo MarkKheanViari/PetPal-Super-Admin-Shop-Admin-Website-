@@ -19,16 +19,20 @@ if (!$result) {
 $services = [];
 while ($row = $result->fetch_assoc()) {
     $services[] = [
-        "id" => (int)$row["id"], // ✅ Ensure `id` is an integer
+        "id" => (int)$row["id"],
         "service_name" => $row["service_name"],
         "description" => $row["description"],
-        "price" => $row["price"],
+        "price" => (float)$row["price"], // Ensure price is a float
         "status" => $row["status"]
     ];
 }
 
-// ✅ Output JSON only once
-echo json_encode($services, JSON_PRETTY_PRINT);
+// ✅ Return the services wrapped in a success response
+echo json_encode([
+    "success" => true,
+    "services" => $services
+], JSON_PRETTY_PRINT);
+
 $conn->close();
-exit; // ✅ Stop execution after JSON output
+exit;
 ?>
