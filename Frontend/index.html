@@ -193,15 +193,30 @@
         <input type="number" name="product_price" placeholder="Product Price" required>
         <textarea name="product_description" placeholder="Product Description" required></textarea>
         <input type="number" name="product_quantity" placeholder="Quantity" required>
+        <select name="category" id="productCategory" required>
+            <option value="">Select Category</option>
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+        </select>
         <input type="file" name="product_image" accept="image/*">
         <button type="submit">Add Product</button>
     </form>
     
-
     <div class="section">
         <h2>Products</h2>
         <div id="productList"></div>
     </div>
+
+    <div class="section">
+        <h2>Filter Products by Category</h2>
+        <label for="categoryFilter">Select Category:</label>
+        <select id="categoryFilter" onchange="filterProducts()">
+            <option value="all">All</option>
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+        </select>
+    </div>
+    
 
     <div class="section">
         <h2>Add New Service</h2>
@@ -301,38 +316,34 @@
 
 
     // 📌 Handle product addition (CREATE)
-    const productForm = document.getElementById('productForm');
-    if (productForm) {
-        productForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));
+    document.getElementById('productForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));  // Attach shop owner ID
 
-            try {
-                const response = await fetch('http://192.168.1.65/backend/add_product.php', {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-
-                const data = await response.json();
-                if (data.success) {
-                    e.target.reset();
-                    fetchProducts();
-                } else {
-                    throw new Error(data.error || 'Failed to add product');
-                }
-            } catch (error) {
-                console.error('Error adding product:', error);
-                alert('Failed to add product: ' + error.message);
-            }
+    try {
+        const response = await fetch('http://192.168.1.65/backend/add_product.php', {
+            method: 'POST',
+            body: formData,
         });
+
+        const data = await response.json();
+        if (data.success) {
+            alert('✅ Product added successfully!');
+            e.target.reset();
+            fetchProducts();  // Refresh the product list
+        } else {
+            throw new Error(data.error || 'Failed to add product');
+        }
+    } catch (error) {
+        console.error('❌ Error adding product:', error);
+        alert('❌ Failed to add product: ' + error.message);
     }
+});
+
 
     if (checkAuth()) {
+    filterProducts(); 
     fetchProducts();
     fetchServices();  // ✅ Make sure this line exists
     setInterval(fetchServices, 30000); // Refresh services every 30 seconds
@@ -377,31 +388,40 @@ function editProduct(id, name, price, description, quantity, image) {
 
 // 📦 Fetch and display products
 function fetchProducts() {
-    const shopOwnerId = localStorage.getItem('shop_owner_id'); // Get logged-in shop owner ID
-
+    const shopOwnerId = localStorage.getItem('shop_owner_id'); 
+    const category = document.getElementById('categoryFilter').value;  // Get selected category
     if (!shopOwnerId) {
         console.error("❌ No shop owner ID found. Cannot fetch products.");
         return;
     }
 
-    fetch(`http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`)
+    const url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+    console.log(`Fetching products from: ${url}`);
+    
+    fetch(url)
         .then(response => response.json())
         .then(data => {
             if (!data.success || !Array.isArray(data.products)) {
                 console.error("❌ Invalid response from server:", data);
+                document.getElementById('productList').innerHTML = '<p>No products found.</p>';
                 return;
             }
-
-            displayProducts(data.products); // ✅ Display only this shop owner's products
+            displayProducts(data.products);
         })
         .catch(error => console.error('❌ Error fetching products:', error));
 }
 
 
+
 // ✅ Extracted function for better readability
 function displayProducts(products) {
     const productList = document.getElementById('productList');
-    productList.innerHTML = ''; // Clear existing content
+    productList.innerHTML = ''; // Clear previous content
+
+    if (products.length === 0) {
+        productList.innerHTML = '<p>No products available for the selected category.</p>';
+        return;
+    }
 
     products.forEach(product => {
         const productItem = document.createElement('div');
@@ -427,6 +447,7 @@ function displayProducts(products) {
 
     console.log("✅ Products displayed successfully.");
 }
+
 
 
 
@@ -687,6 +708,26 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchServiceRequests();
     setInterval(fetchServiceRequests, 30000); // Refresh every 30 seconds
 });
+
+function filterProducts() {
+    const category = document.getElementById('categoryFilter').value;
+    const shopOwnerId = localStorage.getItem('shop_owner_id');
+
+    const url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+    console.log(`Fetching products from: ${url}`);
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                displayProducts(data.products);
+            } else {
+                document.getElementById('productList').innerHTML = '<p>No products found.</p>';
+            }
+        })
+        .catch(error => console.error('❌ Error fetching products:', error));
+}
+
 
 
 

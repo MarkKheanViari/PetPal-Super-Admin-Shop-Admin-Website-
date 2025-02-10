@@ -4,29 +4,49 @@ include 'db.php'; // Ensure database connection
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
-// ✅ Get shop_owner_id securely (Only for shop owners viewing their own products)
+// ✅ Get shop_owner_id and category from request
 $shop_owner_id = isset($_GET['shop_owner_id']) ? intval($_GET['shop_owner_id']) : 0;
+$category = isset($_GET['category']) ? $_GET['category'] : 'all'; // Default to 'all'
 
 // ✅ Check if 'quantity' column exists; fallback to 'stock'
 $checkColumn = $conn->query("SHOW COLUMNS FROM products LIKE 'quantity'");
 $stock_column = ($checkColumn->num_rows > 0) ? 'quantity' : 'stock';
 
-// ✅ Query: Filter by shop_owner_id if provided, else return all products
+// ✅ Base SQL query
+$sql = "SELECT id, name, price, description, $stock_column AS quantity, image FROM products";
+$conditions = [];
+$params = [];
+$types = "";
+
+// 🛠 Add condition for shop_owner_id
 if ($shop_owner_id > 0) {
-    // 🛠️ Shop owner only sees their own products
-    $sql = "SELECT id, name, price, description, $stock_column AS quantity, image 
-            FROM products WHERE shop_owner_id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $shop_owner_id);
-} else {
-    // ✅ Mobile users see all products (no filtering)
-    $sql = "SELECT id, name, price, description, $stock_column AS quantity, image FROM products";
-    $stmt = $conn->prepare($sql);
+    $conditions[] = "shop_owner_id = ?";
+    $params[] = $shop_owner_id;
+    $types .= "i";
 }
+
+// 🛠 Add condition for category filtering
+if ($category !== 'all') {
+    $conditions[] = "category = ?";
+    $params[] = $category;
+    $types .= "s";
+}
+
+// ✅ Build final SQL query with conditions
+if (count($conditions) > 0) {
+    $sql .= " WHERE " . implode(" AND ", $conditions);
+}
+
+$stmt = $conn->prepare($sql);
 
 if (!$stmt) {
     echo json_encode(["success" => false, "message" => "Query preparation failed: " . $conn->error]);
     exit();
+}
+
+// ✅ Bind parameters if there are any
+if (count($params) > 0) {
+    $stmt->bind_param($types, ...$params);
 }
 
 $stmt->execute();

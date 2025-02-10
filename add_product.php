@@ -12,9 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $price = $_POST['product_price'] ?? "";
     $description = $_POST['product_description'] ?? "";
     $quantity = $_POST['product_quantity'] ?? "";
+    $category = $_POST['category'] ?? "unknown";  // Default category is 'unknown'
     $shopOwnerId = $_POST['shop_owner_id'] ?? "";
 
-    if (empty($name) || empty($price) || empty($description) || empty($quantity) || empty($shopOwnerId)) {
+    if (empty($name) || empty($price) || empty($description) || empty($quantity) || empty($shopOwnerId) || empty($category)) {
         $response["message"] = "Missing required fields.";
         echo json_encode($response);
         exit;
@@ -38,12 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Insert Product into Database
-    $sql = "INSERT INTO products (name, price, description, quantity, image, shop_owner_id) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO products (name, price, description, quantity, category, image, shop_owner_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sdsisi", $name, $price, $description, $quantity, $imageFileName, $shopOwnerId);
+    $stmt->bind_param("sdssssi", $name, $price, $description, $quantity, $category, $imageFileName, $shopOwnerId);
 
     if ($stmt->execute()) {
-        $response = ["success" => true, "message" => "Product added successfully"];
+        $response = ["success" => true, "message" => "Product added successfully", "category" => $category];
     } else {
         $response["message"] = "Database error: " . $stmt->error;
     }
