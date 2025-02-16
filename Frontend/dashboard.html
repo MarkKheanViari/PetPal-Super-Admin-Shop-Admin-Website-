@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPal - Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo">
+        </div>
+        <div class="nav-right">
+            <a href="#" class="nav-link active">Dashboard</a>
+            <a href="index.html" class="nav-link">Orders & Products</a>
+            <a href="grooming-services.html" class="nav-link">Grooming Services</a>
+            <a href="veterinary-services.html" class="nav-link">Veterinary Services</a>
+            <div class="search-container">
+                <input type="search" placeholder="Search">
+                <button class="search-btn">🔍</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="welcome-header">
+        <h1>Welcome to Your Pet Shop Dashboard!</h1>
+        <p>Manage your products and grooming services efficiently</p>
+        <div class="search-bar">
+            <input type="search" placeholder="Search for products or services...">
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <section class="sales-performance">
+            <h2>Sales Performance</h2>
+            <p class="section-subtitle">Track your pet shop's sales</p>
+            
+            <div class="metrics">
+                <div class="metric-card">
+                    <h3>Total Sales</h3>
+                    <p class="metric-value">$10,000</p>
+                    <p class="metric-label">YTD</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Top Selling Product</h3>
+                    <p class="metric-value">Dog Food</p>
+                    <p class="metric-label">70%</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Monthly Growth</h3>
+                    <p class="metric-value">20%</p>
+                    <p class="metric-label">2%</p>
+                </div>
+            </div>
+
+            <div class="monthly-sales">
+                <h3>Monthly Sales</h3>
+                <p class="chart-label">Revenue</p>
+                <div class="chart">
+                    <div class="bar" style="height: 80%"></div>
+                    <div class="bar" style="height: 60%"></div>
+                    <div class="bar" style="height: 40%"></div>
+                    <div class="bar" style="height: 65%"></div>
+                    <div class="bar" style="height: 45%"></div>
+                    <div class="bar" style="height: 75%"></div>
+                    <div class="bar" style="height: 55%"></div>
+                </div>
+                <p class="chart-label">Month</p>
+            </div>
+        </section>
+
+        <section class="recent-orders">
+            <h2>Recent Orders</h2>
+            <div class="orders-grid">
+                <div class="order-card">
+                    <div class="order-icon">📦</div>
+                    <p class="order-number">Order #1234</p>
+                    <p class="customer-name">Customer Name</p>
+                    <p class="order-total">Total: $50</p>
+                </div>
+                <div class="order-card">
+                    <div class="order-icon">📦</div>
+                    <p class="order-number">Order #1235</p>
+                    <p class="customer-name">Customer Name</p>
+                    <p class="order-total">Total: $70</p>
+                </div>
+                <div class="order-card">
+                    <div class="order-icon">📦</div>
+                    <p class="order-number">Order #1236</p>
+                    <p class="customer-name">Customer Name</p>
+                    <p class="order-total">Total: $70</p>
+                </div>
+            </div>
+            <button class="view-all">View Orders</button>
+        </section>
+
+        <section class="product-inventory">
+            <h2>Product Inventory</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">🐕</div>
+                    <h3>Dog Food</h3>
+                    <p class="product-desc">Dry Food</p>
+                    <p class="stock">In Stock: 20</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">😺</div>
+                    <h3>Cat Toys</h3>
+                    <p class="product-desc">Feather Teaser</p>
+                    <p class="stock">In Stock: 20</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🛁</div>
+                    <h3>Shampoo</h3>
+                    <p class="product-desc">For All Breeds</p>
+                    <p class="stock">In Stock: 20</p>
+                </div>
+            </div>
+            <button class="view-all">View Inventory</button>
+        </section>
+
+        <section class="appointments">
+            <h2>Veterinary Appointments</h2>
+            <div class="appointment-list">
+                <div class="appointment-card">
+                    <div class="appointment-info">
+                        <h3>Check up</h3>
+                        <p>Customer Name</p>
+                    </div>
+                    <div class="appointment-time">
+                        <p>20 January, 2025</p>
+                        <p>9:00 am</p>
+                    </div>
+                    <button class="more-options">⋮</button>
+                </div>
+                <div class="appointment-card">
+                    <div class="appointment-info">
+                        <h3>Vaccination</h3>
+                        <p>Customer Name</p>
+                    </div>
+                    <div class="appointment-time">
+                        <p>20 February, 2025</p>
+                        <p>1:00 pm</p>
+                    </div>
+                    <button class="more-options">⋮</button>
+                </div>
+            </div>
+            <button class="view-all">View Appointments</button>
+        </section>
+
+        <section class="grooming">
+            <h2>Grooming Schedule</h2>
+            <div class="grooming-list">
+                <div class="grooming-card">
+                    <div class="grooming-info">
+                        <h3>Full Grooming</h3>
+                        <p>Customer Name</p>
+                    </div>
+                    <div class="grooming-time">
+                        <p>20 January, 2025</p>
+                        <p>9:00 am</p>
+                    </div>
+                    <button class="more-options">⋮</button>
+                </div>
+                <div class="grooming-card">
+                    <div class="grooming-info">
+                        <h3>Nail Trimming</h3>
+                        <p>Customer Name</p>
+                    </div>
+                    <div class="grooming-time">
+                        <p>20 February, 2025</p>
+                        <p>1:00 pm</p>
+                    </div>
+                    <button class="more-options">⋮</button>
+                </div>
+            </div>
+            <button class="view-all">View Schedule</button>
+        </section>
+    </main>
+
+    <footer>
+        <nav class="footer-nav">
+            <a href="#" class="footer-link">About Us</a>
+            <a href="#" class="footer-link">Contact Us</a>
+            <a href="#" class="footer-link">Terms and Conditions</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+        </nav>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
+

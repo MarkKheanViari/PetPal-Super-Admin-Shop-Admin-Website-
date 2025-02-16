@@ -1,0 +1,273 @@
+:root {
+    --primary-color: #e67e22;
+    --primary-dark: #d35400;
+    --text-color: #333;
+    --background-color: #fff;
+    --footer-bg: #fff5eb;
+    --border-color: #e5e7eb;
+    --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f8fafc;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .logo {
+    height: 40px;
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+  }
+  
+  .nav-link.active {
+    color: white;
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-container input {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-right: 0.5rem;
+  }
+  
+  /* Welcome Header */
+  .welcome-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .welcome-header h1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .search-bar {
+    max-width: 500px;
+    margin: 1.5rem auto 0;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  /* Dashboard Layout */
+  .dashboard {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    gap: 2rem;
+  }
+  
+  /* Section Styling */
+  section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+  }
+  
+  h2 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .section-subtitle {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Metrics */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .metric-card {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+  }
+  
+  .metric-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-label {
+    color: #666;
+    font-size: 0.875rem;
+  }
+  
+  /* Chart */
+  .monthly-sales {
+    margin-top: 2rem;
+  }
+  
+  .chart {
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  
+  .bar {
+    flex: 1;
+    background-color: var(--primary-color);
+    border-radius: 4px 4px 0 0;
+    transition: height 0.3s ease;
+  }
+  
+  /* Orders and Products Grid */
+  .orders-grid,
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .order-card,
+  .product-card {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .order-icon,
+  .product-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Appointments and Grooming */
+  .appointment-list,
+  .grooming-list {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .appointment-card,
+  .grooming-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+  }
+  
+  .more-options {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  /* Buttons */
+  .view-all {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .view-all:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  /* Footer */
+  footer {
+    background-color: var(--footer-bg);
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .footer-link {
+    color: var(--text-color);
+    text-decoration: none;
+  }
+  
+  .footer-link:hover {
+    color: var(--primary-color);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav-right {
+      display: none;
+    }
+  
+    .metrics {
+      grid-template-columns: 1fr;
+    }
+  
+    .chart {
+      height: 150px;
+    }
+  
+    .appointment-card,
+    .grooming-card {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+  }
+  
+  

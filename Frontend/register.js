@@ -11,7 +11,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     }
     
     try {
-        const response = await fetch('http://192.168.1.65/backend/register.php', {
+        const response = await fetch('http://192.168.34.203/backend/register.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,3 +36,15 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         errorDiv.textContent = 'An error occurred. Please try again.';
     }
 });
+
+function togglePassword(fieldId, textId) {
+    const field = document.getElementById(fieldId);
+    const toggleText = document.getElementById(textId);
+    if (field.type === "password") {
+        field.type = "text";
+        toggleText.textContent = "Hide";
+    } else {
+        field.type = "password";
+        toggleText.textContent = "Show";
+    }
+}
