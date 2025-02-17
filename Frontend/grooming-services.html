@@ -6,6 +6,59 @@
     <title>PetPal - Grooming Services</title>
     <link rel="stylesheet" href="services.css">
 </head>
+
+<style>
+    /* Popup (Modal) Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 20px;
+    width: 60%;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.close-btn {
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.close-btn:hover {
+    background: #cc5200;
+}
+
+.approve-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.approve-btn:hover {
+    background: #218838;
+}
+
+
+</style>
 <body>
     <nav class="navbar">
         <div class="nav-left">
@@ -35,14 +88,47 @@
         <button class="edit-profile">Edit Profile</button>
     </header>
 
+    
+    
+
     <main class="content">
         <section class="appointments">
             <h2>Grooming Schedule</h2>
-            <div class="appointments-list">
-                <!-- Appointments will be dynamically generated here -->
+            <div id="groomingAppointmentsContainer">
+                <!-- Grooming appointments will be loaded here -->
             </div>
         </section>
     </main>
+
+    <!-- Modal (Popup) -->
+<div id="appointmentModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2>Grooming Appointment Details</h2>
+
+        <h3>Customer Details</h3>
+        <p><strong>Name:</strong> <span id="modalCustomerName"></span></p>
+        <p><strong>Address:</strong> <span id="modalCustomerAddress"></span></p>
+        <p><strong>Contact No:</strong> <span id="modalCustomerPhone"></span></p>
+
+        <h3>Pet Details</h3>
+        <p><strong>Pet Name:</strong> <span id="modalPetName"></span></p>
+        <p><strong>Pet Breed:</strong> <span id="modalPetBreed"></span></p>
+
+        <h3>Grooming Details</h3>
+        <p><strong>Type of Groom:</strong> <span id="modalGroomType"></span></p>
+        <p><strong>Notes:</strong> <span id="modalNotes"></span></p>
+
+        <h3>Scheduled Date</h3>
+        <p><strong>Date:</strong> <span id="modalDate"></span></p>
+
+        <!-- Approve Button -->
+        <button class="approve-btn" onclick="approveGroomingAppointment()">Approve</button>
+
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
 
     <footer>
         <nav class="footer-nav">
@@ -53,7 +139,110 @@
         </nav>
     </footer>
 
-    <script src="services.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.getElementById("groomingAppointmentsContainer");
+        
+            if (!container) {
+                console.error("❌ Element with ID 'groomingAppointmentsContainer' not found.");
+                return;
+            }
+        
+            fetch("http://192.168.1.65/backend/fetch_grooming_appointments.php")
+    .then(response => response.json())
+    .then(data => {
+        console.log("API Response:", data); // Debugging
+        if (data.success) {
+            displayAppointments(data.appointments, "groomingAppointmentsContainer");
+        } else {
+            document.getElementById("groomingAppointmentsContainer").innerHTML = "<p>No grooming appointments found.</p>";
+        }
+    })
+    .catch(error => console.error("Error fetching grooming appointments:", error));
+
+        });
+        
+        // Function to display appointments
+        function displayAppointments(appointments, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = ""; // Clear previous data
+
+    appointments.forEach(appointment => {
+        console.log("Debugging Appointment:", appointment); // Debug log
+
+        const formattedDate = appointment.appointment_date && appointment.appointment_date !== "N/A"
+            ? appointment.appointment_date
+            : "No Date Available";
+
+        const appointmentDiv = document.createElement("div");
+        appointmentDiv.classList.add("appointment-card");
+        appointmentDiv.innerHTML = `
+            <h3>${appointment.groom_type}</h3>
+            <p><strong>Customer:</strong> ${appointment.name}</p>
+            <p><strong>Pet:</strong> ${appointment.pet_name} (${appointment.pet_breed})</p>
+            <p><strong>Date:</strong> ${formattedDate}</p>
+            <button class="view-details-btn" onclick='showGroomDetails(${JSON.stringify(appointment)})'>View Details</button>
+        `;
+        container.appendChild(appointmentDiv);
+    });
+}
+
+
+
+
+        
+        // Function to show the popup (modal)
+        function showGroomDetails(appointment) {
+    document.getElementById("modalCustomerName").innerText = appointment.name;
+    document.getElementById("modalCustomerAddress").innerText = appointment.address;
+    document.getElementById("modalCustomerPhone").innerText = appointment.phone_number;
+    document.getElementById("modalPetName").innerText = appointment.pet_name;
+    document.getElementById("modalPetBreed").innerText = appointment.pet_breed;
+    document.getElementById("modalGroomType").innerText = appointment.groom_type;
+    document.getElementById("modalNotes").innerText = appointment.notes;
+
+    // Check if the date exists before displaying
+    if (appointment.appointment_date) {
+        document.getElementById("modalDate").innerText = appointment.appointment_date;
+    } else {
+        document.getElementById("modalDate").innerText = "No Date Available";
+    }
+
+    document.getElementById("appointmentModal").style.display = "block";
+}
+
+
+        
+        // Function to close the popup
+        function closeModal() {
+            document.getElementById("appointmentModal").style.display = "none";
+        }
+
+        function approveGroomingAppointment() {
+    const appointmentId = document.getElementById("modalAppointmentId").innerText;
+
+    fetch("http://192.168.1.65/backend/approve_grooming_appointment.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: appointmentId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert("Appointment approved successfully!");
+            closeModal();
+            location.reload();
+        } else {
+            alert("Failed to approve appointment.");
+        }
+    })
+    .catch(error => console.error("Error approving appointment:", error));
+}
+        </script>
+        
+        
 </body>
 </html>
 

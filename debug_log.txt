@@ -1,1980 +1,926 @@
-RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 1
-}
+Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 
+                    [payment_method] => Cash (on site)
+                )
 
-RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 1
-}
+        )
 
-RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 1
-}
-RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 1
-}
-RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 5
-}
-RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 5
-}
-[2025-02-04 10:18:45] RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 2
-}
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => N/A
+                    [payment_method] => Cash (on site)
+                )
 
-RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 2
-}
+        )
 
-[2025-02-04 10:18:58] RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 3
-}
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 02/27/2025
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 02/27/2025
+                    [payment_method] => Cash (on site)
+                )
 
-RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 3
-}
+        )
 
-[2025-02-04 10:20:41] RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 3
-}
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 02/27/2025
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 02/27/2025
+                    [payment_method] => Cash (on site)
+                )
 
-[2025-02-04 10:20:55] RAW INPUT: {
-  "customer_id": 1,
-  "product_id": 2,
-  "quantity": 10
-}
+        )
 
-[2025-02-05 01:26:46] RAW INPUT: {"customer_id":1,"product_id":1,"quantity":1}
-[2025-02-05 01:52:46] RAW INPUT: {"customer_id":1,"product_id":1,"quantity":1}
-[2025-02-05 02:01:55] RAW INPUT: 
-❌ JSON ERROR: Syntax error
-[2025-02-05 02:01:59] RAW INPUT: 
-❌ JSON ERROR: Syntax error
-[2025-02-05 02:03:16] RAW INPUT: 
-❌ JSON ERROR: Syntax error
-[2025-02-05 02:04:09] RAW INPUT: {
-  "mobile_user_id": 1,
-  "service_id": 3,
-  "selected_date": "2025-02-07",
-  "status": "pending"
-}
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 02/27/2025
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 10
+    [name] => Mark Khean
+    [address] => dito lang sa tabi
+    [phone_number] => 09084538768
+    [pet_name] => yuh
+    [pet_breed] => Cat
+    [groom_type] => Hand Stripping
+    [notes] => yu
+    [appointment_date] => 00/00/0000
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 02/27/2025
+                    [payment_method] => Cash (on site)
+                )
 
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2025-02-07
-[2025-02-05 02:04:11] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:04:11] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:04:16] RAW INPUT: 
-❌ JSON ERROR: Syntax error
-[2025-02-05 02:04:17] RAW INPUT: 
-❌ JSON ERROR: Syntax error
-[2025-02-05 02:04:17] RAW INPUT: 
-❌ JSON ERROR: Syntax error
-[2025-02-05 02:04:18] RAW INPUT: 
-❌ JSON ERROR: Syntax error
-[2025-02-05 02:04:18] RAW INPUT: 
-❌ JSON ERROR: Syntax error
-[2025-02-05 02:04:41] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:04:41] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:04:44] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:04:44] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:05:09] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:05:09] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:05:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:05:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:05:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:05:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:06:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:06:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:06:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:06:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:07:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:07:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:07:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:07:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:08:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:08:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:08:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:08:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:09:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:09:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:09:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:09:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:10:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:10:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:10:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:10:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:11:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:11:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:11:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:11:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:12:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:12:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:12:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:12:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:13:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:13:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:13:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:13:54] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:14:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:14:24] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:14:44] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2025-01-1
-[2025-02-05 02:14:48] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:14:48] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:15:06] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:15:06] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:15:36] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:15:36] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:16:06] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:16:06] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:16:36] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:16:36] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:17:06] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:17:06] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:17:36] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:17:36] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:18:06] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:18:06] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:18:17] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:18:17] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:18:25] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:18:25] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:18:55] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:18:55] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:20:25] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:20:25] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:20:26] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:20:26] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:20:44] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:20:44] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:21:14] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:21:14] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:21:44] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:21:44] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:21:56] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:21:56] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:22:26] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:22:26] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:22:47] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:22:49] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:22:49] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:23:19] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:23:19] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:23:22] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:23:22] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:23:52] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:23:52] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:24:22] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:24:22] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:24:52] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:24:52] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:25:02] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:25:02] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:25:17] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:25:17] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:25:29] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:25:29] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:25:59] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:25:59] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:26:29] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:26:29] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:26:30] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:26:30] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:26:57] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:26:57] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:27:27] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:27:27] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:27:57] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:27:57] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:28:26] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:28:26] API OUTPUT: [{"id":"2","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"},{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:28:42] Raw Input: {
-    "id": 2,
-    "status": "confirmed"
-}
+            [1] => Array
+                (
+                    [id] => 10
+                    [name] => Mark Khean
+                    [address] => dito lang sa tabi
+                    [phone_number] => 09084538768
+                    [pet_name] => yuh
+                    [pet_breed] => Cat
+                    [groom_type] => Hand Stripping
+                    [notes] => yu
+                    [appointment_date] => 00/00/0000
+                    [payment_method] => Cash (on site)
+                )
 
-[2025-02-05 02:28:56] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:28:56] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:29:22] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:29:22] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:29:46] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:29:46] API OUTPUT: [{"id":"1","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-02-07","status":"pending"}]
-[2025-02-05 02:29:49] Raw Input: 
-[2025-02-05 02:29:49] Raw Input: {"id":1,"status":"confirmed"}
-[2025-02-05 02:29:49] API OUTPUT: []
-[2025-02-05 02:30:16] API OUTPUT: []
-[2025-02-05 02:30:16] API OUTPUT: []
-[2025-02-05 02:30:46] API OUTPUT: []
-[2025-02-05 02:30:46] API OUTPUT: []
-[2025-02-05 02:30:57] API OUTPUT: []
-[2025-02-05 02:30:57] API OUTPUT: []
-[2025-02-05 02:31:27] API OUTPUT: []
-[2025-02-05 02:31:27] API OUTPUT: []
-[2025-02-05 02:31:57] API OUTPUT: []
-[2025-02-05 02:31:57] API OUTPUT: []
-[2025-02-05 02:32:16] API OUTPUT: []
-[2025-02-05 02:32:16] API OUTPUT: []
-[2025-02-05 02:32:29] Service History: [{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 02:32:46] API OUTPUT: []
-[2025-02-05 02:32:46] API OUTPUT: []
-[2025-02-05 02:33:16] API OUTPUT: []
-[2025-02-05 02:33:16] API OUTPUT: []
-[2025-02-05 02:33:46] API OUTPUT: []
-[2025-02-05 02:33:46] API OUTPUT: []
-[2025-02-05 02:34:16] API OUTPUT: []
-[2025-02-05 02:34:16] API OUTPUT: []
-[2025-02-05 02:34:46] API OUTPUT: []
-[2025-02-05 02:34:46] API OUTPUT: []
-[2025-02-05 02:35:16] API OUTPUT: []
-[2025-02-05 02:35:16] API OUTPUT: []
-[2025-02-05 02:35:46] API OUTPUT: []
-[2025-02-05 02:35:46] API OUTPUT: []
-[2025-02-05 02:36:16] API OUTPUT: []
-[2025-02-05 02:36:16] API OUTPUT: []
-[2025-02-05 02:36:46] API OUTPUT: []
-[2025-02-05 02:36:46] API OUTPUT: []
-[2025-02-05 02:37:16] API OUTPUT: []
-[2025-02-05 02:37:16] API OUTPUT: []
-[2025-02-05 02:37:46] API OUTPUT: []
-[2025-02-05 02:37:46] API OUTPUT: []
-[2025-02-05 02:38:16] API OUTPUT: []
-[2025-02-05 02:38:16] API OUTPUT: []
-[2025-02-05 02:38:46] API OUTPUT: []
-[2025-02-05 02:38:46] API OUTPUT: []
-[2025-02-05 02:39:16] API OUTPUT: []
-[2025-02-05 02:39:16] API OUTPUT: []
-[2025-02-05 02:39:46] API OUTPUT: []
-[2025-02-05 02:39:46] API OUTPUT: []
-[2025-02-05 02:40:16] API OUTPUT: []
-[2025-02-05 02:40:16] API OUTPUT: []
-[2025-02-05 02:40:46] API OUTPUT: []
-[2025-02-05 02:40:46] API OUTPUT: []
-[2025-02-05 02:41:16] API OUTPUT: []
-[2025-02-05 02:41:16] API OUTPUT: []
-[2025-02-05 02:41:46] API OUTPUT: []
-[2025-02-05 02:41:46] API OUTPUT: []
-[2025-02-05 02:42:16] API OUTPUT: []
-[2025-02-05 02:42:16] API OUTPUT: []
-[2025-02-05 02:42:46] API OUTPUT: []
-[2025-02-05 02:42:46] API OUTPUT: []
-[2025-02-05 02:43:16] API OUTPUT: []
-[2025-02-05 02:43:16] API OUTPUT: []
-[2025-02-05 02:43:46] API OUTPUT: []
-[2025-02-05 02:43:46] API OUTPUT: []
-[2025-02-05 02:44:16] API OUTPUT: []
-[2025-02-05 02:44:16] API OUTPUT: []
-[2025-02-05 02:44:46] API OUTPUT: []
-[2025-02-05 02:44:46] API OUTPUT: []
-[2025-02-05 02:45:16] API OUTPUT: []
-[2025-02-05 02:45:16] API OUTPUT: []
-[2025-02-05 02:45:46] API OUTPUT: []
-[2025-02-05 02:45:46] API OUTPUT: []
-[2025-02-05 02:46:16] API OUTPUT: []
-[2025-02-05 02:46:16] API OUTPUT: []
-[2025-02-05 02:46:46] API OUTPUT: []
-[2025-02-05 02:46:46] API OUTPUT: []
-[2025-02-05 02:47:16] API OUTPUT: []
-[2025-02-05 02:47:16] API OUTPUT: []
-[2025-02-05 02:47:46] API OUTPUT: []
-[2025-02-05 02:47:46] API OUTPUT: []
-[2025-02-05 02:48:16] API OUTPUT: []
-[2025-02-05 02:48:16] API OUTPUT: []
-[2025-02-05 02:48:46] API OUTPUT: []
-[2025-02-05 02:48:46] API OUTPUT: []
-[2025-02-05 02:49:16] API OUTPUT: []
-[2025-02-05 02:49:16] API OUTPUT: []
-[2025-02-05 02:49:46] API OUTPUT: []
-[2025-02-05 02:49:46] API OUTPUT: []
-[2025-02-05 02:50:16] API OUTPUT: []
-[2025-02-05 02:50:16] API OUTPUT: []
-[2025-02-05 02:50:46] API OUTPUT: []
-[2025-02-05 02:50:46] API OUTPUT: []
-[2025-02-05 02:51:00] Service History: [{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 02:51:16] API OUTPUT: []
-[2025-02-05 02:51:16] API OUTPUT: []
-[2025-02-05 02:51:38] Service History: [{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 02:51:46] API OUTPUT: []
-[2025-02-05 02:51:46] API OUTPUT: []
-[2025-02-05 02:51:49] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2027-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2027-01-1
-[2025-02-05 02:51:51] Service History: [{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"pending"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 02:52:16] API OUTPUT: [{"id":"3","service_name":"Grooming Service","user_name":"mark","selected_date":"2027-01-01","status":"pending"}]
-[2025-02-05 02:52:16] API OUTPUT: [{"id":"3","service_name":"Grooming Service","user_name":"mark","selected_date":"2027-01-01","status":"pending"}]
-[2025-02-05 02:52:21] Service History: [{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"pending"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 02:52:35] API OUTPUT: [{"id":"3","service_name":"Grooming Service","user_name":"mark","selected_date":"2027-01-01","status":"pending"}]
-[2025-02-05 02:52:35] API OUTPUT: [{"id":"3","service_name":"Grooming Service","user_name":"mark","selected_date":"2027-01-01","status":"pending"}]
-[2025-02-05 02:52:37] Raw Input: 
-[2025-02-05 02:52:37] Raw Input: {"id":3,"status":"declined"}
-[2025-02-05 02:52:37] API OUTPUT: []
-[2025-02-05 02:53:05] API OUTPUT: []
-[2025-02-05 02:53:05] API OUTPUT: []
-[2025-02-05 02:53:35] API OUTPUT: []
-[2025-02-05 02:53:35] API OUTPUT: []
-[2025-02-05 02:54:05] API OUTPUT: []
-[2025-02-05 02:54:05] API OUTPUT: []
-[2025-02-05 02:54:35] API OUTPUT: []
-[2025-02-05 02:54:35] API OUTPUT: []
-[2025-02-05 02:55:05] API OUTPUT: []
-[2025-02-05 02:55:05] API OUTPUT: []
-[2025-02-05 02:55:10] Service History: [{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 02:55:35] API OUTPUT: []
-[2025-02-05 02:55:35] API OUTPUT: []
-[2025-02-05 02:56:05] API OUTPUT: []
-[2025-02-05 02:56:05] API OUTPUT: []
-[2025-02-05 02:56:26] API OUTPUT: []
-[2025-02-05 02:56:26] API OUTPUT: []
-[2025-02-05 02:56:56] API OUTPUT: []
-[2025-02-05 02:56:56] API OUTPUT: []
-[2025-02-05 02:57:16] RAW INPUT: {"customer_id":1,"product_id":1,"quantity":1}
-[2025-02-05 02:57:26] API OUTPUT: []
-[2025-02-05 02:57:26] API OUTPUT: []
-[2025-02-05 02:57:56] API OUTPUT: []
-[2025-02-05 02:57:56] API OUTPUT: []
-[2025-02-05 02:58:19] Service History: [{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 02:58:25] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2025-01-1
-[2025-02-05 02:58:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 02:58:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 02:58:26] Service History: [{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 02:58:47] Service History: [{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 02:58:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 02:58:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 02:59:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 02:59:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 02:59:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 02:59:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:00:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:00:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:00:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:00:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:01:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:01:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:01:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:01:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:02:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:02:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:02:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:02:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:03:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:03:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:03:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:03:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:04:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:04:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:04:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:04:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:05:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:05:26] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:05:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:05:56] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:06:07] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:06:07] API OUTPUT: [{"id":"4","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:06:13] Service History: [{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 03:06:17] Service History: [{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 03:06:20] API OUTPUT: []
-[2025-02-05 03:06:20] API OUTPUT: []
-[2025-02-05 03:06:36] Service History: [{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 03:06:50] API OUTPUT: []
-[2025-02-05 03:06:50] API OUTPUT: []
-[2025-02-05 03:06:50] Service History: [{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 03:07:20] API OUTPUT: []
-[2025-02-05 03:07:20] API OUTPUT: []
-[2025-02-05 03:07:50] API OUTPUT: []
-[2025-02-05 03:07:50] API OUTPUT: []
-[2025-02-05 03:08:20] API OUTPUT: []
-[2025-02-05 03:08:20] API OUTPUT: []
-[2025-02-05 03:08:50] API OUTPUT: []
-[2025-02-05 03:08:50] API OUTPUT: []
-[2025-02-05 03:09:20] API OUTPUT: []
-[2025-02-05 03:09:20] API OUTPUT: []
-[2025-02-05 03:09:50] API OUTPUT: []
-[2025-02-05 03:09:50] API OUTPUT: []
-[2025-02-05 03:10:20] API OUTPUT: []
-[2025-02-05 03:10:20] API OUTPUT: []
-[2025-02-05 03:10:50] API OUTPUT: []
-[2025-02-05 03:10:50] API OUTPUT: []
-[2025-02-05 03:11:20] API OUTPUT: []
-[2025-02-05 03:11:20] API OUTPUT: []
-[2025-02-05 03:11:38] Service History: [{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 03:11:45] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2030-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2030-01-1
-[2025-02-05 03:11:46] Service History: [{"id":5,"service_name":"Grooming Service","selected_date":"2030-01-01","status":"pending"},{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 03:11:50] API OUTPUT: []
-[2025-02-05 03:11:50] API OUTPUT: []
-[2025-02-05 03:12:20] API OUTPUT: []
-[2025-02-05 03:12:20] API OUTPUT: []
-[2025-02-05 03:12:50] API OUTPUT: []
-[2025-02-05 03:12:50] API OUTPUT: []
-[2025-02-05 03:13:20] API OUTPUT: []
-[2025-02-05 03:13:20] API OUTPUT: []
-[2025-02-05 03:13:50] API OUTPUT: []
-[2025-02-05 03:13:50] API OUTPUT: []
-[2025-02-05 03:14:20] API OUTPUT: []
-[2025-02-05 03:14:20] API OUTPUT: []
-[2025-02-05 03:14:50] API OUTPUT: []
-[2025-02-05 03:14:50] API OUTPUT: []
-[2025-02-05 03:15:20] API OUTPUT: []
-[2025-02-05 03:15:20] API OUTPUT: []
-[2025-02-05 03:15:50] API OUTPUT: []
-[2025-02-05 03:15:50] API OUTPUT: []
-[2025-02-05 03:16:20] API OUTPUT: []
-[2025-02-05 03:16:20] API OUTPUT: []
-[2025-02-05 03:16:47] Service History: [{"id":5,"service_name":"Grooming Service","selected_date":"2030-01-01","status":"canceled"},{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 03:16:50] API OUTPUT: []
-[2025-02-05 03:16:50] API OUTPUT: []
-[2025-02-05 03:17:20] API OUTPUT: []
-[2025-02-05 03:17:20] API OUTPUT: []
-[2025-02-05 03:17:50] API OUTPUT: []
-[2025-02-05 03:17:50] API OUTPUT: []
-[2025-02-05 03:18:20] API OUTPUT: []
-[2025-02-05 03:18:20] API OUTPUT: []
-[2025-02-05 03:18:50] API OUTPUT: []
-[2025-02-05 03:18:50] API OUTPUT: []
-[2025-02-05 03:19:20] API OUTPUT: []
-[2025-02-05 03:19:20] API OUTPUT: []
-[2025-02-05 03:19:43] Service History: [{"id":5,"service_name":"Grooming Service","selected_date":"2030-01-01","status":"canceled"},{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 03:19:50] API OUTPUT: []
-[2025-02-05 03:19:50] API OUTPUT: []
-[2025-02-05 03:20:20] API OUTPUT: []
-[2025-02-05 03:20:20] API OUTPUT: []
-[2025-02-05 03:20:50] API OUTPUT: []
-[2025-02-05 03:20:50] API OUTPUT: []
-[2025-02-05 03:21:20] API OUTPUT: []
-[2025-02-05 03:21:20] API OUTPUT: []
-[2025-02-05 03:21:50] API OUTPUT: []
-[2025-02-05 03:21:50] API OUTPUT: []
-[2025-02-05 03:22:20] API OUTPUT: []
-[2025-02-05 03:22:20] API OUTPUT: []
-[2025-02-05 03:22:50] API OUTPUT: []
-[2025-02-05 03:22:50] API OUTPUT: []
-[2025-02-05 03:23:20] API OUTPUT: []
-[2025-02-05 03:23:20] API OUTPUT: []
-[2025-02-05 03:23:41] Service History: [{"id":5,"service_name":"Grooming Service","selected_date":"2030-01-01","status":"canceled"},{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 03:23:49] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2025-01-1
-[2025-02-05 03:23:50] API OUTPUT: [{"id":"6","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:23:50] API OUTPUT: [{"id":"6","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:23:51] Service History: [{"id":5,"service_name":"Grooming Service","selected_date":"2030-01-01","status":"canceled"},{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"},{"id":6,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 03:24:04] Service History: [{"id":5,"service_name":"Grooming Service","selected_date":"2030-01-01","status":"canceled"},{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"},{"id":6,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"}]
-[2025-02-05 03:24:20] API OUTPUT: []
-[2025-02-05 03:24:20] API OUTPUT: []
-[2025-02-05 03:24:50] API OUTPUT: []
-[2025-02-05 03:24:50] API OUTPUT: []
-[2025-02-05 03:25:20] API OUTPUT: []
-[2025-02-05 03:25:20] API OUTPUT: []
-[2025-02-05 03:25:37] API OUTPUT: []
-[2025-02-05 03:25:37] API OUTPUT: []
-[2025-02-05 03:26:07] API OUTPUT: []
-[2025-02-05 03:26:07] API OUTPUT: []
-[2025-02-05 03:26:37] API OUTPUT: []
-[2025-02-05 03:26:37] API OUTPUT: []
-[2025-02-05 03:26:42] Service History: [{"id":5,"service_name":"Grooming Service","selected_date":"2030-01-01","status":"canceled"},{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"},{"id":6,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"}]
-[2025-02-05 03:27:07] API OUTPUT: []
-[2025-02-05 03:27:07] API OUTPUT: []
-[2025-02-05 03:27:37] API OUTPUT: []
-[2025-02-05 03:27:37] API OUTPUT: []
-[2025-02-05 03:28:07] API OUTPUT: []
-[2025-02-05 03:28:07] API OUTPUT: []
-[2025-02-05 03:28:37] API OUTPUT: []
-[2025-02-05 03:28:37] API OUTPUT: []
-[2025-02-05 03:29:07] API OUTPUT: []
-[2025-02-05 03:29:07] API OUTPUT: []
-[2025-02-05 03:29:37] API OUTPUT: []
-[2025-02-05 03:29:37] API OUTPUT: []
-[2025-02-05 03:30:07] API OUTPUT: []
-[2025-02-05 03:30:07] API OUTPUT: []
-[2025-02-05 03:30:37] API OUTPUT: []
-[2025-02-05 03:30:37] API OUTPUT: []
-[2025-02-05 03:31:04] API OUTPUT: []
-[2025-02-05 03:31:04] API OUTPUT: []
-[2025-02-05 03:31:34] API OUTPUT: []
-[2025-02-05 03:31:34] API OUTPUT: []
-[2025-02-05 03:32:04] API OUTPUT: []
-[2025-02-05 03:32:04] API OUTPUT: []
-[2025-02-05 03:32:34] API OUTPUT: []
-[2025-02-05 03:32:34] API OUTPUT: []
-[2025-02-05 03:33:04] API OUTPUT: []
-[2025-02-05 03:33:04] API OUTPUT: []
-[2025-02-05 03:33:34] API OUTPUT: []
-[2025-02-05 03:33:34] API OUTPUT: []
-[2025-02-05 03:34:04] API OUTPUT: []
-[2025-02-05 03:34:04] API OUTPUT: []
-[2025-02-05 03:34:34] API OUTPUT: []
-[2025-02-05 03:34:34] API OUTPUT: []
-[2025-02-05 03:35:04] API OUTPUT: []
-[2025-02-05 03:35:04] API OUTPUT: []
-[2025-02-05 03:35:34] API OUTPUT: []
-[2025-02-05 03:35:34] API OUTPUT: []
-[2025-02-05 03:36:04] API OUTPUT: []
-[2025-02-05 03:36:04] API OUTPUT: []
-[2025-02-05 03:36:34] API OUTPUT: []
-[2025-02-05 03:36:34] API OUTPUT: []
-[2025-02-05 03:37:04] API OUTPUT: []
-[2025-02-05 03:37:04] API OUTPUT: []
-[2025-02-05 03:37:34] API OUTPUT: []
-[2025-02-05 03:37:34] API OUTPUT: []
-[2025-02-05 03:38:04] API OUTPUT: []
-[2025-02-05 03:38:04] API OUTPUT: []
-[2025-02-05 03:38:10] API OUTPUT: []
-[2025-02-05 03:38:11] API OUTPUT: []
-[2025-02-05 03:38:41] API OUTPUT: []
-[2025-02-05 03:38:41] API OUTPUT: []
-[2025-02-05 03:39:10] API OUTPUT: []
-[2025-02-05 03:39:11] API OUTPUT: []
-[2025-02-05 03:39:40] API OUTPUT: []
-[2025-02-05 03:39:41] API OUTPUT: []
-[2025-02-05 03:40:10] API OUTPUT: []
-[2025-02-05 03:40:11] API OUTPUT: []
-[2025-02-05 03:40:41] API OUTPUT: []
-[2025-02-05 03:40:41] API OUTPUT: []
-[2025-02-05 03:41:10] API OUTPUT: []
-[2025-02-05 03:41:11] API OUTPUT: []
-[2025-02-05 03:41:41] API OUTPUT: []
-[2025-02-05 03:41:41] API OUTPUT: []
-[2025-02-05 03:42:10] API OUTPUT: []
-[2025-02-05 03:42:10] API OUTPUT: []
-[2025-02-05 03:42:40] API OUTPUT: []
-[2025-02-05 03:42:41] API OUTPUT: []
-[2025-02-05 03:43:10] API OUTPUT: []
-[2025-02-05 03:43:11] API OUTPUT: []
-[2025-02-05 03:43:40] API OUTPUT: []
-[2025-02-05 03:43:41] API OUTPUT: []
-[2025-02-05 03:43:53] API OUTPUT: []
-[2025-02-05 03:43:53] API OUTPUT: []
-[2025-02-05 03:44:23] API OUTPUT: []
-[2025-02-05 03:44:23] API OUTPUT: []
-[2025-02-05 03:44:53] API OUTPUT: []
-[2025-02-05 03:44:53] API OUTPUT: []
-[2025-02-05 03:45:15] API OUTPUT: []
-[2025-02-05 03:45:15] API OUTPUT: []
-[2025-02-05 03:45:45] API OUTPUT: []
-[2025-02-05 03:45:45] API OUTPUT: []
-[2025-02-05 03:46:07] Service History: [{"id":5,"service_name":"Grooming Service","selected_date":"2030-01-01","status":"canceled"},{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"},{"id":6,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"}]
-[2025-02-05 03:46:15] API OUTPUT: []
-[2025-02-05 03:46:15] API OUTPUT: []
-[2025-02-05 03:46:37] Service History: [{"id":5,"service_name":"Grooming Service","selected_date":"2030-01-01","status":"canceled"},{"id":3,"service_name":"Grooming Service","selected_date":"2027-01-01","status":"declined"},{"id":1,"service_name":"Grooming Service","selected_date":"2025-02-07","status":"confirmed"},{"id":4,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":2,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"},{"id":6,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"}]
-[2025-02-05 03:46:45] API OUTPUT: []
-[2025-02-05 03:46:45] API OUTPUT: []
-[2025-02-05 03:47:15] API OUTPUT: []
-[2025-02-05 03:47:15] API OUTPUT: []
-[2025-02-05 03:47:29] API OUTPUT: []
-[2025-02-05 03:47:29] API OUTPUT: []
-[2025-02-05 03:47:44] API OUTPUT: []
-[2025-02-05 03:47:44] API OUTPUT: []
-[2025-02-05 03:48:14] API OUTPUT: []
-[2025-02-05 03:48:14] API OUTPUT: []
-[2025-02-05 03:48:44] API OUTPUT: []
-[2025-02-05 03:48:44] API OUTPUT: []
-[2025-02-05 03:49:14] API OUTPUT: []
-[2025-02-05 03:49:14] API OUTPUT: []
-[2025-02-05 03:49:44] API OUTPUT: []
-[2025-02-05 03:49:44] API OUTPUT: []
-[2025-02-05 03:49:57] API OUTPUT: []
-[2025-02-05 03:49:57] API OUTPUT: []
-[2025-02-05 03:50:25] API OUTPUT: []
-[2025-02-05 03:50:25] API OUTPUT: []
-[2025-02-05 03:50:55] API OUTPUT: []
-[2025-02-05 03:50:55] API OUTPUT: []
-[2025-02-05 03:51:25] API OUTPUT: []
-[2025-02-05 03:51:25] API OUTPUT: []
-[2025-02-05 03:51:55] API OUTPUT: []
-[2025-02-05 03:51:55] API OUTPUT: []
-[2025-02-05 03:52:25] API OUTPUT: []
-[2025-02-05 03:52:25] API OUTPUT: []
-[2025-02-05 03:52:55] API OUTPUT: []
-[2025-02-05 03:52:55] API OUTPUT: []
-[2025-02-05 03:53:25] API OUTPUT: []
-[2025-02-05 03:53:25] API OUTPUT: []
-[2025-02-05 03:53:55] API OUTPUT: []
-[2025-02-05 03:53:55] API OUTPUT: []
-[2025-02-05 03:54:25] API OUTPUT: []
-[2025-02-05 03:54:25] API OUTPUT: []
-[2025-02-05 03:54:30] API OUTPUT: []
-[2025-02-05 03:54:30] API OUTPUT: []
-[2025-02-05 03:54:46] API OUTPUT: []
-[2025-02-05 03:55:05] API OUTPUT: []
-[2025-02-05 03:55:05] API OUTPUT: []
-[2025-02-05 03:55:35] API OUTPUT: []
-[2025-02-05 03:55:35] API OUTPUT: []
-[2025-02-05 03:55:39] API OUTPUT: []
-[2025-02-05 03:55:39] API OUTPUT: []
-[2025-02-05 03:56:09] API OUTPUT: []
-[2025-02-05 03:56:09] API OUTPUT: []
-[2025-02-05 03:56:24] API OUTPUT: []
-[2025-02-05 03:56:24] API OUTPUT: []
-[2025-02-05 03:56:29] API OUTPUT: []
-[2025-02-05 03:56:29] API OUTPUT: []
-[2025-02-05 03:56:35] API OUTPUT: []
-[2025-02-05 03:56:35] API OUTPUT: []
-[2025-02-05 03:56:57] API OUTPUT: []
-[2025-02-05 03:56:57] API OUTPUT: []
-[2025-02-05 03:57:27] API OUTPUT: []
-[2025-02-05 03:57:27] API OUTPUT: []
-[2025-02-05 03:57:57] API OUTPUT: []
-[2025-02-05 03:57:57] API OUTPUT: []
-[2025-02-05 03:58:02] API OUTPUT: []
-[2025-02-05 03:58:02] API OUTPUT: []
-[2025-02-05 03:58:32] API OUTPUT: []
-[2025-02-05 03:58:32] API OUTPUT: []
-[2025-02-05 04:00:26] Service History: []
-[2025-02-05 04:00:35] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2025-01-1
-[2025-02-05 04:00:39] Service History: [{"id":7,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:01:02] API OUTPUT: [{"id":"7","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:01:02] API OUTPUT: [{"id":"7","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:01:43] Service History: []
-[2025-02-05 04:03:25] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2025-01-1
-[2025-02-05 04:03:27] Service History: [{"id":8,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:03:52] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2025-01-1
-[2025-02-05 04:03:58] Service History: [{"id":9,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:04:02] API OUTPUT: [{"id":"9","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:04:02] API OUTPUT: [{"id":"9","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:04:09] API OUTPUT: [{"id":"9","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:04:09] API OUTPUT: [{"id":"9","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:04:11] Raw Input: 
-[2025-02-05 04:04:11] Raw Input: {"id":9,"status":"confirmed"}
-[2025-02-05 04:04:11] API OUTPUT: []
-[2025-02-05 04:04:20] Service History: [{"id":9,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"}]
-[2025-02-05 04:06:53] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2025-01-1
-[2025-02-05 04:06:54] Service History: [{"id":10,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:06:59] API OUTPUT: [{"id":"10","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:06:59] API OUTPUT: [{"id":"10","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:07:03] API OUTPUT: []
-[2025-02-05 04:07:03] API OUTPUT: []
-[2025-02-05 04:07:18] Service History: [{"id":10,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"}]
-[2025-02-05 04:07:26] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2025-01-1
-[2025-02-05 04:07:28] Service History: [{"id":11,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"},{"id":10,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"}]
-[2025-02-05 04:07:30] API OUTPUT: [{"id":"11","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:07:30] API OUTPUT: [{"id":"11","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:07:31] Raw Input: 
-[2025-02-05 04:07:31] Raw Input: {"id":11,"status":"confirmed"}
-[2025-02-05 04:07:31] API OUTPUT: []
-[2025-02-05 04:07:41] Service History: [{"id":11,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"},{"id":10,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"}]
-[2025-02-05 04:07:49] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2025-01-1
-[2025-02-05 04:07:51] API OUTPUT: [{"id":"12","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:07:51] API OUTPUT: [{"id":"12","service_name":"Grooming Service","user_name":"mark","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 04:07:53] Raw Input: 
-[2025-02-05 04:07:53] Raw Input: {"id":12,"status":"declined"}
-[2025-02-05 04:07:53] API OUTPUT: []
-[2025-02-05 04:07:57] Service History: [{"id":11,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"},{"id":10,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":12,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"declined"}]
-[2025-02-05 04:08:02] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2025-01-1
-[2025-02-05 04:08:03] Service History: [{"id":11,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"confirmed"},{"id":10,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"},{"id":13,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"},{"id":12,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"declined"}]
-[2025-02-05 09:12:03] Service History: []
-[2025-02-05 09:12:09] RAW INPUT: {"mobile_user_id":2,"service_id":3,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 2, Service 3, Date 2025-01-1
-[2025-02-05 09:12:11] Service History: [{"id":14,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 09:12:20] Service History: []
-[2025-02-05 09:12:27] RAW INPUT: {"mobile_user_id":1,"service_id":3,"selected_date":"2030-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 3, Date 2030-01-1
-[2025-02-05 09:12:28] Service History: [{"id":15,"service_name":"Grooming Service","selected_date":"2030-01-01","status":"pending"}]
-[2025-02-05 09:12:30] API OUTPUT: [{"id":"15","service_name":"Grooming Service","user_name":"mark","selected_date":"2030-01-01","status":"pending"},{"id":"14","service_name":"Grooming Service","user_name":"ken","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 09:12:30] API OUTPUT: [{"id":"15","service_name":"Grooming Service","user_name":"mark","selected_date":"2030-01-01","status":"pending"},{"id":"14","service_name":"Grooming Service","user_name":"ken","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 09:12:36] Service History: [{"id":14,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 09:12:55] Raw Input: 
-[2025-02-05 09:12:55] Raw Input: {"id":15,"status":"confirmed"}
-[2025-02-05 09:12:55] API OUTPUT: [{"id":"14","service_name":"Grooming Service","user_name":"ken","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 09:12:56] Raw Input: 
-[2025-02-05 09:12:56] Raw Input: {"id":14,"status":"declined"}
-[2025-02-05 09:12:56] API OUTPUT: []
-[2025-02-05 09:13:00] API OUTPUT: []
-[2025-02-05 09:13:00] API OUTPUT: []
-[2025-02-05 09:13:12] Service History: [{"id":15,"service_name":"Grooming Service","selected_date":"2030-01-01","status":"confirmed"}]
-[2025-02-05 09:13:20] Service History: [{"id":14,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"declined"}]
-[2025-02-05 09:13:30] API OUTPUT: []
-[2025-02-05 09:13:30] API OUTPUT: []
-[2025-02-05 09:13:34] RAW INPUT: {"customer_id":2,"product_id":1,"quantity":1}
-[2025-02-05 09:13:48] RAW INPUT: {"customer_id":2,"product_id":1,"quantity":1}
-[2025-02-05 09:13:57] RAW INPUT: {"customer_id":2,"product_id":1,"quantity":1}
-[2025-02-05 09:14:00] API OUTPUT: []
-[2025-02-05 09:14:00] API OUTPUT: []
-[2025-02-05 09:14:05] RAW INPUT: {"customer_id":2,"product_id":2,"quantity":1}
-[2025-02-05 09:14:10] RAW INPUT: {"customer_id":2,"product_id":1,"quantity":1}
-[2025-02-05 09:14:28] RAW INPUT: {"customer_id":2,"product_id":1,"quantity":1}
-[2025-02-05 09:14:30] API OUTPUT: []
-[2025-02-05 09:14:30] API OUTPUT: []
-[2025-02-05 09:14:30] RAW INPUT: {"customer_id":2,"product_id":1,"quantity":1}
-[2025-02-05 09:14:37] RAW INPUT: {"customer_id":2,"product_id":1,"quantity":1}
-[2025-02-05 09:15:00] API OUTPUT: []
-[2025-02-05 09:15:00] API OUTPUT: []
-[2025-02-05 09:15:30] API OUTPUT: []
-[2025-02-05 09:15:30] API OUTPUT: []
-[2025-02-05 09:16:00] API OUTPUT: []
-[2025-02-05 09:16:00] API OUTPUT: []
-[2025-02-05 09:16:20] RAW INPUT: 
-❌ JSON ERROR: Syntax error
-[2025-02-05 09:16:30] API OUTPUT: []
-[2025-02-05 09:16:30] API OUTPUT: []
-[2025-02-05 09:16:35] RAW INPUT: 
-❌ JSON ERROR: Syntax error
-[2025-02-05 09:17:00] API OUTPUT: []
-[2025-02-05 09:17:00] API OUTPUT: []
-[2025-02-05 09:17:30] API OUTPUT: []
-[2025-02-05 09:17:30] API OUTPUT: []
-[2025-02-05 09:18:00] API OUTPUT: []
-[2025-02-05 09:18:00] API OUTPUT: []
-[2025-02-05 09:18:30] API OUTPUT: []
-[2025-02-05 09:18:30] API OUTPUT: []
-[2025-02-05 09:19:00] API OUTPUT: []
-[2025-02-05 09:19:00] API OUTPUT: []
-[2025-02-05 09:19:30] API OUTPUT: []
-[2025-02-05 09:19:30] API OUTPUT: []
-[2025-02-05 09:20:00] API OUTPUT: []
-[2025-02-05 09:20:00] API OUTPUT: []
-[2025-02-05 09:20:30] API OUTPUT: []
-[2025-02-05 09:20:30] API OUTPUT: []
-[2025-02-05 09:21:00] API OUTPUT: []
-[2025-02-05 09:21:00] API OUTPUT: []
-[2025-02-05 09:21:30] API OUTPUT: []
-[2025-02-05 09:21:30] API OUTPUT: []
-[2025-02-05 09:22:00] API OUTPUT: []
-[2025-02-05 09:22:00] API OUTPUT: []
-[2025-02-05 09:22:30] API OUTPUT: []
-[2025-02-05 09:22:30] API OUTPUT: []
-[2025-02-05 09:23:00] API OUTPUT: []
-[2025-02-05 09:23:00] API OUTPUT: []
-[2025-02-05 09:23:30] API OUTPUT: []
-[2025-02-05 09:23:30] API OUTPUT: []
-[2025-02-05 09:24:00] API OUTPUT: []
-[2025-02-05 09:24:00] API OUTPUT: []
-[2025-02-05 09:24:30] API OUTPUT: []
-[2025-02-05 09:24:30] API OUTPUT: []
-[2025-02-05 09:25:00] API OUTPUT: []
-[2025-02-05 09:25:00] API OUTPUT: []
-[2025-02-05 09:25:30] API OUTPUT: []
-[2025-02-05 09:25:30] API OUTPUT: []
-[2025-02-05 09:26:00] API OUTPUT: []
-[2025-02-05 09:26:00] API OUTPUT: []
-[2025-02-05 09:26:30] API OUTPUT: []
-[2025-02-05 09:26:30] API OUTPUT: []
-[2025-02-05 09:27:00] API OUTPUT: []
-[2025-02-05 09:27:00] API OUTPUT: []
-[2025-02-05 09:27:30] API OUTPUT: []
-[2025-02-05 09:27:30] API OUTPUT: []
-[2025-02-05 09:28:00] API OUTPUT: []
-[2025-02-05 09:28:00] API OUTPUT: []
-[2025-02-05 09:28:30] API OUTPUT: []
-[2025-02-05 09:28:30] API OUTPUT: []
-[2025-02-05 09:29:00] API OUTPUT: []
-[2025-02-05 09:29:00] API OUTPUT: []
-[2025-02-05 09:29:30] API OUTPUT: []
-[2025-02-05 09:29:30] API OUTPUT: []
-[2025-02-05 09:30:00] API OUTPUT: []
-[2025-02-05 09:30:00] API OUTPUT: []
-[2025-02-05 09:30:30] API OUTPUT: []
-[2025-02-05 09:30:30] API OUTPUT: []
-[2025-02-05 09:31:00] API OUTPUT: []
-[2025-02-05 09:31:00] API OUTPUT: []
-[2025-02-05 09:31:30] API OUTPUT: []
-[2025-02-05 09:31:30] API OUTPUT: []
-[2025-02-05 09:32:00] API OUTPUT: []
-[2025-02-05 09:32:00] API OUTPUT: []
-[2025-02-05 09:32:30] API OUTPUT: []
-[2025-02-05 09:32:30] API OUTPUT: []
-[2025-02-05 09:33:00] API OUTPUT: []
-[2025-02-05 09:33:00] API OUTPUT: []
-[2025-02-05 09:33:30] API OUTPUT: []
-[2025-02-05 09:33:30] API OUTPUT: []
-[2025-02-05 09:34:00] API OUTPUT: []
-[2025-02-05 09:34:00] API OUTPUT: []
-[2025-02-05 09:34:30] API OUTPUT: []
-[2025-02-05 09:34:30] API OUTPUT: []
-[2025-02-05 09:35:00] API OUTPUT: []
-[2025-02-05 09:35:00] API OUTPUT: []
-[2025-02-05 09:35:30] API OUTPUT: []
-[2025-02-05 09:35:30] API OUTPUT: []
-[2025-02-05 09:36:00] API OUTPUT: []
-[2025-02-05 09:36:00] API OUTPUT: []
-[2025-02-05 09:39:34] Raw Input: 
-[2025-02-05 09:43:10] Raw Input: 
-[2025-02-05 09:44:42] Service History: []
-[2025-02-05 09:49:59] RAW INPUT: {"customer_id":1,"product_id":1,"quantity":1}
-[2025-02-05 09:50:01] Service History: []
-[2025-02-05 09:50:04] RAW INPUT: {"mobile_user_id":1,"service_id":1,"selected_date":"2025-01-1","status":"pending"}
-✅ SERVICE REQUEST SUCCESS: User 1, Service 1, Date 2025-01-1
-[2025-02-05 09:50:05] Service History: [{"id":1,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"pending"}]
-[2025-02-05 09:50:12] API OUTPUT: []
-[2025-02-05 09:50:12] API OUTPUT: []
-[2025-02-05 09:50:42] API OUTPUT: []
-[2025-02-05 09:50:42] API OUTPUT: []
-[2025-02-05 09:51:12] API OUTPUT: []
-[2025-02-05 09:51:12] API OUTPUT: []
-[2025-02-05 09:51:42] API OUTPUT: []
-[2025-02-05 09:51:42] API OUTPUT: []
-[2025-02-05 09:52:12] API OUTPUT: []
-[2025-02-05 09:52:12] API OUTPUT: []
-[2025-02-05 09:52:42] API OUTPUT: []
-[2025-02-05 09:52:42] API OUTPUT: []
-[2025-02-05 09:53:12] API OUTPUT: []
-[2025-02-05 09:53:12] API OUTPUT: []
-[2025-02-05 09:53:42] API OUTPUT: []
-[2025-02-05 09:53:42] API OUTPUT: []
-[2025-02-05 09:54:12] API OUTPUT: []
-[2025-02-05 09:54:12] API OUTPUT: []
-[2025-02-05 09:54:42] API OUTPUT: []
-[2025-02-05 09:54:42] API OUTPUT: []
-[2025-02-05 09:55:12] API OUTPUT: []
-[2025-02-05 09:55:12] API OUTPUT: []
-[2025-02-05 09:55:42] API OUTPUT: []
-[2025-02-05 09:55:42] API OUTPUT: []
-[2025-02-05 09:56:12] API OUTPUT: []
-[2025-02-05 09:56:12] API OUTPUT: []
-[2025-02-05 09:56:42] API OUTPUT: []
-[2025-02-05 09:56:42] API OUTPUT: []
-[2025-02-05 09:57:12] API OUTPUT: []
-[2025-02-05 09:57:12] API OUTPUT: []
-[2025-02-05 09:57:42] API OUTPUT: []
-[2025-02-05 09:57:42] API OUTPUT: []
-[2025-02-05 09:58:12] API OUTPUT: []
-[2025-02-05 09:58:12] API OUTPUT: []
-[2025-02-05 09:58:42] API OUTPUT: []
-[2025-02-05 09:58:42] API OUTPUT: []
-[2025-02-05 09:59:12] API OUTPUT: []
-[2025-02-05 09:59:12] API OUTPUT: []
-[2025-02-05 09:59:42] API OUTPUT: []
-[2025-02-05 09:59:42] API OUTPUT: []
-[2025-02-05 10:00:12] API OUTPUT: []
-[2025-02-05 10:00:12] API OUTPUT: []
-[2025-02-05 10:00:42] API OUTPUT: []
-[2025-02-05 10:00:42] API OUTPUT: []
-[2025-02-05 10:00:48] API OUTPUT: []
-[2025-02-05 10:00:48] API OUTPUT: []
-[2025-02-05 10:01:18] API OUTPUT: []
-[2025-02-05 10:01:18] API OUTPUT: []
-[2025-02-05 10:01:48] API OUTPUT: []
-[2025-02-05 10:01:48] API OUTPUT: []
-[2025-02-05 10:02:18] API OUTPUT: []
-[2025-02-05 10:02:18] API OUTPUT: []
-[2025-02-05 10:02:48] API OUTPUT: []
-[2025-02-05 10:02:48] API OUTPUT: []
-[2025-02-05 10:03:18] API OUTPUT: []
-[2025-02-05 10:03:18] API OUTPUT: []
-[2025-02-05 10:03:48] API OUTPUT: []
-[2025-02-05 10:03:48] API OUTPUT: []
-[2025-02-05 10:04:18] API OUTPUT: []
-[2025-02-05 10:04:18] API OUTPUT: []
-[2025-02-05 10:04:48] API OUTPUT: []
-[2025-02-05 10:04:48] API OUTPUT: []
-[2025-02-05 10:05:18] API OUTPUT: []
-[2025-02-05 10:05:18] API OUTPUT: []
-[2025-02-05 10:05:48] API OUTPUT: []
-[2025-02-05 10:05:48] API OUTPUT: []
-[2025-02-05 10:06:18] API OUTPUT: []
-[2025-02-05 10:06:18] API OUTPUT: []
-[2025-02-05 10:06:48] API OUTPUT: []
-[2025-02-05 10:06:48] API OUTPUT: []
-[2025-02-05 10:07:18] API OUTPUT: []
-[2025-02-05 10:07:18] API OUTPUT: []
-[2025-02-05 10:07:48] API OUTPUT: []
-[2025-02-05 10:07:48] API OUTPUT: []
-[2025-02-05 10:08:18] API OUTPUT: []
-[2025-02-05 10:08:18] API OUTPUT: []
-[2025-02-05 10:08:48] API OUTPUT: []
-[2025-02-05 10:08:48] API OUTPUT: []
-[2025-02-05 10:09:18] API OUTPUT: []
-[2025-02-05 10:09:18] API OUTPUT: []
-[2025-02-05 10:09:48] API OUTPUT: []
-[2025-02-05 10:09:48] API OUTPUT: []
-[2025-02-05 10:10:18] API OUTPUT: []
-[2025-02-05 10:10:18] API OUTPUT: []
-[2025-02-05 10:10:48] API OUTPUT: []
-[2025-02-05 10:10:48] API OUTPUT: []
-[2025-02-05 10:11:18] API OUTPUT: []
-[2025-02-05 10:11:18] API OUTPUT: []
-[2025-02-05 10:11:48] API OUTPUT: []
-[2025-02-05 10:11:48] API OUTPUT: []
-[2025-02-05 10:12:18] API OUTPUT: []
-[2025-02-05 10:12:18] API OUTPUT: []
-[2025-02-05 10:12:48] API OUTPUT: []
-[2025-02-05 10:12:48] API OUTPUT: []
-[2025-02-05 10:13:18] API OUTPUT: []
-[2025-02-05 10:13:18] API OUTPUT: []
-[2025-02-05 10:13:48] API OUTPUT: []
-[2025-02-05 10:13:48] API OUTPUT: []
-[2025-02-05 10:14:18] API OUTPUT: []
-[2025-02-05 10:14:18] API OUTPUT: []
-[2025-02-05 10:14:48] API OUTPUT: []
-[2025-02-05 10:14:48] API OUTPUT: []
-[2025-02-05 10:15:18] API OUTPUT: []
-[2025-02-05 10:15:18] API OUTPUT: []
-[2025-02-05 10:15:48] API OUTPUT: []
-[2025-02-05 10:15:48] API OUTPUT: []
-[2025-02-05 10:16:18] API OUTPUT: []
-[2025-02-05 10:16:18] API OUTPUT: []
-[2025-02-05 10:16:48] API OUTPUT: []
-[2025-02-05 10:16:48] API OUTPUT: []
-[2025-02-05 10:17:18] API OUTPUT: []
-[2025-02-05 10:17:18] API OUTPUT: []
-[2025-02-05 10:17:48] API OUTPUT: []
-[2025-02-05 10:17:48] API OUTPUT: []
-[2025-02-05 10:18:18] API OUTPUT: []
-[2025-02-05 10:18:18] API OUTPUT: []
-[2025-02-05 10:18:48] API OUTPUT: []
-[2025-02-05 10:18:48] API OUTPUT: []
-[2025-02-05 10:19:18] API OUTPUT: []
-[2025-02-05 10:19:18] API OUTPUT: []
-[2025-02-05 10:19:48] API OUTPUT: []
-[2025-02-05 10:19:48] API OUTPUT: []
-[2025-02-05 10:20:18] API OUTPUT: []
-[2025-02-05 10:20:18] API OUTPUT: []
-[2025-02-05 10:20:48] API OUTPUT: []
-[2025-02-05 10:20:48] API OUTPUT: []
-[2025-02-05 10:21:18] API OUTPUT: []
-[2025-02-05 10:21:18] API OUTPUT: []
-[2025-02-05 10:21:48] API OUTPUT: []
-[2025-02-05 10:21:48] API OUTPUT: []
-[2025-02-05 10:22:18] API OUTPUT: []
-[2025-02-05 10:22:18] API OUTPUT: []
-[2025-02-05 10:22:48] API OUTPUT: []
-[2025-02-05 10:22:48] API OUTPUT: []
-[2025-02-05 10:23:18] API OUTPUT: []
-[2025-02-05 10:23:18] API OUTPUT: []
-[2025-02-05 10:23:48] API OUTPUT: []
-[2025-02-05 10:23:48] API OUTPUT: []
-[2025-02-05 10:24:18] API OUTPUT: []
-[2025-02-05 10:24:18] API OUTPUT: []
-[2025-02-05 10:24:48] API OUTPUT: []
-[2025-02-05 10:24:48] API OUTPUT: []
-[2025-02-05 10:25:18] API OUTPUT: []
-[2025-02-05 10:25:18] API OUTPUT: []
-[2025-02-05 10:25:48] API OUTPUT: []
-[2025-02-05 10:25:48] API OUTPUT: []
-[2025-02-05 10:26:18] API OUTPUT: []
-[2025-02-05 10:26:18] API OUTPUT: []
-[2025-02-05 10:26:48] API OUTPUT: []
-[2025-02-05 10:26:48] API OUTPUT: []
-[2025-02-05 10:27:18] API OUTPUT: []
-[2025-02-05 10:27:18] API OUTPUT: []
-[2025-02-05 10:27:48] API OUTPUT: []
-[2025-02-05 10:27:48] API OUTPUT: []
-[2025-02-05 10:28:18] API OUTPUT: []
-[2025-02-05 10:28:18] API OUTPUT: []
-[2025-02-05 10:28:48] API OUTPUT: []
-[2025-02-05 10:28:48] API OUTPUT: []
-[2025-02-05 10:29:18] API OUTPUT: []
-[2025-02-05 10:29:18] API OUTPUT: []
-[2025-02-05 10:29:48] API OUTPUT: []
-[2025-02-05 10:29:48] API OUTPUT: []
-[2025-02-05 10:30:18] API OUTPUT: []
-[2025-02-05 10:30:18] API OUTPUT: []
-[2025-02-05 10:30:48] API OUTPUT: []
-[2025-02-05 10:30:48] API OUTPUT: []
-[2025-02-05 10:31:18] API OUTPUT: []
-[2025-02-05 10:31:18] API OUTPUT: []
-[2025-02-05 10:31:48] API OUTPUT: []
-[2025-02-05 10:31:48] API OUTPUT: []
-[2025-02-05 10:32:18] API OUTPUT: []
-[2025-02-05 10:32:18] API OUTPUT: []
-[2025-02-05 10:32:48] API OUTPUT: []
-[2025-02-05 10:32:48] API OUTPUT: []
-[2025-02-05 10:33:18] API OUTPUT: []
-[2025-02-05 10:33:18] API OUTPUT: []
-[2025-02-05 10:33:48] API OUTPUT: []
-[2025-02-05 10:33:48] API OUTPUT: []
-[2025-02-05 10:34:18] API OUTPUT: []
-[2025-02-05 10:34:18] API OUTPUT: []
-[2025-02-05 10:34:48] API OUTPUT: []
-[2025-02-05 10:34:48] API OUTPUT: []
-[2025-02-05 10:35:21] API OUTPUT: []
-[2025-02-05 10:35:21] API OUTPUT: []
-[2025-02-05 10:35:51] API OUTPUT: []
-[2025-02-05 10:35:51] API OUTPUT: []
-[2025-02-05 10:36:21] API OUTPUT: []
-[2025-02-05 10:36:21] API OUTPUT: []
-[2025-02-05 10:36:51] API OUTPUT: []
-[2025-02-05 10:36:51] API OUTPUT: []
-[2025-02-05 10:37:21] API OUTPUT: []
-[2025-02-05 10:37:21] API OUTPUT: []
-[2025-02-05 10:37:51] API OUTPUT: []
-[2025-02-05 10:37:51] API OUTPUT: []
-[2025-02-05 10:38:21] API OUTPUT: []
-[2025-02-05 10:38:21] API OUTPUT: []
-[2025-02-05 10:38:51] API OUTPUT: []
-[2025-02-05 10:38:51] API OUTPUT: []
-[2025-02-05 10:39:21] API OUTPUT: []
-[2025-02-05 10:39:21] API OUTPUT: []
-[2025-02-05 10:39:51] API OUTPUT: []
-[2025-02-05 10:39:51] API OUTPUT: []
-[2025-02-05 10:40:21] API OUTPUT: []
-[2025-02-05 10:40:21] API OUTPUT: []
-[2025-02-05 10:40:51] API OUTPUT: []
-[2025-02-05 10:40:51] API OUTPUT: []
-[2025-02-05 10:41:21] API OUTPUT: []
-[2025-02-05 10:41:21] API OUTPUT: []
-[2025-02-05 10:41:51] API OUTPUT: []
-[2025-02-05 10:41:51] API OUTPUT: []
-[2025-02-05 10:42:21] API OUTPUT: []
-[2025-02-05 10:42:21] API OUTPUT: []
-[2025-02-05 10:42:51] API OUTPUT: []
-[2025-02-05 10:42:51] API OUTPUT: []
-[2025-02-05 10:43:21] API OUTPUT: []
-[2025-02-05 10:43:21] API OUTPUT: []
-[2025-02-05 10:43:51] API OUTPUT: []
-[2025-02-05 10:43:51] API OUTPUT: []
-[2025-02-05 10:44:21] API OUTPUT: []
-[2025-02-05 10:44:21] API OUTPUT: []
-[2025-02-05 10:44:51] API OUTPUT: []
-[2025-02-05 10:44:51] API OUTPUT: []
-[2025-02-05 10:45:21] API OUTPUT: []
-[2025-02-05 10:45:21] API OUTPUT: []
-[2025-02-05 10:45:51] API OUTPUT: []
-[2025-02-05 10:45:51] API OUTPUT: []
-[2025-02-05 10:45:52] API OUTPUT: []
-[2025-02-05 10:45:52] API OUTPUT: []
-[2025-02-05 10:45:53] API OUTPUT: []
-[2025-02-05 10:45:53] API OUTPUT: []
-[2025-02-05 10:46:02] API OUTPUT: []
-[2025-02-05 10:46:02] API OUTPUT: []
-[2025-02-05 10:46:21] API OUTPUT: []
-[2025-02-05 10:46:21] API OUTPUT: []
-[2025-02-05 10:46:51] API OUTPUT: []
-[2025-02-05 10:46:51] API OUTPUT: []
-[2025-02-05 10:47:21] API OUTPUT: []
-[2025-02-05 10:47:21] API OUTPUT: []
-[2025-02-05 10:47:51] API OUTPUT: []
-[2025-02-05 10:47:51] API OUTPUT: []
-[2025-02-05 10:48:21] API OUTPUT: []
-[2025-02-05 10:48:21] API OUTPUT: []
-[2025-02-05 10:48:51] API OUTPUT: []
-[2025-02-05 10:48:51] API OUTPUT: []
-[2025-02-05 10:49:21] API OUTPUT: []
-[2025-02-05 10:49:21] API OUTPUT: []
-[2025-02-05 10:49:51] API OUTPUT: []
-[2025-02-05 10:49:51] API OUTPUT: []
-[2025-02-05 10:50:21] API OUTPUT: []
-[2025-02-05 10:50:21] API OUTPUT: []
-[2025-02-05 10:50:51] API OUTPUT: []
-[2025-02-05 10:50:51] API OUTPUT: []
-[2025-02-05 10:51:21] API OUTPUT: []
-[2025-02-05 10:51:21] API OUTPUT: []
-[2025-02-05 10:51:51] API OUTPUT: []
-[2025-02-05 10:51:51] API OUTPUT: []
-[2025-02-05 10:52:21] API OUTPUT: []
-[2025-02-05 10:52:21] API OUTPUT: []
-[2025-02-05 10:52:51] API OUTPUT: []
-[2025-02-05 10:52:51] API OUTPUT: []
-[2025-02-05 10:53:21] API OUTPUT: []
-[2025-02-05 10:53:21] API OUTPUT: []
-[2025-02-05 10:53:51] API OUTPUT: []
-[2025-02-05 10:53:51] API OUTPUT: []
-[2025-02-05 10:54:21] API OUTPUT: []
-[2025-02-05 10:54:21] API OUTPUT: []
-[2025-02-05 10:54:51] API OUTPUT: []
-[2025-02-05 10:54:51] API OUTPUT: []
-[2025-02-05 10:55:21] API OUTPUT: []
-[2025-02-05 10:55:21] API OUTPUT: []
-[2025-02-05 10:55:51] API OUTPUT: []
-[2025-02-05 10:55:51] API OUTPUT: []
-[2025-02-05 10:56:21] API OUTPUT: []
-[2025-02-05 10:56:21] API OUTPUT: []
-[2025-02-05 10:56:51] API OUTPUT: []
-[2025-02-05 10:56:51] API OUTPUT: []
-[2025-02-05 10:57:21] API OUTPUT: []
-[2025-02-05 10:57:21] API OUTPUT: []
-[2025-02-05 10:57:51] API OUTPUT: []
-[2025-02-05 10:57:51] API OUTPUT: []
-[2025-02-05 10:58:21] API OUTPUT: []
-[2025-02-05 10:58:21] API OUTPUT: []
-[2025-02-05 10:58:51] API OUTPUT: []
-[2025-02-05 10:58:51] API OUTPUT: []
-[2025-02-05 10:59:21] API OUTPUT: []
-[2025-02-05 10:59:21] API OUTPUT: []
-[2025-02-05 10:59:51] API OUTPUT: []
-[2025-02-05 10:59:51] API OUTPUT: []
-[2025-02-05 11:00:21] API OUTPUT: []
-[2025-02-05 11:00:21] API OUTPUT: []
-[2025-02-05 11:00:51] API OUTPUT: []
-[2025-02-05 11:00:51] API OUTPUT: []
-[2025-02-05 11:01:21] API OUTPUT: []
-[2025-02-05 11:01:21] API OUTPUT: []
-[2025-02-05 11:01:51] API OUTPUT: []
-[2025-02-05 11:01:51] API OUTPUT: []
-[2025-02-05 11:02:02] API OUTPUT: []
-[2025-02-05 11:02:02] API OUTPUT: []
-[2025-02-05 11:02:32] API OUTPUT: []
-[2025-02-05 11:02:32] API OUTPUT: []
-[2025-02-05 11:03:02] API OUTPUT: []
-[2025-02-05 11:03:02] API OUTPUT: []
-[2025-02-05 11:03:32] API OUTPUT: []
-[2025-02-05 11:03:32] API OUTPUT: []
-[2025-02-05 11:04:02] API OUTPUT: []
-[2025-02-05 11:04:02] API OUTPUT: []
-[2025-02-05 11:04:32] API OUTPUT: []
-[2025-02-05 11:04:32] API OUTPUT: []
-[2025-02-05 11:05:02] API OUTPUT: []
-[2025-02-05 11:05:02] API OUTPUT: []
-[2025-02-05 11:05:32] API OUTPUT: []
-[2025-02-05 11:05:32] API OUTPUT: []
-[2025-02-05 11:06:02] API OUTPUT: []
-[2025-02-05 11:06:02] API OUTPUT: []
-[2025-02-05 11:06:32] API OUTPUT: []
-[2025-02-05 11:06:32] API OUTPUT: []
-[2025-02-05 11:07:02] API OUTPUT: []
-[2025-02-05 11:07:02] API OUTPUT: []
-[2025-02-05 11:07:32] API OUTPUT: []
-[2025-02-05 11:07:32] API OUTPUT: []
-[2025-02-05 11:08:02] API OUTPUT: []
-[2025-02-05 11:08:02] API OUTPUT: []
-[2025-02-05 11:08:32] API OUTPUT: []
-[2025-02-05 11:08:32] API OUTPUT: []
-[2025-02-05 11:09:02] API OUTPUT: []
-[2025-02-05 11:09:02] API OUTPUT: []
-[2025-02-05 11:09:32] API OUTPUT: []
-[2025-02-05 11:09:32] API OUTPUT: []
-[2025-02-05 11:10:02] API OUTPUT: []
-[2025-02-05 11:10:02] API OUTPUT: []
-[2025-02-05 11:10:32] API OUTPUT: []
-[2025-02-05 11:10:32] API OUTPUT: []
-[2025-02-05 11:11:02] API OUTPUT: []
-[2025-02-05 11:11:02] API OUTPUT: []
-[2025-02-05 11:11:32] API OUTPUT: []
-[2025-02-05 11:11:32] API OUTPUT: []
-[2025-02-05 11:12:02] API OUTPUT: []
-[2025-02-05 11:12:02] API OUTPUT: []
-[2025-02-05 11:12:32] API OUTPUT: []
-[2025-02-05 11:12:32] API OUTPUT: []
-[2025-02-05 11:13:02] API OUTPUT: []
-[2025-02-05 11:13:02] API OUTPUT: []
-[2025-02-05 11:13:32] API OUTPUT: []
-[2025-02-05 11:13:32] API OUTPUT: []
-[2025-02-05 11:14:02] API OUTPUT: []
-[2025-02-05 11:14:02] API OUTPUT: []
-[2025-02-05 11:14:32] API OUTPUT: []
-[2025-02-05 11:14:32] API OUTPUT: []
-[2025-02-05 11:15:02] API OUTPUT: []
-[2025-02-05 11:15:02] API OUTPUT: []
-[2025-02-05 11:15:32] API OUTPUT: []
-[2025-02-05 11:15:32] API OUTPUT: []
-[2025-02-05 11:16:02] API OUTPUT: []
-[2025-02-05 11:16:02] API OUTPUT: []
-[2025-02-05 11:16:32] API OUTPUT: []
-[2025-02-05 11:16:32] API OUTPUT: []
-[2025-02-05 11:17:02] API OUTPUT: []
-[2025-02-05 11:17:02] API OUTPUT: []
-[2025-02-05 11:17:32] API OUTPUT: []
-[2025-02-05 11:17:32] API OUTPUT: []
-[2025-02-05 11:18:02] API OUTPUT: []
-[2025-02-05 11:18:02] API OUTPUT: []
-[2025-02-05 11:18:32] API OUTPUT: []
-[2025-02-05 11:18:32] API OUTPUT: []
-[2025-02-05 11:19:02] API OUTPUT: []
-[2025-02-05 11:19:02] API OUTPUT: []
-[2025-02-05 11:19:32] API OUTPUT: []
-[2025-02-05 11:19:32] API OUTPUT: []
-[2025-02-05 11:20:02] API OUTPUT: []
-[2025-02-05 11:20:02] API OUTPUT: []
-[2025-02-05 11:20:32] API OUTPUT: []
-[2025-02-05 11:20:32] API OUTPUT: []
-[2025-02-05 11:21:02] API OUTPUT: []
-[2025-02-05 11:21:02] API OUTPUT: []
-[2025-02-05 11:21:32] API OUTPUT: []
-[2025-02-05 11:21:32] API OUTPUT: []
-[2025-02-05 11:22:02] API OUTPUT: []
-[2025-02-05 11:22:02] API OUTPUT: []
-[2025-02-05 11:22:32] API OUTPUT: []
-[2025-02-05 11:22:32] API OUTPUT: []
-[2025-02-05 11:23:02] API OUTPUT: []
-[2025-02-05 11:23:02] API OUTPUT: []
-[2025-02-05 11:23:32] API OUTPUT: []
-[2025-02-05 11:23:32] API OUTPUT: []
-[2025-02-05 11:24:02] API OUTPUT: []
-[2025-02-05 11:24:02] API OUTPUT: []
-[2025-02-05 11:24:32] API OUTPUT: []
-[2025-02-05 11:24:32] API OUTPUT: []
-[2025-02-05 11:25:02] API OUTPUT: []
-[2025-02-05 11:25:02] API OUTPUT: []
-[2025-02-05 11:25:32] API OUTPUT: []
-[2025-02-05 11:25:32] API OUTPUT: []
-[2025-02-05 11:26:02] API OUTPUT: []
-[2025-02-05 11:26:02] API OUTPUT: []
-[2025-02-05 11:26:32] API OUTPUT: []
-[2025-02-05 11:26:32] API OUTPUT: []
-[2025-02-05 11:27:02] API OUTPUT: []
-[2025-02-05 11:27:02] API OUTPUT: []
-[2025-02-05 11:27:32] API OUTPUT: []
-[2025-02-05 11:27:32] API OUTPUT: []
-[2025-02-05 11:28:02] API OUTPUT: []
-[2025-02-05 11:28:02] API OUTPUT: []
-[2025-02-05 11:28:32] API OUTPUT: []
-[2025-02-05 11:28:32] API OUTPUT: []
-[2025-02-05 11:29:02] API OUTPUT: []
-[2025-02-05 11:29:02] API OUTPUT: []
-[2025-02-05 11:29:32] API OUTPUT: []
-[2025-02-05 11:29:32] API OUTPUT: []
-[2025-02-05 11:30:02] API OUTPUT: []
-[2025-02-05 11:30:02] API OUTPUT: []
-[2025-02-05 11:30:32] API OUTPUT: []
-[2025-02-05 11:30:32] API OUTPUT: []
-[2025-02-05 11:31:02] API OUTPUT: []
-[2025-02-05 11:31:02] API OUTPUT: []
-[2025-02-05 11:31:32] API OUTPUT: []
-[2025-02-05 11:31:32] API OUTPUT: []
-[2025-02-05 11:32:02] API OUTPUT: []
-[2025-02-05 11:32:02] API OUTPUT: []
-[2025-02-05 11:32:32] API OUTPUT: []
-[2025-02-05 11:32:32] API OUTPUT: []
-[2025-02-05 11:33:02] API OUTPUT: []
-[2025-02-05 11:33:02] API OUTPUT: []
-[2025-02-05 11:33:32] API OUTPUT: []
-[2025-02-05 11:33:32] API OUTPUT: []
-[2025-02-05 11:34:02] API OUTPUT: []
-[2025-02-05 11:34:02] API OUTPUT: []
-[2025-02-05 11:34:32] API OUTPUT: []
-[2025-02-05 11:34:32] API OUTPUT: []
-[2025-02-05 11:35:02] API OUTPUT: []
-[2025-02-05 11:35:02] API OUTPUT: []
-[2025-02-05 11:35:32] API OUTPUT: []
-[2025-02-05 11:35:32] API OUTPUT: []
-[2025-02-05 11:36:02] API OUTPUT: []
-[2025-02-05 11:36:02] API OUTPUT: []
-[2025-02-05 11:36:32] API OUTPUT: []
-[2025-02-05 11:36:32] API OUTPUT: []
-[2025-02-05 11:37:02] API OUTPUT: []
-[2025-02-05 11:37:02] API OUTPUT: []
-[2025-02-05 11:37:32] API OUTPUT: []
-[2025-02-05 11:37:32] API OUTPUT: []
-[2025-02-05 11:38:02] API OUTPUT: []
-[2025-02-05 11:38:02] API OUTPUT: []
-[2025-02-05 11:38:32] API OUTPUT: []
-[2025-02-05 11:38:32] API OUTPUT: []
-[2025-02-05 11:39:02] API OUTPUT: []
-[2025-02-05 11:39:02] API OUTPUT: []
-[2025-02-05 11:39:32] API OUTPUT: []
-[2025-02-05 11:39:32] API OUTPUT: []
-[2025-02-05 11:40:02] API OUTPUT: []
-[2025-02-05 11:40:02] API OUTPUT: []
-[2025-02-05 11:40:32] API OUTPUT: []
-[2025-02-05 11:40:32] API OUTPUT: []
-[2025-02-05 11:41:02] API OUTPUT: []
-[2025-02-05 11:41:02] API OUTPUT: []
-[2025-02-05 11:41:32] API OUTPUT: []
-[2025-02-05 11:41:32] API OUTPUT: []
-[2025-02-05 11:41:47] API OUTPUT: []
-[2025-02-05 11:41:47] API OUTPUT: []
-[2025-02-05 11:42:17] API OUTPUT: []
-[2025-02-05 11:42:17] API OUTPUT: []
-[2025-02-05 11:42:47] API OUTPUT: []
-[2025-02-05 11:42:47] API OUTPUT: []
-[2025-02-05 11:43:17] API OUTPUT: []
-[2025-02-05 11:43:17] API OUTPUT: []
-[2025-02-05 11:43:47] API OUTPUT: []
-[2025-02-05 11:43:47] API OUTPUT: []
-[2025-02-05 11:43:52] API OUTPUT: []
-[2025-02-05 11:43:52] API OUTPUT: []
-[2025-02-05 11:44:22] API OUTPUT: []
-[2025-02-05 11:44:22] API OUTPUT: []
-[2025-02-05 11:44:42] API OUTPUT: []
-[2025-02-05 11:44:42] API OUTPUT: []
-[2025-02-05 11:45:12] API OUTPUT: []
-[2025-02-05 11:45:12] API OUTPUT: []
-[2025-02-05 11:45:42] API OUTPUT: []
-[2025-02-05 11:45:42] API OUTPUT: []
-[2025-02-05 11:46:12] API OUTPUT: []
-[2025-02-05 11:46:12] API OUTPUT: []
-[2025-02-05 11:46:42] API OUTPUT: []
-[2025-02-05 11:46:42] API OUTPUT: []
-[2025-02-05 11:47:12] API OUTPUT: []
-[2025-02-05 11:47:12] API OUTPUT: []
-[2025-02-05 11:47:24] API OUTPUT: []
-[2025-02-05 11:47:24] API OUTPUT: []
-[2025-02-05 11:47:24] API OUTPUT: []
-[2025-02-05 11:47:24] API OUTPUT: []
-[2025-02-05 11:47:25] API OUTPUT: []
-[2025-02-05 11:47:25] API OUTPUT: []
-[2025-02-05 11:47:44] API OUTPUT: []
-[2025-02-05 11:47:44] API OUTPUT: []
-[2025-02-05 11:48:14] API OUTPUT: []
-[2025-02-05 11:48:14] API OUTPUT: []
-[2025-02-05 11:48:44] API OUTPUT: []
-[2025-02-05 11:48:44] API OUTPUT: []
-[2025-02-05 11:49:14] API OUTPUT: []
-[2025-02-05 11:49:14] API OUTPUT: []
-[2025-02-05 11:49:44] API OUTPUT: []
-[2025-02-05 11:49:44] API OUTPUT: []
-[2025-02-05 11:50:14] API OUTPUT: []
-[2025-02-05 11:50:14] API OUTPUT: []
-[2025-02-05 11:50:44] API OUTPUT: []
-[2025-02-05 11:50:44] API OUTPUT: []
-[2025-02-05 11:51:14] API OUTPUT: []
-[2025-02-05 11:51:14] API OUTPUT: []
-[2025-02-05 11:51:44] API OUTPUT: []
-[2025-02-05 11:51:44] API OUTPUT: []
-[2025-02-05 11:52:14] API OUTPUT: []
-[2025-02-05 11:52:14] API OUTPUT: []
-[2025-02-05 11:52:44] API OUTPUT: []
-[2025-02-05 11:52:44] API OUTPUT: []
-[2025-02-05 11:53:14] API OUTPUT: []
-[2025-02-05 11:53:14] API OUTPUT: []
-[2025-02-05 11:53:44] API OUTPUT: []
-[2025-02-05 11:53:44] API OUTPUT: []
-[2025-02-05 11:54:14] API OUTPUT: []
-[2025-02-05 11:54:14] API OUTPUT: []
-[2025-02-05 11:54:44] API OUTPUT: []
-[2025-02-05 11:54:44] API OUTPUT: []
-[2025-02-05 11:55:14] API OUTPUT: []
-[2025-02-05 11:55:14] API OUTPUT: []
-[2025-02-05 11:55:44] API OUTPUT: []
-[2025-02-05 11:55:44] API OUTPUT: []
-[2025-02-05 11:56:14] API OUTPUT: []
-[2025-02-05 11:56:14] API OUTPUT: []
-[2025-02-05 11:56:44] API OUTPUT: []
-[2025-02-05 11:56:44] API OUTPUT: []
-[2025-02-05 11:57:14] API OUTPUT: []
-[2025-02-05 11:57:14] API OUTPUT: []
-[2025-02-05 11:57:44] API OUTPUT: []
-[2025-02-05 11:57:44] API OUTPUT: []
-[2025-02-05 11:58:14] API OUTPUT: []
-[2025-02-05 11:58:14] API OUTPUT: []
-[2025-02-05 11:58:44] API OUTPUT: []
-[2025-02-05 11:58:44] API OUTPUT: []
-[2025-02-05 11:59:14] API OUTPUT: []
-[2025-02-05 11:59:14] API OUTPUT: []
-[2025-02-05 11:59:44] API OUTPUT: []
-[2025-02-05 11:59:44] API OUTPUT: []
-[2025-02-05 12:00:14] API OUTPUT: []
-[2025-02-05 12:00:14] API OUTPUT: []
-[2025-02-05 12:00:44] API OUTPUT: []
-[2025-02-05 12:00:44] API OUTPUT: []
-[2025-02-05 12:01:14] API OUTPUT: []
-[2025-02-05 12:01:14] API OUTPUT: []
-[2025-02-05 12:01:44] API OUTPUT: []
-[2025-02-05 12:01:44] API OUTPUT: []
-[2025-02-05 12:02:14] API OUTPUT: []
-[2025-02-05 12:02:14] API OUTPUT: []
-[2025-02-05 12:02:44] API OUTPUT: []
-[2025-02-05 12:02:44] API OUTPUT: []
-[2025-02-05 12:03:14] API OUTPUT: []
-[2025-02-05 12:03:14] API OUTPUT: []
-[2025-02-05 12:03:44] API OUTPUT: []
-[2025-02-05 12:03:44] API OUTPUT: []
-[2025-02-05 12:04:14] API OUTPUT: []
-[2025-02-05 12:04:14] API OUTPUT: []
-[2025-02-05 12:04:44] API OUTPUT: []
-[2025-02-05 12:04:44] API OUTPUT: []
-[2025-02-05 12:05:14] API OUTPUT: []
-[2025-02-05 12:05:14] API OUTPUT: []
-[2025-02-05 12:05:27] API OUTPUT: []
-[2025-02-05 12:05:27] API OUTPUT: []
-[2025-02-05 12:05:57] API OUTPUT: []
-[2025-02-05 12:05:57] API OUTPUT: []
-[2025-02-05 12:06:27] API OUTPUT: []
-[2025-02-05 12:06:27] API OUTPUT: []
-[2025-02-05 12:06:57] API OUTPUT: []
-[2025-02-05 12:06:57] API OUTPUT: []
-[2025-02-05 12:07:27] API OUTPUT: []
-[2025-02-05 12:07:27] API OUTPUT: []
-[2025-02-05 12:07:57] API OUTPUT: []
-[2025-02-05 12:07:57] API OUTPUT: []
-[2025-02-05 12:08:27] API OUTPUT: []
-[2025-02-05 12:08:27] API OUTPUT: []
-[2025-02-05 12:08:57] API OUTPUT: []
-[2025-02-05 12:08:57] API OUTPUT: []
-[2025-02-05 12:09:27] API OUTPUT: []
-[2025-02-05 12:09:27] API OUTPUT: []
-[2025-02-05 12:09:57] API OUTPUT: []
-[2025-02-05 12:09:57] API OUTPUT: []
-[2025-02-05 12:10:27] API OUTPUT: []
-[2025-02-05 12:10:27] API OUTPUT: []
-[2025-02-05 12:10:57] API OUTPUT: []
-[2025-02-05 12:10:57] API OUTPUT: []
-[2025-02-05 12:11:27] API OUTPUT: []
-[2025-02-05 12:11:27] API OUTPUT: []
-[2025-02-05 12:11:57] API OUTPUT: []
-[2025-02-05 12:11:57] API OUTPUT: []
-[2025-02-05 12:12:27] API OUTPUT: []
-[2025-02-05 12:12:27] API OUTPUT: []
-[2025-02-05 12:12:57] API OUTPUT: []
-[2025-02-05 12:12:57] API OUTPUT: []
-[2025-02-05 12:13:27] API OUTPUT: []
-[2025-02-05 12:13:27] API OUTPUT: []
-[2025-02-05 12:13:57] API OUTPUT: []
-[2025-02-05 12:13:57] API OUTPUT: []
-[2025-02-05 12:14:27] API OUTPUT: []
-[2025-02-05 12:14:27] API OUTPUT: []
-[2025-02-05 12:14:57] API OUTPUT: []
-[2025-02-05 12:14:57] API OUTPUT: []
-[2025-02-05 12:15:27] API OUTPUT: []
-[2025-02-05 12:15:27] API OUTPUT: []
-[2025-02-05 12:15:57] API OUTPUT: []
-[2025-02-05 12:15:57] API OUTPUT: []
-[2025-02-05 12:16:27] API OUTPUT: []
-[2025-02-05 12:16:27] API OUTPUT: []
-[2025-02-05 12:16:57] API OUTPUT: []
-[2025-02-05 12:16:57] API OUTPUT: []
-[2025-02-05 12:17:27] API OUTPUT: []
-[2025-02-05 12:17:27] API OUTPUT: []
-[2025-02-05 12:17:57] API OUTPUT: []
-[2025-02-05 12:17:57] API OUTPUT: []
-[2025-02-05 12:18:27] API OUTPUT: []
-[2025-02-05 12:18:27] API OUTPUT: []
-[2025-02-05 12:18:57] API OUTPUT: []
-[2025-02-05 12:18:57] API OUTPUT: []
-[2025-02-05 12:19:27] API OUTPUT: []
-[2025-02-05 12:19:27] API OUTPUT: []
-[2025-02-05 12:19:57] API OUTPUT: []
-[2025-02-05 12:19:57] API OUTPUT: []
-[2025-02-05 12:20:27] API OUTPUT: []
-[2025-02-05 12:20:27] API OUTPUT: []
-[2025-02-05 12:20:57] API OUTPUT: []
-[2025-02-05 12:20:57] API OUTPUT: []
-[2025-02-05 12:21:27] API OUTPUT: []
-[2025-02-05 12:21:27] API OUTPUT: []
-[2025-02-05 12:21:57] API OUTPUT: []
-[2025-02-05 12:21:57] API OUTPUT: []
-[2025-02-05 12:22:27] API OUTPUT: []
-[2025-02-05 12:22:27] API OUTPUT: []
-[2025-02-05 12:22:57] API OUTPUT: []
-[2025-02-05 12:22:57] API OUTPUT: []
-[2025-02-05 12:23:27] API OUTPUT: []
-[2025-02-05 12:23:27] API OUTPUT: []
-[2025-02-05 12:23:57] API OUTPUT: []
-[2025-02-05 12:23:57] API OUTPUT: []
-[2025-02-05 12:24:27] API OUTPUT: []
-[2025-02-05 12:24:27] API OUTPUT: []
-[2025-02-05 12:24:57] API OUTPUT: []
-[2025-02-05 12:24:57] API OUTPUT: []
-[2025-02-05 12:25:27] API OUTPUT: []
-[2025-02-05 12:25:27] API OUTPUT: []
-[2025-02-05 12:25:57] API OUTPUT: []
-[2025-02-05 12:25:57] API OUTPUT: []
-[2025-02-05 12:26:27] API OUTPUT: []
-[2025-02-05 12:26:27] API OUTPUT: []
-[2025-02-05 12:26:57] API OUTPUT: []
-[2025-02-05 12:26:57] API OUTPUT: []
-[2025-02-05 12:27:27] API OUTPUT: []
-[2025-02-05 12:27:27] API OUTPUT: []
-[2025-02-05 12:27:57] API OUTPUT: []
-[2025-02-05 12:27:57] API OUTPUT: []
-[2025-02-05 12:28:27] API OUTPUT: []
-[2025-02-05 12:28:27] API OUTPUT: []
-[2025-02-05 12:28:57] API OUTPUT: []
-[2025-02-05 12:28:57] API OUTPUT: []
-[2025-02-05 12:29:27] API OUTPUT: []
-[2025-02-05 12:29:27] API OUTPUT: []
-[2025-02-05 12:29:57] API OUTPUT: []
-[2025-02-05 12:29:57] API OUTPUT: []
-[2025-02-05 12:30:27] API OUTPUT: []
-[2025-02-05 12:30:27] API OUTPUT: []
-[2025-02-05 12:30:57] API OUTPUT: []
-[2025-02-05 12:30:57] API OUTPUT: []
-[2025-02-05 12:31:27] API OUTPUT: []
-[2025-02-05 12:31:27] API OUTPUT: []
-[2025-02-05 12:31:57] API OUTPUT: []
-[2025-02-05 12:31:57] API OUTPUT: []
-[2025-02-05 12:32:27] API OUTPUT: []
-[2025-02-05 12:32:27] API OUTPUT: []
-[2025-02-05 12:32:57] API OUTPUT: []
-[2025-02-05 12:32:57] API OUTPUT: []
-[2025-02-05 12:33:27] API OUTPUT: []
-[2025-02-05 12:33:27] API OUTPUT: []
-[2025-02-05 12:33:57] API OUTPUT: []
-[2025-02-05 12:33:57] API OUTPUT: []
-[2025-02-05 12:34:27] API OUTPUT: []
-[2025-02-05 12:34:27] API OUTPUT: []
-[2025-02-05 12:34:57] API OUTPUT: []
-[2025-02-05 12:34:57] API OUTPUT: []
-[2025-02-05 12:35:27] API OUTPUT: []
-[2025-02-05 12:35:27] API OUTPUT: []
-[2025-02-05 12:35:57] API OUTPUT: []
-[2025-02-05 12:35:57] API OUTPUT: []
-[2025-02-05 12:36:27] API OUTPUT: []
-[2025-02-05 12:36:27] API OUTPUT: []
-[2025-02-05 12:36:57] API OUTPUT: []
-[2025-02-05 12:36:57] API OUTPUT: []
-[2025-02-05 12:37:27] API OUTPUT: []
-[2025-02-05 12:37:27] API OUTPUT: []
-[2025-02-05 12:37:57] API OUTPUT: []
-[2025-02-05 12:37:57] API OUTPUT: []
-[2025-02-05 12:38:27] API OUTPUT: []
-[2025-02-05 12:38:27] API OUTPUT: []
-[2025-02-05 12:38:57] API OUTPUT: []
-[2025-02-05 12:38:57] API OUTPUT: []
-[2025-02-05 12:39:27] API OUTPUT: []
-[2025-02-05 12:39:27] API OUTPUT: []
-[2025-02-05 12:39:57] API OUTPUT: []
-[2025-02-05 12:39:57] API OUTPUT: []
-[2025-02-05 12:40:27] API OUTPUT: []
-[2025-02-05 12:40:27] API OUTPUT: []
-[2025-02-05 12:40:46] Service History: [{"id":1,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"}]
-[2025-02-05 12:40:57] API OUTPUT: []
-[2025-02-05 12:40:57] API OUTPUT: []
-[2025-02-05 12:41:27] API OUTPUT: []
-[2025-02-05 12:41:27] API OUTPUT: []
-[2025-02-05 12:41:55] API OUTPUT: []
-[2025-02-05 12:41:55] API OUTPUT: []
-[2025-02-05 12:42:25] API OUTPUT: []
-[2025-02-05 12:42:25] API OUTPUT: []
-[2025-02-05 12:42:55] API OUTPUT: []
-[2025-02-05 12:42:55] API OUTPUT: []
-[2025-02-05 12:43:25] API OUTPUT: []
-[2025-02-05 12:43:25] API OUTPUT: []
-[2025-02-05 12:43:55] API OUTPUT: []
-[2025-02-05 12:43:55] API OUTPUT: []
-[2025-02-05 12:44:25] API OUTPUT: []
-[2025-02-05 12:44:25] API OUTPUT: []
-[2025-02-05 12:44:55] API OUTPUT: []
-[2025-02-05 12:44:55] API OUTPUT: []
-[2025-02-05 12:45:25] API OUTPUT: []
-[2025-02-05 12:45:25] API OUTPUT: []
-[2025-02-05 12:45:55] API OUTPUT: []
-[2025-02-05 12:45:55] API OUTPUT: []
-[2025-02-05 12:46:25] API OUTPUT: []
-[2025-02-05 12:46:25] API OUTPUT: []
-[2025-02-05 12:46:55] API OUTPUT: []
-[2025-02-05 12:46:55] API OUTPUT: []
-[2025-02-05 12:47:25] API OUTPUT: []
-[2025-02-05 12:47:25] API OUTPUT: []
-[2025-02-05 12:47:55] API OUTPUT: []
-[2025-02-05 12:47:55] API OUTPUT: []
-[2025-02-05 12:48:25] API OUTPUT: []
-[2025-02-05 12:48:25] API OUTPUT: []
-[2025-02-05 12:48:55] API OUTPUT: []
-[2025-02-05 12:48:55] API OUTPUT: []
-[2025-02-05 12:49:25] API OUTPUT: []
-[2025-02-05 12:49:25] API OUTPUT: []
-[2025-02-05 12:49:55] API OUTPUT: []
-[2025-02-05 12:49:55] API OUTPUT: []
-[2025-02-05 12:50:25] API OUTPUT: []
-[2025-02-05 12:50:25] API OUTPUT: []
-[2025-02-05 12:50:55] API OUTPUT: []
-[2025-02-05 12:50:55] API OUTPUT: []
-[2025-02-05 12:51:25] API OUTPUT: []
-[2025-02-05 12:51:25] API OUTPUT: []
-[2025-02-05 12:51:55] API OUTPUT: []
-[2025-02-05 12:51:55] API OUTPUT: []
-[2025-02-05 12:52:25] API OUTPUT: []
-[2025-02-05 12:52:25] API OUTPUT: []
-[2025-02-05 12:52:55] API OUTPUT: []
-[2025-02-05 12:52:55] API OUTPUT: []
-[2025-02-05 12:53:25] API OUTPUT: []
-[2025-02-05 12:53:25] API OUTPUT: []
-[2025-02-05 12:53:55] API OUTPUT: []
-[2025-02-05 12:53:55] API OUTPUT: []
-[2025-02-05 12:54:25] API OUTPUT: []
-[2025-02-05 12:54:25] API OUTPUT: []
-[2025-02-05 12:54:55] API OUTPUT: []
-[2025-02-05 12:54:55] API OUTPUT: []
-[2025-02-05 12:55:25] API OUTPUT: []
-[2025-02-05 12:55:25] API OUTPUT: []
-[2025-02-05 12:55:55] API OUTPUT: []
-[2025-02-05 12:55:55] API OUTPUT: []
-[2025-02-05 12:56:25] API OUTPUT: []
-[2025-02-05 12:56:25] API OUTPUT: []
-[2025-02-05 12:56:55] API OUTPUT: []
-[2025-02-05 12:56:55] API OUTPUT: []
-[2025-02-05 12:57:25] API OUTPUT: []
-[2025-02-05 12:57:25] API OUTPUT: []
-[2025-02-05 12:57:55] API OUTPUT: []
-[2025-02-05 12:57:55] API OUTPUT: []
-[2025-02-05 12:58:25] API OUTPUT: []
-[2025-02-05 12:58:25] API OUTPUT: []
-[2025-02-05 12:58:55] API OUTPUT: []
-[2025-02-05 12:58:55] API OUTPUT: []
-[2025-02-05 12:59:25] API OUTPUT: []
-[2025-02-05 12:59:25] API OUTPUT: []
-[2025-02-05 12:59:55] API OUTPUT: []
-[2025-02-05 12:59:55] API OUTPUT: []
-[2025-02-05 13:00:25] API OUTPUT: []
-[2025-02-05 13:00:25] API OUTPUT: []
-[2025-02-05 13:00:55] API OUTPUT: []
-[2025-02-05 13:00:55] API OUTPUT: []
-[2025-02-05 13:01:25] API OUTPUT: []
-[2025-02-05 13:01:25] API OUTPUT: []
-[2025-02-05 13:01:55] API OUTPUT: []
-[2025-02-05 13:01:55] API OUTPUT: []
-[2025-02-05 13:02:25] API OUTPUT: []
-[2025-02-05 13:02:25] API OUTPUT: []
-[2025-02-05 13:02:55] API OUTPUT: []
-[2025-02-05 13:02:55] API OUTPUT: []
-[2025-02-05 13:03:25] API OUTPUT: []
-[2025-02-05 13:03:25] API OUTPUT: []
-[2025-02-05 13:03:55] API OUTPUT: []
-[2025-02-05 13:03:55] API OUTPUT: []
-[2025-02-05 13:04:25] API OUTPUT: []
-[2025-02-05 13:04:25] API OUTPUT: []
-[2025-02-05 13:04:55] API OUTPUT: []
-[2025-02-05 13:04:55] API OUTPUT: []
-[2025-02-05 13:05:25] API OUTPUT: []
-[2025-02-05 13:05:25] API OUTPUT: []
-[2025-02-05 13:05:55] API OUTPUT: []
-[2025-02-05 13:05:55] API OUTPUT: []
-[2025-02-05 13:06:25] API OUTPUT: []
-[2025-02-05 13:06:25] API OUTPUT: []
-[2025-02-05 13:06:55] API OUTPUT: []
-[2025-02-05 13:06:55] API OUTPUT: []
-[2025-02-05 13:07:25] API OUTPUT: []
-[2025-02-05 13:07:25] API OUTPUT: []
-[2025-02-05 13:07:55] API OUTPUT: []
-[2025-02-05 13:07:55] API OUTPUT: []
-[2025-02-05 13:08:25] API OUTPUT: []
-[2025-02-05 13:08:25] API OUTPUT: []
-[2025-02-05 13:08:55] API OUTPUT: []
-[2025-02-05 13:08:55] API OUTPUT: []
-[2025-02-05 13:09:25] API OUTPUT: []
-[2025-02-05 13:09:25] API OUTPUT: []
-[2025-02-05 13:09:55] API OUTPUT: []
-[2025-02-05 13:09:55] API OUTPUT: []
-[2025-02-05 13:10:25] API OUTPUT: []
-[2025-02-05 13:10:25] API OUTPUT: []
-[2025-02-05 13:10:55] API OUTPUT: []
-[2025-02-05 13:10:55] API OUTPUT: []
-[2025-02-05 13:11:25] API OUTPUT: []
-[2025-02-05 13:11:25] API OUTPUT: []
-[2025-02-05 13:11:55] API OUTPUT: []
-[2025-02-05 13:11:56] API OUTPUT: []
-[2025-02-05 13:12:25] API OUTPUT: []
-[2025-02-05 13:12:26] API OUTPUT: []
-[2025-02-05 13:12:55] API OUTPUT: []
-[2025-02-05 13:12:55] API OUTPUT: []
-[2025-02-08 13:39:54] API OUTPUT: []
-[2025-02-08 13:39:54] API OUTPUT: []
-[2025-02-08 13:40:24] API OUTPUT: []
-[2025-02-08 13:40:24] API OUTPUT: []
-[2025-02-08 13:40:54] API OUTPUT: []
-[2025-02-08 13:40:54] API OUTPUT: []
-[2025-02-08 13:41:24] API OUTPUT: []
-[2025-02-08 13:41:24] API OUTPUT: []
-[2025-02-08 13:41:54] API OUTPUT: []
-[2025-02-08 13:41:54] API OUTPUT: []
-[2025-02-08 13:42:24] API OUTPUT: []
-[2025-02-08 13:42:24] API OUTPUT: []
-[2025-02-08 13:42:54] API OUTPUT: []
-[2025-02-08 13:42:54] API OUTPUT: []
-[2025-02-08 13:43:24] API OUTPUT: []
-[2025-02-08 13:43:24] API OUTPUT: []
-[2025-02-08 13:43:54] API OUTPUT: []
-[2025-02-08 13:43:54] API OUTPUT: []
-[2025-02-08 13:44:24] API OUTPUT: []
-[2025-02-08 13:44:24] API OUTPUT: []
-[2025-02-08 13:44:54] API OUTPUT: []
-[2025-02-08 13:44:54] API OUTPUT: []
-[2025-02-08 13:45:24] API OUTPUT: []
-[2025-02-08 13:45:24] API OUTPUT: []
-[2025-02-08 13:45:54] API OUTPUT: []
-[2025-02-08 13:45:54] API OUTPUT: []
-[2025-02-08 13:46:24] API OUTPUT: []
-[2025-02-08 13:46:24] API OUTPUT: []
-[2025-02-08 13:46:54] API OUTPUT: []
-[2025-02-08 13:46:54] API OUTPUT: []
-[2025-02-08 13:47:24] API OUTPUT: []
-[2025-02-08 13:47:24] API OUTPUT: []
-[2025-02-08 13:47:54] API OUTPUT: []
-[2025-02-08 13:47:54] API OUTPUT: []
-[2025-02-08 13:48:24] API OUTPUT: []
-[2025-02-08 13:48:24] API OUTPUT: []
-[2025-02-08 13:48:54] API OUTPUT: []
-[2025-02-08 13:48:54] API OUTPUT: []
-[2025-02-08 13:49:24] API OUTPUT: []
-[2025-02-08 13:49:24] API OUTPUT: []
-[2025-02-08 13:49:54] API OUTPUT: []
-[2025-02-08 13:49:54] API OUTPUT: []
-[2025-02-08 13:50:24] API OUTPUT: []
-[2025-02-08 13:50:24] API OUTPUT: []
-[2025-02-08 13:50:54] API OUTPUT: []
-[2025-02-08 13:50:54] API OUTPUT: []
-[2025-02-08 13:51:24] API OUTPUT: []
-[2025-02-08 13:51:24] API OUTPUT: []
-[2025-02-08 13:51:54] API OUTPUT: []
-[2025-02-08 13:51:54] API OUTPUT: []
-[2025-02-08 13:52:24] API OUTPUT: []
-[2025-02-08 13:52:24] API OUTPUT: []
-[2025-02-08 13:52:54] API OUTPUT: []
-[2025-02-08 13:52:54] API OUTPUT: []
-[2025-02-08 13:53:24] API OUTPUT: []
-[2025-02-08 13:53:24] API OUTPUT: []
-[2025-02-08 13:53:54] API OUTPUT: []
-[2025-02-08 13:53:54] API OUTPUT: []
-[2025-02-08 13:54:24] API OUTPUT: []
-[2025-02-08 13:54:24] API OUTPUT: []
-[2025-02-08 13:54:54] API OUTPUT: []
-[2025-02-08 13:54:54] API OUTPUT: []
-[2025-02-08 13:55:24] API OUTPUT: []
-[2025-02-08 13:55:24] API OUTPUT: []
-[2025-02-08 13:55:54] API OUTPUT: []
-[2025-02-08 13:55:54] API OUTPUT: []
-[2025-02-08 13:56:24] API OUTPUT: []
-[2025-02-08 13:56:24] API OUTPUT: []
-[2025-02-08 13:56:54] API OUTPUT: []
-[2025-02-08 13:56:54] API OUTPUT: []
-[2025-02-08 13:57:24] API OUTPUT: []
-[2025-02-08 13:57:24] API OUTPUT: []
-[2025-02-08 13:57:54] API OUTPUT: []
-[2025-02-08 13:57:54] API OUTPUT: []
-[2025-02-08 13:58:24] API OUTPUT: []
-[2025-02-08 13:58:24] API OUTPUT: []
-[2025-02-08 13:58:54] API OUTPUT: []
-[2025-02-08 13:58:54] API OUTPUT: []
-[2025-02-08 13:59:24] API OUTPUT: []
-[2025-02-08 13:59:24] API OUTPUT: []
-[2025-02-08 13:59:54] API OUTPUT: []
-[2025-02-08 13:59:54] API OUTPUT: []
-[2025-02-08 14:00:24] API OUTPUT: []
-[2025-02-08 14:00:24] API OUTPUT: []
-[2025-02-08 14:00:54] API OUTPUT: []
-[2025-02-08 14:00:54] API OUTPUT: []
-[2025-02-08 14:01:24] API OUTPUT: []
-[2025-02-08 14:01:24] API OUTPUT: []
-[2025-02-08 14:01:54] API OUTPUT: []
-[2025-02-08 14:01:54] API OUTPUT: []
-[2025-02-08 14:02:24] API OUTPUT: []
-[2025-02-08 14:02:24] API OUTPUT: []
-[2025-02-08 14:02:54] API OUTPUT: []
-[2025-02-08 14:02:54] API OUTPUT: []
-[2025-02-08 14:03:24] API OUTPUT: []
-[2025-02-08 14:03:24] API OUTPUT: []
-[2025-02-08 14:03:54] API OUTPUT: []
-[2025-02-08 14:03:54] API OUTPUT: []
-[2025-02-08 14:04:24] API OUTPUT: []
-[2025-02-08 14:04:24] API OUTPUT: []
-[2025-02-08 14:04:54] API OUTPUT: []
-[2025-02-08 14:04:54] API OUTPUT: []
-[2025-02-08 14:05:24] API OUTPUT: []
-[2025-02-08 14:05:24] API OUTPUT: []
-[2025-02-08 14:05:54] API OUTPUT: []
-[2025-02-08 14:05:54] API OUTPUT: []
-[2025-02-08 14:06:24] API OUTPUT: []
-[2025-02-08 14:06:24] API OUTPUT: []
-[2025-02-08 14:06:54] API OUTPUT: []
-[2025-02-08 14:06:54] API OUTPUT: []
-[2025-02-08 14:07:07] API OUTPUT: []
-[2025-02-08 14:07:07] API OUTPUT: []
-[2025-02-08 14:07:37] API OUTPUT: []
-[2025-02-08 14:07:37] API OUTPUT: []
-[2025-02-08 14:08:07] API OUTPUT: []
-[2025-02-08 14:08:07] API OUTPUT: []
-{
-    "username": "testuser",
-    "email": "testuser@example.com",
-    "password": "password123",
-    "location": "New York",
-    "age": 25,
-    "contact_number": "1234567890"
-}[2025-02-08 14:08:37] API OUTPUT: []
-[2025-02-08 14:08:37] API OUTPUT: []
-[2025-02-08 14:09:07] API OUTPUT: []
-[2025-02-08 14:09:07] API OUTPUT: []
-[2025-02-08 14:09:37] API OUTPUT: []
-[2025-02-08 14:09:37] API OUTPUT: []
-{
-    "username": "kennn",
-    "email": "mamo.viari.up@phinmaed.com",
-    "password": "haha",
-    "location": "uwuq",
-    "age": "31",
-    "contact": "65"
-}{
-    "username": "kennn",
-    "email": "mamo.viari.up@phinmaed.com",
-    "password": "haha",
-    "location": "uwuq",
-    "age": "31",
-    "contact": "65"
-}[2025-02-08 14:10:07] API OUTPUT: []
-[2025-02-08 14:10:07] API OUTPUT: []
-{
-    "username": "kennn",
-    "email": "mamo.viari.up@phinmaed.com",
-    "password": "haha",
-    "location": "uwuq",
-    "age": "31",
-    "contact": "65"
-}[2025-02-08 14:10:37] API OUTPUT: []
-[2025-02-08 14:10:37] API OUTPUT: []
-[2025-02-08 14:11:07] API OUTPUT: []
-[2025-02-08 14:11:07] API OUTPUT: []
-[2025-02-08 14:11:37] API OUTPUT: []
-[2025-02-08 14:11:37] API OUTPUT: []
-[2025-02-08 14:12:07] API OUTPUT: []
-[2025-02-08 14:12:07] API OUTPUT: []
-[2025-02-08 14:12:37] API OUTPUT: []
-[2025-02-08 14:12:37] API OUTPUT: []
-{
-    "username": "kenn",
-    "email": "mamo.viari.up@phinmaed.com",
-    "password": "haha",
-    "location": "isjs",
-    "age": "4646",
-    "contact_number": "5767"
-}[2025-02-08 14:13:07] API OUTPUT: []
-[2025-02-08 14:13:07] API OUTPUT: []
-[2025-02-08 14:13:37] API OUTPUT: []
-[2025-02-08 14:13:37] API OUTPUT: []
-[2025-02-08 14:14:07] API OUTPUT: []
-[2025-02-08 14:14:07] API OUTPUT: []
-[2025-02-08 14:14:37] API OUTPUT: []
-[2025-02-08 14:14:37] API OUTPUT: []
-[2025-02-08 14:15:07] API OUTPUT: []
-[2025-02-08 14:15:07] API OUTPUT: []
-[2025-02-08 14:15:37] API OUTPUT: []
-[2025-02-08 14:15:37] API OUTPUT: []
-[2025-02-08 14:16:07] API OUTPUT: []
-[2025-02-08 14:16:07] API OUTPUT: []
-[2025-02-08 14:16:37] API OUTPUT: []
-[2025-02-08 14:16:37] API OUTPUT: []
-[2025-02-08 14:17:07] API OUTPUT: []
-[2025-02-08 14:17:07] API OUTPUT: []
-[2025-02-08 14:17:37] API OUTPUT: []
-[2025-02-08 14:17:37] API OUTPUT: []
-[2025-02-08 14:18:07] API OUTPUT: []
-[2025-02-08 14:18:07] API OUTPUT: []
-[2025-02-08 14:18:37] API OUTPUT: []
-[2025-02-08 14:18:37] API OUTPUT: []
-[2025-02-08 14:19:07] API OUTPUT: []
-[2025-02-08 14:19:07] API OUTPUT: []
-[2025-02-08 14:19:37] API OUTPUT: []
-[2025-02-08 14:19:37] API OUTPUT: []
-[2025-02-08 14:20:07] API OUTPUT: []
-[2025-02-08 14:20:07] API OUTPUT: []
-[2025-02-08 14:20:37] API OUTPUT: []
-[2025-02-08 14:20:37] API OUTPUT: []
-[2025-02-08 14:21:07] API OUTPUT: []
-[2025-02-08 14:21:07] API OUTPUT: []
-[2025-02-08 14:21:37] API OUTPUT: []
-[2025-02-08 14:21:37] API OUTPUT: []
-[2025-02-08 14:22:07] API OUTPUT: []
-[2025-02-08 14:22:07] API OUTPUT: []
-[2025-02-08 14:22:37] API OUTPUT: []
-[2025-02-08 14:22:37] API OUTPUT: []
-[2025-02-08 14:23:07] API OUTPUT: []
-[2025-02-08 14:23:07] API OUTPUT: []
-[2025-02-08 14:23:37] API OUTPUT: []
-[2025-02-08 14:23:37] API OUTPUT: []
-[2025-02-08 14:24:07] API OUTPUT: []
-[2025-02-08 14:24:07] API OUTPUT: []
-[2025-02-08 14:24:37] API OUTPUT: []
-[2025-02-08 14:24:37] API OUTPUT: []
-[2025-02-08 14:25:07] API OUTPUT: []
-[2025-02-08 14:25:07] API OUTPUT: []
-[2025-02-08 14:25:37] API OUTPUT: []
-[2025-02-08 14:25:37] API OUTPUT: []
-[2025-02-08 14:26:07] API OUTPUT: []
-[2025-02-08 14:26:07] API OUTPUT: []
-[2025-02-08 14:26:37] API OUTPUT: []
-[2025-02-08 14:26:37] API OUTPUT: []
-[2025-02-08 14:27:07] API OUTPUT: []
-[2025-02-08 14:27:07] API OUTPUT: []
-[2025-02-08 14:27:37] API OUTPUT: []
-[2025-02-08 14:27:37] API OUTPUT: []
-[2025-02-08 14:28:05] API OUTPUT: []
-[2025-02-08 14:28:05] API OUTPUT: []
-[2025-02-08 14:28:33] API OUTPUT: []
-[2025-02-08 14:28:33] API OUTPUT: []
-[2025-02-08 14:29:03] API OUTPUT: []
-[2025-02-08 14:29:03] API OUTPUT: []
-[2025-02-08 14:29:33] API OUTPUT: []
-[2025-02-08 14:29:33] API OUTPUT: []
-[2025-02-08 14:29:55] API OUTPUT: []
-[2025-02-08 14:29:55] API OUTPUT: []
-[2025-02-08 14:30:25] API OUTPUT: []
-[2025-02-08 14:30:25] API OUTPUT: []
-[2025-02-08 14:30:55] API OUTPUT: []
-[2025-02-08 14:30:55] API OUTPUT: []
-[2025-02-08 14:31:25] API OUTPUT: []
-[2025-02-08 14:31:25] API OUTPUT: []
-[2025-02-08 14:31:55] API OUTPUT: []
-[2025-02-08 14:31:55] API OUTPUT: []
-[2025-02-08 14:32:25] API OUTPUT: []
-[2025-02-08 14:32:25] API OUTPUT: []
-[2025-02-08 14:32:55] API OUTPUT: []
-[2025-02-08 14:32:55] API OUTPUT: []
-[2025-02-08 14:33:25] API OUTPUT: []
-[2025-02-08 14:33:25] API OUTPUT: []
-[2025-02-08 14:33:55] API OUTPUT: []
-[2025-02-08 14:33:55] API OUTPUT: []
-[2025-02-08 14:34:25] API OUTPUT: []
-[2025-02-08 14:34:25] API OUTPUT: []
-[2025-02-08 14:34:55] API OUTPUT: []
-[2025-02-08 14:34:55] API OUTPUT: []
-[2025-02-08 14:35:25] API OUTPUT: []
-[2025-02-08 14:35:25] API OUTPUT: []
-[2025-02-08 14:35:55] API OUTPUT: []
-[2025-02-08 14:35:55] API OUTPUT: []
-[2025-02-08 14:36:25] API OUTPUT: []
-[2025-02-08 14:36:25] API OUTPUT: []
-[2025-02-08 14:36:55] API OUTPUT: []
-[2025-02-08 14:36:55] API OUTPUT: []
-[2025-02-08 14:37:25] API OUTPUT: []
-[2025-02-08 14:37:25] API OUTPUT: []
-[2025-02-08 14:37:55] API OUTPUT: []
-[2025-02-08 14:37:55] API OUTPUT: []
-[2025-02-08 14:38:25] API OUTPUT: []
-[2025-02-08 14:38:25] API OUTPUT: []
-[2025-02-08 14:38:55] API OUTPUT: []
-[2025-02-08 14:38:55] API OUTPUT: []
-[2025-02-08 14:39:25] API OUTPUT: []
-[2025-02-08 14:39:25] API OUTPUT: []
-[2025-02-08 14:39:55] API OUTPUT: []
-[2025-02-08 14:39:55] API OUTPUT: []
-[2025-02-08 14:40:25] API OUTPUT: []
-[2025-02-08 14:40:25] API OUTPUT: []
-[2025-02-08 14:40:55] API OUTPUT: []
-[2025-02-08 14:40:55] API OUTPUT: []
-[2025-02-08 14:41:20] Service History: [{"id":1,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"}]
-[2025-02-08 14:41:25] API OUTPUT: []
-[2025-02-08 14:41:25] API OUTPUT: []
-[2025-02-08 14:41:55] API OUTPUT: []
-[2025-02-08 14:41:55] API OUTPUT: []
-[2025-02-08 14:42:25] API OUTPUT: []
-[2025-02-08 14:42:25] API OUTPUT: []
-[2025-02-08 14:42:55] API OUTPUT: []
-[2025-02-08 14:42:55] API OUTPUT: []
-[2025-02-08 14:43:25] API OUTPUT: []
-[2025-02-08 14:43:25] API OUTPUT: []
-[2025-02-08 14:43:55] API OUTPUT: []
-[2025-02-08 14:43:55] API OUTPUT: []
-[2025-02-08 14:44:25] API OUTPUT: []
-[2025-02-08 14:44:25] API OUTPUT: []
-[2025-02-08 14:44:55] API OUTPUT: []
-[2025-02-08 14:44:55] API OUTPUT: []
-[2025-02-08 14:45:25] API OUTPUT: []
-[2025-02-08 14:45:25] API OUTPUT: []
-[2025-02-08 14:45:33] Service History: [{"id":1,"service_name":"Grooming Service","selected_date":"2025-01-01","status":"canceled"}]
-[2025-02-09 06:03:51] Service History: []
-{
-    "username": "Mark Khean Viari",
-    "email": "mamo.viari.up@phinmaed.com",
-    "password": "haha",
-    "location": "Sagud Bahley, San Fabian, Pangasinan",
-    "age": "19",
-    "contact_number": "09084538768"
-}{
-    "username": "Mark Khean Viari",
-    "email": "kenn@gmail.com",
-    "password": "haha",
-    "location": "Sagud Bahley, San Fabian, Pangasinan",
-    "age": "19",
-    "contact_number": "09084538768"
-}{
-    "username": "dre",
-    "email": "dre@gmail.com",
-    "password": "haha",
-    "location": "dito lang samin",
-    "age": "19",
-    "contact_number": "23"
-}
+        )
+
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 02/27/2025
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 10
+    [name] => Mark Khean
+    [address] => dito lang sa tabi
+    [phone_number] => 09084538768
+    [pet_name] => yuh
+    [pet_breed] => Cat
+    [groom_type] => Hand Stripping
+    [notes] => yu
+    [appointment_date] => 00/00/0000
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 02/27/2025
+                    [payment_method] => Cash (on site)
+                )
+
+            [1] => Array
+                (
+                    [id] => 10
+                    [name] => Mark Khean
+                    [address] => dito lang sa tabi
+                    [phone_number] => 09084538768
+                    [pet_name] => yuh
+                    [pet_breed] => Cat
+                    [groom_type] => Hand Stripping
+                    [notes] => yu
+                    [appointment_date] => 00/00/0000
+                    [payment_method] => Cash (on site)
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 02/27/2025
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 10
+    [name] => Mark Khean
+    [address] => dito lang sa tabi
+    [phone_number] => 09084538768
+    [pet_name] => yuh
+    [pet_breed] => Cat
+    [groom_type] => Hand Stripping
+    [notes] => yu
+    [appointment_date] => 00/00/0000
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 11
+    [name] => hi
+    [address] => hi
+    [phone_number] => 36
+    [pet_name] => hi
+    [pet_breed] => Cat
+    [groom_type] => Teeth Brushing
+    [notes] => hi
+    [appointment_date] => 02/28/2025
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 02/27/2025
+                    [payment_method] => Cash (on site)
+                )
+
+            [1] => Array
+                (
+                    [id] => 10
+                    [name] => Mark Khean
+                    [address] => dito lang sa tabi
+                    [phone_number] => 09084538768
+                    [pet_name] => yuh
+                    [pet_breed] => Cat
+                    [groom_type] => Hand Stripping
+                    [notes] => yu
+                    [appointment_date] => 00/00/0000
+                    [payment_method] => Cash (on site)
+                )
+
+            [2] => Array
+                (
+                    [id] => 11
+                    [name] => hi
+                    [address] => hi
+                    [phone_number] => 36
+                    [pet_name] => hi
+                    [pet_breed] => Cat
+                    [groom_type] => Teeth Brushing
+                    [notes] => hi
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Cash (on site)
+                )
+
+        )
+
+)
+Array
+(
+    [id] => 7
+    [name] => hi
+    [address] => ji
+    [phone_number] => 633
+    [pet_name] => yu
+    [pet_breed] => Dog
+    [checkup_type] => Vaccination Check
+    [notes] => hihi
+    [appointment_date] => 
+    [payment_method] => GCash (online)
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 02/27/2025
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 10
+    [name] => Mark Khean
+    [address] => dito lang sa tabi
+    [phone_number] => 09084538768
+    [pet_name] => yuh
+    [pet_breed] => Cat
+    [groom_type] => Hand Stripping
+    [notes] => yu
+    [appointment_date] => 00/00/0000
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 11
+    [name] => hi
+    [address] => hi
+    [phone_number] => 36
+    [pet_name] => hi
+    [pet_breed] => Cat
+    [groom_type] => Teeth Brushing
+    [notes] => hi
+    [appointment_date] => 02/28/2025
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 02/27/2025
+                    [payment_method] => Cash (on site)
+                )
+
+            [1] => Array
+                (
+                    [id] => 10
+                    [name] => Mark Khean
+                    [address] => dito lang sa tabi
+                    [phone_number] => 09084538768
+                    [pet_name] => yuh
+                    [pet_breed] => Cat
+                    [groom_type] => Hand Stripping
+                    [notes] => yu
+                    [appointment_date] => 00/00/0000
+                    [payment_method] => Cash (on site)
+                )
+
+            [2] => Array
+                (
+                    [id] => 11
+                    [name] => hi
+                    [address] => hi
+                    [phone_number] => 36
+                    [pet_name] => hi
+                    [pet_breed] => Cat
+                    [groom_type] => Teeth Brushing
+                    [notes] => hi
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Cash (on site)
+                )
+
+        )
+
+)
+Array
+(
+    [id] => 7
+    [name] => hi
+    [address] => ji
+    [phone_number] => 633
+    [pet_name] => yu
+    [pet_breed] => Dog
+    [checkup_type] => Vaccination Check
+    [notes] => hihi
+    [appointment_date] => 
+    [payment_method] => GCash (online)
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 02/27/2025
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 10
+    [name] => Mark Khean
+    [address] => dito lang sa tabi
+    [phone_number] => 09084538768
+    [pet_name] => yuh
+    [pet_breed] => Cat
+    [groom_type] => Hand Stripping
+    [notes] => yu
+    [appointment_date] => 00/00/0000
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 11
+    [name] => hi
+    [address] => hi
+    [phone_number] => 36
+    [pet_name] => hi
+    [pet_breed] => Cat
+    [groom_type] => Teeth Brushing
+    [notes] => hi
+    [appointment_date] => 02/28/2025
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 02/27/2025
+                    [payment_method] => Cash (on site)
+                )
+
+            [1] => Array
+                (
+                    [id] => 10
+                    [name] => Mark Khean
+                    [address] => dito lang sa tabi
+                    [phone_number] => 09084538768
+                    [pet_name] => yuh
+                    [pet_breed] => Cat
+                    [groom_type] => Hand Stripping
+                    [notes] => yu
+                    [appointment_date] => 00/00/0000
+                    [payment_method] => Cash (on site)
+                )
+
+            [2] => Array
+                (
+                    [id] => 11
+                    [name] => hi
+                    [address] => hi
+                    [phone_number] => 36
+                    [pet_name] => hi
+                    [pet_breed] => Cat
+                    [groom_type] => Teeth Brushing
+                    [notes] => hi
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Cash (on site)
+                )
+
+        )
+
+)
+Array
+(
+    [id] => 7
+    [name] => hi
+    [address] => ji
+    [phone_number] => 633
+    [pet_name] => yu
+    [pet_breed] => Dog
+    [checkup_type] => Vaccination Check
+    [notes] => hihi
+    [appointment_date] => 
+    [payment_method] => GCash (online)
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 02/27/2025
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 10
+    [name] => Mark Khean
+    [address] => dito lang sa tabi
+    [phone_number] => 09084538768
+    [pet_name] => yuh
+    [pet_breed] => Cat
+    [groom_type] => Hand Stripping
+    [notes] => yu
+    [appointment_date] => 00/00/0000
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 11
+    [name] => hi
+    [address] => hi
+    [phone_number] => 36
+    [pet_name] => hi
+    [pet_breed] => Cat
+    [groom_type] => Teeth Brushing
+    [notes] => hi
+    [appointment_date] => 02/28/2025
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 02/27/2025
+                    [payment_method] => Cash (on site)
+                )
+
+            [1] => Array
+                (
+                    [id] => 10
+                    [name] => Mark Khean
+                    [address] => dito lang sa tabi
+                    [phone_number] => 09084538768
+                    [pet_name] => yuh
+                    [pet_breed] => Cat
+                    [groom_type] => Hand Stripping
+                    [notes] => yu
+                    [appointment_date] => 00/00/0000
+                    [payment_method] => Cash (on site)
+                )
+
+            [2] => Array
+                (
+                    [id] => 11
+                    [name] => hi
+                    [address] => hi
+                    [phone_number] => 36
+                    [pet_name] => hi
+                    [pet_breed] => Cat
+                    [groom_type] => Teeth Brushing
+                    [notes] => hi
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Cash (on site)
+                )
+
+        )
+
+)
+Array
+(
+    [id] => 7
+    [name] => hi
+    [address] => ji
+    [phone_number] => 633
+    [pet_name] => yu
+    [pet_breed] => Dog
+    [checkup_type] => Vaccination Check
+    [notes] => hihi
+    [appointment_date] => 
+    [payment_method] => GCash (online)
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 02/27/2025
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 10
+    [name] => Mark Khean
+    [address] => dito lang sa tabi
+    [phone_number] => 09084538768
+    [pet_name] => yuh
+    [pet_breed] => Cat
+    [groom_type] => Hand Stripping
+    [notes] => yu
+    [appointment_date] => 00/00/0000
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 11
+    [name] => hi
+    [address] => hi
+    [phone_number] => 36
+    [pet_name] => hi
+    [pet_breed] => Cat
+    [groom_type] => Teeth Brushing
+    [notes] => hi
+    [appointment_date] => 02/28/2025
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 02/27/2025
+                    [payment_method] => Cash (on site)
+                )
+
+            [1] => Array
+                (
+                    [id] => 10
+                    [name] => Mark Khean
+                    [address] => dito lang sa tabi
+                    [phone_number] => 09084538768
+                    [pet_name] => yuh
+                    [pet_breed] => Cat
+                    [groom_type] => Hand Stripping
+                    [notes] => yu
+                    [appointment_date] => 00/00/0000
+                    [payment_method] => Cash (on site)
+                )
+
+            [2] => Array
+                (
+                    [id] => 11
+                    [name] => hi
+                    [address] => hi
+                    [phone_number] => 36
+                    [pet_name] => hi
+                    [pet_breed] => Cat
+                    [groom_type] => Teeth Brushing
+                    [notes] => hi
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Cash (on site)
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 02/27/2025
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 10
+    [name] => Mark Khean
+    [address] => dito lang sa tabi
+    [phone_number] => 09084538768
+    [pet_name] => yuh
+    [pet_breed] => Cat
+    [groom_type] => Hand Stripping
+    [notes] => yu
+    [appointment_date] => 00/00/0000
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 11
+    [name] => hi
+    [address] => hi
+    [phone_number] => 36
+    [pet_name] => hi
+    [pet_breed] => Cat
+    [groom_type] => Teeth Brushing
+    [notes] => hi
+    [appointment_date] => 02/28/2025
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 02/27/2025
+                    [payment_method] => Cash (on site)
+                )
+
+            [1] => Array
+                (
+                    [id] => 10
+                    [name] => Mark Khean
+                    [address] => dito lang sa tabi
+                    [phone_number] => 09084538768
+                    [pet_name] => yuh
+                    [pet_breed] => Cat
+                    [groom_type] => Hand Stripping
+                    [notes] => yu
+                    [appointment_date] => 00/00/0000
+                    [payment_method] => Cash (on site)
+                )
+
+            [2] => Array
+                (
+                    [id] => 11
+                    [name] => hi
+                    [address] => hi
+                    [phone_number] => 36
+                    [pet_name] => hi
+                    [pet_breed] => Cat
+                    [groom_type] => Teeth Brushing
+                    [notes] => hi
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Cash (on site)
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 9
+    [name] => yah
+    [address] => yah
+    [phone_number] => 3434
+    [pet_name] => uwuw
+    [pet_breed] => Cat
+    [groom_type] => Bathing
+    [notes] => yuuu
+    [appointment_date] => 02/27/2025
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 10
+    [name] => Mark Khean
+    [address] => dito lang sa tabi
+    [phone_number] => 09084538768
+    [pet_name] => yuh
+    [pet_breed] => Cat
+    [groom_type] => Hand Stripping
+    [notes] => yu
+    [appointment_date] => 00/00/0000
+    [payment_method] => Cash (on site)
+)
+Row Data: Array
+(
+    [id] => 11
+    [name] => hi
+    [address] => hi
+    [phone_number] => 36
+    [pet_name] => hi
+    [pet_breed] => Cat
+    [groom_type] => Teeth Brushing
+    [notes] => hi
+    [appointment_date] => 02/28/2025
+    [payment_method] => Cash (on site)
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 9
+                    [name] => yah
+                    [address] => yah
+                    [phone_number] => 3434
+                    [pet_name] => uwuw
+                    [pet_breed] => Cat
+                    [groom_type] => Bathing
+                    [notes] => yuuu
+                    [appointment_date] => 02/27/2025
+                    [payment_method] => Cash (on site)
+                )
+
+            [1] => Array
+                (
+                    [id] => 10
+                    [name] => Mark Khean
+                    [address] => dito lang sa tabi
+                    [phone_number] => 09084538768
+                    [pet_name] => yuh
+                    [pet_breed] => Cat
+                    [groom_type] => Hand Stripping
+                    [notes] => yu
+                    [appointment_date] => 00/00/0000
+                    [payment_method] => Cash (on site)
+                )
+
+            [2] => Array
+                (
+                    [id] => 11
+                    [name] => hi
+                    [address] => hi
+                    [phone_number] => 36
+                    [pet_name] => hi
+                    [pet_breed] => Cat
+                    [groom_type] => Teeth Brushing
+                    [notes] => hi
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Cash (on site)
+                )
+
+        )
+
+)

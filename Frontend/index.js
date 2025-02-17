@@ -40,7 +40,7 @@
     formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));
 
     try {
-        const response = await fetch('http://192.168.34.203/backend/update_product.php', {
+        const response = await fetch('http://192.168.1.65/backend/update_product.php', {
             method: 'POST',
             body: formData
         });
@@ -71,7 +71,7 @@
     formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));  // Attach shop owner ID
 
     try {
-        const response = await fetch('http://192.168.34.203/backend/add_product.php', {
+        const response = await fetch('http://192.168.1.65/backend/add_product.php', {
             method: 'POST',
             body: formData,
         });
@@ -94,8 +94,6 @@
     if (checkAuth()) {
     filterProducts(); 
     fetchProducts();
-    fetchServices();  // ✅ Make sure this line exists
-    setInterval(fetchServices, 30000); // Refresh services every 30 seconds
 }
 
 
@@ -122,7 +120,7 @@ function fetchProducts() {
         return;
     }
 
-    const url = `http://192.168.34.203/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+    const url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
     console.log(`Fetching products from: ${url}`);
     
     fetch(url)
@@ -344,7 +342,7 @@ function deleteProduct(productId) {
 
     const shopOwnerId = localStorage.getItem('shop_owner_id'); 
 
-    fetch('http://192.168.34.203/backend/delete_product.php', {  
+    fetch('http://192.168.1.65/backend/delete_product.php', {  
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -364,7 +362,7 @@ function deleteProduct(productId) {
             document.getElementById(`product-${productId}`)?.remove();
 
             // ✅ FORCE MOBILE APP TO REFRESH PRODUCTS
-            fetch('http://192.168.34.203/backend/fetch_product.php?refresh=true')
+            fetch('http://192.168.1.65/backend/fetch_product.php?refresh=true')
                 .then(() => console.log("Mobile app will fetch latest products"));
 
             // ✅ WAIT FOR 1 SECOND, THEN REFRESH LIST
@@ -376,167 +374,6 @@ function deleteProduct(productId) {
     .catch(error => {
         console.error('❌ Error deleting product:', error);
         alert('❌ Failed to delete product: ' + error.message);
-    });
-}
-
-function fetchServices() {
-    fetch('http://192.168.34.203/backend/fetch_services.php')
-        .then(response => response.json())
-        .then(data => {
-            if (!data.success || !Array.isArray(data.services)) {
-                console.error("Invalid response format:", data);
-                alert("Failed to load services.");
-                return;
-            }
-
-            const services = data.services;
-            const serviceList = document.getElementById('serviceList');
-            serviceList.innerHTML = '';
-
-            if (services.length === 0) {
-                serviceList.innerHTML = '<p>No services available.</p>';
-                return;
-            }
-
-            services.forEach(service => {
-                const serviceItem = document.createElement('div');
-                serviceItem.className = 'list-item';
-                serviceItem.innerHTML = `
-                    <strong>${service.service_name}</strong> - $${service.price}
-                    <p>${service.description}</p>
-                    <p>Status: <span class="status-${service.status.toLowerCase()}">${service.status}</span></p>
-                `;
-                serviceList.appendChild(serviceItem);
-            });
-        })
-        .catch(error => {
-            console.error('❌ Error fetching services:', error);
-            alert("Failed to fetch services: " + error.message);
-        });
-}
-
-
-// Call fetchServices when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    if (typeof fetchServices === "function") {
-        fetchServices();
-    } else {
-        console.error("❌ fetchServices function is not defined!");
-    }
-});
-
-document.getElementById('serviceForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-    formData.append('shop_owner_id', localStorage.getItem('shop_owner_id')); // Attach shop owner ID
-
-    try {
-        const response = await fetch('http://192.168.34.203/backend/add_service.php', {
-            method: 'POST',
-            body: formData
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        if (data.success) {
-            alert('✅ Service added successfully!');
-            e.target.reset();
-            fetchServices(); // Refresh service list after adding
-        } else {
-            throw new Error(data.error || 'Failed to add service');
-        }
-    } catch (error) {
-        console.error('❌ Error adding service:', error);
-        alert('❌ Failed to add service: ' + error.message);
-    }
-});
-
-function fetchServiceRequests() {
-    console.log("🔄 Fetching Service Requests...");
-
-    fetch("http://192.168.34.203/backend/fetch_service_request.php")
-        .then(response => response.json())
-        .then(data => {
-            console.log("🔄 Service Requests Data:", data);
-
-            let serviceRequestsContainer = document.getElementById("serviceRequestsContainer");
-
-            if (!serviceRequestsContainer) {
-                console.error("❌ ERROR: Element with ID 'serviceRequestsContainer' not found!");
-                return;
-            }
-
-            serviceRequestsContainer.innerHTML = ""; // Clear previous data
-
-            if (!Array.isArray(data) || data.length === 0) {
-                serviceRequestsContainer.innerHTML = "<p>No pending service requests.</p>";
-                return;
-            }
-
-            data.forEach(request => {
-                let requestElement = document.createElement("div");
-                requestElement.classList.add("list-item");
-                requestElement.innerHTML = `
-                    <div class="service-info">
-                        <strong>Service:</strong> ${request.service_name} <br>
-                        <strong>User:</strong> ${request.user_name} <br>
-                        <strong>Date:</strong> ${request.selected_date} <br>
-                        <strong>Status:</strong> <span class="status-${request.status.toLowerCase()}">${request.status}</span>
-                    </div>
-                    <div class="service-actions">
-                        <button class="confirm-btn" onclick="updateRequestStatus(${request.id}, 'confirmed')">Approve</button>
-                        <button class="decline-btn" onclick="updateRequestStatus(${request.id}, 'declined')">Decline</button>
-                    </div>
-                `;
-                serviceRequestsContainer.appendChild(requestElement);
-            });
-        })
-        .catch(error => console.error("❌ Error fetching service requests:", error));
-}
-
-
-
-
-
-
-
-// Ensure function only runs once on page load
-document.addEventListener('DOMContentLoaded', () => {
-    fetchServiceRequests(); 
-    setInterval(fetchServiceRequests, 30000); // Refresh every 30 seconds
-});
-
-
-
-function displayServiceRequests(requests) {
-    const serviceRequestList = document.getElementById('serviceRequestList');
-    serviceRequestList.innerHTML = '';
-
-    if (!Array.isArray(requests) || requests.length === 0) {
-        serviceRequestList.innerHTML = '<p>No pending service requests.</p>';
-        return;
-    }
-
-    requests.forEach(request => {
-        const requestItem = document.createElement('div');
-        requestItem.className = 'list-item';
-        requestItem.innerHTML = `
-            <div class="service-info">
-                <strong>Service:</strong> ${request.service_name} <br>
-                <strong>Customer:</strong> ${request.user_name} <br>
-                <strong>Date:</strong> ${request.selected_date} <br>
-                <strong>Status:</strong> <span class="status-${request.status.toLowerCase()}">${request.status}</span>
-            </div>
-            <div class="service-actions">
-                <button class="confirm-btn" onclick="updateRequestStatus(${request.id}, 'confirmed')">Confirm</button>
-                <button class="decline-btn" onclick="updateRequestStatus(${request.id}, 'declined')">Decline</button>
-            </div>
-        `;
-        serviceRequestList.appendChild(requestItem);
     });
 }
 
@@ -552,51 +389,11 @@ function showToast(message, isError = false) {
     }, 3000); // Hide after 3 seconds
 }
 
-async function updateRequestStatus(id, status) {
-    console.log(`📤 Updating Request ID ${id} to ${status}...`);
-
-    try {
-        const response = await fetch("http:///backend/update_service_status.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ id: id, status: status })
-        });
-
-        const responseBody = await response.text(); // ✅ Debug response
-        console.log("🔄 Raw Response:", responseBody);
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = JSON.parse(responseBody);
-        console.log("✅ Update Response:", data);
-
-        if (data.success) {
-            showToast(`✅ Service request ${status} successfully!`);
-            fetchServiceRequests(); // Refresh the service requests list
-        } else {
-            throw new Error(data.message || "Failed to update status");
-        }
-    } catch (error) {
-        console.error("❌ Error updating status:", error);
-        showToast("❌ Failed to update status: " + error.message, true);
-    }
-}
-
-// ✅ Ensure function runs after page load
-document.addEventListener('DOMContentLoaded', () => {
-    fetchServiceRequests();
-    setInterval(fetchServiceRequests, 30000); // Refresh every 30 seconds
-});
-
 function filterProducts() {
     const category = document.getElementById('categoryFilter').value;
     const shopOwnerId = localStorage.getItem('shop_owner_id');
 
-    const url = `http://192.168.34.203/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+    const url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
     console.log(`Fetching products from: ${url}`);
 
     fetch(url)

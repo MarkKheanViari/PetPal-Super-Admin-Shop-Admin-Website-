@@ -1,0 +1,16 @@
+Array
+(
+    [user_id] => 1
+    [name] => hi
+    [address] => hi
+    [phone_number] => 36
+    [pet_name] => hi
+    [pet_breed] => Cat
+    [groom_type] => Teeth Brushing
+    [notes] => hi
+    [appointment_date] => 02/28/2025
+    [payment_method] => Cash (on site)
+)
+
+Formatted Date: 2025-02-28
+DB Response: {"success":true,"message":"Appointment scheduled successfully!"}

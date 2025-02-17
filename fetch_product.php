@@ -55,7 +55,7 @@ $result = $stmt->get_result();
 $products = [];
 while ($row = $result->fetch_assoc()) {
     // ✅ Ensure full image URL is returned
-    $image_path = !empty($row['image']) ? "http://192.168.34.203/backend/uploads/" . $row['image'] : "http://192.168.34.203/backend/uploads/default.jpg";
+    $image_path = !empty($row['image']) ? "http://192.168.1.65/backend/uploads/" . $row['image'] : "http://192.168.1.65/backend/uploads/default.jpg";
     $row['image'] = $image_path;
 
     // ✅ Format price & prevent negative stock values
