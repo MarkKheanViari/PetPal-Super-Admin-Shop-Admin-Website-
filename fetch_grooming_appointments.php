@@ -6,8 +6,9 @@ include "db.php"; // Ensure database connection
 
 $response = array();
 
+// ✅ Fetch status column
 $query = "SELECT id, name, address, phone_number, pet_name, pet_breed, groom_type, notes, 
-                 DATE_FORMAT(appointment_date, '%m/%d/%Y') AS appointment_date, payment_method 
+                 DATE_FORMAT(appointment_date, '%m/%d/%Y') AS appointment_date, payment_method, status
           FROM grooming_appointments";
 
 $result = $conn->query($query);
@@ -46,5 +47,4 @@ file_put_contents("debug_log.txt", "Final Response: " . print_r($response, true)
 
 echo json_encode($response);
 $conn->close();
-
 ?>
