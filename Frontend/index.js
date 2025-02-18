@@ -327,28 +327,34 @@ function saveEdit() {
 }
 
 function viewOrderDetails(orderId) {
-    fetch(`http://192.168.1.65/backend/fetch_order_details.php?order_id=${orderId}`)
+    fetch(`http://localhost/backend/fetch_order_details.php?order_id=${orderId}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                document.getElementById("customerName").value = data.order.username || "Unknown";
+                document.getElementById("customerName").value = data.order.username;
                 document.getElementById("customerAddress").value = data.order.location || "No Address Provided";
                 document.getElementById("customerContact").value = data.order.contact_number || "No Contact Info";
-                
-                document.getElementById("productName").value = data.order.items?.[0]?.product_name || "No Product";
-                document.getElementById("orderQuantity").value = data.order.items?.[0]?.quantity || "0";
-                document.getElementById("orderNumber").value = `#${data.order.id}`;
-                
                 document.getElementById("paymentMethod").value = data.order.payment_method;
                 document.getElementById("orderAmount").value = `₱${parseFloat(data.order.total_price).toFixed(2)}`;
-                
+
+                // Show modal
                 document.getElementById("orderModal").style.display = "block";
             } else {
-                alert("❌ Error loading order details.");
+                alert("❌ Error fetching order details");
             }
         })
         .catch(error => console.error("❌ ERROR Fetching Order Details:", error));
 }
+
+function closeModal() {
+    document.getElementById("orderModal").style.display = "none";
+}
+
+
+
+
+
+
 
 function closeModal() {
     document.getElementById("orderModal").style.display = "none";

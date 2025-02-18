@@ -46,11 +46,12 @@
     </section>
     
 
-    <!-- Order Details Modal -->
+  <!-- Order Details Modal -->
 <div id="orderModal" class="modal">
     <div class="modal-content">
         <h2>Order Details</h2>
 
+        <!-- Customer Details -->
         <div class="modal-section">
             <h3>Customer Details</h3>
             <input type="text" id="customerName" placeholder="Name" readonly>
@@ -58,25 +59,23 @@
             <input type="text" id="customerContact" placeholder="Contact No." readonly>
         </div>
 
-        <div class="modal-section">
-            <h3>Order Info</h3>
-            <input type="text" id="productName" placeholder="Product Name" readonly>
-            <input type="text" id="orderQuantity" placeholder="Quantity" readonly>
-            <input type="text" id="orderNumber" placeholder="Order No." readonly>
-        </div>
-
+        <!-- Payment Details -->
         <div class="modal-section">
             <h3>Payment Details</h3>
             <input type="text" id="paymentMethod" placeholder="Payment Method" readonly>
-            <input type="text" id="orderAmount" placeholder="Amount" readonly>
+            <input type="text" id="orderAmount" placeholder="Total Amount" readonly>
         </div>
 
+        <!-- Modal Buttons -->
         <div class="modal-buttons">
             <button class="cancel-btn" onclick="closeModal()">Cancel</button>
             <button class="approve-btn" onclick="approveOrder()">Approve</button>
         </div>
     </div>
 </div>
+
+
+
 
 
     <main class="content">
