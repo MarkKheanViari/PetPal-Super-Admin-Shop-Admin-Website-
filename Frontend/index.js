@@ -326,11 +326,82 @@ function saveEdit() {
     .catch(error => console.error("Error:", error));
 }
 
+function viewOrderDetails(orderId) {
+    fetch(`http://192.168.1.65/backend/fetch_order_details.php?order_id=${orderId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById("customerName").value = data.order.username || "Unknown";
+                document.getElementById("customerAddress").value = data.order.location || "No Address Provided";
+                document.getElementById("customerContact").value = data.order.contact_number || "No Contact Info";
+                
+                document.getElementById("productName").value = data.order.items?.[0]?.product_name || "No Product";
+                document.getElementById("orderQuantity").value = data.order.items?.[0]?.quantity || "0";
+                document.getElementById("orderNumber").value = `#${data.order.id}`;
+                
+                document.getElementById("paymentMethod").value = data.order.payment_method;
+                document.getElementById("orderAmount").value = `₱${parseFloat(data.order.total_price).toFixed(2)}`;
+                
+                document.getElementById("orderModal").style.display = "block";
+            } else {
+                alert("❌ Error loading order details.");
+            }
+        })
+        .catch(error => console.error("❌ ERROR Fetching Order Details:", error));
+}
+
+function closeModal() {
+    document.getElementById("orderModal").style.display = "none";
+}
 
 
 
 
+// Close modal function
+function closeModal() {
+    document.getElementById("orderModal").style.display = "none";
+}
 
+// Approve Order (Dummy function for now)
+function approveOrder() {
+    alert("✅ Order Approved!");
+    closeModal();
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetchOrders();
+});
+
+function fetchOrders() {
+    fetch("http://192.168.1.65/backend/fetch_orders.php") // ✅ Adjust backend endpoint if needed
+        .then(response => response.json())
+        .then(data => {
+            console.log("📦 Orders Data:", data); // ✅ Debugging log
+            if (data.success) {
+                let ordersContainer = document.getElementById("ordersContainer");
+                ordersContainer.innerHTML = ""; // Clear previous content
+
+                data.orders.forEach(order => {
+                    let orderElement = document.createElement("div");
+                    orderElement.classList.add("order-item");
+                    orderElement.innerHTML = `
+                        <p><strong>Customer:</strong> ${order.customer_name}</p>
+                        <p><strong>Total Price:</strong> ₱${order.total_price}</p>
+                        <p><strong>Quantity:</strong> ${order.quantity}</p>
+                        <button class="view-details-btn" onclick="viewOrderDetails(${order.order_id})">
+                            View Details
+                        </button>
+                    `;
+                    ordersContainer.appendChild(orderElement);
+                });
+            } else {
+                console.error("❌ Failed to load orders.");
+            }
+        })
+        .catch(error => console.error("❌ ERROR Fetching Orders:", error));
+}
 
 
 

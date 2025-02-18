@@ -37,7 +37,48 @@
             <button onclick="logout()" class="logout-btn">Logout</button>
         </div>
     </header>
-   
+
+    <section class="orders">
+        <h2>Recent Orders</h2>
+        <div id="ordersContainer" class="orders-list">
+            <!-- Orders will be dynamically added here -->
+        </div>
+    </section>
+    
+
+    <!-- Order Details Modal -->
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <h2>Order Details</h2>
+
+        <div class="modal-section">
+            <h3>Customer Details</h3>
+            <input type="text" id="customerName" placeholder="Name" readonly>
+            <input type="text" id="customerAddress" placeholder="Address" readonly>
+            <input type="text" id="customerContact" placeholder="Contact No." readonly>
+        </div>
+
+        <div class="modal-section">
+            <h3>Order Info</h3>
+            <input type="text" id="productName" placeholder="Product Name" readonly>
+            <input type="text" id="orderQuantity" placeholder="Quantity" readonly>
+            <input type="text" id="orderNumber" placeholder="Order No." readonly>
+        </div>
+
+        <div class="modal-section">
+            <h3>Payment Details</h3>
+            <input type="text" id="paymentMethod" placeholder="Payment Method" readonly>
+            <input type="text" id="orderAmount" placeholder="Amount" readonly>
+        </div>
+
+        <div class="modal-buttons">
+            <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+            <button class="approve-btn" onclick="approveOrder()">Approve</button>
+        </div>
+    </div>
+</div>
+
+
     <main class="content">
         <!-- Add Product Modal -->
         <section class="product-inventory">
@@ -152,5 +193,6 @@
     </footer>
 
     <script src="index.js"></script>    
+    <script src="fetch_orders.js"></script>
 </body>
 </html>
