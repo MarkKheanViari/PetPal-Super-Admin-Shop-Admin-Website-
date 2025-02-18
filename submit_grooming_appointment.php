@@ -16,7 +16,7 @@ if (!$data) {
     exit();
 }
 
-if (!isset($data['user_id'], $data['name'], $data['address'], $data['phone_number'], 
+if (!isset($data['mobile_user_id'], $data['name'], $data['address'], $data['phone_number'], 
           $data['pet_name'], $data['pet_breed'], $data['groom_type'], 
           $data['notes'], $data['appointment_date'], $data['payment_method'])) {
     $response["success"] = false;
@@ -25,7 +25,7 @@ if (!isset($data['user_id'], $data['name'], $data['address'], $data['phone_numbe
     exit();
 }
 
-$user_id = $data['user_id'];
+$mobile_user_id = $data['mobile_user_id'];
 $name = $data['name'];
 $address = $data['address'];
 $phone_number = $data['phone_number'];
@@ -35,13 +35,14 @@ $groom_type = $data['groom_type'];
 $notes = $data['notes'];
 $appointment_date = $data['appointment_date'];
 $payment_method = $data['payment_method'];
+$status = 'Pending'; 
 
 $query = "INSERT INTO grooming_appointments 
-          (user_id, name, address, phone_number, pet_name, pet_breed, groom_type, notes, appointment_date, payment_method) 
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+          (mobile_user_id, name, address, phone_number, pet_name, pet_breed, groom_type, notes, appointment_date, payment_method, status) 
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param("isssssssss", $user_id, $name, $address, $phone_number, $pet_name, $pet_breed, $groom_type, $notes, $appointment_date, $payment_method);
+$stmt->bind_param("issssssssss", $mobile_user_id, $name, $address, $phone_number, $pet_name, $pet_breed, $groom_type, $notes, $appointment_date, $payment_method, $status);
 
 if ($stmt->execute()) {
     $response["success"] = true;

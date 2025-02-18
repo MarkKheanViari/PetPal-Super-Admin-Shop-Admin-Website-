@@ -1,63 +1,21 @@
 Array
 (
-    [appointment_id] => 7
-    [status] => Approved
-)
-Row Data: Array
-(
-    [id] => 9
-    [name] => yah
-    [address] => yah
-    [phone_number] => 3434
-    [pet_name] => uwuw
-    [pet_breed] => Cat
-    [groom_type] => Bathing
-    [notes] => yuuu
-    [appointment_date] => 02/27/2025
-    [payment_method] => Cash (on site)
-    [status] => Approved
-)
-Row Data: Array
-(
-    [id] => 10
-    [name] => Mark Khean
-    [address] => dito lang sa tabi
-    [phone_number] => 09084538768
-    [pet_name] => yuh
-    [pet_breed] => Cat
-    [groom_type] => Hand Stripping
-    [notes] => yu
-    [appointment_date] => 00/00/0000
-    [payment_method] => Cash (on site)
-    [status] => Approved
-)
-Row Data: Array
-(
-    [id] => 11
-    [name] => hi
-    [address] => hi
-    [phone_number] => 36
-    [pet_name] => hi
-    [pet_breed] => Cat
-    [groom_type] => Teeth Brushing
-    [notes] => hi
-    [appointment_date] => 02/28/2025
-    [payment_method] => Cash (on site)
+    [appointment_id] => 1
     [status] => Declined
 )
 Row Data: Array
 (
-    [id] => 12
-    [name] => hihi
-    [address] => hihi
-    [phone_number] => 6363
-    [pet_name] => hihi
-    [pet_breed] => Cat
-    [groom_type] => Full Haircut/Styling
-    [notes] => haha
-    [appointment_date] => 02/28/2025
-    [payment_method] => Cash (on site)
-    [status] => Approved
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
 )
 Final Response: Array
 (
@@ -66,62 +24,714 @@ Final Response: Array
         (
             [0] => Array
                 (
-                    [id] => 9
-                    [name] => yah
-                    [address] => yah
-                    [phone_number] => 3434
-                    [pet_name] => uwuw
-                    [pet_breed] => Cat
-                    [groom_type] => Bathing
-                    [notes] => yuuu
-                    [appointment_date] => 02/27/2025
-                    [payment_method] => Cash (on site)
-                    [status] => Approved
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 2
+    [name] => haha
+    [address] => haha
+    [phone_number] => 6464
+    [pet_name] => haha
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => haha
+    [appointment_date] => 02/26/2025
+    [payment_method] => Cash (on site)
+    [status] => Pending
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
                 )
 
             [1] => Array
                 (
-                    [id] => 10
-                    [name] => Mark Khean
-                    [address] => dito lang sa tabi
-                    [phone_number] => 09084538768
-                    [pet_name] => yuh
+                    [id] => 2
+                    [name] => haha
+                    [address] => haha
+                    [phone_number] => 6464
+                    [pet_name] => haha
                     [pet_breed] => Cat
-                    [groom_type] => Hand Stripping
-                    [notes] => yu
-                    [appointment_date] => 00/00/0000
+                    [groom_type] => Ear Cleaning
+                    [notes] => haha
+                    [appointment_date] => 02/26/2025
                     [payment_method] => Cash (on site)
-                    [status] => Approved
+                    [status] => Pending
                 )
 
-            [2] => Array
+        )
+
+)
+Row Data: Array
+(
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 2
+    [name] => haha
+    [address] => haha
+    [phone_number] => 6464
+    [pet_name] => haha
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => haha
+    [appointment_date] => 02/26/2025
+    [payment_method] => Cash (on site)
+    [status] => Pending
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
                 (
-                    [id] => 11
-                    [name] => hi
-                    [address] => hi
-                    [phone_number] => 36
-                    [pet_name] => hi
-                    [pet_breed] => Cat
-                    [groom_type] => Teeth Brushing
-                    [notes] => hi
-                    [appointment_date] => 02/28/2025
-                    [payment_method] => Cash (on site)
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
                     [status] => Declined
                 )
 
-            [3] => Array
+            [1] => Array
                 (
-                    [id] => 12
-                    [name] => hihi
-                    [address] => hihi
-                    [phone_number] => 6363
-                    [pet_name] => hihi
+                    [id] => 2
+                    [name] => haha
+                    [address] => haha
+                    [phone_number] => 6464
+                    [pet_name] => haha
                     [pet_breed] => Cat
-                    [groom_type] => Full Haircut/Styling
+                    [groom_type] => Ear Cleaning
                     [notes] => haha
-                    [appointment_date] => 02/28/2025
+                    [appointment_date] => 02/26/2025
                     [payment_method] => Cash (on site)
-                    [status] => Approved
+                    [status] => Pending
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 2
+    [name] => haha
+    [address] => haha
+    [phone_number] => 6464
+    [pet_name] => haha
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => haha
+    [appointment_date] => 02/26/2025
+    [payment_method] => Cash (on site)
+    [status] => Pending
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [1] => Array
+                (
+                    [id] => 2
+                    [name] => haha
+                    [address] => haha
+                    [phone_number] => 6464
+                    [pet_name] => haha
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => haha
+                    [appointment_date] => 02/26/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Pending
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 2
+    [name] => haha
+    [address] => haha
+    [phone_number] => 6464
+    [pet_name] => haha
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => haha
+    [appointment_date] => 02/26/2025
+    [payment_method] => Cash (on site)
+    [status] => Pending
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [1] => Array
+                (
+                    [id] => 2
+                    [name] => haha
+                    [address] => haha
+                    [phone_number] => 6464
+                    [pet_name] => haha
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => haha
+                    [appointment_date] => 02/26/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Pending
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 2
+    [name] => haha
+    [address] => haha
+    [phone_number] => 6464
+    [pet_name] => haha
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => haha
+    [appointment_date] => 02/26/2025
+    [payment_method] => Cash (on site)
+    [status] => Pending
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [1] => Array
+                (
+                    [id] => 2
+                    [name] => haha
+                    [address] => haha
+                    [phone_number] => 6464
+                    [pet_name] => haha
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => haha
+                    [appointment_date] => 02/26/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Pending
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 2
+    [name] => haha
+    [address] => haha
+    [phone_number] => 6464
+    [pet_name] => haha
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => haha
+    [appointment_date] => 02/26/2025
+    [payment_method] => Cash (on site)
+    [status] => Pending
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [1] => Array
+                (
+                    [id] => 2
+                    [name] => haha
+                    [address] => haha
+                    [phone_number] => 6464
+                    [pet_name] => haha
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => haha
+                    [appointment_date] => 02/26/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Pending
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 2
+    [name] => haha
+    [address] => haha
+    [phone_number] => 6464
+    [pet_name] => haha
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => haha
+    [appointment_date] => 02/26/2025
+    [payment_method] => Cash (on site)
+    [status] => Pending
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [1] => Array
+                (
+                    [id] => 2
+                    [name] => haha
+                    [address] => haha
+                    [phone_number] => 6464
+                    [pet_name] => haha
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => haha
+                    [appointment_date] => 02/26/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Pending
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 2
+    [name] => haha
+    [address] => haha
+    [phone_number] => 6464
+    [pet_name] => haha
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => haha
+    [appointment_date] => 02/26/2025
+    [payment_method] => Cash (on site)
+    [status] => Pending
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [1] => Array
+                (
+                    [id] => 2
+                    [name] => haha
+                    [address] => haha
+                    [phone_number] => 6464
+                    [pet_name] => haha
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => haha
+                    [appointment_date] => 02/26/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Pending
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 2
+    [name] => haha
+    [address] => haha
+    [phone_number] => 6464
+    [pet_name] => haha
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => haha
+    [appointment_date] => 02/26/2025
+    [payment_method] => Cash (on site)
+    [status] => Pending
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [1] => Array
+                (
+                    [id] => 2
+                    [name] => haha
+                    [address] => haha
+                    [phone_number] => 6464
+                    [pet_name] => haha
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => haha
+                    [appointment_date] => 02/26/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Pending
+                )
+
+        )
+
+)
+Row Data: Array
+(
+    [id] => 1
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 2
+    [name] => haha
+    [address] => haha
+    [phone_number] => 6464
+    [pet_name] => haha
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => haha
+    [appointment_date] => 02/26/2025
+    [payment_method] => Cash (on site)
+    [status] => Pending
+)
+Final Response: Array
+(
+    [success] => 1
+    [appointments] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [1] => Array
+                (
+                    [id] => 2
+                    [name] => haha
+                    [address] => haha
+                    [phone_number] => 6464
+                    [pet_name] => haha
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => haha
+                    [appointment_date] => 02/26/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Pending
                 )
 
         )
