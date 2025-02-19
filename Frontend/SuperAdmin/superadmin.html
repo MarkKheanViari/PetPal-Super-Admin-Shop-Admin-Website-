@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperAdmin Dashboard</title>
+    <link rel="stylesheet" href="superadmin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1>SuperAdmin Panel</h1>
+        <button onclick="logout()">Logout</button>
+    </nav>
+
+    <!-- Main Dashboard -->
+    <div class="container">
+
+        <!-- User Statistics -->
+        <h2>User Statistics</h2>
+        <canvas id="userChart"></canvas>
+
+        <!-- User Management -->
+        <div class="user-management">
+            <h2>Manage Users</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="userTable">
+                    <!-- Users will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Content Management -->
+        <div class="content-management">
+            <h2>Manage Products</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Name</th>
+                        <th>Owner</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="productTable">
+                    <!-- Products will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="superadmin.js"></script>
+</body>
+</html>
