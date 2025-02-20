@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - PetPal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .header {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .logo-text {
+            color: #e67e22;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-bar {
+            background-color: #e67e22;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            min-height: calc(100vh - 180px);
+        }
+
+        .content-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .store-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .footer {
+            background-color: #ffe4c4;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer-link:hover {
+            color: #e67e22;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo">
+    </header>
+
+    <nav class="nav-bar">
+        <button class="back-button">←</a></button>
+        <h2 class="nav-title">About Us</h2>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-text">
+            <h1>Welcome to PetPal!</h1>
+            <p class="description">
+                At PetPal, we believe that pets are more than just animals; they are family. Founded in 2024, our mission is to provide pet owners with a one-stop shop for all their pet care needs, from high-quality products to essential services. Whether you're looking for the best food for your furry friend, grooming services to keep them looking their best, or veterinary appointments to ensure their health, we've got you covered.
+            </p>
+        </div>
+        <div>
+            <img src="Frontend/Screenshot 2025-02-20 143001.png" alt="Dog shopping in pet store" class="store-image">
+        </div>
+    </main>
+
+    <footer class="footer">
+        <nav class="footer-nav">
+            <a href="about_us.html" class="footer-link">About Us</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="terms.html" class="footer-link">Terms and Conditions</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        </nav>
+    </footer>
+</body>
+</html>

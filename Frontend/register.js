@@ -1,24 +1,34 @@
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const errorDiv = document.getElementById('error');
-    
+
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm_password').value;
-    
+
+    // Email validation: Ensure it is a Gmail address
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    if (!gmailRegex.test(email)) {
+        errorDiv.textContent = 'Only Gmail addresses (@gmail.com) are allowed.';
+        return;
+    }
+
+    // Password match validation
     if (password !== confirmPassword) {
         errorDiv.textContent = 'Passwords do not match';
         return;
     }
-    
+
     try {
-        const response = await fetch('http://192.168.1.65/backend/register.php', {
+        const response = await fetch('http://192.168.34.203/backend/register.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                username: document.getElementById('username').value,
-                email: document.getElementById('email').value,
+                username: username,
+                email: email,
                 password: password
             })
         });
@@ -26,7 +36,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         const data = await response.json();
         
         if (data.success) {
-            alert('Registration successful! Please login.');
+            alert('Registration successful! Please log in.');
             window.location.href = 'login.html';
         } else {
             errorDiv.textContent = data.message || 'Registration failed';

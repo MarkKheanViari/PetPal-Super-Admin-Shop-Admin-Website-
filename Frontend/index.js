@@ -34,44 +34,45 @@
 
     // 📝 Handle product update submission
     document.getElementById('editProductForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));
+    
+        try {
+            const response = await fetch('http://192.168.34.203/backend/update_product.php', {
+                method: 'POST',
+                body: formData
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            if (data.success) {
+                alert('✅ Product updated successfully!');
+                fetchProducts(); // Refresh product list
+                
+                // Close the modal after updating
+                toggleEditForm(false);
+            } else {
+                throw new Error(data.message || '❌ Failed to update product');
+            }
+        } catch (error) {
+            console.error('❌ Error updating product:', error);
+            alert('❌ Failed to update product: ' + error.message);
+        }
+    });
+    
 
+
+document.getElementById('productForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
     const formData = new FormData(e.target);
-    formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));
+    formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));  
 
     try {
-        const response = await fetch('http://192.168.1.65/backend/update_product.php', {
-            method: 'POST',
-            body: formData
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        if (data.success) {
-            alert('✅ Product updated successfully!');
-            fetchProducts(); // Refresh products list
-            cancelEdit(); // Close edit form
-        } else {
-            throw new Error(data.message || '❌ Failed to update product');
-        }
-    } catch (error) {
-        console.error('❌ Error updating product:', error);
-        alert('❌ Failed to update product: ' + error.message);
-    }
-});
-
-
-    // 📌 Handle product addition (CREATE)
-    document.getElementById('productForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));  // Attach shop owner ID
-
-    try {
-        const response = await fetch('http://192.168.1.65/backend/add_product.php', {
+        const response = await fetch('http://192.168.34.203/backend/add_product.php', {
             method: 'POST',
             body: formData,
         });
@@ -80,7 +81,10 @@
         if (data.success) {
             alert('✅ Product added successfully!');
             e.target.reset();
-            fetchProducts();  // Refresh the product list
+            fetchProducts();  // Refresh product list
+            
+            // Close the modal after adding
+            toggleModal('addProductModal', false);
         } else {
             throw new Error(data.error || 'Failed to add product');
         }
@@ -89,6 +93,7 @@
         alert('❌ Failed to add product: ' + error.message);
     }
 });
+
 
 
     if (checkAuth()) {
@@ -120,7 +125,7 @@ function fetchProducts() {
         return;
     }
 
-    const url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+    const url = `http://192.168.34.203/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
     console.log(`Fetching products from: ${url}`);
     
     fetch(url)
@@ -214,8 +219,28 @@ function toggleMenu(productId) {
 
 function toggleModal(modalId, show) {
     const modal = document.getElementById(modalId);
-    modal.style.display = show ? "block" : "none";
+    
+    if (modal) {
+        modal.style.display = show ? "flex" : "none";
+
+        if (show) {
+            document.body.classList.add("modal-open"); // Disable scrolling
+        } else {
+            // Check if ANY modal is still open before enabling scrolling
+            const openModals = document.querySelectorAll('.modal[style*="display: flex"]');
+            if (openModals.length === 0) {
+                document.body.classList.remove("modal-open"); // Restore scrolling only if all modals are closed
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
 
 // Auto-hide modals when clicking outside
 window.onclick = function (event) {
@@ -266,22 +291,16 @@ function editProduct(id, name, price, description, quantity, image) {
         imagePreview.style.display = "block";
     }
 
-    // Show the floating form
+    // Open the edit form and disable background scrolling
     toggleEditForm(true);
-
-    // Hide the menu after clicking edit
-    const menu = document.getElementById(`menu-${id}`);
-    if (menu) menu.style.display = "none";
 }
 
-
-
-
-
-
-// Close Modal Function
-function closeEditModal() {
-    document.getElementById('editModal').style.display = "none";
+function closeEditForm() {
+    toggleEditForm(false); // Closes the form and enables scrolling
+}
+// Function to calculate scrollbar width
+function getScrollbarWidth() {
+    return window.innerWidth - document.documentElement.clientWidth;
 }
 
 // Save Changes Function
@@ -337,8 +356,8 @@ function viewOrderDetails(orderId) {
                 document.getElementById("paymentMethod").value = data.order.payment_method;
                 document.getElementById("orderAmount").value = `₱${parseFloat(data.order.total_price).toFixed(2)}`;
 
-                // Show modal
-                document.getElementById("orderModal").style.display = "block";
+                // Show modal and prevent scrolling
+                toggleModal("orderModal", true);
             } else {
                 alert("❌ Error fetching order details");
             }
@@ -346,9 +365,11 @@ function viewOrderDetails(orderId) {
         .catch(error => console.error("❌ ERROR Fetching Order Details:", error));
 }
 
+
 function closeModal() {
-    document.getElementById("orderModal").style.display = "none";
+    toggleModal("orderModal", false); // Close modal and re-enable scrolling
 }
+
 
 
 
@@ -369,10 +390,10 @@ function closeModal() {
 }
 
 // Approve Order (Dummy function for now)
-function approveOrder() {
-    alert("✅ Order Approved!");
-    closeModal();
-}
+//function approveOrder() {
+    //alert("✅ Order Approved!");
+    //closeModal();
+//}
 
 
 
@@ -381,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchOrders() {
-    fetch("http://192.168.1.65/backend/fetch_orders.php") // ✅ Adjust backend endpoint if needed
+    fetch("http://192.168.34.203/backend/fetch_orders.php") // ✅ Adjust backend endpoint if needed
         .then(response => response.json())
         .then(data => {
             console.log("📦 Orders Data:", data); // ✅ Debugging log
@@ -419,7 +440,7 @@ function deleteProduct(productId) {
 
     const shopOwnerId = localStorage.getItem('shop_owner_id'); 
 
-    fetch('http://192.168.1.65/backend/delete_product.php', {  
+    fetch('http://192.168.34.203/backend/delete_product.php', {  
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -439,7 +460,7 @@ function deleteProduct(productId) {
             document.getElementById(`product-${productId}`)?.remove();
 
             // ✅ FORCE MOBILE APP TO REFRESH PRODUCTS
-            fetch('http://192.168.1.65/backend/fetch_product.php?refresh=true')
+            fetch('http://192.168.34.203/backend/fetch_product.php?refresh=true')
                 .then(() => console.log("Mobile app will fetch latest products"));
 
             // ✅ WAIT FOR 1 SECOND, THEN REFRESH LIST
@@ -470,7 +491,7 @@ function filterProducts() {
     const category = document.getElementById('categoryFilter').value;
     const shopOwnerId = localStorage.getItem('shop_owner_id');
 
-    const url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+    const url = `http://192.168.34.203/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
     console.log(`Fetching products from: ${url}`);
 
     fetch(url)
@@ -492,23 +513,83 @@ function toggleAddForm(show) {
 
 function toggleEditForm(show) {
     const editSection = document.getElementById("editProductSection");
-    const overlay = document.getElementById("editOverlay");
 
-    if (!editSection || !overlay) {
-        console.error("❌ Error: Edit product form or overlay not found.");
+    if (!editSection) {
+        console.error("❌ Error: Edit product form not found.");
         return;
     }
 
     if (show) {
+        document.documentElement.style.setProperty('--scrollbar-width', `${getScrollbarWidth()}px`);
         editSection.style.display = "block";
-        overlay.style.display = "block";
+        document.body.classList.add("modal-open");
     } else {
+        document.documentElement.style.setProperty('--scrollbar-width', '0px');
         editSection.style.display = "none";
-        overlay.style.display = "none";
+        document.body.classList.remove("modal-open");
     }
 }
 
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Hide all modals on page load
+    document.querySelectorAll(".modal, .overlay, .floating-form, .floating-overlay").forEach(modal => {
+        modal.style.display = "none";
+    });
+
+    // Restore scroll when no modal is open
+    if (!document.body.classList.contains("modal-open")) {
+        document.body.style.overflow = "auto";
+    }
+
+
+    
+    // Fetch orders & products
+    fetchOrders();
+    fetchProducts();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".modal .close-btn, .modal .cancel-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            document.body.classList.remove("modal-open"); // Restore scroll when closing modal
+        });
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".modal .close-btn, .modal .cancel-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            toggleModal(button.closest(".modal").id, false); // Close modal properly
+        });
+    });
+
+    // Ensure scroll restores after modals are closed
+    document.querySelectorAll(".modal").forEach(modal => {
+        modal.addEventListener("click", function (event) {
+            if (event.target === modal) { // Close modal when clicking outside
+                toggleModal(modal.id, false);
+            }
+        });
+    });
+});
+
+function toggleModal(modalId, show) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = show ? "flex" : "none";
+        document.body.classList.toggle("modal-open", show);
+    }
+}
+
+function toggleEditForm(show) {
+    const editSection = document.getElementById("editProductSection");
+    if (!editSection) return;
+    editSection.style.display = show ? "block" : "none";
+    document.body.classList.toggle("modal-open", show);
+}
 
 
 

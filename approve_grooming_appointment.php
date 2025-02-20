@@ -4,7 +4,7 @@ header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
-include "db.php"; // Database connection
+include "db.php"; // Database connectionS
 
 // Get the raw input
 $data = json_decode(file_get_contents("php://input"), true);

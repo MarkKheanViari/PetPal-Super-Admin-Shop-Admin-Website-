@@ -12,17 +12,14 @@
         <div class="nav-left">
             <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo">
         </div>
-        <div class="nav-right">
-            <a href="dashboard.html" class="nav-link">Dashboard</a>
-            <a href="#" class="nav-link active">Orders & Products</a>
-            <a href="grooming-services.html" class="nav-link">Grooming Services</a>
-            <a href="veterinary-services.html" class="nav-link">Veterinary Services</a>
-            <div class="search-container">
-                <input type="search" placeholder="Search in site...">
-                <button class="search-btn">🔍</button>
-            </div>
-        </div>
+        <ul class="nav-right">
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="index.html" class="nav-link active">Orders & Products</a></li>
+            <li><a href="grooming-services.html" class="nav-link">Grooming Services</a></li>
+            <li><a href="veterinary-services.html" class="nav-link">Veterinary Services</a></li>
+        </ul>
     </nav>
+    
     <header class="seller-header">
         <div class="seller-info">
             <div class="seller-avatar"></div>
@@ -38,12 +35,7 @@
         </div>
     </header>
 
-    <section class="orders">
-        <h2>Recent Orders</h2>
-        <div id="ordersContainer" class="orders-list">
-            <!-- Orders will be dynamically added here -->
-        </div>
-    </section>
+    
     
 
   <!-- Order Details Modal -->
@@ -68,17 +60,19 @@
 
         <!-- Modal Buttons -->
         <div class="modal-buttons">
-            <button class="cancel-btn" onclick="closeModal()">Cancel</button>
-            <button class="approve-btn" onclick="approveOrder()">Approve</button>
+            <button class="cancel-btn" type="button" onclick="toggleModal('orderModal', false)">Cancel</button>
+            <button class="approve-btn" onclick="toggleModal('orderModal', false)">Approve</button>
         </div>
     </div>
 </div>
 
-
-
-
-
     <main class="content">
+        <section class="recent-orders">
+            <h2>Recent Orders</h2>
+            <div id="ordersContainer" class="orders-list">
+                <!-- Orders will be dynamically added here -->
+            </div>
+        </section>
         <!-- Add Product Modal -->
         <section class="product-inventory">
             <div class="section-header">
@@ -166,7 +160,7 @@
             <!-- Image Preview -->
             <img id="editProductImagePreview" src="" alt="Product Image" style="width: 100px; height: 100px; object-fit: cover; display: none;">
             <div class="form-action">
-                <button type="button" class="cancel" onclick="toggleEditForm(false)">Cancel</button>
+                <button type="button" class="cancel" onclick="closeEditForm()">Cancel</button>
                 <button type="submit" class="add">Update Product</button>
             </div>
         </form>
@@ -182,12 +176,12 @@
         </select>
     </div>
     </main>
-    <footer>
+    <footer class="footer">
         <nav class="footer-nav">
-            <a href="#" class="footer-link">About Us</a>
-            <a href="#" class="footer-link">Contact Us</a>
-            <a href="#" class="footer-link">Terms and Conditions</a>
-            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="about_us.html" class="footer-link">About Us</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="terms.html" class="footer-link">Terms and Conditions</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
         </nav>
     </footer>
 
