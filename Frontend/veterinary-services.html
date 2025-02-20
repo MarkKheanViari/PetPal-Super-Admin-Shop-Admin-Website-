@@ -4,136 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetPal - Veterinary Services</title>
-    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="veterinary.css">
 </head>
 
-<style>
-    /* Popup (Modal) Styling */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    background: white;
-    margin: 10% auto;
-    padding: 20px;
-    width: 60%;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.close-btn {
-    background: #ff6600;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-.close-btn:hover {
-    background: #cc5200;
-}
-
-.approve-btn {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-.approve-btn:hover {
-    background: #218838;
-}
-
-.appointment-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 15px;
-}
-
-.appointment-content {
-    display: flex;
-    align-items: center;
-}
-
-.pet-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    margin-right: 15px;
-    background: #f2f2f2;
-}
-
-.appointment-details {
-    flex-grow: 1;
-}
-
-.appointment-date {
-    text-align: right;
-    font-weight: bold;
-}
-
-.status {
-    padding: 4px 8px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    display: inline-block;
-    margin-left: 10px;
-}
-
-.status.pending {
-    background: orange;
-    color: white;
-}
-
-.status.approved {
-    background: green;
-    color: white;
-}
-
-.status.declined {
-    background: red;
-    color: white;
-}
-
-
-
-
-</style>
 <body>
     <nav class="navbar">
         <div class="nav-left">
             <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo">
         </div>
-        <div class="nav-right">
-            <a href="dashboard.html" class="nav-link">Dashboard</a>
-            <a href="index.html" class="nav-link">Orders & Products</a>
-            <a href="grooming-services.html" class="nav-link">Grooming Services</a>
-            <a href="#" class="nav-link active">Veterinary Services</a>
-            <div class="search-container">
-                <input type="search" placeholder="Search in site">
-                <button class="search-btn">🔍</button>
-            </div>
-        </div>
+        <ul class="nav-right">
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="index.html" class="nav-link">Orders & Products</a></li>
+            <li><a href="grooming-services.html" class="nav-link">Grooming Services</a></li>
+            <li><a href="veterinary-services.html" class="nav-link active">Veterinary Services</a></li>
+        </ul>
     </nav>
+    
 
     <header class="seller-header">
         <div class="seller-info">
@@ -154,183 +40,67 @@
         <section class="appointments">
             <h2>Veterinary Appointments</h2>
             <div id="veterinaryAppointmentsContainer">
-                <!-- Veterinary appointments will be loaded here -->
+                
             </div>
         </section>
     </main>
 
-    <!-- Modal (Popup) for Veterinary Details -->
+    <!-- Modal (Popup)  -->
     <div id="vetAppointmentModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeVetModal()">&times;</span>
-            <h2>Veterinary Appointment Details</h2>
+            <div class="service-head">
+                <h2>Veterinary Appointment Details</h2>
+                <button class="cancel-btn" onclick="closeVetModal()">&times;</button>
+            </div>
     
-            <h3>Customer Details</h3>
-            <p><strong>Name:</strong> <span id="vetModalCustomerName"></span></p>
-            <p><strong>Address:</strong> <span id="vetModalCustomerAddress"></span></p>
-            <p><strong>Contact No:</strong> <span id="vetModalCustomerPhone"></span></p>
+            <div class="modal-section">
+                <h3>Customer Details</h3>
+                <p><strong>Address:</strong> <span id="vetModalCustomerAddress"></span></p>
+                <p><strong>Name:</strong> <span id="vetModalCustomerName"></span></p>
+                <p> <p><strong>Contact No:</strong> <span id="vetModalCustomerPhone"></span></p>
+            </div>
     
-            <h3>Pet Details</h3>
-            <p><strong>Pet Name:</strong> <span id="vetModalPetName"></span></p>
-            <p><strong>Pet Breed:</strong> <span id="vetModalPetBreed"></span></p>
+            <div class="modal-section">
+                <h3>Pet Details</h3>
+                <p><strong>Pet Name:</strong> <span id="vetModalPetName"></span></p>
+                <p><strong>Pet Breed:</strong> <span id="vetModalPetBreed"></span></p>
+            </div>
     
-            <h3>Veterinary Details</h3>
-            <p><strong>Type of Checkup:</strong> <span id="vetModalCheckupType"></span></p>
-            <p><strong>Notes:</strong> <span id="vetModalNotes"></span></p>
+            <div class="modal-section">
+                <h3>Veterinary Details</h3>
+                <p><strong>Type of Checkup:</strong> <span id="vetModalCheckupType"></span></p>
+                <p><strong>Notes:</strong> <span id="vetModalNotes"></span></p>
+            </div>
     
-            <h3>Scheduled Date</h3>
-            <p><strong>Date:</strong> <span id="vetModalDate"></span></p>
+            <div class="modal-section">
+                <h3>Scheduled Date</h3>
+                <p><strong>Date:</strong> <span id="vetModalDate"></span></p>
+            </div>
     
             <!-- Approve and Decline Buttons inside the Modal -->
-            <button class="approve-btn" onclick="approveVeterinaryAppointment()">Approve</button>
-            <button class="decline-btn" onclick="declineVeterinaryAppointment()">Decline</button>
-
-            <button class="close-btn" onclick="closeVetModal()">Close</button>
+            <div class="modal-buttons">
+                <button class="approve-btn" onclick="approveVeterinaryAppointment()">Approve</button>
+                <button class="decline-btn" onclick="declineVeterinaryAppointment()">Decline</button>
+            </div>
         </div>
     </div>
     
 
-    <footer>
+    <footer class="footer">
         <nav class="footer-nav">
-            <a href="#" class="footer-link">About Us</a>
-            <a href="#" class="footer-link">Contact Us</a>
-            <a href="#" class="footer-link">Terms and Conditions</a>
-            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="about_us.html" class="footer-link">About Us</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="terms.html" class="footer-link">Terms and Conditions</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
         </nav>
     </footer>
+    <!--
+    <li class="search-container">
+        <input type="search" placeholder="Search in site...">
+        <button class="search-btn">🔍</button>
+    </li>-->
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch("http://192.168.1.65/backend/fetch_veterinary_appointments.php")
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        displayAppointments(data.appointments, "veterinaryAppointmentsContainer");
-                    } else {
-                        document.getElementById("veterinaryAppointmentsContainer").innerHTML = "<p>No veterinary appointments found.</p>";
-                    }
-                })
-                .catch(error => console.error("Error fetching veterinary appointments:", error));
-        });
-        
-        function displayAppointments(appointments, containerId) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-        
-            container.innerHTML = ""; // Clear previous data
-        
-            appointments.forEach(appointment => {
-                const appointmentDiv = document.createElement("div");
-                appointmentDiv.classList.add("appointment-card");
-        
-                // Format date
-                const formattedDate = appointment.appointment_date !== "N/A" ? appointment.appointment_date : "Not Set";
-        
-                // ✅ Add color-coded status badge
-                let statusBadge = `<span class="status pending">Pending</span>`;
-                if (appointment.status === "Approved") {
-                    statusBadge = `<span class="status approved">Approved</span>`;
-                } else if (appointment.status === "Declined") {
-                    statusBadge = `<span class="status declined">Declined</span>`;
-                }
-        
-                appointmentDiv.innerHTML = `
-                    <div class="appointment-wrapper">
-                        <div class="appointment-content">
-                            <img src="default-placeholder.png" alt="Pet Image" class="pet-image">
-                            <div class="appointment-details">
-                                <h3>${appointment.checkup_type} ${statusBadge}</h3>
-                                <p><strong>Customer:</strong> ${appointment.name}</p>
-                                <p><strong>Pet:</strong> ${appointment.pet_name} (${appointment.pet_breed})</p>
-                                <p><strong>Date:</strong> ${formattedDate}</p>
-                                <button class="view-details-btn" onclick='showVetDetails(${JSON.stringify(appointment)})'>View Details</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(appointmentDiv);
-            });
-        }
-        
-        // Function to show the popup (modal)
-        function showVetDetails(appointment) {
-    const updateField = (id, value) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.innerText = value ? value : "N/A"; // If value is null, set "N/A"
-        } else {
-            console.error(`❌ Element with ID '${id}' not found.`);
-        }
-    };
-
-    updateField("vetModalCustomerName", appointment.name);
-    updateField("vetModalCustomerAddress", appointment.address);
-    updateField("vetModalCustomerPhone", appointment.phone_number);
-    updateField("vetModalPetName", appointment.pet_name);
-    updateField("vetModalPetBreed", appointment.pet_breed);
-    updateField("vetModalCheckupType", appointment.checkup_type);
-    updateField("vetModalNotes", appointment.notes);
-    updateField("vetModalDate", appointment.appointment_date);
-    updateField("vetModalStatus", appointment.status);
-
-    document.getElementById("vetAppointmentModal").setAttribute("data-id", appointment.id);
-    document.getElementById("vetAppointmentModal").style.display = "block";
-}
-
-
-        
-        // ✅ Function to approve a veterinary appointment
-        function approveVeterinaryAppointment() {
-            const appointmentId = document.getElementById("vetAppointmentModal").getAttribute("data-id");
-        
-            fetch("http://192.168.1.65/backend/approve_veterinary_appointment.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ appointment_id: appointmentId, status: "Approved" })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("Appointment Approved!");
-                    location.reload();
-                } else {
-                    alert("Error: " + data.message);
-                }
-            })
-            .catch(error => console.error("Error:", error));
-        }
-        
-        // ✅ Function to decline a veterinary appointment
-        function declineVeterinaryAppointment() {
-            const appointmentId = document.getElementById("vetAppointmentModal").getAttribute("data-id");
-        
-            fetch("http://192.168.1.65/backend/approve_veterinary_appointment.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ appointment_id: appointmentId, status: "Declined" })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("Appointment Declined.");
-                    location.reload();
-                } else {
-                    alert("Error: " + data.message);
-                }
-            })
-            .catch(error => console.error("Error:", error));
-        }
-
-        function closeVetModal() {
-    const modal = document.getElementById("vetAppointmentModal");
-    if (modal) {
-        modal.style.display = "none";
-    } else {
-        console.error("❌ Modal element with ID 'vetAppointmentModal' not found.");
-    }
-}
-
-        </script>
+    <script src="veterinary.js"></script>
         
 </body>
 </html>

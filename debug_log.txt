@@ -1,6 +1,6 @@
 Array
 (
-    [appointment_id] => 3
+    [appointment_id] => 1
     [status] => Approved
 )
 Row Data: Array
@@ -29,7 +29,7 @@ Row Data: Array
     [notes] => haha
     [appointment_date] => 02/26/2025
     [payment_method] => Cash (on site)
-    [status] => Pending
+    [status] => Approved
 )
 Row Data: Array
 (
@@ -44,6 +44,48 @@ Row Data: Array
     [appointment_date] => 04/10/2025
     [payment_method] => Cash (on site)
     [status] => Approved
+)
+Row Data: Array
+(
+    [id] => 4
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 5
+    [name] => justin kurt munar
+    [address] => sagudbbahely
+    [phone_number] => 09084538768
+    [pet_name] => percy
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => ingatan niyo si percy
+    [appointment_date] => 04/10/2025
+    [payment_method] => Cash (on site)
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 6
+    [name] => posang nakabitin
+    [address] => #009
+    [phone_number] => 09457403298
+    [pet_name] => justin
+    [pet_breed] => bull dog
+    [groom_type] => full
+    [notes] => ano lahat kalbuhin mo
+    [appointment_date] => 02/28/2025
+    [payment_method] => Gcash
+    [status] => Pending
 )
 Final Response: Array
 (
@@ -77,7 +119,7 @@ Final Response: Array
                     [notes] => haha
                     [appointment_date] => 02/26/2025
                     [payment_method] => Cash (on site)
-                    [status] => Pending
+                    [status] => Approved
                 )
 
             [2] => Array
@@ -93,6 +135,51 @@ Final Response: Array
                     [appointment_date] => 04/10/2025
                     [payment_method] => Cash (on site)
                     [status] => Approved
+                )
+
+            [3] => Array
+                (
+                    [id] => 4
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [4] => Array
+                (
+                    [id] => 5
+                    [name] => justin kurt munar
+                    [address] => sagudbbahely
+                    [phone_number] => 09084538768
+                    [pet_name] => percy
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => ingatan niyo si percy
+                    [appointment_date] => 04/10/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Declined
+                )
+
+            [5] => Array
+                (
+                    [id] => 6
+                    [name] => posang nakabitin
+                    [address] => #009
+                    [phone_number] => 09457403298
+                    [pet_name] => justin
+                    [pet_breed] => bull dog
+                    [groom_type] => full
+                    [notes] => ano lahat kalbuhin mo
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Gcash
+                    [status] => Pending
                 )
 
         )
@@ -124,7 +211,7 @@ Row Data: Array
     [notes] => haha
     [appointment_date] => 02/26/2025
     [payment_method] => Cash (on site)
-    [status] => Pending
+    [status] => Approved
 )
 Row Data: Array
 (
@@ -139,6 +226,48 @@ Row Data: Array
     [appointment_date] => 04/10/2025
     [payment_method] => Cash (on site)
     [status] => Approved
+)
+Row Data: Array
+(
+    [id] => 4
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 5
+    [name] => justin kurt munar
+    [address] => sagudbbahely
+    [phone_number] => 09084538768
+    [pet_name] => percy
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => ingatan niyo si percy
+    [appointment_date] => 04/10/2025
+    [payment_method] => Cash (on site)
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 6
+    [name] => posang nakabitin
+    [address] => #009
+    [phone_number] => 09457403298
+    [pet_name] => justin
+    [pet_breed] => bull dog
+    [groom_type] => full
+    [notes] => ano lahat kalbuhin mo
+    [appointment_date] => 02/28/2025
+    [payment_method] => Gcash
+    [status] => Pending
 )
 Final Response: Array
 (
@@ -172,7 +301,7 @@ Final Response: Array
                     [notes] => haha
                     [appointment_date] => 02/26/2025
                     [payment_method] => Cash (on site)
-                    [status] => Pending
+                    [status] => Approved
                 )
 
             [2] => Array
@@ -188,6 +317,51 @@ Final Response: Array
                     [appointment_date] => 04/10/2025
                     [payment_method] => Cash (on site)
                     [status] => Approved
+                )
+
+            [3] => Array
+                (
+                    [id] => 4
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [4] => Array
+                (
+                    [id] => 5
+                    [name] => justin kurt munar
+                    [address] => sagudbbahely
+                    [phone_number] => 09084538768
+                    [pet_name] => percy
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => ingatan niyo si percy
+                    [appointment_date] => 04/10/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Declined
+                )
+
+            [5] => Array
+                (
+                    [id] => 6
+                    [name] => posang nakabitin
+                    [address] => #009
+                    [phone_number] => 09457403298
+                    [pet_name] => justin
+                    [pet_breed] => bull dog
+                    [groom_type] => full
+                    [notes] => ano lahat kalbuhin mo
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Gcash
+                    [status] => Pending
                 )
 
         )
@@ -219,7 +393,7 @@ Row Data: Array
     [notes] => haha
     [appointment_date] => 02/26/2025
     [payment_method] => Cash (on site)
-    [status] => Pending
+    [status] => Approved
 )
 Row Data: Array
 (
@@ -234,6 +408,48 @@ Row Data: Array
     [appointment_date] => 04/10/2025
     [payment_method] => Cash (on site)
     [status] => Approved
+)
+Row Data: Array
+(
+    [id] => 4
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 5
+    [name] => justin kurt munar
+    [address] => sagudbbahely
+    [phone_number] => 09084538768
+    [pet_name] => percy
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => ingatan niyo si percy
+    [appointment_date] => 04/10/2025
+    [payment_method] => Cash (on site)
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 6
+    [name] => posang nakabitin
+    [address] => #009
+    [phone_number] => 09457403298
+    [pet_name] => justin
+    [pet_breed] => bull dog
+    [groom_type] => full
+    [notes] => ano lahat kalbuhin mo
+    [appointment_date] => 02/28/2025
+    [payment_method] => Gcash
+    [status] => Pending
 )
 Final Response: Array
 (
@@ -267,7 +483,7 @@ Final Response: Array
                     [notes] => haha
                     [appointment_date] => 02/26/2025
                     [payment_method] => Cash (on site)
-                    [status] => Pending
+                    [status] => Approved
                 )
 
             [2] => Array
@@ -283,6 +499,51 @@ Final Response: Array
                     [appointment_date] => 04/10/2025
                     [payment_method] => Cash (on site)
                     [status] => Approved
+                )
+
+            [3] => Array
+                (
+                    [id] => 4
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [4] => Array
+                (
+                    [id] => 5
+                    [name] => justin kurt munar
+                    [address] => sagudbbahely
+                    [phone_number] => 09084538768
+                    [pet_name] => percy
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => ingatan niyo si percy
+                    [appointment_date] => 04/10/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Declined
+                )
+
+            [5] => Array
+                (
+                    [id] => 6
+                    [name] => posang nakabitin
+                    [address] => #009
+                    [phone_number] => 09457403298
+                    [pet_name] => justin
+                    [pet_breed] => bull dog
+                    [groom_type] => full
+                    [notes] => ano lahat kalbuhin mo
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Gcash
+                    [status] => Pending
                 )
 
         )
@@ -314,7 +575,7 @@ Row Data: Array
     [notes] => haha
     [appointment_date] => 02/26/2025
     [payment_method] => Cash (on site)
-    [status] => Pending
+    [status] => Approved
 )
 Row Data: Array
 (
@@ -329,6 +590,48 @@ Row Data: Array
     [appointment_date] => 04/10/2025
     [payment_method] => Cash (on site)
     [status] => Approved
+)
+Row Data: Array
+(
+    [id] => 4
+    [name] => John Doe
+    [address] => 123 Main St
+    [phone_number] => 09123456789
+    [pet_name] => Buddy
+    [pet_breed] => Dog
+    [groom_type] => Full Groom
+    [notes] => No issues
+    [appointment_date] => 02/18/2025
+    [payment_method] => Cash
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 5
+    [name] => justin kurt munar
+    [address] => sagudbbahely
+    [phone_number] => 09084538768
+    [pet_name] => percy
+    [pet_breed] => Cat
+    [groom_type] => Ear Cleaning
+    [notes] => ingatan niyo si percy
+    [appointment_date] => 04/10/2025
+    [payment_method] => Cash (on site)
+    [status] => Declined
+)
+Row Data: Array
+(
+    [id] => 6
+    [name] => posang nakabitin
+    [address] => #009
+    [phone_number] => 09457403298
+    [pet_name] => justin
+    [pet_breed] => bull dog
+    [groom_type] => full
+    [notes] => ano lahat kalbuhin mo
+    [appointment_date] => 02/28/2025
+    [payment_method] => Gcash
+    [status] => Pending
 )
 Final Response: Array
 (
@@ -362,7 +665,7 @@ Final Response: Array
                     [notes] => haha
                     [appointment_date] => 02/26/2025
                     [payment_method] => Cash (on site)
-                    [status] => Pending
+                    [status] => Approved
                 )
 
             [2] => Array
@@ -378,6 +681,51 @@ Final Response: Array
                     [appointment_date] => 04/10/2025
                     [payment_method] => Cash (on site)
                     [status] => Approved
+                )
+
+            [3] => Array
+                (
+                    [id] => 4
+                    [name] => John Doe
+                    [address] => 123 Main St
+                    [phone_number] => 09123456789
+                    [pet_name] => Buddy
+                    [pet_breed] => Dog
+                    [groom_type] => Full Groom
+                    [notes] => No issues
+                    [appointment_date] => 02/18/2025
+                    [payment_method] => Cash
+                    [status] => Declined
+                )
+
+            [4] => Array
+                (
+                    [id] => 5
+                    [name] => justin kurt munar
+                    [address] => sagudbbahely
+                    [phone_number] => 09084538768
+                    [pet_name] => percy
+                    [pet_breed] => Cat
+                    [groom_type] => Ear Cleaning
+                    [notes] => ingatan niyo si percy
+                    [appointment_date] => 04/10/2025
+                    [payment_method] => Cash (on site)
+                    [status] => Declined
+                )
+
+            [5] => Array
+                (
+                    [id] => 6
+                    [name] => posang nakabitin
+                    [address] => #009
+                    [phone_number] => 09457403298
+                    [pet_name] => justin
+                    [pet_breed] => bull dog
+                    [groom_type] => full
+                    [notes] => ano lahat kalbuhin mo
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Gcash
+                    [status] => Pending
                 )
 
         )
@@ -409,7 +757,7 @@ Row Data: Array
     [notes] => haha
     [appointment_date] => 02/26/2025
     [payment_method] => Cash (on site)
-    [status] => Pending
+    [status] => Approved
 )
 Row Data: Array
 (
@@ -425,62 +773,9 @@ Row Data: Array
     [payment_method] => Cash (on site)
     [status] => Approved
 )
-Final Response: Array
-(
-    [success] => 1
-    [appointments] => Array
-        (
-            [0] => Array
-                (
-                    [id] => 1
-                    [name] => John Doe
-                    [address] => 123 Main St
-                    [phone_number] => 09123456789
-                    [pet_name] => Buddy
-                    [pet_breed] => Dog
-                    [groom_type] => Full Groom
-                    [notes] => No issues
-                    [appointment_date] => 02/18/2025
-                    [payment_method] => Cash
-                    [status] => Declined
-                )
-
-            [1] => Array
-                (
-                    [id] => 2
-                    [name] => haha
-                    [address] => haha
-                    [phone_number] => 6464
-                    [pet_name] => haha
-                    [pet_breed] => Cat
-                    [groom_type] => Ear Cleaning
-                    [notes] => haha
-                    [appointment_date] => 02/26/2025
-                    [payment_method] => Cash (on site)
-                    [status] => Pending
-                )
-
-            [2] => Array
-                (
-                    [id] => 3
-                    [name] => elisa
-                    [address] => sagudbbahely
-                    [phone_number] => 09084538768
-                    [pet_name] => percy
-                    [pet_breed] => Cat
-                    [groom_type] => Ear Cleaning
-                    [notes] => ingatan niyo si percy
-                    [appointment_date] => 04/10/2025
-                    [payment_method] => Cash (on site)
-                    [status] => Approved
-                )
-
-        )
-
-)
 Row Data: Array
 (
-    [id] => 1
+    [id] => 4
     [name] => John Doe
     [address] => 123 Main St
     [phone_number] => 09123456789
@@ -494,22 +789,8 @@ Row Data: Array
 )
 Row Data: Array
 (
-    [id] => 2
-    [name] => haha
-    [address] => haha
-    [phone_number] => 6464
-    [pet_name] => haha
-    [pet_breed] => Cat
-    [groom_type] => Ear Cleaning
-    [notes] => haha
-    [appointment_date] => 02/26/2025
-    [payment_method] => Cash (on site)
-    [status] => Pending
-)
-Row Data: Array
-(
-    [id] => 3
-    [name] => elisa
+    [id] => 5
+    [name] => justin kurt munar
     [address] => sagudbbahely
     [phone_number] => 09084538768
     [pet_name] => percy
@@ -518,102 +799,21 @@ Row Data: Array
     [notes] => ingatan niyo si percy
     [appointment_date] => 04/10/2025
     [payment_method] => Cash (on site)
-    [status] => Approved
-)
-Final Response: Array
-(
-    [success] => 1
-    [appointments] => Array
-        (
-            [0] => Array
-                (
-                    [id] => 1
-                    [name] => John Doe
-                    [address] => 123 Main St
-                    [phone_number] => 09123456789
-                    [pet_name] => Buddy
-                    [pet_breed] => Dog
-                    [groom_type] => Full Groom
-                    [notes] => No issues
-                    [appointment_date] => 02/18/2025
-                    [payment_method] => Cash
-                    [status] => Declined
-                )
-
-            [1] => Array
-                (
-                    [id] => 2
-                    [name] => haha
-                    [address] => haha
-                    [phone_number] => 6464
-                    [pet_name] => haha
-                    [pet_breed] => Cat
-                    [groom_type] => Ear Cleaning
-                    [notes] => haha
-                    [appointment_date] => 02/26/2025
-                    [payment_method] => Cash (on site)
-                    [status] => Pending
-                )
-
-            [2] => Array
-                (
-                    [id] => 3
-                    [name] => elisa
-                    [address] => sagudbbahely
-                    [phone_number] => 09084538768
-                    [pet_name] => percy
-                    [pet_breed] => Cat
-                    [groom_type] => Ear Cleaning
-                    [notes] => ingatan niyo si percy
-                    [appointment_date] => 04/10/2025
-                    [payment_method] => Cash (on site)
-                    [status] => Approved
-                )
-
-        )
-
-)
-Row Data: Array
-(
-    [id] => 1
-    [name] => John Doe
-    [address] => 123 Main St
-    [phone_number] => 09123456789
-    [pet_name] => Buddy
-    [pet_breed] => Dog
-    [groom_type] => Full Groom
-    [notes] => No issues
-    [appointment_date] => 02/18/2025
-    [payment_method] => Cash
     [status] => Declined
 )
 Row Data: Array
 (
-    [id] => 2
-    [name] => haha
-    [address] => haha
-    [phone_number] => 6464
-    [pet_name] => haha
-    [pet_breed] => Cat
-    [groom_type] => Ear Cleaning
-    [notes] => haha
-    [appointment_date] => 02/26/2025
-    [payment_method] => Cash (on site)
+    [id] => 6
+    [name] => posang nakabitin
+    [address] => #009
+    [phone_number] => 09457403298
+    [pet_name] => justin
+    [pet_breed] => bull dog
+    [groom_type] => full
+    [notes] => ano lahat kalbuhin mo
+    [appointment_date] => 02/28/2025
+    [payment_method] => Gcash
     [status] => Pending
-)
-Row Data: Array
-(
-    [id] => 3
-    [name] => elisa
-    [address] => sagudbbahely
-    [phone_number] => 09084538768
-    [pet_name] => percy
-    [pet_breed] => Cat
-    [groom_type] => Ear Cleaning
-    [notes] => ingatan niyo si percy
-    [appointment_date] => 04/10/2025
-    [payment_method] => Cash (on site)
-    [status] => Approved
 )
 Final Response: Array
 (
@@ -647,7 +847,7 @@ Final Response: Array
                     [notes] => haha
                     [appointment_date] => 02/26/2025
                     [payment_method] => Cash (on site)
-                    [status] => Pending
+                    [status] => Approved
                 )
 
             [2] => Array
@@ -665,59 +865,9 @@ Final Response: Array
                     [status] => Approved
                 )
 
-        )
-
-)
-Row Data: Array
-(
-    [id] => 1
-    [name] => John Doe
-    [address] => 123 Main St
-    [phone_number] => 09123456789
-    [pet_name] => Buddy
-    [pet_breed] => Dog
-    [groom_type] => Full Groom
-    [notes] => No issues
-    [appointment_date] => 02/18/2025
-    [payment_method] => Cash
-    [status] => Declined
-)
-Row Data: Array
-(
-    [id] => 2
-    [name] => haha
-    [address] => haha
-    [phone_number] => 6464
-    [pet_name] => haha
-    [pet_breed] => Cat
-    [groom_type] => Ear Cleaning
-    [notes] => haha
-    [appointment_date] => 02/26/2025
-    [payment_method] => Cash (on site)
-    [status] => Pending
-)
-Row Data: Array
-(
-    [id] => 3
-    [name] => elisa
-    [address] => sagudbbahely
-    [phone_number] => 09084538768
-    [pet_name] => percy
-    [pet_breed] => Cat
-    [groom_type] => Ear Cleaning
-    [notes] => ingatan niyo si percy
-    [appointment_date] => 04/10/2025
-    [payment_method] => Cash (on site)
-    [status] => Approved
-)
-Final Response: Array
-(
-    [success] => 1
-    [appointments] => Array
-        (
-            [0] => Array
+            [3] => Array
                 (
-                    [id] => 1
+                    [id] => 4
                     [name] => John Doe
                     [address] => 123 Main St
                     [phone_number] => 09123456789
@@ -730,25 +880,10 @@ Final Response: Array
                     [status] => Declined
                 )
 
-            [1] => Array
+            [4] => Array
                 (
-                    [id] => 2
-                    [name] => haha
-                    [address] => haha
-                    [phone_number] => 6464
-                    [pet_name] => haha
-                    [pet_breed] => Cat
-                    [groom_type] => Ear Cleaning
-                    [notes] => haha
-                    [appointment_date] => 02/26/2025
-                    [payment_method] => Cash (on site)
-                    [status] => Pending
-                )
-
-            [2] => Array
-                (
-                    [id] => 3
-                    [name] => elisa
+                    [id] => 5
+                    [name] => justin kurt munar
                     [address] => sagudbbahely
                     [phone_number] => 09084538768
                     [pet_name] => percy
@@ -757,197 +892,22 @@ Final Response: Array
                     [notes] => ingatan niyo si percy
                     [appointment_date] => 04/10/2025
                     [payment_method] => Cash (on site)
-                    [status] => Approved
-                )
-
-        )
-
-)
-Row Data: Array
-(
-    [id] => 1
-    [name] => John Doe
-    [address] => 123 Main St
-    [phone_number] => 09123456789
-    [pet_name] => Buddy
-    [pet_breed] => Dog
-    [groom_type] => Full Groom
-    [notes] => No issues
-    [appointment_date] => 02/18/2025
-    [payment_method] => Cash
-    [status] => Declined
-)
-Row Data: Array
-(
-    [id] => 2
-    [name] => haha
-    [address] => haha
-    [phone_number] => 6464
-    [pet_name] => haha
-    [pet_breed] => Cat
-    [groom_type] => Ear Cleaning
-    [notes] => haha
-    [appointment_date] => 02/26/2025
-    [payment_method] => Cash (on site)
-    [status] => Pending
-)
-Row Data: Array
-(
-    [id] => 3
-    [name] => elisa
-    [address] => sagudbbahely
-    [phone_number] => 09084538768
-    [pet_name] => percy
-    [pet_breed] => Cat
-    [groom_type] => Ear Cleaning
-    [notes] => ingatan niyo si percy
-    [appointment_date] => 04/10/2025
-    [payment_method] => Cash (on site)
-    [status] => Approved
-)
-Final Response: Array
-(
-    [success] => 1
-    [appointments] => Array
-        (
-            [0] => Array
-                (
-                    [id] => 1
-                    [name] => John Doe
-                    [address] => 123 Main St
-                    [phone_number] => 09123456789
-                    [pet_name] => Buddy
-                    [pet_breed] => Dog
-                    [groom_type] => Full Groom
-                    [notes] => No issues
-                    [appointment_date] => 02/18/2025
-                    [payment_method] => Cash
                     [status] => Declined
                 )
 
-            [1] => Array
+            [5] => Array
                 (
-                    [id] => 2
-                    [name] => haha
-                    [address] => haha
-                    [phone_number] => 6464
-                    [pet_name] => haha
-                    [pet_breed] => Cat
-                    [groom_type] => Ear Cleaning
-                    [notes] => haha
-                    [appointment_date] => 02/26/2025
-                    [payment_method] => Cash (on site)
+                    [id] => 6
+                    [name] => posang nakabitin
+                    [address] => #009
+                    [phone_number] => 09457403298
+                    [pet_name] => justin
+                    [pet_breed] => bull dog
+                    [groom_type] => full
+                    [notes] => ano lahat kalbuhin mo
+                    [appointment_date] => 02/28/2025
+                    [payment_method] => Gcash
                     [status] => Pending
-                )
-
-            [2] => Array
-                (
-                    [id] => 3
-                    [name] => elisa
-                    [address] => sagudbbahely
-                    [phone_number] => 09084538768
-                    [pet_name] => percy
-                    [pet_breed] => Cat
-                    [groom_type] => Ear Cleaning
-                    [notes] => ingatan niyo si percy
-                    [appointment_date] => 04/10/2025
-                    [payment_method] => Cash (on site)
-                    [status] => Approved
-                )
-
-        )
-
-)
-Row Data: Array
-(
-    [id] => 1
-    [name] => John Doe
-    [address] => 123 Main St
-    [phone_number] => 09123456789
-    [pet_name] => Buddy
-    [pet_breed] => Dog
-    [groom_type] => Full Groom
-    [notes] => No issues
-    [appointment_date] => 02/18/2025
-    [payment_method] => Cash
-    [status] => Declined
-)
-Row Data: Array
-(
-    [id] => 2
-    [name] => haha
-    [address] => haha
-    [phone_number] => 6464
-    [pet_name] => haha
-    [pet_breed] => Cat
-    [groom_type] => Ear Cleaning
-    [notes] => haha
-    [appointment_date] => 02/26/2025
-    [payment_method] => Cash (on site)
-    [status] => Pending
-)
-Row Data: Array
-(
-    [id] => 3
-    [name] => elisa
-    [address] => sagudbbahely
-    [phone_number] => 09084538768
-    [pet_name] => percy
-    [pet_breed] => Cat
-    [groom_type] => Ear Cleaning
-    [notes] => ingatan niyo si percy
-    [appointment_date] => 04/10/2025
-    [payment_method] => Cash (on site)
-    [status] => Approved
-)
-Final Response: Array
-(
-    [success] => 1
-    [appointments] => Array
-        (
-            [0] => Array
-                (
-                    [id] => 1
-                    [name] => John Doe
-                    [address] => 123 Main St
-                    [phone_number] => 09123456789
-                    [pet_name] => Buddy
-                    [pet_breed] => Dog
-                    [groom_type] => Full Groom
-                    [notes] => No issues
-                    [appointment_date] => 02/18/2025
-                    [payment_method] => Cash
-                    [status] => Declined
-                )
-
-            [1] => Array
-                (
-                    [id] => 2
-                    [name] => haha
-                    [address] => haha
-                    [phone_number] => 6464
-                    [pet_name] => haha
-                    [pet_breed] => Cat
-                    [groom_type] => Ear Cleaning
-                    [notes] => haha
-                    [appointment_date] => 02/26/2025
-                    [payment_method] => Cash (on site)
-                    [status] => Pending
-                )
-
-            [2] => Array
-                (
-                    [id] => 3
-                    [name] => elisa
-                    [address] => sagudbbahely
-                    [phone_number] => 09084538768
-                    [pet_name] => percy
-                    [pet_breed] => Cat
-                    [groom_type] => Ear Cleaning
-                    [notes] => ingatan niyo si percy
-                    [appointment_date] => 04/10/2025
-                    [payment_method] => Cash (on site)
-                    [status] => Approved
                 )
 
         )

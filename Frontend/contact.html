@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PetPal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .header {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .logo-text {
+            color: #e67e22;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-bar {
+            background-color: #e67e22;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            min-height: calc(100vh - 180px);
+        }
+
+        .content-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding-top: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding-top: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-control {
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            background-color: #f8d5b4;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background-color: #d35400;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-button:hover {
+            background-color: #a04000;
+        }
+
+        .footer {
+            background-color: #ffe4c4;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer-link:hover {
+            color: #e67e22;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo">
+    </header>
+
+    <nav class="nav-bar">
+        <button class="back-button">←</button>
+        <h2 class="nav-title">Contact Us</h2>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-text">
+            <h1>Contact us</h1>
+            <p class="description">
+                We'd love to hear from you! Whether you have questions about our products, services, or anything else, our team is here to help. Please reach out to us using the contact information below.
+            </p>
+        </div>
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" class="form-control" placeholder="Enter phone number">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" class="form-control" placeholder="We'd love to hear what you have to say" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <nav class="footer-nav">
+            <a href="about_us.html" class="footer-link">About Us</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="terms.html" class="footer-link">Terms and Conditions</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        </nav>
+    </footer>
+</body>
+</html>

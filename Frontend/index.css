@@ -6,6 +6,18 @@
     --footer-bg: #fff5eb;
     --border-color: #e5e7eb;
   }
+  /* Hide scrollbar for Chrome, Safari and Edge */
+::-webkit-scrollbar {
+  width: 0px;  /* Make scrollbar width 0 */
+  height: 0px; /* Hide horizontal scrollbar */
+}
+
+/* Optional: If you want smooth scrolling */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 11 */
+}
+
   
   * {
     box-sizing: border-box;
@@ -17,52 +29,128 @@
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     background-color: #f8fafc;
+    height: 100%;
   }
   
-  /* Navbar */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: white;
-    border-bottom: 1px solid var(--border-color);
-  }
-  
-  .logo {
-    height: 40px;
-  }
-  
-  .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-  
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px; /* Fixed padding */
+  background-color: white;
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+}
+
+/* Ensure logo remains correctly aligned */
+.logo {
+  height: 40px;
+}
+
+/* Navbar List (ul) */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Fixed spacing */
+  list-style: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+}
+
+/* Navbar List Items (li) */
+.nav-right li {
+  display: flex;
+  align-items: center;
+}
+
+/* Navbar Links */
+.nav-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 16px; /* Fixed font size */
+  font-weight: 500;
+  padding: 10px 20px; /* Fixed padding */
+  border-radius: 4px;
+  min-width: 20%; /* Ensures all links have the same width */
+  text-align: center;
+  display: inline-block; /* Ensures consistent spacing */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.nav-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 16px; /* Default font size */
+  font-weight: 500;
+  padding: 10px 20px; /* Default padding */
+  border-radius: 4px;
+  min-width: 160px; /* Ensures all links have the same width */
+  text-align: center;
+  display: inline-block; /* Ensures consistent spacing */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* 🔹 Adjust for tablets (max-width: 900px) */
+@media (max-width: 900px) {
   .nav-link {
-    text-decoration: none;
-    color: var(--text-color);
+    font-size: 14px; /* Smaller font */
+    padding: 8px 15px; /* Reduce padding */
+    min-width: 140px; /* Slightly reduce width */
   }
-  
-  .nav-link.active {
-    color: white;
-    background-color: var(--primary-color);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+}
+
+/* 🔹 Adjust for mobile screens (max-width: 600px) */
+@media (max-width: 600px) {
+  .nav-link {
+    font-size: 12px; /* Even smaller font */
+    padding: 6px 10px; /* Smaller padding */
+    min-width: auto; /* Allow flexible width */
+    display: block; /* Stack links in a column */
+    text-align: left; /* Align text left for better readability */
   }
-  
-  .search-container {
-    display: flex;
-    align-items: center;
+
+  /* Adjust navbar layout for smaller screens */
+  .nav-right {
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Reduce space between items */
   }
-  
-  .search-container input {
-    padding: 0.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    margin-right: 0.5rem;
-  }
-  
+}
+
+
+/* Active Navbar Item */
+.nav-link.active {
+  color: white;
+  background-color: var(--primary-color);
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-container input {
+  width: 200px; /* Fixed width for input */
+  height: 35px; /* Fixed height */
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+/* Search Button */
+.search-btn {
+  width: 40px;
+  height: 35px;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+
   /* Seller Header */
   .seller-header {
     background-color: var(--primary-color);
@@ -183,6 +271,7 @@
     padding: 0.5rem 1rem;
     border-radius: 4px;
     cursor: pointer;
+    margin-right: 20px;
   }
   
   .products-grid {
@@ -244,7 +333,7 @@
   }
   
   .overlay {
-    display: block; /* Ensure it appears */
+    display: none; /* Hide overlay by default */
     position: fixed;
     top: 50%;
     left: 50%;
@@ -254,6 +343,7 @@
     transform: translate(-50%, -50%);
     z-index: 1000;
 }
+
 
 
   
@@ -321,22 +411,58 @@
     justify-content: center;
 }
 
-/* Product Card - Fixed Size */
-.product-card {
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
-    
-    /* Fixed size */
-    width: 346px; /* Let it adjust within grid */
-    height: 320px; /* Adjust height as needed */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+/* Product Grid - Default for Desktop */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns per row on large screens */
+  gap: 15px;
+  padding: 20px;
+  justify-content: center;
 }
+
+/* Product Card */
+.product-card {
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  max-width: 350px; /* Ensures cards don’t get too large */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Adjustments */
+
+/* 🔹 Tablets (max-width: 900px) - Show 2 items per row */
+@media (max-width: 900px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 10px;
+  }
+}
+
+/* 🔹 Mobile (max-width: 600px) - Show 1 item per row */
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 column */
+    gap: 10px;
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  .product-card {
+    max-width: 100%; /* Full width on small screens */
+  }
+}
+
 
 .product-card:hover {
     transform: translateY(-5px);
@@ -507,26 +633,54 @@
     background: #f0f0f0;
 }
 
-/* Modal Overlay */
-.modal {
-  display: none;
+.black{
+  display: none; /* Hide modal by default */
   position: fixed;
   z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background */
+  
+  /* Center using flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  display: none; /* Hide modal by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background */
+  /* Center using flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Ensures perfect centering */
   background: white;
-  margin: 10% auto;
   padding: 20px;
   border-radius: 10px;
-  width: 40%;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; 
 }
+
+
 
 .modal-section {
   margin-bottom: 15px;
@@ -622,20 +776,27 @@ input, textarea, select {
 .close-btn:hover {
     color: red;
 }
+
+
+/* Ensure the floating form is centered and properly displayed */
 .floating-form {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffe6cc;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    z-index: 1000;
-    width: 600px;
-    max-width: 90%;
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffe6cc;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 1000;
+  width: 600px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto; /* Enable scrolling within the modal if needed */
+  
 }
+
 
 .floating-form h2 {
     text-align: center;
@@ -682,7 +843,7 @@ input, textarea, select {
   display: flex;
   flex-direction: column;
   gap: 15px; /* Space between orders */
-  max-width: 800px;
+  max-width: 1080px;
   margin: auto;
 }
 
@@ -695,6 +856,7 @@ input, textarea, select {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: 0.3s ease;
+  max-width: 1100px;
 }
 
 .order-card:hover {
@@ -744,31 +906,70 @@ input, textarea, select {
 }
 
 
-/* Modal Background */
+/* Prevent scrolling when modal is open */
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure modal content is scrollable inside */
+.modal-content {
+  max-height: 90vh; /* Prevents overflow issues */
+  overflow-y: auto;
+}
+
+/* Restore scrolling when modal is closed */
+body:not(.modal-open) {
+  overflow: auto !important;
+}
+
+
+body.floating-form-open {
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
 .modal {
-  display: none;
+  display: none; /* Hide modal by default */
   position: fixed;
   z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background */
+  
+  /* Center using flexbox */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Ensures perfect centering */
   background: white;
   padding: 20px;
   border-radius: 10px;
-  width: 60%;
-  max-width: 600px;
-  max-height: 80vh; /* Set max height */
-  overflow: auto; /* Enable scrolling inside modal */
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
 }
+
+
 
 
 
@@ -828,7 +1029,7 @@ body.modal-open {
 
 
 /* Footer */
-footer {
+.footer {
     background-color: var(--footer-bg);
     padding: 2rem;
     margin-top: 2rem;

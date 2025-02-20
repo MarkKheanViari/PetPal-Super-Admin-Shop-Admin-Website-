@@ -4,136 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetPal - Grooming Services</title>
-    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="grooming.css">
 </head>
 
-<style>
-    /* Popup (Modal) Styling */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    background: white;
-    margin: 10% auto;
-    padding: 20px;
-    width: 60%;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.close-btn {
-    background: #ff6600;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-.close-btn:hover {
-    background: #cc5200;
-}
-
-.approve-btn {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-.approve-btn:hover {
-    background: #218838;
-}
-
-.appointment-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 15px;
-}
-
-.appointment-content {
-    display: flex;
-    align-items: center;
-}
-
-.pet-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    margin-right: 15px;
-    background: #f2f2f2;
-}
-
-.appointment-details {
-    flex-grow: 1;
-}
-
-.appointment-date {
-    text-align: right;
-    font-weight: bold;
-}
-
-.status {
-    padding: 4px 8px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    display: inline-block;
-    margin-left: 10px;
-}
-
-.status.pending {
-    background: orange;
-    color: white;
-}
-
-.status.approved {
-    background: green;
-    color: white;
-}
-
-.status.declined {
-    background: red;
-    color: white;
-}
-
-
-
-</style>
 <body>
     <nav class="navbar">
         <div class="nav-left">
             <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo">
         </div>
-        <div class="nav-right">
-            <a href="dashboard.html" class="nav-link">Dashboard</a>
-            <a href="index.html" class="nav-link">Orders & Products</a>
-            <a href="#" class="nav-link active">Grooming Services</a>
-            <a href="veterinary-services.html" class="nav-link">Veterinary Services</a>
-            <div class="search-container">
-                <input type="search" placeholder="Search in site">
-                <button class="search-btn">🔍</button>
-            </div>
-        </div>
+        <ul class="nav-right">
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="index.html" class="nav-link">Orders & Products</a></li>
+            <li><a href="grooming-services.html" class="nav-link active">Grooming Services</a></li>
+            <li><a href="veterinary-services.html" class="nav-link">Veterinary Services</a></li>
+        </ul>
     </nav>
-
+    
     <header class="seller-header">
         <div class="seller-info">
             <div class="seller-avatar"></div>
@@ -146,194 +32,56 @@
         <button class="edit-profile">Edit Profile</button>
     </header>
 
-    
-    
-
     <main class="content">
         <section class="appointments">
             <h2>Grooming Schedule</h2>
-            <div id="groomingAppointmentsContainer">
-            </div>
+            <div id="groomingAppointmentsContainer"></div>
         </section>
     </main>
 
     <!-- Modal (Popup) -->
-    <!-- Modal (Popup) -->
-<div id="appointmentModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <h2>Grooming Appointment Details</h2>
-
-        <h3>Customer Details</h3>
-        <p><strong>Name:</strong> <span id="modalCustomerName"></span></p>
-        <p><strong>Address:</strong> <span id="modalCustomerAddress"></span></p>
-        <p><strong>Contact No:</strong> <span id="modalCustomerPhone"></span></p>
-
-        <h3>Pet Details</h3>
-        <p><strong>Pet Name:</strong> <span id="modalPetName"></span></p>
-        <p><strong>Pet Breed:</strong> <span id="modalPetBreed"></span></p>
-
-        <h3>Grooming Details</h3>
-        <p><strong>Type of Groom:</strong> <span id="modalGroomType"></span></p>
-        <p><strong>Notes:</strong> <span id="modalNotes"></span></p>
-
-        <h3>Scheduled Date</h3>
-        <p><strong>Date:</strong> <span id="modalDate"></span></p>
-
-        <!-- ✅ Approve and Decline Buttons -->
-        <button class="approve-btn" onclick="approveGroomingAppointment()">Approve</button>
-        <button class="decline-btn" onclick="declineGroomingAppointment()">Decline</button>
-
-        <button class="close-btn" onclick="closeModal()">Close</button>
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <div class="service-head">
+                <h2>Grooming Details</h2>
+                <button class="cancel-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-section">
+                <h3>Customer Details</h3>
+                <p><strong>Name:</strong> <span id="modalCustomerName"></span></p>
+                <p><strong>Address:</strong> <span id="modalCustomerAddress"></span></p>
+                <p><strong>Contact No:</strong> <span id="modalCustomerPhone"></span></p>
+            </div>
+            <div class="modal-section">
+                <h3>Pet Details</h3>
+                <p><strong>Pet Name:</strong> <span id="modalPetName"></span></p>
+                <p><strong>Pet Breed:</strong> <span id="modalPetBreed"></span></p>
+            </div>
+            <div class="modal-section">
+                <h3>Grooming Details</h3>
+                <p><strong>Type of Groom:</strong> <span id="modalGroomType"></span></p>
+                <p><strong>Notes:</strong> <span id="modalNotes"></span></p>
+            </div>
+            <div class="modal-section">
+                <h3>Scheduled Date</h3>
+                <p><strong>Date:</strong> <span id="modalDate"></span></p>
+            </div>
+            <div class="modal-buttons">
+                <button class="approve-btn" id="approveBtn">Approve</button>
+                <button class="decline-btn" id="declineBtn">Decline</button>
+            </div>
+        </div>
     </div>
-</div>
 
-    
-
-
-    <footer>
+    <footer class="footer">
         <nav class="footer-nav">
-            <a href="#" class="footer-link">About Us</a>
-            <a href="#" class="footer-link">Contact Us</a>
-            <a href="#" class="footer-link">Terms and Conditions</a>
-            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="about_us.html" class="footer-link">About Us</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="terms.html" class="footer-link">Terms and Conditions</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
         </nav>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch("http://192.168.1.65/backend/fetch_grooming_appointments.php")
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        displayAppointments(data.appointments, "groomingAppointmentsContainer");
-                    } else {
-                        document.getElementById("groomingAppointmentsContainer").innerHTML = "<p>No grooming appointments found.</p>";
-                    }
-                })
-                .catch(error => console.error("Error fetching grooming appointments:", error));
-        });
-        
-        function displayAppointments(appointments, containerId) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-        
-            container.innerHTML = ""; // Clear previous data
-        
-            appointments.forEach(appointment => {
-                const appointmentDiv = document.createElement("div");
-                appointmentDiv.classList.add("appointment-card");
-        
-                // Format date
-                const formattedDate = appointment.appointment_date !== "N/A" ? appointment.appointment_date : "Not Set";
-        
-                // ✅ Add color-coded status badge
-                let statusBadge = `<span class="status pending">Pending</span>`;
-                if (appointment.status === "Approved") {
-                    statusBadge = `<span class="status approved">Approved</span>`;
-                } else if (appointment.status === "Declined") {
-                    statusBadge = `<span class="status declined">Declined</span>`;
-                }
-        
-                appointmentDiv.innerHTML = `
-                    <div class="appointment-wrapper">
-                        <div class="appointment-content">
-                            <img src="default-placeholder.png" alt="Pet Image" class="pet-image">
-                            <div class="appointment-details">
-                                <h3>${appointment.groom_type} ${statusBadge}</h3>
-                                <p><strong>Customer:</strong> ${appointment.name}</p>
-                                <p><strong>Pet:</strong> ${appointment.pet_name} (${appointment.pet_breed})</p>
-                                <p><strong>Date:</strong> ${formattedDate}</p>
-                                <button class="view-details-btn" onclick='showGroomDetails(${JSON.stringify(appointment)})'>View Details</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(appointmentDiv);
-            });
-        }
-        
-        // Function to show the popup (modal)
-        function showGroomDetails(appointment) {
-    const modalCustomerName = document.getElementById("modalCustomerName");
-    const modalCustomerAddress = document.getElementById("modalCustomerAddress");
-    const modalCustomerPhone = document.getElementById("modalCustomerPhone");
-    const modalPetName = document.getElementById("modalPetName");
-    const modalPetBreed = document.getElementById("modalPetBreed");
-    const modalGroomType = document.getElementById("modalGroomType");
-    const modalNotes = document.getElementById("modalNotes");
-    const modalDate = document.getElementById("modalDate");
-    const modalStatus = document.getElementById("modalStatus"); // Ensure it exists
-
-    if (modalCustomerName) modalCustomerName.innerText = appointment.name || "N/A";
-    if (modalCustomerAddress) modalCustomerAddress.innerText = appointment.address || "N/A";
-    if (modalCustomerPhone) modalCustomerPhone.innerText = appointment.phone_number || "N/A";
-    if (modalPetName) modalPetName.innerText = appointment.pet_name || "N/A";
-    if (modalPetBreed) modalPetBreed.innerText = appointment.pet_breed || "N/A";
-    if (modalGroomType) modalGroomType.innerText = appointment.groom_type || "N/A";
-    if (modalNotes) modalNotes.innerText = appointment.notes || "N/A";
-    if (modalDate) modalDate.innerText = appointment.appointment_date || "N/A";
-    if (modalStatus) modalStatus.innerText = appointment.status || "Pending"; // Default to Pending
-
-    document.getElementById("appointmentModal").setAttribute("data-id", appointment.id);
-    document.getElementById("appointmentModal").style.display = "block";
-}
-
-        
-        // ✅ Function to approve an appointment
-        function approveGroomingAppointment() {
-            const appointmentId = document.getElementById("appointmentModal").getAttribute("data-id");
-        
-            fetch("http://192.168.1.65/backend/approve_grooming_appointment.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ appointment_id: appointmentId, status: "Approved" })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("Appointment Approved!");
-                    location.reload();
-                } else {
-                    alert("Error: " + data.message);
-                }
-            })
-            .catch(error => console.error("Error:", error));
-        }
-        
-        // ✅ Function to decline an appointment
-        function declineGroomingAppointment() {
-            const appointmentId = document.getElementById("appointmentModal").getAttribute("data-id");
-        
-            fetch("http://192.168.1.65/backend/approve_grooming_appointment.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ appointment_id: appointmentId, status: "Declined" })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("Appointment Declined.");
-                    location.reload();
-                } else {
-                    alert("Error: " + data.message);
-                }
-            })
-            .catch(error => console.error("Error:", error));
-        }
-
-        // ✅ Function to close the Grooming Appointment Modal
-function closeModal() {
-    const modal = document.getElementById("appointmentModal");
-    if (modal) {
-        modal.style.display = "none";
-    } else {
-        console.error("❌ Modal element with ID 'appointmentModal' not found.");
-    }
-}
-
-        </script>
-        
+    <script src="grooming.js"></script>
 </body>
 </html>
-
