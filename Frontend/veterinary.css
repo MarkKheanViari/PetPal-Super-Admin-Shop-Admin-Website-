@@ -27,6 +27,8 @@ body {
   line-height: 1.6;
   background-color: #f8fafc;
   height: 100%;
+  padding-top: 60px;
+  
 }
 
 /* Navbar */
@@ -37,6 +39,11 @@ body {
   padding: 20px 40px;
   background-color: white;
   border-bottom: 1px solid var(--border-color);
+  position: fixed;  /* Keeps the navbar at the top */
+  top: 0;  /* Sticks it to the very top */
+  left: 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Adds slight shadow */
+    z-index: 1000;
 }
 
 .logo {
@@ -364,7 +371,7 @@ body {
 .status.approved { color: #4caf50;}
 .status.declined { color: #e74c3c;}
 
-.view-details-btn {
+.view-details-btn:hover {
   background: #d35400;
   color: white;
   padding: 8px 14px;

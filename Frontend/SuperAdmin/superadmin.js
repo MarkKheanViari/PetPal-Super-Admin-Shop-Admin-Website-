@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // 📌 Fetch User Counts for Chart
 function fetchUserCounts() {
-    fetch("http://localhost/backend/Frontend/SuperAdmin/superadmin_stats.php")
+    fetch("http://192.168.137.239/backend/Frontend/SuperAdmin/superadmin_stats.php")
         .then(response => response.json())
         .then(data => {
             const ctx = document.getElementById("userChart").getContext("2d");
@@ -33,7 +33,7 @@ function fetchUserCounts() {
 
 // 📌 Fetch All Users
 function fetchUsers() {
-    fetch("http://localhost/backend/Frontend/SuperAdmin/fetch_users.php")
+    fetch("http://192.168.137.239/backend/Frontend/SuperAdmin/fetch_users.php")
         .then(response => response.text())
         .then(text => {
             console.log("Raw Response:", text);
@@ -65,7 +65,7 @@ function fetchUsers() {
 
 // 📌 Fetch All Products
 function fetchProducts() {
-    fetch("http://localhost/backend/Frontend/SuperAdmin/fetch_products.php")
+    fetch("http://192.168.137.239/backend/Frontend/SuperAdmin/fetch_products.php")
         .then(response => response.json())
         .then(data => {
             console.log("Product Data:", data);

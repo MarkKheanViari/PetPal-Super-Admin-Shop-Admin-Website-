@@ -39,7 +39,7 @@
         formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));
     
         try {
-            const response = await fetch('http://localhost/backend/update_product.php', {
+            const response = await fetch('http://192.168.137.239/backend/update_product.php', {
                 method: 'POST',
                 body: formData
             });
@@ -72,7 +72,7 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
     formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));  
 
     try {
-        const response = await fetch('http://localhost/backend/add_product.php', {
+        const response = await fetch('http://192.168.137.239/backend/add_product.php', {
             method: 'POST',
             body: formData,
         });
@@ -125,7 +125,7 @@ function fetchProducts() {
         return;
     }
 
-    const url = `http://localhost/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+    const url = `http://192.168.137.239/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
     console.log(`Fetching products from: ${url}`);
     
     fetch(url)
@@ -162,6 +162,12 @@ function displayProducts(products) {
         const productItem = document.createElement('div');
         productItem.className = 'product-card';
 
+        // Ensure image path is correct
+        let imagePath = product.image;
+        if (!imagePath.startsWith("http") && !imagePath.startsWith("/")) {
+            imagePath = `http://192.168.137.239/backend/uploads/${imagePath}`;  // Adjust path
+        }
+
         productItem.innerHTML = `
             <div class="product-header">
                 <span class="price-badge">Price: ₱${product.price}</span>
@@ -170,12 +176,12 @@ function displayProducts(products) {
                 <!-- Dropdown Menu -->
                 <div class="menu-dropdown" id="menu-${product.id}" style="display: none;">
                     <button onclick="editProduct(${product.id}, '${product.name}', '${product.price}', 
-                        '${product.description}', '${product.quantity}', '${product.image}')">Edit</button>
+                        '${product.description}', '${product.quantity}', '${imagePath}')">Edit</button>
                     <button onclick="deleteProduct(${product.id})">Delete</button>
                 </div>
             </div>
             <div class="product-image">
-                <img src="${product.image.replace("\\", "")}" alt="Product Image">
+                <img src="${imagePath}" alt="Product Image" onerror="this.onerror=null; this.src='default-product.jpg';">
             </div>
             <div class="product-details">
                 <h3>${product.name}</h3>
@@ -346,7 +352,7 @@ function saveEdit() {
 }
 
 function viewOrderDetails(orderId) {
-    fetch(`http://localhost/backend/fetch_order_details.php?order_id=${orderId}`)
+    fetch(`http://192.168.137.239/backend/fetch_order_details.php?order_id=${orderId}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -402,7 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchOrders() {
-    fetch("http://localhost/backend/fetch_orders.php") // ✅ Adjust backend endpoint if needed
+    fetch("http://192.168.137.239/backend/fetch_orders.php") // ✅ Adjust backend endpoint if needed
         .then(response => response.json())
         .then(data => {
             console.log("📦 Orders Data:", data); // ✅ Debugging log
@@ -440,7 +446,7 @@ function deleteProduct(productId) {
 
     const shopOwnerId = localStorage.getItem('shop_owner_id'); 
 
-    fetch('http://localhost/backend/delete_product.php', {  
+    fetch('http://192.168.137.239/backend/delete_product.php', {  
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -460,7 +466,7 @@ function deleteProduct(productId) {
             document.getElementById(`product-${productId}`)?.remove();
 
             // ✅ FORCE MOBILE APP TO REFRESH PRODUCTS
-            fetch('http://localhost/backend/fetch_product.php?refresh=true')
+            fetch('http://192.168.137.239/backend/fetch_product.php?refresh=true')
                 .then(() => console.log("Mobile app will fetch latest products"));
 
             // ✅ WAIT FOR 1 SECOND, THEN REFRESH LIST
@@ -491,7 +497,7 @@ function filterProducts() {
     const category = document.getElementById('categoryFilter').value;
     const shopOwnerId = localStorage.getItem('shop_owner_id');
 
-    const url = `http://localhost/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+    const url = `http://192.168.137.239/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
     console.log(`Fetching products from: ${url}`);
 
     fetch(url)

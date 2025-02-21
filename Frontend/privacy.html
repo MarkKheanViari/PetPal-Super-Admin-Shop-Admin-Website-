@@ -127,7 +127,7 @@
     </header>
 
     <nav class="nav-bar">
-        <button class="back-button">←</button>
+        <button class="back-button" onclick="goBack()">←</a></button>
         <h2 class="nav-title">Privacy Policy</h2>
     </nav>
 
@@ -164,5 +164,10 @@
             <a href="privacy.html" class="footer-link">Privacy Policy</a>
         </nav>
     </footer>
+    <script>
+        function goBack(){
+            window.history.back();
+        }
+    </script>
 </body>
 </html>

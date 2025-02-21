@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("http://localhost/backend/fetch_orders.php")
+    fetch("http://192.168.137.239/backend/fetch_orders.php")
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function updateOrderStatus(orderId, status) {
-    fetch("http://localhost/backend/update_order_status.php", {
+    fetch("http://192.168.137.239/backend/update_order_status.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ order_id: orderId, status: status })
