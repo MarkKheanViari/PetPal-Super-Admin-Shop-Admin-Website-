@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("http://192.168.34.203/backend/fetch_veterinary_appointments.php")
+    fetch("http://localhost/backend/fetch_veterinary_appointments.php")
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -83,7 +83,7 @@ window.onload = function() {
 function approveVeterinaryAppointment() {
     const appointmentId = document.getElementById("vetAppointmentModal").getAttribute("data-id");
 
-    fetch("http://192.168.34.203/backend/approve_veterinary_appointment.php", {
+    fetch("http://localhost/backend/approve_veterinary_appointment.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ appointment_id: appointmentId, status: "Approved" })
@@ -104,7 +104,7 @@ function approveVeterinaryAppointment() {
 function declineVeterinaryAppointment() {
     const appointmentId = document.getElementById("vetAppointmentModal").getAttribute("data-id");
 
-    fetch("http://192.168.34.203/backend/approve_veterinary_appointment.php", {
+    fetch("http://localhost/backend/approve_veterinary_appointment.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ appointment_id: appointmentId, status: "Declined" })

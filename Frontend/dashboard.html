@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetPal - Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -51,129 +52,49 @@
                 </div>
             </div>
 
-            <div class="monthly-sales">
+            <section class="monthly-sales">
                 <h3>Monthly Sales</h3>
-                <p class="chart-label">Revenue</p>
-                <div class="chart">
-                    <div class="bar" style="height: 80%"></div>
-                    <div class="bar" style="height: 60%"></div>
-                    <div class="bar" style="height: 40%"></div>
-                    <div class="bar" style="height: 65%"></div>
-                    <div class="bar" style="height: 45%"></div>
-                    <div class="bar" style="height: 75%"></div>
-                    <div class="bar" style="height: 55%"></div>
-                </div>
-                <p class="chart-label">Month</p>
-            </div>
-        </section>
+                <section class="monthly-sales">
+                    <h3>Monthly Sales</h3>
+                    <canvas id="salesChart" style="width: 100%; height: 350px;"></canvas> <!-- Increase height -->
+                </section>
+                 <!-- This is where the chart will render -->
+            </section>
+            
 
         <section class="recent-orders">
             <h2>Recent Orders</h2>
-            <div class="orders-grid">
-                <div class="order-card">
-                    <div class="order-icon">📦</div>
-                    <p class="order-number">Order #1234</p>
-                    <p class="customer-name">Customer Name</p>
-                    <p class="order-total">Total: $50</p>
-                </div>
-                <div class="order-card">
-                    <div class="order-icon">📦</div>
-                    <p class="order-number">Order #1235</p>
-                    <p class="customer-name">Customer Name</p>
-                    <p class="order-total">Total: $70</p>
-                </div>
-                <div class="order-card">
-                    <div class="order-icon">📦</div>
-                    <p class="order-number">Order #1236</p>
-                    <p class="customer-name">Customer Name</p>
-                    <p class="order-total">Total: $70</p>
-                </div>
+            <div id="dashboardOrdersContainer" class="orders-grid">
+                <!-- Orders will be dynamically inserted here -->
             </div>
-            <button class="view-all">View Orders</button>
+            <button class="view-all" onclick="window.location.href='index.html#ordersSection'">View Orders</button>
         </section>
-
+        
         <section class="product-inventory">
             <h2>Product Inventory</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-icon">🐕</div>
-                    <h3>Dog Food</h3>
-                    <p class="product-desc">Dry Food</p>
-                    <p class="stock">In Stock: 20</p>
-                </div>
-                <div class="product-card">
-                    <div class="product-icon">😺</div>
-                    <h3>Cat Toys</h3>
-                    <p class="product-desc">Feather Teaser</p>
-                    <p class="stock">In Stock: 20</p>
-                </div>
-                <div class="product-card">
-                    <div class="product-icon">🛁</div>
-                    <h3>Shampoo</h3>
-                    <p class="product-desc">For All Breeds</p>
-                    <p class="stock">In Stock: 20</p>
-                </div>
+            <div id="dashboardProductsContainer" class="products-grid">
+                <!-- Products will be dynamically inserted here -->
             </div>
-            <button class="view-all">View Inventory</button>
+            <button class="view-all" onclick="window.location.href='index.html#productInventorySection'">View Inventory</button>
         </section>
 
-        <section class="appointments">
+        <section class="veterinary-appointments section">
             <h2>Veterinary Appointments</h2>
-            <div class="appointment-list">
-                <div class="appointment-card">
-                    <div class="appointment-info">
-                        <h3>Check up</h3>
-                        <p>Customer Name</p>
-                    </div>
-                    <div class="appointment-time">
-                        <p>20 January, 2025</p>
-                        <p>9:00 am</p>
-                    </div>
-                    <button class="more-options">⋮</button>
-                </div>
-                <div class="appointment-card">
-                    <div class="appointment-info">
-                        <h3>Vaccination</h3>
-                        <p>Customer Name</p>
-                    </div>
-                    <div class="appointment-time">
-                        <p>20 February, 2025</p>
-                        <p>1:00 pm</p>
-                    </div>
-                    <button class="more-options">⋮</button>
-                </div>
+            <div id="dashboardVetAppointments" class="appointment-list">
+                <!-- Veterinary appointments will be dynamically inserted here -->
             </div>
-            <button class="view-all">View Appointments</button>
+            <button class="view-all" onclick="window.location.href='index.html#vetAppointmentsSection'">View Appointments</button>
         </section>
-
-        <section class="grooming">
+        
+        <section class="grooming-schedule section">
             <h2>Grooming Schedule</h2>
-            <div class="grooming-list">
-                <div class="grooming-card">
-                    <div class="grooming-info">
-                        <h3>Full Grooming</h3>
-                        <p>Customer Name</p>
-                    </div>
-                    <div class="grooming-time">
-                        <p>20 January, 2025</p>
-                        <p>9:00 am</p>
-                    </div>
-                    <button class="more-options">⋮</button>
-                </div>
-                <div class="grooming-card">
-                    <div class="grooming-info">
-                        <h3>Nail Trimming</h3>
-                        <p>Customer Name</p>
-                    </div>
-                    <div class="grooming-time">
-                        <p>20 February, 2025</p>
-                        <p>1:00 pm</p>
-                    </div>
-                    <button class="more-options">⋮</button>
-                </div>
+            <div id="dashboardGroomingSchedule" class="grooming-list">
+                <!-- Grooming appointments will be dynamically inserted here -->
             </div>
-            <button class="view-all">View Schedule</button>
+            <button class="view-all" onclick="window.location.href='index.html#groomingScheduleSection'">View Schedule</button>
         </section>
+        
+        
     </main>
 
     <footer class="footer">

@@ -191,8 +191,30 @@ html {
   
   /* Chart */
   .monthly-sales {
-    margin-top: 2rem;
-  }
+    margin-top: 30px;  /* Adds space above */
+    margin-bottom: 50px; /* Adds space below */
+    padding: 20px;
+}
+
+.recent-orders, .product-inventory {
+  margin-bottom: 50px;  /* Increase space between sections */
+}
+
+.veterinary-appointments {
+  margin-bottom: 50px; /* Add space below */
+  padding-bottom: 20px;
+}
+
+.grooming-schedule {
+  margin-top: 50px; /* Add space above */
+  padding-top: 20px;
+}
+
+.section {
+  margin-bottom: 50px; /* Add spacing between all sections */
+  padding: 20px;
+}
+
   
   .chart {
     height: 200px;
@@ -218,13 +240,22 @@ html {
     margin: 1.5rem 0;
   }
   
-  .order-card,
-  .product-card {
+  /* Modern shadow for order and product cards */
+.order-card,
+.product-card {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft, modern shadow */
     padding: 1rem;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: 8px; /* Slightly rounded corners */
     text-align: center;
-  }
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.order-card:hover,
+.product-card:hover {
+    transform: translateY(-3px); /* Slight floating effect */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
   
   .order-icon,
   .product-icon {
@@ -241,14 +272,22 @@ html {
   }
   
   .appointment-card,
-  .grooming-card {
+.grooming-card {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft glow */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1.2rem;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
-  }
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.appointment-card:hover,
+.grooming-card:hover {
+    transform: translateY(-3px); /* Slight hover effect */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
   
   .more-options {
     background: none;

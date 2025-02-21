@@ -67,20 +67,24 @@
 </div>
 
     <main class="content">
-        <section class="recent-orders">
+        <section id="ordersSection" class="recent-orders">
             <h2>Recent Orders</h2>
             <div id="ordersContainer" class="orders-list">
-                <!-- Orders will be dynamically added here -->
+                <!-- Orders will be dynamically inserted here -->
             </div>
         </section>
-        <!-- Add Product Modal -->
+        
         <section class="product-inventory">
             <div class="section-header">
                 <h2>Product Inventory</h2>
                 <button class="add-product" onclick="toggleModal('addProductModal', true)">Add Product</button>
             </div>
-            <div id="productList"></div>    
+            <div id="productList" class="products-grid">
+                <!-- Products will be dynamically inserted here -->
+            </div>
         </section>
+        
+        
         <div id="addProductModal" class="modal">
             <div class="modal-content">
                 <span class="close-btn" onclick="toggleModal('addProductModal', false)">&times;</span>

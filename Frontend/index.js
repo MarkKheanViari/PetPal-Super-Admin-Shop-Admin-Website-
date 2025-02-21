@@ -39,7 +39,7 @@
         formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));
     
         try {
-            const response = await fetch('http://192.168.34.203/backend/update_product.php', {
+            const response = await fetch('http://localhost/backend/update_product.php', {
                 method: 'POST',
                 body: formData
             });
@@ -72,7 +72,7 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
     formData.append('shop_owner_id', localStorage.getItem('shop_owner_id'));  
 
     try {
-        const response = await fetch('http://192.168.34.203/backend/add_product.php', {
+        const response = await fetch('http://localhost/backend/add_product.php', {
             method: 'POST',
             body: formData,
         });
@@ -125,7 +125,7 @@ function fetchProducts() {
         return;
     }
 
-    const url = `http://192.168.34.203/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+    const url = `http://localhost/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
     console.log(`Fetching products from: ${url}`);
     
     fetch(url)
@@ -402,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchOrders() {
-    fetch("http://192.168.34.203/backend/fetch_orders.php") // ✅ Adjust backend endpoint if needed
+    fetch("http://localhost/backend/fetch_orders.php") // ✅ Adjust backend endpoint if needed
         .then(response => response.json())
         .then(data => {
             console.log("📦 Orders Data:", data); // ✅ Debugging log
@@ -440,7 +440,7 @@ function deleteProduct(productId) {
 
     const shopOwnerId = localStorage.getItem('shop_owner_id'); 
 
-    fetch('http://192.168.34.203/backend/delete_product.php', {  
+    fetch('http://localhost/backend/delete_product.php', {  
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -460,7 +460,7 @@ function deleteProduct(productId) {
             document.getElementById(`product-${productId}`)?.remove();
 
             // ✅ FORCE MOBILE APP TO REFRESH PRODUCTS
-            fetch('http://192.168.34.203/backend/fetch_product.php?refresh=true')
+            fetch('http://localhost/backend/fetch_product.php?refresh=true')
                 .then(() => console.log("Mobile app will fetch latest products"));
 
             // ✅ WAIT FOR 1 SECOND, THEN REFRESH LIST
@@ -491,7 +491,7 @@ function filterProducts() {
     const category = document.getElementById('categoryFilter').value;
     const shopOwnerId = localStorage.getItem('shop_owner_id');
 
-    const url = `http://192.168.34.203/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+    const url = `http://localhost/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
     console.log(`Fetching products from: ${url}`);
 
     fetch(url)

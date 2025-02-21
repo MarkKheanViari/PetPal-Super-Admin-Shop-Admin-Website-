@@ -21,7 +21,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     }
 
     try {
-        const response = await fetch('http://192.168.34.203/backend/register.php', {
+        const response = await fetch('http://localhost/backend/register.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

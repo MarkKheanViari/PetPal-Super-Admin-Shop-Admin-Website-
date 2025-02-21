@@ -4,7 +4,7 @@
         const errorDiv = document.getElementById('error');
         
         try {
-            const response = await fetch('http://192.168.34.203/backend/login.php', {
+            const response = await fetch('http://localhost/backend/login.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

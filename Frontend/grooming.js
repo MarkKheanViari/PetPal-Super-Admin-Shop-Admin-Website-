@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("http://192.168.34.203/backend/fetch_grooming_appointments.php")
+    fetch("http://localhost/backend/fetch_grooming_appointments.php")
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -41,7 +41,7 @@ function displayAppointments(appointments) {
 }
 
 function updateGroomingStatus(appointmentId, status) {
-    fetch("http://192.168.1.42/backend/approve_grooming_appointment.php", {
+    fetch("http://localhost/backend/approve_grooming_appointment.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ appointment_id: appointmentId, status: status })
@@ -70,7 +70,7 @@ function showGroomDetails(appointment) {
 function approveGroomingAppointment() {
     const appointmentId = document.getElementById("appointmentModal").getAttribute("data-id");
 
-    fetch("http://192.168.34.203/backend/approve_grooming_appointment.php", {
+    fetch("http://localhost/backend/approve_grooming_appointment.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ appointment_id: appointmentId, status: "Approved" })
@@ -91,7 +91,7 @@ function approveGroomingAppointment() {
 function declineGroomingAppointment() {
     const appointmentId = document.getElementById("appointmentModal").getAttribute("data-id");
 
-    fetch("http://192.168.34.203/backend/approve_grooming_appointment.php", {
+    fetch("http://localhost/backend/approve_grooming_appointment.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ appointment_id: appointmentId, status: "Declined" })
@@ -113,7 +113,7 @@ function closeModal() {
 }
 
 function updateGroomingStatus(appointmentId, status) {
-    fetch("http://192.168.34.203/backend/approve_grooming_appointment.php", {
+    fetch("http://localhost/backend/approve_grooming_appointment.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ appointment_id: appointmentId, status: status })
