@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div     class="nav-left">
+            <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo">
+        </div>
+        <ul class="nav-right">
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="product_inventory.html" class="nav-link">Products</a></li>
+            <li><a href="orders.html" class="nav-link active">Orders</a></li>
+            <li><a href="appointments.html" class="nav-link">Appointments</a></li>
+            <li class="notification-bell">
+                <i class="bell-icon">🔔</i>
+                <span id="notifCount" class="badge">0</span>
+                <div id="notifDropdown" class="notif-dropdown">
+                  <div class="notif-header">
+                    <span class="notif-title">Notifications</span>
+                    <button type="button" id="notifExitBtn" class="notif-exit-btn">X</button>
+                  </div>
+                  <div class="notif-filter">
+                    <button type="button" class="notif-filter-btn active" data-filter="all">All</button>
+                    <button type="button" class="notif-filter-btn" data-filter="order">Orders</button>
+                    <button type="button" class="notif-filter-btn" data-filter="appointment">Appointments</button>
+                  </div>
+                  <div id="notifItemsContainer">
+                    <!-- Notifications will be populated here -->
+                  </div>
+                </div>
+              </li>
+        </ul>
+    </nav>
+    
+    <header class="seller-header">
+        <div class="seller-info">
+            <div class="seller-avatar"></div>
+            <div class="seller-details">
+                <h1>Seller's Name</h1>
+                <p class="seller-type" id="welcomeText"></p>
+                <p class="seller-description">Manage your shop's orders, products, grooming, and veterinary services</p>
+            </div>
+        </div>
+        <div class="btn-seller-pref">
+            <button class="edit-profile">Edit Profile</button>
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </div>
+    </header>
+
+    
+    
+
+  <!-- Order Details Modal -->
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <h2>Order Details</h2>
+
+        <!-- Customer Details -->
+        <div class="modal-section">
+            <h3>Customer Details</h3>
+            <input type="text" id="customerName" placeholder="Name" readonly>
+            <input type="text" id="customerAddress" placeholder="Address" readonly>
+            <input type="text" id="customerContact" placeholder="Contact No." readonly>
+        </div>
+
+        <!-- Payment Details -->
+        <div class="modal-section">
+            <h3>Payment Details</h3>
+            <input type="text" id="paymentMethod" placeholder="Payment Method" readonly>
+            <input type="text" id="orderAmount" placeholder="Total Amount" readonly>
+        </div>
+
+        <!-- Modal Buttons -->
+        <div class="modal-buttons">
+            <button class="cancel-btn" type="button" onclick="toggleModal('orderModal', false)">Cancel</button>
+            <button class="approve-btn" onclick="toggleModal('orderModal', false)">Approve</button>
+        </div>
+    </div>
+</div>
+
+    <main class="content">
+        <section id="ordersSection" class="recent-orders">
+            <h2>Recent Orders</h2>
+            <div id="ordersContainer" class="orders-list">
+                <!-- Orders will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <nav class="footer-nav">
+            <a href="about_us.html" class="footer-link">About Us</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="terms.html" class="footer-link">Terms and Conditions</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        </nav>
+    </footer>
+
+    <script src="index.js"></script>    
+    <script src="fetch_orders.js"></script>
+    <script src="notification.js"></script>
+</body>
+</html>

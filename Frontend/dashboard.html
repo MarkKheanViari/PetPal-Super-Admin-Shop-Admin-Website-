@@ -13,20 +13,38 @@
             <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo">
         </div>
         <ul class="nav-right">
-            <li><a href="#" class="nav-link active">Dashboard</a></li>
-            <li><a href="index.html" class="nav-link">Orders & Products</a></li>
-            <li><a href="grooming-services.html" class="nav-link">Grooming Services</a></li>
-            <li><a href="veterinary-services.html" class="nav-link">Veterinary Services</a></li>
-        </ul>
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="product_inventory.html" class="nav-link">Products</a></li>
+            <li><a href="orders.html" class="nav-link">Orders</a></li>
+            <li><a href="appointments.html" class="nav-link">Appointments</a></li>
+            <!-- Notification Bell -->
+            <li class="notification-bell">
+                <i class="bell-icon">🔔</i>
+                <span id="notifCount" class="badge">0</span>
+                <div id="notifDropdown" class="notif-dropdown">
+                  <div class="notif-header">
+                    <span class="notif-title">Notifications</span>
+                    <button type="button" id="notifExitBtn" class="notif-exit-btn">X</button>
+                  </div>
+                  <div class="notif-filter">
+                    <button type="button" class="notif-filter-btn active" data-filter="all">All</button>
+                    <button type="button" class="notif-filter-btn" data-filter="order">Orders</button>
+                    <button type="button" class="notif-filter-btn" data-filter="appointment">Appointments</button>
+                  </div>
+                  <div id="notifItemsContainer">
+                    <!-- Notifications will be populated here -->
+                  </div>
+                </div>
+              </li>
+              
+          </ul>
+          
     </nav>
     
 
     <header class="welcome-header">
         <h1>Welcome to Your Pet Shop Dashboard!</h1>
         <p>Manage your products and grooming services efficiently</p>
-        <div class="search-bar">
-            <input type="search" placeholder="Search for products or services...">
-        </div>
     </header>
 
     <main class="dashboard">
@@ -67,7 +85,7 @@
             <div id="dashboardOrdersContainer" class="orders-grid">
                 <!-- Orders will be dynamically inserted here -->
             </div>
-            <button class="view-all" onclick="window.location.href='index.html#ordersSection'">View Orders</button>
+            <button class="view-all" onclick="window.location.href='product_inventory.html#ordersSection'">View Orders</button>
         </section>
         
         <section class="product-inventory">
@@ -75,7 +93,7 @@
             <div id="dashboardProductsContainer" class="products-grid">
                 <!-- Products will be dynamically inserted here -->
             </div>
-            <button class="view-all" onclick="window.location.href='index.html#productInventorySection'">View Inventory</button>
+            <button class="view-all" onclick="window.location.href='product_inventory.html#productInventorySection'">View Inventory</button>
         </section>
 
         <section class="veterinary-appointments section">
@@ -83,7 +101,7 @@
             <div id="dashboardVetAppointments" class="appointment-list">
                 <!-- Veterinary appointments will be dynamically inserted here -->
             </div>
-            <button class="view-all" onclick="window.location.href='index.html#vetAppointmentsSection'">View Appointments</button>
+            <button class="view-all" onclick="window.location.href='product_inventory.html#vetAppointmentsSection'">View Appointments</button>
         </section>
         
         <section class="grooming-schedule section">
@@ -91,10 +109,8 @@
             <div id="dashboardGroomingSchedule" class="grooming-list">
                 <!-- Grooming appointments will be dynamically inserted here -->
             </div>
-            <button class="view-all" onclick="window.location.href='index.html#groomingScheduleSection'">View Schedule</button>
+            <button class="view-all" onclick="window.location.href='product_inventory.html#groomingScheduleSection'">View Schedule</button>
         </section>
-        
-        
     </main>
 
     <footer class="footer">

@@ -15,7 +15,7 @@
 
 /* Optional: If you want smooth scrolling */
 html {
-  scrollbar-width: none; /* Firefox */
+  
   -ms-overflow-style: none; /* Internet Explorer 11 */
 }
 
@@ -30,7 +30,7 @@ html {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     background-color: #f8fafc;
-    padding-top: 60px;
+    padding-top: 90px;
   }
   
 /* Navbar Styling */
@@ -47,6 +47,7 @@ html {
   left: 0;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Adds slight shadow */
     z-index: 1000;
+    height: 90px;
 }
 
 /* Ensure logo remains correctly aligned */
@@ -130,18 +131,6 @@ html {
     margin-bottom: 0.5rem;
   }
   
-  .search-bar {
-    max-width: 500px;
-    margin: 1.5rem auto 0;
-  }
-  
-  .search-bar input {
-    width: 100%;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
   
   /* Dashboard Layout */
   .dashboard {
@@ -363,4 +352,134 @@ html {
     }
   }
   
+  .notification-bell {
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+  
+  .bell-icon {
+    font-size: 24px;
+  }
+  
+  .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+  
+  .notif-dropdown {
+    display: none; /* Hidden by default */
+    position: absolute;
+    right: 0;
+    top: 35px;
+    background: #fff;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    z-index: 2000;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .notif-dropdown.active {
+    display: block;
+  }
+  
+  .notif-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .notif-item:last-child {
+    border-bottom: none;
+  }
+  
+  .notif-item:hover {
+    background-color: #f9f9f9;
+  }
+   
+  .notif-filter {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .notif-filter-btn {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .notif-filter-btn.active {
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: bold;
+  }
+  
+  .notif-dropdown {
+    display: none; /* Hidden by default */
+    position: absolute;
+    right: 0;
+    top: 35px;
+    background: #fff;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    z-index: 2000;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 5px 10px;
+    background: #f5f5f5;
+  }
+  
+  .notif-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .notif-exit-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .notif-filter {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .notif-filter-btn {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .notif-filter-btn.active {
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: bold;
+  }
   
