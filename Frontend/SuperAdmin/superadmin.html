@@ -5,62 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SuperAdmin Dashboard</title>
     <link rel="stylesheet" href="superadmin.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for Bar Graph -->
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <h1>SuperAdmin Panel</h1>
-        <button onclick="logout()">Logout</button>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <h2>SuperAdmin</h2>
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">User Management</a></li>
+            <li><a href="#">Content Management</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
     </nav>
 
-    <!-- Main Dashboard -->
-    <div class="container">
+    <!-- Dashboard Content -->
+    <main class="dashboard">
+        <h1>Dashboard Overview</h1>
 
-        <!-- User Statistics -->
-        <h2>User Statistics</h2>
-        <canvas id="userChart"></canvas>
+        <!-- Top Statistics Cards -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <p id="totalUsers">Loading...</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active Shop Owners</h3>
+                <p id="activeShopOwners">Loading...</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active Customers</h3>
+                <p id="activeCustomers">Loading...</p>
+            </div>
+            <div class="stat-card">
+                <h3>Pending Products</h3>
+                <p id="pendingProducts">Loading...</p>
+            </div>
+        </div>
 
-        <!-- User Management -->
-        <div class="user-management">
-            <h2>Manage Users</h2>
-            <table>
+        <section class="dashboard-container">
+            <!-- Left: Graph -->
+            <div class="graph-container">
+              <h2>User Statistics</h2>
+              <canvas id="userChart"></canvas>
+            </div>
+          
+            <!-- Right: Recent Activities -->
+            <div class="activities-container">
+              <h2>Recent Activities</h2>
+              <ul id="activityList">
+                <li>Loading activities...</li>
+              </ul>
+            </div>
+          </section>
+
+        <section class="management-section">
+            <h2>Management Panel</h2>
+          
+            <!-- Tabs -->
+            <div class="tab-container">
+              <button class="tab-btn active" onclick="openTab(event, 'userManagement')">User Management</button>
+              <button class="tab-btn" onclick="openTab(event, 'productManagement')">Product Management</button>
+            </div>
+          
+            <!-- User Management Table -->
+            <div id="userManagement" class="tab-content active">
+              <table>
                 <thead>
-                    <tr>
-                        <th>User ID</th>
-                        <th>Username</th>
-                        <th>Role</th>
-                        <th>Action</th>
-                    </tr>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
                 </thead>
                 <tbody id="userTable">
-                    <!-- Users will be inserted here -->
+                  <tr><td colspan="5">Loading Users...</td></tr>
                 </tbody>
-            </table>
-        </div>
-
-        <!-- Content Management -->
-        <div class="content-management">
-            <h2>Manage Products</h2>
-            <table>
+              </table>
+            </div>
+          
+            <!-- Product Management Table -->
+            <div id="productManagement" class="tab-content">
+              <table>
                 <thead>
-                    <tr>
-                        <th>Product ID</th>
-                        <th>Name</th>
-                        <th>Owner</th>
-                        <th>Action</th>
-                    </tr>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Owner</th>
+                    <th>Actions</th>
+                  </tr>
                 </thead>
                 <tbody id="productTable">
-                    <!-- Products will be inserted here -->
+                  <tr><td colspan="4">Loading Products...</td></tr>
                 </tbody>
-            </table>
-        </div>
+              </table>
+            </div>
+          </section>
+          
 
-    </div>
 
+    <!-- JavaScript -->
     <script src="superadmin.js"></script>
+
 </body>
 </html>
