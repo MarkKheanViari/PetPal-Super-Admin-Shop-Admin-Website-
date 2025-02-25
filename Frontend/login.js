@@ -3,7 +3,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   const errorDiv = document.getElementById("error");
 
   try {
-    const response = await fetch("http://192.168.1.42/backend/login.php", {
+    const response = await fetch("http://192.168.1.65/backend/login.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

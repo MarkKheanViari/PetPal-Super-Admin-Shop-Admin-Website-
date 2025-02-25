@@ -57,109 +57,89 @@
     </header>
 
     <!-- Main Content -->
-    <main class="content">
-      <section class="appointments">
-        <h2>Grooming Appointments</h2>
-        <div id="groomingAppointmentsContainer"></div>
-      </section>
-      <section class="appointments">
-        <h2>Veterinary Appointments</h2>
-        <div id="veterinaryAppointmentsContainer"></div>
-      </section>
-    </main>
 
-    <!-- Grooming Appointment Modal -->
-    <div id="appointmentModal" class="modal">
-      <div class="modal-content">
-        <div class="service-head">
-          <h2>Grooming Details</h2>
-          <button class="cancel-btn" onclick="closeModal('appointmentModal')">
-            &times;
-          </button>
-        </div>
-        <div class="modal-section">
-          <h3>Customer Details</h3>
-          <p><strong>Name:</strong> <span id="modalCustomerName"></span></p>
-          <p>
-            <strong>Address:</strong> <span id="modalCustomerAddress"></span>
-          </p>
-          <p>
-            <strong>Contact No:</strong> <span id="modalCustomerPhone"></span>
-          </p>
-        </div>
-        <div class="modal-section">
-          <h3>Pet Details</h3>
-          <p><strong>Pet Name:</strong> <span id="modalPetName"></span></p>
-          <p><strong>Pet Breed:</strong> <span id="modalPetBreed"></span></p>
-        </div>
-        <div class="modal-section">
-          <h3>Grooming Details</h3>
-          <p>
-            <strong>Type of Groom:</strong> <span id="modalGroomType"></span>
-          </p>
-          <p><strong>Notes:</strong> <span id="modalNotes"></span></p>
-        </div>
-        <div class="modal-section">
-          <h3>Scheduled Date</h3>
-          <p><strong>Date:</strong> <span id="modalDate"></span></p>
-        </div>
-        <div class="modal-buttons">
-          <button class="approve-btn" id="approveBtn">Approve</button>
-          <button class="decline-btn" id="declineBtn">Decline</button>
-        </div>
+<!-- Main Content -->
+<main class="content">
+  <section class="appointments">
+    <h2>Grooming Services</h2>
+    <div id="groomingServicesContainer"></div>
+    <button class="view-details-btn" onclick="openAddServiceModal('Grooming')">Add Grooming Service</button>
+  </section>
+  
+  <section class="appointments">
+    <h2>Veterinary Services</h2>
+    <div id="veterinaryServicesContainer"></div>
+    <button class="view-details-btn" onclick="openAddServiceModal('Veterinary')">Add Veterinary Service</button>
+  </section>  
+</main>
+
+
+
+
+<!-- Add Service Modal -->
+<div id="addServiceModal" class="modal">
+  <div class="modal-content">
+    <div class="service-head">
+      <h2 id="addServiceModalTitle">Add New Service</h2>
+      <button class="cancel-btn" onclick="closeModal('addServiceModal')">&times;</button>
+    </div>
+    
+    <form id="addServiceForm">
+      <div class="modal-section">
+        <label><strong>Service Name:</strong></label>
+        <select id="serviceOption" required>
+          <option value="" disabled selected>Select Service</option>
+        </select>
       </div>
+
+      <div class="modal-section">
+        <label><strong>Price:</strong></label>
+        <input type="number" id="servicePrice" placeholder="Enter price" required step="0.01" min="0">
+      </div>
+
+      <div class="modal-section">
+        <label><strong>Description:</strong></label>
+        <textarea id="serviceDescription" placeholder="Enter description" required></textarea>
+      </div>
+
+      <button class="approve-btn" type="submit">Add Service</button>
+    </form>
+  </div>
+</div>
+
+<!-- Edit Service Modal -->
+<div id="editServiceModal" class="modal">
+  <div class="modal-content">
+    <div class="service-head">
+      <h2>Edit Service</h2>
+      <button class="cancel-btn" onclick="closeModal('editServiceModal')">&times;</button>
     </div>
 
-    <!-- Veterinary Appointment Modal -->
-    <div id="vetAppointmentModal" class="modal">
-      <div class="modal-content">
-        <div class="service-head">
-          <h2>Veterinary Appointment Details</h2>
-          <button
-            class="cancel-btn"
-            onclick="closeModal('vetAppointmentModal')"
-          >
-            &times;
-          </button>
-        </div>
-        <div class="modal-section">
-          <h3>Customer Details</h3>
-          <p>
-            <strong>Address:</strong> <span id="vetModalCustomerAddress"></span>
-          </p>
-          <p><strong>Name:</strong> <span id="vetModalCustomerName"></span></p>
-          <p>
-            <strong>Contact No:</strong>
-            <span id="vetModalCustomerPhone"></span>
-          </p>
-        </div>
-        <div class="modal-section">
-          <h3>Pet Details</h3>
-          <p><strong>Pet Name:</strong> <span id="vetModalPetName"></span></p>
-          <p><strong>Pet Breed:</strong> <span id="vetModalPetBreed"></span></p>
-        </div>
-        <div class="modal-section">
-          <h3>Veterinary Details</h3>
-          <p>
-            <strong>Type of Checkup:</strong>
-            <span id="vetModalCheckupType"></span>
-          </p>
-          <p><strong>Notes:</strong> <span id="vetModalNotes"></span></p>
-        </div>
-        <div class="modal-section">
-          <h3>Scheduled Date</h3>
-          <p><strong>Date:</strong> <span id="vetModalDate"></span></p>
-        </div>
-        <div class="modal-buttons">
-          <button class="approve-btn" onclick="approveVeterinaryAppointment()">
-            Approve
-          </button>
-          <button class="decline-btn" onclick="declineVeterinaryAppointment()">
-            Decline
-          </button>
-        </div>
+    <form id="editServiceForm">
+      <input type="hidden" id="editServiceId">
+      
+      <div class="modal-section">
+        <label><strong>Service Name:</strong></label>
+        <input type="text" id="editServiceName" readonly />
       </div>
-    </div>
+
+      <div class="modal-section">
+        <label><strong>Price:</strong></label>
+        <input type="number" id="editServicePrice" required />
+      </div>
+
+      <div class="modal-section">
+        <label><strong>Description:</strong></label>
+        <textarea id="editServiceDescription" required></textarea>
+      </div>
+
+      <button class="approve-btn" type="submit">Save Changes</button>
+      <button class="decline-btn" type="button" onclick="deleteService()">Delete Service</button>
+    </form>
+  </div>
+</div>
+
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -173,247 +153,232 @@
 
     <!-- Integrated JavaScript -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Fetch Grooming Appointments
-        fetch("http://192.168.1.42/backend/fetch_grooming_appointments.php")
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.success) {
-              displayGroomingAppointments(data.appointments);
-            } else {
-              document.getElementById(
-                "groomingAppointmentsContainer"
-              ).innerHTML = "<p>No grooming appointments found.</p>";
-            }
-          })
-          .catch((error) =>
-            console.error("Error fetching grooming appointments:", error)
-          );
+const groomingServices = [
+  "Brushing", "Bathing", "Nail Trimming", "Ear Cleaning", "Teeth Brushing",
+  "Deshedding Treatment", "Paw Pad Care", "Sanitary Trim", "Eye Cleaning",
+  "Full Haircut/Styling", "Hand Stripping", "Flea & Tick Treatment", "Anal Gland Expression"
+];
 
-        // Fetch Veterinary Appointments
-        fetch("http://192.168.1.42/backend/fetch_veterinary_appointments.php")
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.success) {
-              displayVeterinaryAppointments(data.appointments);
-            } else {
-              document.getElementById(
-                "veterinaryAppointmentsContainer"
-              ).innerHTML = "<p>No veterinary appointments found.</p>";
-            }
-          })
-          .catch((error) =>
-            console.error("Error fetching veterinary appointments:", error)
-          );
+const veterinaryServices = [
+  "Wellness Exam", "Vaccination Check", "Parasite Screening", "Dental Checkup", "Nutritional Consultation",
+  "Blood Tests & Lab Work", "X-ray & Ultrasound", "Allergy Testing", "Skin & Coat Exam", "Eye & Ear Exam",
+  "Arthritis & Joint Health Check", "Kidney & Liver Function Tests", "Heart Health Check",
+  "Injury or Trauma Exam", "Gastrointestinal Check", "Behavioral Consultation"
+];
+
+// Fetch and Display Grooming Services
+function fetchGroomingServices() {
+  fetch('http://localhost/backend/fetch_grooming_services.php')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('groomingServicesContainer');
+      container.innerHTML = '';
+      data.services.forEach(service => {
+        const div = document.createElement('div');
+        div.className = 'appointment-item';
+        div.innerHTML = `
+          <div class="appointment-details">
+            <h3>${service.service_name}</h3>
+            <p><strong>Price:</strong> ₱${service.price}</p>
+            <p>${service.description || 'No description provided.'}</p>
+          </div>
+          <button class="edit-btn" onclick='openEditModal(${JSON.stringify(service)})'>Edit</button>
+        `;
+        container.appendChild(div);
+      });
+    })
+    .catch(err => console.error('Error fetching grooming services:', err));
+}
+
+function fetchVeterinaryServices() {
+  fetch('http://localhost/backend/fetch_veterinary_services.php')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('veterinaryServicesContainer');
+      container.innerHTML = '';
+      data.services.forEach(service => {
+        const div = document.createElement('div');
+        div.className = 'appointment-item';
+        div.innerHTML = `
+          <div class="appointment-details">
+            <h3>${service.service_name} - ₱${service.price}</h3>
+            <p>${service.description || 'No description provided.'}</p>
+          </div>
+          <button class="edit-btn" onclick='openEditModal(${JSON.stringify(service)})'>Edit</button>
+        `;
+        container.appendChild(div);
+      });
+    })
+    .catch(err => console.error('Error:', err));
+}
+
+
+// Placeholder function for editing modal (you will implement this next)
+function openEditServiceModal(serviceId, serviceType) {
+  alert(`Editing ${serviceType} service with ID: ${serviceId}`);
+}
+
+function openEditModal(service) {
+  console.log("🔵 Opening Edit Modal:", service);  // ✅ Debugging log
+  
+  document.getElementById('editServiceId').value = service.service_id;  // ✅ Correct field name
+  document.getElementById('editServiceName').value = service.service_name;
+  document.getElementById('editServicePrice').value = service.price;
+  document.getElementById('editServiceDescription').value = service.description || '';
+
+  document.getElementById('editServiceModal').style.display = 'flex';
+}
+
+
+// Save edited service
+document.getElementById('editServiceForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const serviceId = document.getElementById('editServiceId').value;
+  const servicePrice = document.getElementById('editServicePrice').value;
+  const serviceDescription = document.getElementById('editServiceDescription').value;
+
+  console.log("🔵 Sending Update Request:", {
+    service_id: serviceId,  // ✅ Correct field name
+    price: servicePrice,
+    description: serviceDescription
+  });
+
+  fetch('http://localhost/backend/update_service.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      service_id: serviceId,  // ✅ Correct field name
+      price: servicePrice,
+      description: serviceDescription
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      alert('✅ Service updated successfully!');
+      closeModal('editServiceModal');
+      fetchGroomingServices();
+      fetchVeterinaryServices();
+    } else {
+      alert('❌ Failed to update service: ' + (data.error || 'Unknown error'));
+      console.error('🔴 Update error:', data.error);
+    }
+  })
+  .catch(err => console.error('🔴 Fetch Error:', err));
+});
+
+
+// Delete service function
+function deleteService() {
+  const serviceId = document.getElementById('editServiceId').value;
+
+  console.log("🔵 Sending Delete Request:", { service_id: serviceId });  // ✅ Debugging log
+
+  fetch('http://localhost/backend/delete_service.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ service_id: serviceId })  // ✅ Correct field name
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      alert('✅ Service removed successfully!');
+      closeModal('editServiceModal');
+      fetchGroomingServices();
+      fetchVeterinaryServices();
+    } else {
+      alert('❌ Failed to remove service: ' + (data.error || 'Unknown error'));
+      console.error('🔴 Delete error:', data.error);
+    }
+  })
+  .catch(err => console.error('🔴 Fetch Error:', err));
+}
+
+
+
+// Modal handling
+let currentServiceType = '';
+
+function openAddServiceModal(serviceType) {
+  currentServiceType = serviceType;
+  document.getElementById('addServiceModalTitle').innerText = `Add ${serviceType} Service`;
+
+  const serviceOption = document.getElementById('serviceOption');
+  serviceOption.innerHTML = '<option value="" disabled selected>Select Service</option>';
+
+  // Fetch existing services from DB first
+  fetch(`http://localhost/backend/fetch_${serviceType.toLowerCase()}_services.php`)
+    .then(res => res.json())
+    .then(data => {
+      const existingServices = data.services.map(service => service.service_name);
+
+      // Filter out already posted services
+      const servicesList = (serviceType === 'Grooming' ? groomingServices : veterinaryServices)
+        .filter(service => !existingServices.includes(service));
+
+      servicesList.forEach(service => {
+        const option = document.createElement('option');
+        option.value = service;
+        option.textContent = service;
+        serviceOption.appendChild(option);
       });
 
-      function displayGroomingAppointments(appointments) {
-        const container = document.getElementById(
-          "groomingAppointmentsContainer"
-        );
-        container.innerHTML = "";
-        appointments.forEach((appointment) => {
-          let statusBadge = `<span class="status pending">Pending</span>`;
-          if (appointment.status === "Approved") {
-            statusBadge = `<span class="status approved">Approved</span>`;
-          } else if (appointment.status === "Declined") {
-            statusBadge = `<span class="status declined">Declined</span>`;
-          }
+      document.getElementById('addServiceForm').reset();
+      document.getElementById('addServiceModal').style.display = 'flex';
+    })
+    .catch(error => console.error('Error:', error));
+}
 
-          const appointmentElement = document.createElement("div");
-          appointmentElement.className = "appointment-item";
-          appointmentElement.innerHTML = `
-          <div class="appointment-image"></div>
-          <div class="appointment-details">
-            <h3>${appointment.groom_type}</h3>
-            <p><strong>Customer:</strong> ${appointment.name}</p>
-            <p><strong>Pet:</strong> ${appointment.pet_name} (${
-            appointment.pet_breed
-          })</p>
-            <p><strong>Date:</strong> ${appointment.appointment_date}</p>
-          </div>
-          ${statusBadge}
-          <button class="view-details" onclick='showGroomDetails(${JSON.stringify(
-            appointment
-          )})'>View Details</button>
-        `;
-          container.appendChild(appointmentElement);
-        });
+
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
+}
+
+// Add Service Form Submission with Price and Description
+document.getElementById('addServiceForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const serviceName = document.getElementById('serviceOption').value;
+  const servicePrice = document.getElementById('servicePrice').value;
+  const serviceDescription = document.getElementById('serviceDescription').value;
+
+  fetch('http://localhost/backend/create_service.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      type: currentServiceType,
+      service_name: serviceName,
+      price: servicePrice,
+      description: serviceDescription
+    })
+  })
+  .then(res => res.json())
+  .then(response => {
+    if (response.success) {
+      alert('Service added successfully!');
+      closeModal('addServiceModal');
+
+      if (currentServiceType === 'Grooming') {
+        fetchGroomingServices();
+      } else if (currentServiceType === 'Veterinary') {
+        fetchVeterinaryServices();
       }
 
-      function displayVeterinaryAppointments(appointments) {
-        const container = document.getElementById(
-          "veterinaryAppointmentsContainer"
-        );
-        container.innerHTML = "";
-        appointments.forEach((appointment) => {
-          let statusBadge = `<span class="status pending">Pending</span>`;
-          if (appointment.status === "Approved") {
-            statusBadge = `<span class="status approved">Approved</span>`;
-          } else if (appointment.status === "Declined") {
-            statusBadge = `<span class="status declined">Declined</span>`;
-          }
+    } else {
+      alert('Failed to add service.');
+    }
+  })
+  .catch(error => console.error('Error:', error));
+});
 
-          const appointmentDiv = document.createElement("div");
-          appointmentDiv.classList.add("appointment-item");
-          appointmentDiv.innerHTML = `
-          <div class="appointment-image"></div>
-          <div class="appointment-details">
-            <h3>${appointment.checkup_type}</h3>
-            <p><strong>Customer:</strong> ${appointment.name}</p>
-            <p><strong>Pet:</strong> ${appointment.pet_name} (${
-            appointment.pet_breed
-          })</p>
-            <p><strong>Date:</strong> ${appointment.appointment_date}</p>
-          </div>
-          ${statusBadge}
-          <button class="view-details-btn" onclick='showVetDetails(${JSON.stringify(
-            appointment
-          )})'>View Details</button>
-        `;
-          container.appendChild(appointmentDiv);
-        });
-      }
 
-      function showGroomDetails(appointment) {
-        document.getElementById("modalCustomerName").innerText =
-          appointment.name || "N/A";
-        document.getElementById("modalCustomerAddress").innerText =
-          appointment.address || "N/A";
-        document.getElementById("modalCustomerPhone").innerText =
-          appointment.phone_number || "N/A";
-        document.getElementById("modalPetName").innerText =
-          appointment.pet_name || "N/A";
-        document.getElementById("modalPetBreed").innerText =
-          appointment.pet_breed || "N/A";
-        document.getElementById("modalGroomType").innerText =
-          appointment.groom_type || "N/A";
-        document.getElementById("modalNotes").innerText =
-          appointment.notes || "N/A";
-        document.getElementById("modalDate").innerText =
-          appointment.appointment_date || "N/A";
 
-        document.getElementById("appointmentModal").style.display = "flex";
-        document.getElementById("approveBtn").onclick = function () {
-          updateGroomingStatus(appointment.id, "Approved");
-        };
-        document.getElementById("declineBtn").onclick = function () {
-          updateGroomingStatus(appointment.id, "Declined");
-        };
-      }
-
-      function updateGroomingStatus(appointmentId, status) {
-        fetch("http://192.168.1.42/backend/approve_grooming_appointment.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            appointment_id: appointmentId,
-            status: status,
-          }),
-        })
-          .then(() => location.reload())
-          .catch((error) =>
-            console.error("Error updating grooming status:", error)
-          );
-      }
-
-      function showVetDetails(appointment) {
-        document.getElementById("vetModalCustomerName").innerText =
-          appointment.name || "N/A";
-        document.getElementById("vetModalCustomerAddress").innerText =
-          appointment.address || "N/A";
-        document.getElementById("vetModalCustomerPhone").innerText =
-          appointment.phone_number || "N/A";
-        document.getElementById("vetModalPetName").innerText =
-          appointment.pet_name || "N/A";
-        document.getElementById("vetModalPetBreed").innerText =
-          appointment.pet_breed || "N/A";
-        document.getElementById("vetModalCheckupType").innerText =
-          appointment.checkup_type || "N/A";
-        document.getElementById("vetModalNotes").innerText =
-          appointment.notes || "N/A";
-        document.getElementById("vetModalDate").innerText =
-          appointment.appointment_date || "N/A";
-
-        document
-          .getElementById("vetAppointmentModal")
-          .setAttribute("data-id", appointment.id);
-        document.getElementById("vetAppointmentModal").style.display = "flex";
-      }
-
-      function approveVeterinaryAppointment() {
-        const appointmentId = document
-          .getElementById("vetAppointmentModal")
-          .getAttribute("data-id");
-        fetch(
-          "http://192.168.1.42/backend/approve_veterinary_appointment.php",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              appointment_id: appointmentId,
-              status: "Approved",
-            }),
-          }
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.success) {
-              alert("Appointment Approved!");
-              location.reload();
-            } else {
-              alert("Error: " + data.message);
-            }
-          })
-          .catch((error) =>
-            console.error("Error approving veterinary appointment:", error)
-          );
-      }
-
-      function declineVeterinaryAppointment() {
-        const appointmentId = document
-          .getElementById("vetAppointmentModal")
-          .getAttribute("data-id");
-        fetch(
-          "http://192.168.1.42/backend/approve_veterinary_appointment.php",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              appointment_id: appointmentId,
-              status: "Declined",
-            }),
-          }
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.success) {
-              alert("Appointment Declined.");
-              location.reload();
-            } else {
-              alert("Error: " + data.message);
-            }
-          })
-          .catch((error) =>
-            console.error("Error declining veterinary appointment:", error)
-          );
-      }
-
-      function closeModal(modalId) {
-        document.getElementById(modalId).style.display = "none";
-      }
-
-      // Close modal if clicking outside of it
-      window.onclick = function (event) {
-        const groomModal = document.getElementById("appointmentModal");
-        const vetModal = document.getElementById("vetAppointmentModal");
-        if (event.target === groomModal) {
-          closeModal("appointmentModal");
-        }
-        if (event.target === vetModal) {
-          closeModal("vetAppointmentModal");
-        }
-      };
+// Initial Load
+document.addEventListener("DOMContentLoaded", function () {
+  fetchGroomingServices();
+  fetchVeterinaryServices();
+});
     </script>
   </body>
 </html>
