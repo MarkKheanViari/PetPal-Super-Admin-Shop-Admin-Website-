@@ -13,9 +13,9 @@
     <nav class="sidebar">
         <h2>SuperAdmin</h2>
         <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">User Management</a></li>
-            <li><a href="#">Content Management</a></li>
+            <li><a href="superadmin.html">Dashboard</a></li>
+            <li><a href="superadmin_user_management.html">User Management</a></li>
+            <li><a href="superadmin_content_management.html">Content Management</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Settings</a></li>
         </ul>
@@ -24,7 +24,7 @@
     <!-- Dashboard Content -->
     <main class="dashboard">
         <h1>Dashboard Overview</h1>
-
+    
         <!-- Top Statistics Cards -->
         <div class="stats-container">
             <div class="stat-card">
@@ -44,70 +44,70 @@
                 <p id="pendingProducts">Loading...</p>
             </div>
         </div>
-
+    
         <section class="dashboard-container">
-            <!-- Left: Graph -->
+            <!-- Graph Section -->
             <div class="graph-container">
-              <h2>User Statistics</h2>
-              <canvas id="userChart"></canvas>
+                <h2>User Statistics</h2>
+                <canvas id="userChart"></canvas>
             </div>
-          
-            <!-- Right: Recent Activities -->
+    
+            <!-- Recent Activities -->
             <div class="activities-container">
-              <h2>Recent Activities</h2>
-              <ul id="activityList">
-                <li>Loading activities...</li>
-              </ul>
+                <h2>Recent Activities</h2>
+                <ul id="activityList">
+                    <li>Loading activities...</li>
+                </ul>
             </div>
-          </section>
-
+        </section>
+    
+        <!-- Management Section -->
         <section class="management-section">
             <h2>Management Panel</h2>
-          
-            <!-- Tabs -->
+    
+            <!-- Tab Buttons -->
             <div class="tab-container">
-              <button class="tab-btn active" onclick="openTab(event, 'userManagement')">User Management</button>
-              <button class="tab-btn" onclick="openTab(event, 'productManagement')">Product Management</button>
+                <button class="tab-btn active" onclick="openTab(event, 'userManagement')">User Management</button>
+                <button class="tab-btn" onclick="openTab(event, 'productManagement')">Product Management</button>
             </div>
-          
-            <!-- User Management Table -->
+    
+            <!-- User Management -->
             <div id="userManagement" class="tab-content active">
-              <table>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="userTable">
-                  <tr><td colspan="5">Loading Users...</td></tr>
-                </tbody>
-              </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTable">
+                        <tr><td colspan="5">Loading Users...</td></tr>
+                    </tbody>
+                </table>
             </div>
-          
-            <!-- Product Management Table -->
+    
+            <!-- Product Management -->
             <div id="productManagement" class="tab-content">
-              <table>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Owner</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="productTable">
-                  <tr><td colspan="4">Loading Products...</td></tr>
-                </tbody>
-              </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Owner</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTable">
+                        <tr><td colspan="4">Loading Products...</td></tr>
+                    </tbody>
+                </table>
             </div>
-          </section>
-          
-
-
+        </section>
+    </main>
+    
     <!-- JavaScript -->
     <script src="superadmin.js"></script>
 

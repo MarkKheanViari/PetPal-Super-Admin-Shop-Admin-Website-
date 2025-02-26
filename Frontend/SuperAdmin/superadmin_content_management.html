@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperAdmin - Content Management</title>
+    <link rel="stylesheet" href="superadmin_content_management.css">
+</head>
+<body>
+
+
+    
+
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>SuperAdmin</h2>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="superadmin_user_management.html">User Management</a></li>
+                <li><a href="content_management.html" class="active">Content Management</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header-container">
+                <h1>Content Management</h1>
+                <input type="text" id="searchBar" class="search-bar" placeholder="Search products..." onkeyup="filterProducts()">
+            </div>
+
+            <div class="content-management">
+                <div class="content-header">
+                    <h2>Product Management</h2>
+                </div>
+                <p>Review, approve, or reject product listings from shop owners.</p>
+
+                <!-- Product Filters -->
+                <div class="filter-buttons">
+                    <button id="allProductsBtn" class="filter-btn active">All Products</button>
+                    <button id="pendingProductsBtn" class="filter-btn">Pending</button>
+                    <button id="approvedProductsBtn" class="filter-btn">Approved</button>
+                    <button id="rejectedProductsBtn" class="filter-btn">Rejected</button>
+                </div>
+
+                <!-- Product Table -->
+                <div class="table-container">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Product</th>
+                                <th>Shop</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTable">
+                            <!-- Products will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+
+    <script src="superadmin_content_management.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperAdmin - User Management</title>
+    <link rel="stylesheet" href="superadmin_user_management.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>SuperAdmin</h2>
+            <ul>
+                <li><a href="superadmin.html">Dashboard</a></li>
+                <li><a href="superadmin_user_management.html" class="active">User Management</a></li>
+                <li><a href="content_management.html">Content Management</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header-container">
+                <h1>User Management</h1>
+                <input type="text" id="searchBar" class="search-bar" placeholder="Search users..." onkeyup="filterUsers()">
+            </div>
+
+            <div class="user-management">
+                <div class="user-header">
+                    <h2>User Accounts</h2>
+                    <button class="add-user-btn">Add User</button>
+                </div>
+                <p>Manage user accounts, view details, and modify permissions.</p>
+
+                <!-- User Filters -->
+<div class="filter-buttons">
+    <button id="allUsersBtn" class="filter-btn active">All Users</button>
+    <button id="shopOwnersBtn" class="filter-btn">Shop Owners</button>
+    <button id="customersBtn" class="filter-btn">Customers</button>
+</div>
+
+
+                <!-- User Table -->
+                <div class="table-container">
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTable">
+                            <!-- Users will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Shop Owner Modal -->
+<div id="addShopOwnerModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Add Shop Owner</h2>
+        <p>Create a new shop owner account. Only shop owner accounts can be created by admin.</p>
+
+        <label for="shopOwnerUsername">Username</label>
+        <input type="text" id="shopOwnerUsername" placeholder="Enter username">
+
+        <label for="shopOwnerEmail">Email</label>
+        <input type="email" id="shopOwnerEmail" placeholder="Enter email">
+
+        <label for="shopOwnerPassword">Password</label>
+        <input type="password" id="shopOwnerPassword" placeholder="Create password">
+
+        <button id="createShopOwnerBtn" class="primary-btn">Create Shop Owner</button>
+    </div>
+</div>
+
+
+
+    <script src="superadmin_user_management.js"></script>
+</body>
+</html>

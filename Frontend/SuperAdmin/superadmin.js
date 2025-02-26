@@ -91,35 +91,54 @@ async function fetchUsers() {
 // Fetch Products and Limit to 3
 async function fetchProducts() {
   try {
-    const response = await fetch("http://192.168.1.65/backend/frontend/superadmin/fetch_products.php");
-    const data = await response.json();
+      const response = await fetch("http://192.168.1.65/backend/Frontend/SuperAdmin/fetch_products.php?page=dashboard");
+      const data = await response.json();
 
-    const productTable = document.getElementById("productTable");
-    productTable.innerHTML = "";
+      const productTable = document.getElementById("productTable");
+      productTable.innerHTML = "";
 
-    // ✅ Limit to first 3 Products
-    const productsToShow = data.products.slice(0, 3);
-    if (productsToShow.length > 0) {
-      productsToShow.forEach(product => {
-        productTable.innerHTML += `
-          <tr>
-            <td>${product.id}</td>
-            <td>${product.name}</td>
-            <td>${product.owner || "Unknown"}</td>
-            <td>
-              <button class="approve-btn" onclick="approveProduct(${product.id})">Approve</button>
-              <button class="delete-btn" onclick="deleteProduct(${product.id})">Delete</button>
-            </td>
-          </tr>
-        `;
+      // ✅ Display only ID, Name, Owner, and Actions
+      data.products.slice(0, 3).forEach(product => {
+          productTable.innerHTML += `
+              <tr>
+                  <td>${product.id}</td>
+                  <td>${product.name}</td>
+                  <td>${product.owner || "Unknown"}</td>
+                  <td>
+                      <button class="approve-btn">Approve</button>
+                      <button class="delete-btn">Delete</button>
+                  </td>
+              </tr>
+          `;
       });
-    } else {
-      productTable.innerHTML = "<tr><td colspan='4'>No Products Available</td></tr>";
-    }
   } catch (error) {
-    console.error("❌ Error fetching products:", error);
+      console.error("❌ Error fetching products:", error);
   }
 }
+
+
+async function fetchRecentActivities() {
+  try {
+      const response = await fetch("http://192.168.1.65/backend/Frontend/Superadmin/fetch_recent_activities.php");
+      const data = await response.json();
+
+      const activityList = document.getElementById("activityList");
+      activityList.innerHTML = ""; // Clear previous content
+
+      if (data.activities.length > 0) {
+          data.activities.forEach(activity => {
+              const li = document.createElement("li");
+              li.textContent = activity;
+              activityList.appendChild(li);
+          });
+      } else {
+          activityList.innerHTML = "<li>No Recent Activities</li>";
+      }
+  } catch (error) {
+      console.error("❌ Error fetching recent activities:", error);
+  }
+}
+
 
 
 // 📌 Render Bar Graph Chart
