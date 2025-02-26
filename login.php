@@ -1,56 +1,56 @@
-
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json");
+
 include 'db.php';
 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
-header('Content-Type: application/json');
+$response = array();
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
+$data = json_decode(file_get_contents("php://input"), true);
+$email = $data["email"] ?? "";
+$password = $data["password"] ?? "";
 
-try {
-    $json = file_get_contents('php://input');
-    $data = json_decode($json);
+// SuperAdmin Credentials
+$superadmin_email = "admin@example.com";
+$superadmin_password = "admin123"; // Change this and hash it for security
 
-    if (!$data || !isset($data->username) || !isset($data->password)) {
-        throw new Exception('Missing required fields');
+if ($email === $superadmin_email) {
+    // Authenticate SuperAdmin
+    if ($password === $superadmin_password) {
+        $response["success"] = true;
+        $response["role"] = "SuperAdmin";
+        $response["message"] = "Login successful as SuperAdmin";
+    } else {
+        $response["success"] = false;
+        $response["message"] = "Invalid SuperAdmin credentials";
     }
-
-    $username = $data->username;
-    $password = $data->password;
-
-    // Get user from database
-    $stmt = $conn->prepare("SELECT id, username, password FROM shop_owners WHERE username = ?");
-    $stmt->bind_param("s", $username);
+} else {
+    // Authenticate Shop Owner
+    $stmt = $conn->prepare("SELECT id, username, email, password FROM shop_owners WHERE email = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
 
-    if (!$user || !password_verify($password, $user['password'])) {
-        throw new Exception('Invalid username or password');
+    if ($row = $result->fetch_assoc()) {
+        if (password_verify($password, $row["password"])) {
+            $response["success"] = true;
+            $response["role"] = "ShopOwner";
+            $response["user"] = [
+                "id" => $row["id"],
+                "username" => $row["username"],
+                "email" => $row["email"]
+            ];
+            $response["message"] = "Login successful as Shop Owner";
+        } else {
+            $response["success"] = false;
+            $response["message"] = "Incorrect password";
+        }
+    } else {
+        $response["success"] = false;
+        $response["message"] = "User not found";
     }
-
-    // Generate a simple token
-    $token = bin2hex(random_bytes(32));
-
-    echo json_encode([
-        'success' => true,
-        'message' => 'Login successful',
-        'token' => $token,
-        'username' => $user['username'],
-        'user_id' => $user['id']  // Include user ID in response
-    ]);
-
-} catch (Exception $e) {
-    http_response_code(401);
-    echo json_encode([
-        'success' => false,
-        'message' => $e->getMessage()
-    ]);
 }
-?>
 
+echo json_encode($response);
+$conn->close();
+?>

@@ -3,56 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Owner Login</title>
-    <link rel="stylesheet" href="style.css">
-    
+    <title>Login - SuperAdmin & Shop Owner</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo-img">
-        </div>
-    </nav>
 
-    <div class="welcome-section">
-        <h1>Welcome to PetPal Seller Dashboard</h1>
-        <p>Manage your products, orders, and sales efficiently.</p>
-        <div class="welcome-buttons">
-            <a class="btn btn-signup" href="register.html">Sign Up</a>
-            <a class="btn btn-login" href="login.html">Log In</a>
+    <div class="container">
+        <!-- Left Section - Login Form -->
+        <div class="login-section">
+            <h1 id="loginTitle">Shop Owner Login</h1>
+            <div class="toggle-container">
+                <a href="#" id="toggleRole">Switch to SuperAdmin</a>
+            </div>
+
+            <form id="loginForm">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+
+                <button type="submit">Sign in</button>
+            </form>
+
+            <p class="demo-credentials">
+                Demo credentials: <br>
+                <span id="demoEmail">shop@example.com</span> <br>
+                <span id="demoPassword">shop123</span>
+            </p>
+        </div>
+
+        <!-- Right Section - Logo -->
+        <div class="logo-section">
+            <img src="logo.png" alt="Brand Logo">
         </div>
     </div>
-    <main class="container">
-        <div class="form-container hidden">
-            <h2>Welcome back seller!</h2>
-            <p class="subtitle">Enter your credentials to log in</p>
-            <form id="loginForm" class="form-container">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Username" required>
-                </div>
-                <div class="form-group password-group">
-                    <label for="password">Password</label>
-                    <div class="password-wrapper">
-                        <input type="password" id="password" name="password" placeholder="Password" required>
-                        <span class="toggle-password" onclick="togglePassword('password', 'toggleText')" id="toggleText">Show</span>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-submit">Login</button>
-                <div id="error" class="error" style="color: red;"></div>
-            </form>
-        </div>
-    </main>
-    <footer>
-        <nav class="footer-nav">
-            <a href="about_us.html" class="footer-link">About Us</a>
-            <a href="contact.html" class="footer-link">Contact Us</a>
-            <a href="terms.html" class="footer-link">Terms and Conditions</a>
-            <a href="privacy.html" class="footer-link">Privacy Policy</a>
-        </nav>
-    </footer>
-<script src="login.js">
-    
-</script>
+
+    <script src="login.js"></script>
 </body>
 </html>

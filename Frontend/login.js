@@ -1,44 +1,60 @@
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const errorDiv = document.getElementById("error");
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.getElementById("loginForm");
+  const toggleRole = document.getElementById("toggleRole");
+  const loginTitle = document.getElementById("loginTitle");
 
-  try {
-    const response = await fetch("http://192.168.1.65/backend/login.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: document.getElementById("username").value,
-        password: document.getElementById("password").value,
-      }),
-    });
+  let isSuperAdmin = false; // Default role is Shop Owner
 
-    const data = await response.json();
+  // Toggle between Shop Owner and SuperAdmin login
+  toggleRole.addEventListener("click", function (event) {
+      event.preventDefault();
+      isSuperAdmin = !isSuperAdmin;
 
-    if (data.success) {
-      // Store the user ID along with other data
-      localStorage.setItem("shop_owner_token", data.token);
-      localStorage.setItem("shop_owner_username", data.username);
-      localStorage.setItem("shop_owner_id", data.user_id);
+      if (isSuperAdmin) {
+          loginTitle.textContent = "SuperAdmin Login";
+          toggleRole.textContent = "Switch to Shop Owner";
+      } else {
+          loginTitle.textContent = "Shop Owner Login";
+          toggleRole.textContent = "Switch to SuperAdmin";
+      }
+  });
 
-      window.location.href = "dashboard.html";
-    } else {
-      errorDiv.textContent = data.message || "Login failed";
-    }
-  } catch (error) {
-    console.error("Error:", error);
-    errorDiv.textContent = "An error occurred. Please try again.";
-  }
+  // Handle login form submission
+  loginForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+          alert("⚠️ Please enter both email and password.");
+          return;
+      }
+
+      const loginData = {
+          email: email,
+          password: password,
+          role: isSuperAdmin ? "superadmin" : "shop_owner"
+      };
+
+      try {
+          const response = await fetch("http://localhost/backend/authenticate.php", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(loginData)
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+              alert("✅ Login Successful!");
+              window.location.href = result.redirect; // Redirect to respective dashboard
+          } else {
+              alert("❌ Error: " + result.message);
+          }
+      } catch (error) {
+          console.error("❌ Login failed:", error);
+          alert("❌ Error connecting to server. Please try again.");
+      }
+  });
 });
-function togglePassword(fieldId, textId) {
-  const field = document.getElementById(fieldId);
-  const toggleText = document.getElementById(textId);
-  if (field.type === "password") {
-    field.type = "text";
-    toggleText.textContent = "Hide";
-  } else {
-    field.type = "password";
-    toggleText.textContent = "Show";
-  }
-}

@@ -1,0 +1,114 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff; /* White background */
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+/* Left Section - Login Form */
+.login-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+}
+
+.login-section h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #FF6600; /* Orange Theme */
+}
+
+.toggle-container {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.toggle-container a {
+    color: #FF6600; /* Orange Theme */
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.toggle-container a:hover {
+    text-decoration: underline;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background: #FF6600; /* Orange Button */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #CC5500; /* Darker Orange */
+}
+
+/* Right Section - Logo */
+.logo-section {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFF3E0; /* Light Orange Background */
+}
+
+.logo-section img {
+    width: 120px;
+    height: auto;
+}
+
+/* Demo Credentials */
+.demo-credentials {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.demo-credentials span {
+    font-weight: bold;
+    color: #FF6600; /* Orange Theme */
+}

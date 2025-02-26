@@ -1,36 +1,27 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type");
 
-// Include database connection
 include_once $_SERVER['DOCUMENT_ROOT'] . "/backend/db.php";
 
-// Get raw POST data
-$data = json_decode(file_get_contents("php://input"), true);
+$data = json_decode(file_get_contents("php://input"));
 
-if (isset($data["username"], $data["email"], $data["password"])) {
-    $username = $conn->real_escape_string($data["username"]);
-    $email = $conn->real_escape_string($data["email"]);
-    $password = password_hash($data["password"], PASSWORD_DEFAULT); // Hash password
+if (!empty($data->username) && !empty($data->email) && !empty($data->password)) {
+    $username = $conn->real_escape_string($data->username);
+    $email = $conn->real_escape_string($data->email);
+    $password = password_hash($data->password, PASSWORD_BCRYPT); // Secure password
 
-    // Check if username or email already exists
-    $checkQuery = "SELECT id FROM shop_owners WHERE username = '$username' OR email = '$email'";
-    $checkResult = $conn->query($checkQuery);
-    if ($checkResult->num_rows > 0) {
-        echo json_encode(["success" => false, "message" => "Username or email already exists."]);
-        exit;
-    }
-
-    // Insert into shop_owners table
     $query = "INSERT INTO shop_owners (username, email, password) VALUES ('$username', '$email', '$password')";
-    
+
     if ($conn->query($query) === TRUE) {
-        echo json_encode(["success" => true, "message" => "Shop owner added successfully."]);
+        echo json_encode(["success" => true, "message" => "Shop Owner Added"]);
     } else {
-        echo json_encode(["success" => false, "message" => "Database error: " . $conn->error]);
+        echo json_encode(["success" => false, "message" => "Error: " . $conn->error]);
     }
 } else {
-    echo json_encode(["success" => false, "message" => "Missing required fields."]);
+    echo json_encode(["success" => false, "message" => "All fields are required"]);
 }
 
 $conn->close();
