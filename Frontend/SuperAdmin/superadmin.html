@@ -10,16 +10,26 @@
 <body>
 
     <!-- Sidebar Navigation -->
-    <nav class="sidebar">
-        <h2>SuperAdmin</h2>
-        <ul>
-            <li><a href="superadmin.html">Dashboard</a></li>
-            <li><a href="superadmin_user_management.html">User Management</a></li>
-            <li><a href="superadmin_content_management.html">Content Management</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Settings</a></li>
-        </ul>
-    </nav>
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <i class="fas fa-cube"></i> <span>SuperAdmin</span>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="superadmin.html"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+        <li><a href="superadmin_user_management.html"><i class="fas fa-users"></i> User Management</a></li>
+        <li><a href="superadmin_content_management.html"><i class="fas fa-box"></i> Content Management</a></li>
+        <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+    </ul>
+
+    <!-- Settings Icon at Bottom -->
+    <div class="settings">
+        <a href="superadmin_settings.html"><i class="fas fa-cog"></i> Settings</a>
+    </div>
+</nav>
+
+<!-- FontAwesome for Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 
     <!-- Dashboard Content -->
     <main class="dashboard">

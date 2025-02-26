@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperAdmin Settings</title>
+    <link rel="stylesheet" href="superadmin.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-cube"></i> <span>SuperAdmin</span>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="superadmin.html"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+            <li><a href="superadmin_user_management.html"><i class="fas fa-users"></i> User Management</a></li>
+            <li><a href="superadmin_content_management.html"><i class="fas fa-box"></i> Content Management</a></li>
+            <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+        </ul>
+
+        <!-- Settings Icon at Bottom -->
+        <div class="settings">
+            <a href="superadmin_settings.html" class="active"><i class="fas fa-cog"></i> Settings</a>
+        </div>
+    </nav>
+
+    <!-- Main Settings Content -->
+    <main class="settings-container">
+        <h1>Settings</h1>
+
+        <!-- Tabs -->
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="openTab(event, 'general')">General</button>
+            <button class="tab-btn" onclick="openTab(event, 'notifications')">Notifications</button>
+            <button class="tab-btn" onclick="openTab(event, 'security')">Security</button>
+            <button class="tab-btn" onclick="openTab(event, 'appearance')">Appearance</button>
+        </div>
+
+        <!-- General Settings -->
+        <div id="general" class="tab-content active">
+            <h2>General Settings</h2>
+            <p>Manage your account settings and preferences.</p>
+
+            <div class="form-group">
+                <label for="platformName">Platform Name</label>
+                <input type="text" id="platformName" value="SuperAdmin Dashboard">
+            </div>
+
+            <div class="form-group">
+                <label for="adminEmail">Admin Email</label>
+                <input type="email" id="adminEmail" value="admin@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="supportEmail">Support Email</label>
+                <input type="email" id="supportEmail" value="support@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="timezone">Timezone</label>
+                <select id="timezone">
+                    <option value="UTC">UTC</option>
+                    <option value="GMT">GMT</option>
+                    <option value="EST">EST</option>
+                    <option value="PST">PST</option>
+                </select>
+            </div>
+
+            <button class="save-btn">Save Changes</button>
+        </div>
+
+        <!-- Other Tabs (Notifications, Security, Appearance) -->
+        <div id="notifications" class="tab-content">
+            <h2>Notification Settings</h2>
+            <p>Configure your notification preferences.</p>
+        </div>
+
+        <div id="security" class="tab-content">
+            <h2>Security Settings</h2>
+            <p>Manage your security options and passwords.</p>
+        </div>
+
+        <div id="appearance" class="tab-content">
+            <h2>Appearance Settings</h2>
+            <p>Customize the theme and layout.</p>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="superadmin.js"></script>
+
+</body>
+</html>

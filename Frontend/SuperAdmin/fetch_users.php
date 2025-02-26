@@ -1,28 +1,29 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
-include_once $_SERVER['DOCUMENT_ROOT'] . "/backend/db.php";
+header("Access-Control-Allow-Methods: GET");
 
-
+// Include database connection
+include $_SERVER['DOCUMENT_ROOT'] . "/backend/db.php";
 
 $response = array();
-$query = "SELECT id, username, 'Customer' AS role FROM mobile_users 
-          UNION ALL 
-          SELECT id, username, 'Shop Owner' FROM shop_owners 
-          ORDER BY id DESC";
+$response["users"] = [];
+
+$query = "SELECT id, username, 'Shop Owner' AS type, 'Active' AS status FROM shop_owners
+          UNION ALL
+          SELECT id, username, 'Customer' AS type, 'Active' AS status FROM mobile_users";
 
 $result = $conn->query($query);
 
 if ($result->num_rows > 0) {
-    $users = array();
     while ($row = $result->fetch_assoc()) {
-        $users[] = $row;
+        $response["users"][] = $row;
     }
-    $response["users"] = $users;
 } else {
-    $response["users"] = [];
+    $response["message"] = "No users found";
 }
 
+// Return JSON response
 echo json_encode($response);
 $conn->close();
 ?>

@@ -9,9 +9,10 @@
     display: flex;
 }
 
+/* Sidebar */
 .sidebar {
     width: 250px;
-    background-color: #1f2937;
+    background-color: #ff6f00; /* Orange */
     color: white;
     padding: 20px;
     height: 100vh;
@@ -38,16 +39,18 @@
 }
 
 .sidebar ul li a.active {
-    background-color: #374151;
+    background-color: #e65100; /* Dark Orange */
     border-radius: 5px;
 }
 
+/* Main Content */
 .main-content {
     flex-grow: 1;
     padding: 20px;
-    background-color: #f9fafb;
+    background-color: #fff3e0; /* Light Orange Background */
 }
 
+/* Header */
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -55,13 +58,15 @@
     margin-bottom: 20px;
 }
 
+/* Search Bar */
 .search-bar {
     padding: 8px;
     width: 250px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffa726; /* Lighter Orange */
     border-radius: 5px;
 }
 
+/* Filter Buttons */
 .filter-buttons {
     margin-bottom: 20px;
 }
@@ -70,16 +75,17 @@
     padding: 8px 15px;
     border: none;
     border-radius: 5px;
-    background-color: #e5e7eb;
+    background-color: #ffcc80; /* Light Orange */
     cursor: pointer;
     margin-right: 5px;
 }
 
 .filter-btn.active {
-    background-color: #3b82f6;
+    background-color: #ff6f00; /* Orange */
     color: white;
 }
 
+/* Table Container */
 .table-container {
     background: white;
     padding: 20px;
@@ -87,32 +93,36 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Product Table */
 .product-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.product-table th, .product-table td {
+.product-table th,
+.product-table td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     text-align: left;
 }
 
+/* Status Labels */
 .status-pending {
-    color: #f59e0b;
+    color: #ff9800; /* Orange */
     font-weight: bold;
 }
 
 .status-approved {
-    color: #10b981;
+    color: #f57c00; /* Slightly Darker Orange */
     font-weight: bold;
 }
 
 .status-rejected {
-    color: #ef4444;
+    color: #d84315; /* Dark Red-Orange */
     font-weight: bold;
 }
 
+/* Buttons */
 .action-btn {
     border: none;
     padding: 5px 8px;
@@ -120,17 +130,32 @@
     cursor: pointer;
 }
 
+/* Approve Button */
 .approve-btn {
-    background-color: #10b981;
+    background-color: #ff6f00; /* Orange */
     color: white;
 }
 
+.approve-btn:hover {
+    background-color: #e65100; /* Darker Orange */
+}
+
+/* Reject Button */
 .reject-btn {
-    background-color: #ef4444;
+    background-color: #d84315; /* Deep Red-Orange */
     color: white;
 }
 
+.reject-btn:hover {
+    background-color: #bf360c; /* Darker Red-Orange */
+}
+
+/* More Options Button */
 .more-btn {
-    background-color: #374151;
+    background-color: #ff8f00; /* Brighter Orange */
     color: white;
+}
+
+.more-btn:hover {
+    background-color: #e65100; /* Darker Orange */
 }
