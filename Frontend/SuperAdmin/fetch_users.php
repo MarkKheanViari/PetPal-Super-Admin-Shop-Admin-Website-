@@ -2,25 +2,28 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 header("Access-Control-Allow-Methods: GET");
+header("Access-Control-Allow-Headers: Content-Type");
 
-// Include database connection
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 include $_SERVER['DOCUMENT_ROOT'] . "/backend/db.php";
 
 $response = array();
-$response["users"] = [];
+$response["users"] = array();
 
-$query = "SELECT id, username, 'Shop Owner' AS type, 'Active' AS status FROM shop_owners
-          UNION ALL
-          SELECT id, username, 'Customer' AS type, 'Active' AS status FROM mobile_users";
+// Query for Mobile Users (Customers)
+$mobileUsersQuery = "SELECT id, username AS name, email, 'Customer' AS type FROM mobile_users";
+$mobileUsersResult = $conn->query($mobileUsersQuery);
+while ($row = $mobileUsersResult->fetch_assoc()) {
+    $response["users"][] = $row;
+}
 
-$result = $conn->query($query);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $response["users"][] = $row;
-    }
-} else {
-    $response["message"] = "No users found";
+// Query for Shop Owners
+$shopOwnersQuery = "SELECT id, username AS name, email, 'Shop Owner' AS type FROM shop_owners";
+$shopOwnersResult = $conn->query($shopOwnersQuery);
+while ($row = $shopOwnersResult->fetch_assoc()) {
+    $response["users"][] = $row;
 }
 
 // Return JSON response

@@ -15,7 +15,7 @@
             <ul>
                 <li><a href="superadmin.html">Dashboard</a></li>
                 <li><a href="superadmin_user_management.html" class="active">User Management</a></li>
-                <li><a href="content_management.html">Content Management</a></li>
+                <li><a href="superadmin_content_management.html">Content Management</a></li>
                 <li><a href="analytics.html">Analytics</a></li>
                 <li><a href="settings.html">Settings</a></li>
             </ul>
@@ -36,11 +36,12 @@
                 <p>Manage user accounts, view details, and modify permissions.</p>
 
                 <!-- User Filters -->
-<div class="filter-buttons">
-    <button id="allUsersBtn" class="filter-btn active">All Users</button>
-    <button id="shopOwnersBtn" class="filter-btn">Shop Owners</button>
-    <button id="customersBtn" class="filter-btn">Customers</button>
-</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="Customer">Customers</button>
+                    <button class="filter-btn" data-filter="Shop Owner">Shop Owners</button>
+                </div>
+                
 
 
                 <!-- User Table -->
@@ -51,7 +52,7 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Type</th>
-                                <th>Status</th>
+                                <th>Email</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>

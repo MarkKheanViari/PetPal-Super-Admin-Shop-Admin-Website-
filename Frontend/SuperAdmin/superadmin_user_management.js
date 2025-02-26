@@ -1,179 +1,134 @@
 document.addEventListener("DOMContentLoaded", function () {
+    setupModal();
+    setupEventListeners();
+    fetchUsers(); // Initial fetch on page load
+});
+
+// 📌 Initialize Modal Functionality
+function setupModal() {
     const modal = document.getElementById("addShopOwnerModal");
     const openModalBtn = document.querySelector(".add-user-btn");
     const closeModalBtn = document.querySelector(".close-btn");
 
-    // 📌 Open Modal
-    openModalBtn.addEventListener("click", function () {
-        modal.style.display = "block";
-    });
+    if (openModalBtn) {
+        openModalBtn.addEventListener("click", function () {
+            modal.style.display = "block";
+        });
+    }
 
-    // 📌 Close Modal
-    closeModalBtn.addEventListener("click", function () {
-        modal.style.display = "none";
-    });
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+    }
 
-    // 📌 Close Modal When Clicking Outside
     window.addEventListener("click", function (event) {
         if (event.target === modal) {
             modal.style.display = "none";
         }
     });
-});
+}
 
-
-// 📌 Fetch User Accounts and Store in Global Variable
+// 📌 Global Variables
 let allUsers = [];
-let currentFilter = "all"; // Track the active filter
+let currentFilter = "all"; // Default filter
 
-async function fetchUsers() {
+// 📌 Fetch Users and Apply Filters
+async function fetchUsers(filter = "all", searchQuery = "") {
     try {
-        const response = await fetch("http://192.168.1.65/backend/Frontend/SuperAdmin/fetch_users.php");
+        const response = await fetch("http://192.168.1.65/backend/frontend/superadmin/fetch_users.php");
         const data = await response.json();
+        allUsers = data.users || [];
 
-        // ✅ Ensure valid data format
-        if (!data || !Array.isArray(data.users)) {
-            console.error("❌ ERROR: Invalid user data format:", data);
-            return;
-        }
+        // ✅ Ensure each user has a proper name field (Use 'username' instead of 'name')
+        allUsers.forEach(user => {
+            if (!user.username) {
+                user.username = user.name || "Unknown"; // Use 'name' if 'username' is missing
+            }
 
-        allUsers = data.users.map(user => ({
-            id: user.id || "N/A",
-            username: user.username || "Unknown",
-            role: user.role || "Unknown", // Ensure role exists
-            status: user.status || "N/A"
-        }));
+            // ✅ Ensure the type is assigned properly (Shop Owner or Customer)
+            if (!user.type) {
+                user.type = user.shop_owner ? "Shop Owner" : "Customer";
+            }
+        });
 
-        console.log("✅ Processed User Data:", allUsers); // Debugging
-
-        displayUsers(currentFilter); // Display all users initially
-
+        displayUsers(filter, searchQuery);
     } catch (error) {
         console.error("❌ Error fetching users:", error);
     }
 }
 
-// 📌 Function to Filter and Display Users (Including Search)
-function displayUsers(filterType) {
-    currentFilter = filterType; // Update current filter
+// 📌 Display Users Based on Filter and Search
+function displayUsers(filterType = "all", searchQuery = "") {
+    currentFilter = filterType; // ✅ Update the active filter
     const userTable = document.getElementById("userTable");
-    const searchQuery = document.getElementById("searchBar").value.trim().toLowerCase();
+    if (!userTable) return console.error("❌ ERROR: 'userTable' element is missing in the HTML.");
 
-    if (!userTable) {
-        console.error("❌ ERROR: 'userTable' element is missing in the HTML.");
-        return;
-    }
-
-    userTable.innerHTML = ""; // Clear table before adding new data
+    userTable.innerHTML = "";
 
     let filteredUsers = allUsers;
 
-    // Apply Role-Based Filtering
+    // ✅ Apply Filter by Role
     if (filterType === "shopOwners") {
-        filteredUsers = allUsers.filter(user => user.role.toLowerCase() === "shop owner");
+        filteredUsers = filteredUsers.filter(user => user.type === "Shop Owner");
     } else if (filterType === "customers") {
-        filteredUsers = allUsers.filter(user => user.role.toLowerCase() === "customer");
+        filteredUsers = filteredUsers.filter(user => user.type === "Customer");
     }
 
-    // Apply Search Filtering
+    // ✅ Apply Search Filtering
     if (searchQuery) {
         filteredUsers = filteredUsers.filter(user =>
             user.username.toLowerCase().includes(searchQuery) ||
-            user.role.toLowerCase().includes(searchQuery)
+            user.email.toLowerCase().includes(searchQuery) ||
+            user.type.toLowerCase().includes(searchQuery)
         );
     }
 
-    console.log(`🔹 Filtered Users (${filterType}):`, filteredUsers); // Debugging
-
-    // ✅ Render users in table
+    // ✅ Display Filtered Users in the Table
     if (filteredUsers.length > 0) {
         filteredUsers.forEach(user => {
-            const row = `
+            userTable.innerHTML += `
                 <tr>
                     <td>#${user.id}</td>
-                    <td>${user.username}</td>
-                    <td>${user.role}</td>
-                    <td><span class="${user.status.toLowerCase() === 'active' ? 'status-active' : 'status-inactive'}">${user.status}</span></td>
+                    <td>${user.username || "Unknown"}</td>
+                    <td>${user.type}</td>
+                    <td>${user.email}</td>
                     <td><button class="edit-btn">Edit</button></td>
                 </tr>
             `;
-            userTable.innerHTML += row;
         });
     } else {
         userTable.innerHTML = "<tr><td colspan='5'>No Users Found</td></tr>";
     }
 }
 
-// 📌 Attach Filter Buttons Event Listeners
-document.addEventListener("DOMContentLoaded", function () {
-    fetchUsers(); // Fetch users on page load
+// 📌 Setup Event Listeners
+function setupEventListeners() {
+    // ✅ Attach Filter Buttons and Make Them Work!
+    document.querySelectorAll(".filter-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
 
-    document.getElementById("allUsersBtn").addEventListener("click", function () {
-        setActiveFilter(this);
-        displayUsers("all");
+            let filterType = this.getAttribute("data-filter");
+            console.log(`🔹 Applying Filter: ${filterType}`); // Debugging
+
+            displayUsers(filterType); // ✅ Apply filter to displayed users
+        });
     });
 
-    document.getElementById("shopOwnersBtn").addEventListener("click", function () {
-        setActiveFilter(this);
-        displayUsers("shopOwners");
-    });
-
-    document.getElementById("customersBtn").addEventListener("click", function () {
-        setActiveFilter(this);
-        displayUsers("customers");
-    });
-
-    // 📌 Attach Search Functionality
-    document.getElementById("searchBar").addEventListener("keyup", function () {
-        displayUsers(currentFilter); // Re-filter users based on search
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("createShopOwnerBtn").addEventListener("click", addShopOwner);
-});
-
-// 📌 Function to Add Shop Owner
-async function addShopOwner() {
-    const username = document.getElementById("shopOwnerUsername").value.trim();
-    const email = document.getElementById("shopOwnerEmail").value.trim();
-    const password = document.getElementById("shopOwnerPassword").value.trim();
-
-    if (!username || !email || !password) {
-        alert("⚠️ All fields are required.");
-        return;
+    // ✅ Search Functionality
+    const searchBar = document.getElementById("searchBar");
+    if (searchBar) {
+        searchBar.addEventListener("keyup", function () {
+            displayUsers(currentFilter, searchBar.value.trim().toLowerCase());
+        });
     }
 
-    const shopOwnerData = { username, email, password };
-
-    try {
-        const response = await fetch("http://192.168.1.65/backend/Frontend/SuperAdmin/add_shop_owner.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username: username,
-                email: email,
-                password: password
-            })
-        });
-        
-
-        const result = await response.json();
-
-        if (result.success) {
-            alert("✅ Shop Owner Created Successfully!");
-            document.getElementById("shopOwnerUsername").value = "";
-            document.getElementById("shopOwnerEmail").value = "";
-            document.getElementById("shopOwnerPassword").value = "";
-
-            fetchUsers(); // Refresh table
-        } else {
-            alert("❌ Error: " + result.message);
-        }
-    } catch (error) {
-        console.error("❌ Error adding shop owner:", error);
+    // ✅ Create Shop Owner Button
+    const createShopOwnerBtn = document.getElementById("createShopOwnerBtn");
+    if (createShopOwnerBtn) {
+        createShopOwnerBtn.addEventListener("click", addShopOwner);
     }
 }
 
@@ -188,13 +143,11 @@ async function addShopOwner() {
         return;
     }
 
-    const shopOwnerData = { username, email, password };
-
     try {
         const response = await fetch("http://192.168.1.65/backend/Frontend/SuperAdmin/add_shop_owner.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(shopOwnerData),
+            body: JSON.stringify({ username, email, password })
         });
 
         const result = await response.json();
