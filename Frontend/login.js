@@ -1,60 +1,71 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const loginForm = document.getElementById("loginForm");
-  const toggleRole = document.getElementById("toggleRole");
-  const loginTitle = document.getElementById("loginTitle");
+    const loginForm = document.getElementById("loginForm");
+    const toggleRole = document.getElementById("toggleRole");
+    const loginTitle = document.getElementById("loginTitle");
+    const container = document.querySelector(".container");
 
-  let isSuperAdmin = false; // Default role is Shop Owner
+    let isSuperAdmin = false; // Default role is Shop Owner
 
-  // Toggle between Shop Owner and SuperAdmin login
-  toggleRole.addEventListener("click", function (event) {
-      event.preventDefault();
-      isSuperAdmin = !isSuperAdmin;
+    // Toggle between Shop Owner and SuperAdmin login
+    toggleRole.addEventListener("click", function (event) {
+        event.preventDefault();
+        isSuperAdmin = !isSuperAdmin;
 
-      if (isSuperAdmin) {
-          loginTitle.textContent = "SuperAdmin Login";
-          toggleRole.textContent = "Switch to Shop Owner";
-      } else {
-          loginTitle.textContent = "Shop Owner Login";
-          toggleRole.textContent = "Switch to SuperAdmin";
-      }
-  });
+        // Remove previous class immediately and force a reflow before adding the new one
+        container.classList.remove("reverse");
+        void container.offsetWidth; // This forces reflow
 
-  // Handle login form submission
-  loginForm.addEventListener("submit", async function (event) {
-      event.preventDefault();
+        if (isSuperAdmin) {
+            loginTitle.textContent = "SuperAdmin Login";
+            toggleRole.textContent = "Switch to Shop Owner";
+            container.classList.add("switch-role"); // Move login left & reappear from right
+        } else {
+            loginTitle.textContent = "Shop Owner Login";
+            toggleRole.textContent = "Switch to SuperAdmin";
+            
+            // Add 'reverse' class after transition ends for proper reappearance effect
+            setTimeout(() => {
+                container.classList.add("reverse");
+            }, 600); // Wait for transition to complete
+        }
+    });
 
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
+    // Handle login form submission
+    loginForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-      if (!email || !password) {
-          alert("⚠️ Please enter both email and password.");
-          return;
-      }
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-      const loginData = {
-          email: email,
-          password: password,
-          role: isSuperAdmin ? "superadmin" : "shop_owner"
-      };
+        if (!email || !password) {
+            alert("⚠️ Please enter both email and password.");
+            return;
+        }
 
-      try {
-          const response = await fetch("http://localhost/backend/authenticate.php", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(loginData)
-          });
+        const loginData = {
+            email: email,
+            password: password,
+            role: isSuperAdmin ? "superadmin" : "shop_owner"
+        };
 
-          const result = await response.json();
+        try {
+            const response = await fetch("http://localhost/backend/authenticate.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(loginData)
+            });
 
-          if (result.success) {
-              alert("✅ Login Successful!");
-              window.location.href = result.redirect; // Redirect to respective dashboard
-          } else {
-              alert("❌ Error: " + result.message);
-          }
-      } catch (error) {
-          console.error("❌ Login failed:", error);
-          alert("❌ Error connecting to server. Please try again.");
-      }
-  });
+            const result = await response.json();
+
+            if (result.success) {
+                alert("✅ Login Successful!");
+                window.location.href = result.redirect; // Redirect to respective dashboard
+            } else {
+                alert("❌ Error: " + result.message);
+            }
+        } catch (error) {
+            console.error("❌ Login failed:", error);
+            alert("❌ Error connecting to server. Please try again.");
+        }
+    });
 });
