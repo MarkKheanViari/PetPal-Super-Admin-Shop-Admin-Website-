@@ -611,130 +611,118 @@ html {
   justify-content: center;
 }
 
-.modal {
-  display: none;
+/* Modal container for Add Product */
+#addProductModal.modal {
+  display: none; /* Hidden by default */
   position: fixed;
-  z-index: 1000;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-
-  display: flex;           /* Flex layout */
-  align-items: center;     /* Vertical center */
-  justify-content: center; /* Horizontal center */
-}
-
-.modal-content {
-  /* remove position absolute & transforms */
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 500px;
-  width: 100%;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-
-  /* Let the parent flex container handle the centering */
-}
-
-
-
-
-.modal-section {
-  margin-bottom: 15px;
-}
-
-.modal-section h3 {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.modal-buttons {
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
 }
 
-.cancel-btn {
-  background: white;
-  color: black;
-  border: 1px solid black;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+/* Modal content styling */
+#addProductModal .modal-content {
+  background: var(--background-color); /* Use your background color variable */
+  width: 90%;
+  max-width: 600px;
+  padding: 20px 30px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.approve-btn {
-  background: orange;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-
-/* Close button */
-.close-btn {
+/* Close button (X) styling */
+#addProductModal .close-btn {
   position: absolute;
   top: 10px;
   right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #333;
-}
-
-/* Form styling */
-.form-group {
-  margin-bottom: 10px;
-}
-
-.form-group label {
-  display: block;
+  font-size: 28px;
   font-weight: bold;
-  margin-bottom: 5px;
+  cursor: pointer;
+  color: var(--text-color);
 }
 
-input, textarea, select {
+/* Form header */
+#addProductModal .form-header h2 {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+/* Form group styling */
+#addProductModal .form-group {
+  margin-bottom: 15px;
+}
+
+#addProductModal .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+#addProductModal .form-group input,
+#addProductModal .form-group textarea,
+#addProductModal .form-group select {
   width: 100%;
   padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--text-color);
+  background: var(--background-color);
 }
 
-/* Buttons */
-.form-action {
+/* File input customization (if needed) */
+#addProductModal .form-group input[type="file"] {
+  padding: 3px;
+}
+
+/* Form action buttons container */
+#addProductModal .form-action {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 1rem;
   margin-top: 20px;
 }
 
-.form-action button {
-  padding: 10px 20px;
+/* Cancel button style */
+#addProductModal .cancel {
+  background-color: #ccc;
+  color: #333;
   border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
   cursor: pointer;
-  border-radius: 5px;
+  transition: background-color 0.2s ease;
 }
 
-
-
-
-
-.form-group {
-  margin-bottom: 10px;
+#addProductModal .cancel:hover {
+  background-color: #bbb;
 }
-/* Close Button */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;
+
+/* Add button style */
+#addProductModal .add {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
-.close-btn:hover {
-    color: red;
+
+#addProductModal .add:hover {
+  background-color: var(--primary-dark);
 }
+
 
 
 /* Ensure the floating form is centered and properly displayed */
@@ -982,128 +970,151 @@ body.modal-open {
   cursor: pointer;
 }
 
-
-/* Edit Product Popup Overlay */
-.popup {
-  display: none;
+/* Fullscreen overlay */
+#editProductSection.popup {
+  display: none; /* hidden by default */
   position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
 
-  /* Use Flexbox to center popup horizontally & vertically */
+  /* Center with Flexbox */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: center;    /* vertical centering */
+  justify-content: center;/* horizontal centering */
 }
 
-.popup-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  width: 500px;       /* or any fixed width you prefer */
-  max-width: 95%;     /* helps on smaller screens */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-
-  /* Remove leftover offsets/positions if you have them:
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-  */
-
-  /* Center your form elements inside if you like */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#editProductSection.popup {
+  display: none; /* hidden by default */
+  position: fixed;
+  inset: 0;  /* top:0; right:0; bottom:0; left:0; */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
 }
 
-
-
-
-.close-btn {
+/* Center the content with transform */
+#editProductSection .popup-content {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
+  top: 50%;
+  left: 50%;
+  /* Move the box back 50% of its own width/height */
+  transform: translate(-50%, -50%);
+  
+  background: #fff;
+  width: 90%;
+  max-width: 800px;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#editProductSection .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text-color);
   cursor: pointer;
 }
-
-.form-header {
-  width: 100%;
-  text-align: center;
+/* Form header */
+#editProductSection .form-header h2 {
+  margin: 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
 }
 
-.form-container {
-  width: 100%;
+/* Form container: Two-column layout */
+#editProductSection .form-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   gap: 20px;
-}
-
-.form-left, .form-right {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group {
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.form-group textarea {
-  resize: none;
-  height: 100px;
-}
-
-.form-action {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
   margin-top: 20px;
 }
 
-.cancel, .add {
-  padding: 10px 20px;
+#editProductSection .form-left,
+#editProductSection .form-right {
+  flex: 1;
+}
+
+/* Form groups */
+#editProductSection .form-group {
+  margin-bottom: 15px;
+}
+
+#editProductSection .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+#editProductSection .form-group input,
+#editProductSection .form-group textarea,
+#editProductSection .form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--text-color);
+  background: var(--background-color);
+}
+
+/* Allow textarea vertical resize only */
+#editProductSection .form-group textarea {
+  resize: vertical;
+}
+
+/* Image Preview Styling */
+#editProductImagePreview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+/* Action buttons container */
+#editProductSection .form-action {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* Cancel button styling */
+#editProductSection .cancel {
+  background-color: #ccc;
+  color: #333;
   border: none;
+  padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
+  transition: background-color 0.2s ease;
 }
 
-.cancel {
-  background: #ccc;
+#editProductSection .cancel:hover {
+  background-color: #bbb;
 }
 
-.add {
-  background: #28a745;
-  color: white;
+/* Update (Add) button styling */
+#editProductSection .add {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.add:hover {
-  background: #218838;
+#editProductSection .add:hover {
+  background-color: var(--primary-dark);
 }
 /* Footer */
 .footer {
@@ -1338,4 +1349,79 @@ body.modal-open {
 .notif-filter-btn.active {
   border-bottom: 2px solid var(--primary-color);
   font-weight: bold;
+}
+
+
+/* Smaller style for filter and sort dropdowns */
+#categoryFilter, #sortFilter {
+  font-size: 12px;
+  padding: 4px 8px;
+  height: 30px;
+  border-radius: 4px;
+}
+
+/* Preview Modal Container */
+#previewModal.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Subtle dark overlay */
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+/* Modal Content */
+#previewModal .modal-content {
+  background: var(--background-color, #fff);
+  width: 90%;
+  max-width: 600px;
+  padding: 30px 40px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Close Button */
+#previewModal .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--text-color, #333);
+}
+
+/* Headings and Text */
+#previewModal h2 {
+  margin-top: 0;
+  font-size: 1.75em;
+  color: var(--text-color, #333);
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+#previewModal p {
+  font-size: 1rem;
+  color: var(--text-color, #333);
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+/* Product Image Container */
+#previewModal .product-image {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#previewModal .product-image img {
+  max-width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
