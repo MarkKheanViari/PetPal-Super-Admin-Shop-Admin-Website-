@@ -725,3 +725,9 @@ Array
     [selected_date] => 2025-01-1
 )
 Attempting to insert request into database
+Array
+(
+    [service_id] => 1
+    [price] => 100
+    [description] => papa natin
+)

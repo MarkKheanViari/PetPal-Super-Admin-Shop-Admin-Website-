@@ -1,0 +1,3 @@
+[02-Mar-2025 06:19:35 Europe/Berlin] ❌ Missing input data in update_service.php
+[02-Mar-2025 06:19:35 Europe/Berlin] ✅ Running SQL Update: service_id=1, price=100, description=papa natin
+[02-Mar-2025 06:19:35 Europe/Berlin] ✅ Service updated successfully!

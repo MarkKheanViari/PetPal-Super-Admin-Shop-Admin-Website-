@@ -35,7 +35,7 @@ if ($role === "superadmin") {
 
         if (password_verify($password, $row["password"])) {
             $response["success"] = true;
-            $response["redirect"] = "http://localhost/backend/Frontend/SuperAdmin/superadmin.html";
+            $response["redirect"] = "http://192.168.1.65/backend/Frontend/SuperAdmin/superadmin.html";
         } else {
             $response["success"] = false;
             $response["message"] = "Incorrect password";

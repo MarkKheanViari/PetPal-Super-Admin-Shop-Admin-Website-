@@ -45,7 +45,7 @@ chibiHelper.addEventListener("click", function () {
 });
 
 function fetchVetAppointments() {
-  fetch("http://localhost/backend/fetch_veterinary_appointments.php")
+  fetch("http://192.168.1.65/backend/fetch_veterinary_appointments.php")
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP Error! Status: ${response.status}`);
@@ -71,7 +71,7 @@ function fetchVetAppointments() {
 }
 
 function fetchGroomingAppointments() {
-  fetch("http://localhost/backend/fetch_grooming_appointments.php")
+  fetch("http://192.168.1.65/backend/fetch_grooming_appointments.php")
     .then((response) => response.json())
     .then((data) => {
       console.log("📢 Grooming Appointments Data:", data); // Debugging
@@ -162,7 +162,7 @@ function renderSalesChart() {
 }
 
 function fetchOrders() {
-  fetch("http://localhost/backend/fetch_orders.php")
+  fetch("http://192.168.1.65/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
@@ -181,7 +181,7 @@ function fetchOrders() {
 }
 
 function fetchProducts() {
-  fetch("http://localhost/backend/fetch_product.php")
+  fetch("http://192.168.1.65/backend/fetch_product.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
@@ -229,7 +229,7 @@ let allNotifications = [];
 
 // Function to fetch orders notifications
 function fetchOrderNotifications() {
-  return fetch("http://localhost/backend/fetch_orders.php")
+  return fetch("http://192.168.1.65/backend/fetch_orders.php")
     .then(response => response.json())
     .then(data => {
       if (data.success && Array.isArray(data.orders)) {
@@ -252,7 +252,7 @@ function fetchOrderNotifications() {
 
 // Function to fetch appointment notifications (both grooming and veterinary)
 function fetchAppointmentNotifications() {
-  const groomingPromise = fetch("http://localhost/backend/fetch_grooming_appointments.php")
+  const groomingPromise = fetch("http://192.168.1.65/backend/fetch_grooming_appointments.php")
     .then(response => response.json())
     .then(data => {
       if (data.success && Array.isArray(data.appointments)) {
@@ -272,7 +272,7 @@ function fetchAppointmentNotifications() {
       return [];
     });
 
-  const vetPromise = fetch("http://localhost/backend/fetch_veterinary_appointments.php")
+  const vetPromise = fetch("http://192.168.1.65/backend/fetch_veterinary_appointments.php")
     .then(response => response.json())
     .then(data => {
       if (data.success && Array.isArray(data.appointments)) {

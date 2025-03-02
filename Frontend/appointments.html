@@ -168,7 +168,7 @@ const veterinaryServices = [
 
 // Fetch and Display Grooming Services
 function fetchGroomingServices() {
-  fetch('http://localhost/backend/fetch_grooming_services.php')
+  fetch('http://192.168.1.65/backend/fetch_grooming_services.php')
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('groomingServicesContainer');
@@ -191,7 +191,7 @@ function fetchGroomingServices() {
 }
 
 function fetchVeterinaryServices() {
-  fetch('http://localhost/backend/fetch_veterinary_services.php')
+  fetch('http://192.168.1.65/backend/fetch_veterinary_services.php')
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('veterinaryServicesContainer');
@@ -230,7 +230,6 @@ function openEditModal(service) {
 }
 
 
-// Save edited service
 document.getElementById('editServiceForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -239,22 +238,24 @@ document.getElementById('editServiceForm').addEventListener('submit', function(e
   const serviceDescription = document.getElementById('editServiceDescription').value;
 
   console.log("🔵 Sending Update Request:", {
-    service_id: serviceId,  // ✅ Correct field name
-    price: servicePrice,
-    description: serviceDescription
+    service_id: serviceId,
+    price: parseFloat(servicePrice),  // Ensure price is a number
+    description: serviceDescription.trim()
   });
 
-  fetch('http://localhost/backend/update_service.php', {
+  fetch('http://192.168.1.65/backend/update_service.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      service_id: serviceId,  // ✅ Correct field name
-      price: servicePrice,
-      description: serviceDescription
+      service_id: serviceId,
+      price: parseFloat(servicePrice),  // Ensure price is a number
+      description: serviceDescription.trim()
     })
   })
-  .then(res => res.json())
+  .then(res => res.json()) // Handle potential non-JSON responses
   .then(data => {
+    console.log("🔵 Response from Server:", data);
+
     if (data.success) {
       alert('✅ Service updated successfully!');
       closeModal('editServiceModal');
@@ -265,8 +266,14 @@ document.getElementById('editServiceForm').addEventListener('submit', function(e
       console.error('🔴 Update error:', data.error);
     }
   })
-  .catch(err => console.error('🔴 Fetch Error:', err));
+  .catch(err => {
+    console.error('🔴 Fetch Error:', err);
+    alert('❌ Server error! Check console for details.');
+  });
 });
+
+
+
 
 
 // Delete service function
@@ -275,7 +282,7 @@ function deleteService() {
 
   console.log("🔵 Sending Delete Request:", { service_id: serviceId });  // ✅ Debugging log
 
-  fetch('http://localhost/backend/delete_service.php', {
+  fetch('http://192.168.1.65/backend/delete_service.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ service_id: serviceId })  // ✅ Correct field name
@@ -308,7 +315,7 @@ function openAddServiceModal(serviceType) {
   serviceOption.innerHTML = '<option value="" disabled selected>Select Service</option>';
 
   // Fetch existing services from DB first
-  fetch(`http://localhost/backend/fetch_${serviceType.toLowerCase()}_services.php`)
+  fetch(`http://192.168.1.65/backend/fetch_${serviceType.toLowerCase()}_services.php`)
     .then(res => res.json())
     .then(data => {
       const existingServices = data.services.map(service => service.service_name);
@@ -343,7 +350,7 @@ document.getElementById('addServiceForm').addEventListener('submit', function(e)
   const servicePrice = document.getElementById('servicePrice').value;
   const serviceDescription = document.getElementById('serviceDescription').value;
 
-  fetch('http://localhost/backend/create_service.php', {
+  fetch('http://192.168.1.65/backend/create_service.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

@@ -3,11 +3,7 @@ include 'db.php';
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
-// Enable error reporting (for debugging)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Fetch all services
+// Fetch active services
 $sql = "SELECT id, service_name, description, price, status FROM services WHERE status = 'Available'";
 $result = $conn->query($sql);
 
@@ -22,12 +18,12 @@ while ($row = $result->fetch_assoc()) {
         "id" => (int)$row["id"],
         "service_name" => $row["service_name"],
         "description" => $row["description"],
-        "price" => (float)$row["price"], // Ensure price is a float
+        "price" => (float)$row["price"],
         "status" => $row["status"]
     ];
 }
 
-// ✅ Return the services wrapped in a success response
+// ✅ Return JSON response
 echo json_encode([
     "success" => true,
     "services" => $services
