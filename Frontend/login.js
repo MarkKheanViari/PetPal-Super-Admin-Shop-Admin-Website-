@@ -11,22 +11,19 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         isSuperAdmin = !isSuperAdmin;
 
-        // Remove previous class immediately and force a reflow before adding the new one
         container.classList.remove("reverse");
-        void container.offsetWidth; // This forces reflow
+        void container.offsetWidth; // Forces reflow
 
         if (isSuperAdmin) {
             loginTitle.textContent = "SuperAdmin Login";
             toggleRole.textContent = "Switch to Shop Owner";
-            container.classList.add("switch-role"); // Move login left & reappear from right
+            container.classList.add("switch-role");
         } else {
             loginTitle.textContent = "Shop Owner Login";
             toggleRole.textContent = "Switch to SuperAdmin";
-            
-            // Add 'reverse' class after transition ends for proper reappearance effect
             setTimeout(() => {
                 container.classList.add("reverse");
-            }, 600); // Wait for transition to complete
+            }, 600);
         }
     });
 
@@ -55,11 +52,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify(loginData)
             });
 
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
             const result = await response.json();
+            console.log("🔍 Login Response:", result);
 
             if (result.success) {
                 alert("✅ Login Successful!");
-                window.location.href = result.redirect; // Redirect to respective dashboard
+
+                // ✅ Store shop owner details
+                if (result.shop_owner_id) {
+                    localStorage.setItem("shop_owner_id", result.shop_owner_id);
+                } else {
+                    console.error("❌ Error: shop_owner_id is missing in response.");
+                }
+
+                localStorage.setItem("shop_owner_token", result.token || ""); // ✅ Store token
+                localStorage.setItem("shop_owner_username", result.username || email);
+
+                console.log("🔹 Stored Values:");
+                console.log("shop_owner_id:", localStorage.getItem("shop_owner_id"));
+                console.log("shop_owner_token:", localStorage.getItem("shop_owner_token"));
+                console.log("shop_owner_username:", localStorage.getItem("shop_owner_username"));
+
+                window.location.href = result.redirect;
             } else {
                 alert("❌ Error: " + result.message);
             }

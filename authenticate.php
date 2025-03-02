@@ -29,13 +29,10 @@ if ($role === "superadmin") {
     $result = $stmt->get_result();
 
     if ($row = $result->fetch_assoc()) {
-        // Debugging - Log the stored password
-        error_log("Stored Password: " . $row["password"]);
-        error_log("Entered Password: " . $password);
-
         if (password_verify($password, $row["password"])) {
             $response["success"] = true;
             $response["redirect"] = "http://192.168.1.65/backend/Frontend/SuperAdmin/superadmin.html";
+            $response["token"] = bin2hex(random_bytes(16)); // ✅ Generate token
         } else {
             $response["success"] = false;
             $response["message"] = "Incorrect password";
@@ -44,18 +41,23 @@ if ($role === "superadmin") {
         $response["success"] = false;
         $response["message"] = "SuperAdmin not found";
     }
-}
+} 
 else {
-    // Shop Owner Login
-    $stmt = $conn->prepare("SELECT password FROM shop_owners WHERE email = ?");
+    // Fetch `id` as `shop_owner_id`
+    $stmt = $conn->prepare("SELECT id, username, password FROM shop_owners WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($row = $result->fetch_assoc()) {
+        file_put_contents("debug.log", "🔍 Login Attempt: Email: $email | Retrieved ID: " . $row["id"] . "\n", FILE_APPEND);
+
         if (password_verify($password, $row["password"])) {
             $response["success"] = true;
-            $response["redirect"] = "dashboard.html"; // Redirect to Shop Owner Dashboard
+            $response["shop_owner_id"] = $row["id"];
+            $response["username"] = $row["username"];
+            $response["redirect"] = "dashboard.html";
+            $response["token"] = bin2hex(random_bytes(16)); // ✅ Generate token
         } else {
             $response["success"] = false;
             $response["message"] = "Incorrect password";
@@ -66,6 +68,7 @@ else {
     }
 }
 
+// ✅ Send JSON response
 echo json_encode($response);
 $conn->close();
 ?>

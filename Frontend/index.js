@@ -1,30 +1,40 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // 🔒 Authentication check
+document.addEventListener("DOMContentLoaded", function () {
     function checkAuth() {
-        const token = localStorage.getItem('shop_owner_token');
-        const username = localStorage.getItem('shop_owner_username');
-        const userId = localStorage.getItem('shop_owner_id');
-  
-        if (!token || !username || !userId) {
-            window.location.href = 'login.html';
+        const token = localStorage.getItem("shop_owner_token");
+        const username = localStorage.getItem("shop_owner_username");
+        const userId = localStorage.getItem("shop_owner_id");
+
+        console.log("🔍 Checking Auth:");
+        console.log("token:", token);
+        console.log("username:", username);
+        console.log("userId:", userId);
+
+        if (!userId || !token) { // ✅ Ensure both shop_owner_id and token exist
+            console.warn("⚠️ Authentication failed. Redirecting to login.");
+            window.location.href = "login.html";
             return false;
         }
-  
-        const welcomeText = document.getElementById('welcomeText');
+
+        const welcomeText = document.getElementById("welcomeText");
         if (welcomeText) {
-          welcomeText.textContent = `Welcome, ${username}`;
+            welcomeText.textContent = `Welcome, ${username}`;
         }
         return true;
     }
-  
-    // 🔑 Logout function
+
     function logout() {
-        localStorage.removeItem('shop_owner_token');
-        localStorage.removeItem('shop_owner_username');
-        localStorage.removeItem('shop_owner_id');
-        window.location.href = 'login.html';
+        localStorage.clear();
+        console.log("🔴 User logged out. Redirecting to login.");
+        window.location.href = "login.html";
     }
-  
+
+    if (checkAuth()) {
+        fetchProducts();
+    }
+
+    document.querySelector(".logout-btn")?.addEventListener("click", logout);
+
+
     // ❌ Show error message
     function showError(message) {
         const errorDiv = document.createElement('div');
@@ -105,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
       filterProducts(); 
       fetchProducts();
     }
-  });
+});
   
   // 🔑 Global logout function
   function logout() {
