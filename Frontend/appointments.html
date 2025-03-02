@@ -17,7 +17,7 @@
         <li><a href="product_inventory.html" class="nav-link">Products</a></li>
         <li><a href="orders.html" class="nav-link">Orders</a></li>
         <li>
-          <a href="appointments.html" class="nav-link active">Appointments</a>
+          <a href="appointments.html" class="nav-link active">Services</a>
         </li>
         <li class="notification-bell">
           <i class="bell-icon">🔔</i>
@@ -134,10 +134,11 @@
       </div>
 
       <button class="approve-btn" type="submit">Save Changes</button>
-      <button class="decline-btn" type="button" onclick="deleteService()">Delete Service</button>
+      <button class="remove-btn" type="button" onclick="removeServiceFromModal()">Remove Service</button>
     </form>
   </div>
 </div>
+
 
 
 
@@ -166,14 +167,18 @@ const veterinaryServices = [
   "Injury or Trauma Exam", "Gastrointestinal Check", "Behavioral Consultation"
 ];
 
-// Fetch and Display Grooming Services
+
 function fetchGroomingServices() {
   fetch('http://192.168.1.65/backend/fetch_grooming_services.php')
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('groomingServicesContainer');
       container.innerHTML = '';
-      data.services.forEach(service => {
+
+      // ✅ FILTER ONLY NON-REMOVED SERVICES
+      const activeServices = data.services.filter(service => service.removed == 0);
+
+      activeServices.forEach(service => {
         const div = document.createElement('div');
         div.className = 'appointment-item';
         div.innerHTML = `
@@ -196,12 +201,17 @@ function fetchVeterinaryServices() {
     .then(data => {
       const container = document.getElementById('veterinaryServicesContainer');
       container.innerHTML = '';
-      data.services.forEach(service => {
+
+      // ✅ FILTER ONLY NON-REMOVED SERVICES
+      const activeServices = data.services.filter(service => service.removed == 0);
+
+      activeServices.forEach(service => {
         const div = document.createElement('div');
         div.className = 'appointment-item';
         div.innerHTML = `
           <div class="appointment-details">
-            <h3>${service.service_name} - ₱${service.price}</h3>
+            <h3>${service.service_name}</h3>
+            <p><strong>Price:</strong> ₱${service.price}</p>
             <p>${service.description || 'No description provided.'}</p>
           </div>
           <button class="edit-btn" onclick='openEditModal(${JSON.stringify(service)})'>Edit</button>
@@ -209,8 +219,61 @@ function fetchVeterinaryServices() {
         container.appendChild(div);
       });
     })
-    .catch(err => console.error('Error:', err));
+    .catch(err => console.error('Error fetching veterinary services:', err));
 }
+
+
+function removeServiceFromModal() {
+  const serviceName = document.getElementById('editServiceName').value;
+
+  if (!confirm(`Are you sure you want to remove "${serviceName}"?`)) return;
+
+  fetch('http://192.168.1.65/backend/remove_service.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ service_name: serviceName })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert(`✅ ${serviceName} removed successfully!`);
+
+      closeModal('editServiceModal');
+
+      // ✅ REMOVE SERVICE FROM DISPLAY IMMEDIATELY
+      document.querySelectorAll('.appointment-item').forEach(item => {
+        if (item.querySelector('h3')?.textContent.trim() === serviceName) {
+          item.remove();
+        }
+      });
+
+      // ✅ REFRESH SERVICE LISTS
+      fetchGroomingServices();
+      fetchVeterinaryServices();
+
+      // ✅ MOVE SERVICE BACK TO DROPDOWN
+      addToDropdown(serviceName);
+
+    } else {
+      alert(`❌ Failed to remove service: ${data.error || "Unknown error"}`);
+    }
+  })
+  .catch(err => console.error('❌ Fetch Error:', err));
+}
+
+// ✅ Function to Add Service Back to Dropdown
+function addToDropdown(serviceName) {
+  const serviceOption = document.getElementById('serviceOption');
+  const existingOption = [...serviceOption.options].find(opt => opt.value === serviceName);
+
+  if (!existingOption) {
+    const option = document.createElement('option');
+    option.value = serviceName;
+    option.textContent = serviceName;
+    serviceOption.appendChild(option);
+  }
+}
+
 
 
 // Placeholder function for editing modal (you will implement this next)
@@ -314,17 +377,18 @@ function openAddServiceModal(serviceType) {
   const serviceOption = document.getElementById('serviceOption');
   serviceOption.innerHTML = '<option value="" disabled selected>Select Service</option>';
 
-  // Fetch existing services from DB first
+  // Fetch existing services from DB
   fetch(`http://192.168.1.65/backend/fetch_${serviceType.toLowerCase()}_services.php`)
     .then(res => res.json())
     .then(data => {
-      const existingServices = data.services.map(service => service.service_name);
+      const activeServices = data.services.filter(service => service.removed == 0).map(service => service.service_name);
+      const removedServices = data.services.filter(service => service.removed == 1).map(service => service.service_name);
 
-      // Filter out already posted services
-      const servicesList = (serviceType === 'Grooming' ? groomingServices : veterinaryServices)
-        .filter(service => !existingServices.includes(service));
+      // ✅ Filter only available services (not added or previously removed)
+      const availableServices = (serviceType === 'Grooming' ? groomingServices : veterinaryServices)
+        .filter(service => !activeServices.includes(service) || removedServices.includes(service));
 
-      servicesList.forEach(service => {
+      availableServices.forEach(service => {
         const option = document.createElement('option');
         option.value = service;
         option.textContent = service;
@@ -334,15 +398,15 @@ function openAddServiceModal(serviceType) {
       document.getElementById('addServiceForm').reset();
       document.getElementById('addServiceModal').style.display = 'flex';
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => console.error('Error fetching services:', error));
 }
+
 
 
 function closeModal(modalId) {
   document.getElementById(modalId).style.display = 'none';
 }
 
-// Add Service Form Submission with Price and Description
 document.getElementById('addServiceForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -363,22 +427,32 @@ document.getElementById('addServiceForm').addEventListener('submit', function(e)
   .then(res => res.json())
   .then(response => {
     if (response.success) {
-      alert('Service added successfully!');
+      alert('✅ Service added successfully!');
       closeModal('addServiceModal');
 
-      if (currentServiceType === 'Grooming') {
-        fetchGroomingServices();
-      } else if (currentServiceType === 'Veterinary') {
-        fetchVeterinaryServices();
-      }
+      // ✅ Refresh service lists
+      fetchGroomingServices();
+      fetchVeterinaryServices();
+
+      // ✅ Remove from dropdown
+      removeFromDropdown(serviceName);
 
     } else {
-      alert('Failed to add service.');
+      alert('❌ Failed to add service.');
     }
   })
-  .catch(error => console.error('Error:', error));
+  .catch(error => console.error('Error adding service:', error));
 });
 
+// ✅ Function to Remove Added Service from Dropdown
+function removeFromDropdown(serviceName) {
+  const serviceOption = document.getElementById('serviceOption');
+  [...serviceOption.options].forEach(option => {
+    if (option.value === serviceName) {
+      option.remove();
+    }
+  });
+}
 
 
 // Initial Load

@@ -1,3 +1,15 @@
 [02-Mar-2025 06:19:35 Europe/Berlin] ❌ Missing input data in update_service.php
 [02-Mar-2025 06:19:35 Europe/Berlin] ✅ Running SQL Update: service_id=1, price=100, description=papa natin
 [02-Mar-2025 06:19:35 Europe/Berlin] ✅ Service updated successfully!
+[02-Mar-2025 07:57:53 Europe/Berlin] ❌ Missing input data in update_service.php
+[02-Mar-2025 07:57:53 Europe/Berlin] ✅ Running SQL Update: service_id=36, price=8000, description=Quality Teeth Brushing
+[02-Mar-2025 07:57:53 Europe/Berlin] ✅ Service updated successfully!
+[02-Mar-2025 07:58:03 Europe/Berlin] ❌ Missing input data in update_service.php
+[02-Mar-2025 07:58:03 Europe/Berlin] ✅ Running SQL Update: service_id=36, price=765, description=Quality Teeth Brushing
+[02-Mar-2025 07:58:03 Europe/Berlin] ✅ Service updated successfully!
+[02-Mar-2025 08:04:24 Europe/Berlin] ❌ Missing input data in update_service.php
+[02-Mar-2025 08:04:24 Europe/Berlin] ✅ Running SQL Update: service_id=40, price=6000, description=Ligo Ligo
+[02-Mar-2025 08:04:24 Europe/Berlin] ✅ Service updated successfully!
+[02-Mar-2025 10:09:14 Europe/Berlin] ❌ Missing input data in update_service.php
+[02-Mar-2025 10:09:14 Europe/Berlin] ✅ Running SQL Update: service_id=52, price=444, description=321
+[02-Mar-2025 10:09:14 Europe/Berlin] ✅ Service updated successfully!

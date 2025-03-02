@@ -740,3 +740,65 @@ Array
 🔍 Login Attempt: Email: ken@gmail.com | Retrieved ID: 3
 🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
 🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Raw Input: null
+🔍 Raw Input: {"service_id":"1"}
+🔍 Raw Input: null
+🔍 Raw Input: {"service_id":"1"}
+Array
+(
+    [service_id] => 36
+    [price] => 8000
+    [description] => Quality Teeth Brushing
+)
+Array
+(
+    [service_id] => 36
+    [price] => 765
+    [description] => Quality Teeth Brushing
+)
+Array
+(
+    [service_id] => 40
+    [price] => 6000
+    [description] => Ligo Ligo
+)
+🔍 Incoming Request: 
+[02-Mar-2025 08:28:35 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Brushing"}
+[02-Mar-2025 08:28:35 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'removed' in 'field list' in C:\xampp\htdocs\backend\remove_service.php:43
+Stack trace:
+#0 C:\xampp\htdocs\backend\remove_service.php(43): mysqli->prepare('UPDATE services...')
+#1 {main}
+  thrown in C:\xampp\htdocs\backend\remove_service.php on line 43
+🔍 Incoming Request: 
+[02-Mar-2025 09:46:56 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Brushing"}
+[02-Mar-2025 09:46:56 Europe/Berlin] ✅ Service 'Brushing' removed successfully.
+🔍 Incoming Request: 
+[02-Mar-2025 09:49:13 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Brushing"}
+[02-Mar-2025 09:49:13 Europe/Berlin] ✅ Service 'Brushing' removed successfully.
+🔍 Incoming Request: 
+[02-Mar-2025 09:49:18 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Brushing"}
+[02-Mar-2025 09:49:18 Europe/Berlin] ✅ Service 'Brushing' removed successfully.
+🔍 Incoming Request: 
+[02-Mar-2025 09:49:41 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Bathing"}
+[02-Mar-2025 09:49:41 Europe/Berlin] ✅ Service 'Bathing' removed successfully.
+🔍 Incoming Request: 
+[02-Mar-2025 09:55:14 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Nail Trimming"}
+[02-Mar-2025 09:55:14 Europe/Berlin] ✅ Service 'Nail Trimming' removed successfully.
+🔍 Incoming Request: 
+[02-Mar-2025 10:06:47 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Brushing"}
+[02-Mar-2025 10:06:47 Europe/Berlin] ✅ Service 'Brushing' removed successfully.
+Array
+(
+    [service_id] => 52
+    [price] => 444
+    [description] => 321
+)
