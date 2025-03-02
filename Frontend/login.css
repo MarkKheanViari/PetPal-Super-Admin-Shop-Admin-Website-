@@ -112,17 +112,3 @@ button:hover {
     font-weight: bold;
     color: #FF6600; /* Orange Theme */
 }
-
-.forgot-password {
-    margin-top: 10px;
-    text-align: right;
-  }
-  
-  .forgot-password a {
-    text-decoration: none;
-    color: #007BFF;
-  }
-  
-  .forgot-password a:hover {
-    text-decoration: underline;
-  }

@@ -53,10 +53,7 @@
           </p>
         </div>
       </div>
-      <div class="btn-seller-pref">
-        <button class="edit-profile">Edit Profile</button>
-        <button onclick="logout()" class="logout-btn">Logout</button>
-    </div>
+      <button class="edit-profile">Edit Profile</button>
     </header>
 
     <!-- Main Content -->
@@ -375,12 +372,7 @@ document.getElementById('addServiceForm').addEventListener('submit', function(e)
   .catch(error => console.error('Error:', error));
 });
 
-function logout() {
-        localStorage.removeItem('shop_owner_token');
-        localStorage.removeItem('shop_owner_username');
-        localStorage.removeItem('shop_owner_id');
-        window.location.href = 'login.html';
-    }
+
 
 // Initial Load
 document.addEventListener("DOMContentLoaded", function () {
@@ -388,6 +380,5 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchVeterinaryServices();
 });
     </script>
-    <script src="notification.js"></script>
   </body>
 </html>
