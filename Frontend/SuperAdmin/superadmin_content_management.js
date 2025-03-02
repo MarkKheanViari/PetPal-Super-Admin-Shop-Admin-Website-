@@ -5,7 +5,7 @@ let currentFilter = "all"; // Track active filter
 // 📌 Fetch Products from Database with Proper JSON Handling
 async function fetchProducts() {
     try {
-        const response = await fetch("http://192.168.1.65/backend/Frontend/SuperAdmin/fetch_products.php");
+        const response = await fetch("http://192.168.1.3/backend/Frontend/SuperAdmin/fetch_products.php");
         const data = await response.json();
 
         const productTable = document.getElementById("productTable");

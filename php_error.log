@@ -13,3 +13,15 @@
 [02-Mar-2025 10:09:14 Europe/Berlin] ❌ Missing input data in update_service.php
 [02-Mar-2025 10:09:14 Europe/Berlin] ✅ Running SQL Update: service_id=52, price=444, description=321
 [02-Mar-2025 10:09:14 Europe/Berlin] ✅ Service updated successfully!
+[02-Mar-2025 12:23:00 Europe/Berlin] ❌ Missing input data in update_service.php
+[02-Mar-2025 12:23:00 Europe/Berlin] ✅ Running SQL Update: service_id=50, price=3210, description=321
+[02-Mar-2025 12:23:00 Europe/Berlin] ✅ Service updated successfully!
+[02-Mar-2025 12:52:53 Europe/Berlin] ❌ Missing input data in update_service.php
+[02-Mar-2025 12:52:53 Europe/Berlin] ✅ Running SQL Update: service_id=58, price=400, description=grouming depende sa klase
+[02-Mar-2025 12:52:53 Europe/Berlin] ✅ Service updated successfully!
+[02-Mar-2025 12:54:44 Europe/Berlin] ❌ Missing input data in update_service.php
+[02-Mar-2025 12:54:44 Europe/Berlin] ✅ Running SQL Update: service_id=58, price=400, description=Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga
+[02-Mar-2025 12:54:44 Europe/Berlin] ✅ Service updated successfully!
+[02-Mar-2025 12:55:18 Europe/Berlin] ❌ Missing input data in update_service.php
+[02-Mar-2025 12:55:18 Europe/Berlin] ✅ Running SQL Update: service_id=58, price=400, description=e
+[02-Mar-2025 12:55:18 Europe/Berlin] ✅ Service updated successfully!

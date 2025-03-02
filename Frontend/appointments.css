@@ -139,55 +139,135 @@
     padding: 0 1rem;
   }
   
-  .appointments {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-  }
-  
-  .appointments h2 {
-    margin-bottom: 1.5rem;
-    color: var(--text-color);
-  }
-  
-  .appointment-item {
-    display: grid;
-    grid-template-columns: auto 1fr auto auto;
-    gap: 1.5rem;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
-  }
-  
-  .appointment-image {
-    width: 80px;
-    height: 80px;
-    background-color: #f3f4f6;
-    border-radius: 4px;
-  }
-  
-  .appointment-details h3 {
-    margin-bottom: 0.25rem;
-    color: var(--text-color);
-  }
-  
-  .appointment-details p {
-    color: #666;
-  }
-  
-  .appointment-time {
-    text-align: right;
-  }
-  
-  .appointment-time p:first-child {
-    font-weight: 500;
-  }
-  
-  .appointment-time p:last-child {
-    color: #666;
-  }
+  /* Edit Service Modal container */
+/* ------------------------------------------------- */
+/* MODAL BASE STYLES */
+/* ------------------------------------------------- */
+/* MODAL BASE STYLES */
+/* ------------------------------------------------- */
+#editServiceModal.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+#editServiceModal .modal-content {
+  background: var(--background-color);
+  width: 90%;
+  max-width: 500px;
+  padding: 20px 25px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ------------------------------------------------- */
+/* HEADER: Title & Close Button */
+/* ------------------------------------------------- */
+#editServiceModal .service-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+#editServiceModal .service-head h2 {
+  font-size: 1.5em;
+  margin: 0;
+  color: var(--text-color);
+}
+
+#editServiceModal .cancel-btn {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+/* ------------------------------------------------- */
+/* FORM FIELDS */
+/* ------------------------------------------------- */
+#editServiceModal .modal-section {
+  margin-bottom: 15px;
+}
+
+#editServiceModal .modal-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+#editServiceModal .modal-section input,
+#editServiceModal .modal-section textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1em;
+  color: var(--text-color);
+}
+
+/* Fixed height for the description field, no resize */
+#editServiceModal .modal-section textarea {
+  height: 100px;
+  resize: none;
+}
+
+/* ------------------------------------------------- */
+/* BUTTONS CONTAINER */
+/* ------------------------------------------------- */
+/* Container for buttons in the modal */
+.modal-button {
+  display: flex;
+  justify-content: center; /* center both buttons horizontally */
+  gap: 2rem;              /* space between them */
+  margin-top: 1.5rem;
+}
+
+.save-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.save-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.remove-btn {
+  background-color: #e43d2e;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.remove-btn:hover {
+  background-color: #c53728;
+}
+
+
+
+thead{
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+}
   
   .view-details,
   .view-details-btn {
@@ -206,98 +286,140 @@
   }
   
   /* Modal Styles */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    /* Use flex to center content when visible */
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-  }
-  
-  .modal-content {
-    background: white;
-    width: 50%;
-    max-width: 600px;
-    border-radius: 8px;
-    position: relative;
-    margin: 0; /* Ensure no extra top/left margin */
-    padding: 20px;
-  }
-  
-  /* Modal Sections */
-  .modal-section {
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 10px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .modal-section p {
-    padding: 0 10px;
-  }
-  
-  .modal-section p strong {
-    color: #666;
-  }
-  
-  .service-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .approve-btn {
-    background: #72c055;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .decline-btn {
-    background: #e43d2e;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .cancel-btn {
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;
-    background: none;
-    border: none;
-  }
-  
-  .status {
-    padding: 5px;
-    border-radius: 5px;
-    width: 80px;
-    text-align: center;
-  }
-  
-  .status.pending { color: #ff9800; }
-  .status.approved { color: #4caf50; }
-  .status.declined { color: #e74c3c; }
-  
-  /* Modal Buttons Container */
-  .modal-buttons {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-    font-weight: 200;
-    margin-top: 20px;
-  }
-  
+  /* Add Service Modal container */
+#addServiceModal.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+/* Modal content styling */
+#addServiceModal .modal-content {
+  background: var(--background-color); /* Consistent background */
+  width: 90%;
+  max-width: 500px;
+  padding: 20px 25px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Header of the modal */
+#addServiceModal .service-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+#addServiceModal .service-head h2 {
+  font-size: 1.5em;
+  margin: 0;
+  color: var(--text-color);
+}
+
+/* Close button style */
+#addServiceModal .cancel-btn {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+/* Form section styling */
+#addServiceModal .modal-section {
+  margin-bottom: 15px;
+}
+
+#addServiceModal .modal-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+#addServiceModal .modal-section select,
+#addServiceModal .modal-section input,
+#addServiceModal .modal-section textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1em;
+  color: var(--text-color);
+  background: var(--background-color);
+}
+
+/* Button styles */
+#addServiceModal .approve-btn {
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#addServiceModal .modal-section textarea,
+#editServiceModal .modal-section textarea {
+  height: 100px;
+  resize: none; /* Disables resizing */
+}
+
+/* Container for buttons in the modal */
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end; /* Right-align both buttons */
+  gap: 1rem;                /* Spacing between buttons */
+  margin-top: 1.5rem;
+}
+
+/* "Save Changes" button style */
+.save-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.save-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* "Remove Service" button style */
+.remove-btn {
+  background-color: #e43d2e; /* Alternatively, var(--primary-dark) if you prefer */
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+  /* Slightly darker shade for hover, or reuse a variable if you have one */
+  background-color: #c53728;
+}
   /* Footer */
   .footer {
     background-color: var(--footer-bg);
@@ -482,4 +604,56 @@
     border-bottom: 2px solid var(--primary-color);
     font-weight: bold;
   }
+  
+
+
+  .services-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+  }
+  
+  .services-table th,
+  .services-table td {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .services-table th {
+    color: var(--primary-color);
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .services-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .services-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+
+
+  .head-service {
+  display: flex;                 /* Use flex layout */
+  justify-content: space-between;/* Push h2 to left, button to right */
+  align-items: center;           /* Vertically center both items */
+  margin-bottom: 1rem;           /* Optional spacing below */
+}
+
+.head-service h2 {
+  margin: 0; /* Remove default margin if needed */
+}
+
+.view-details-btn {
+  /* Adjust button styling as needed */
+  background-color: #e67e22;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
   

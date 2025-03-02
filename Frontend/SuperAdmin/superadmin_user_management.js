@@ -36,7 +36,7 @@ let currentFilter = "all"; // Default filter
 // 📌 Fetch Users and Apply Filters
 async function fetchUsers(filter = "all", searchQuery = "") {
     try {
-        const response = await fetch("http://192.168.1.65/backend/frontend/superadmin/fetch_users.php");
+        const response = await fetch("http://192.168.1.3/backend/frontend/superadmin/fetch_users.php");
         const data = await response.json();
         allUsers = data.users || [];
 
@@ -144,7 +144,7 @@ async function addShopOwner() {
     }
 
     try {
-        const response = await fetch("http://192.168.1.65/backend/Frontend/SuperAdmin/add_shop_owner.php", {
+        const response = await fetch("http://192.168.1.3/backend/Frontend/SuperAdmin/add_shop_owner.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, email, password })

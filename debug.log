@@ -802,3 +802,38 @@ Array
     [price] => 444
     [description] => 321
 )
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Login Attempt: Email: ken@gmail.com | Retrieved ID: 3
+🔍 Login Attempt: Email: ken@gmail.com | Retrieved ID: 3
+Array
+(
+    [service_id] => 50
+    [price] => 3210
+    [description] => 321
+)
+🔍 Incoming Request: 
+[02-Mar-2025 12:27:06 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Bathing"}
+[02-Mar-2025 12:27:06 Europe/Berlin] ✅ Service 'Bathing' removed successfully.
+🔍 Incoming Request: 
+[02-Mar-2025 12:27:49 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Nail Trimming"}
+[02-Mar-2025 12:27:49 Europe/Berlin] ✅ Service 'Nail Trimming' removed successfully.
+Array
+(
+    [service_id] => 58
+    [price] => 400
+    [description] => grouming depende sa klase
+)
+Array
+(
+    [service_id] => 58
+    [price] => 400
+    [description] => Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga Abracadabra morta ugaga
+)
+Array
+(
+    [service_id] => 58
+    [price] => 400
+    [description] => e
+)
