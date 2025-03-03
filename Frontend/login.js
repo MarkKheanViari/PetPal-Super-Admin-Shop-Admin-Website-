@@ -1,30 +1,44 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const loginForm = document.getElementById("loginForm");
-    const toggleRole = document.getElementById("toggleRole");
-    const loginTitle = document.getElementById("loginTitle");
-    const container = document.querySelector(".container");
+    const shopOwnerForm = document.getElementById("shop-owner-form");
+    const superAdminForm = document.getElementById("super-admin-form");
+    const imageSection = document.querySelector(".image-section");
+    const loginImage = document.getElementById("loginImage");
 
-    let isSuperAdmin = false; // Default role is Shop Owner
+    const switchToAdmin = document.getElementById("switchToAdmin");
+    const switchToShopOwner = document.getElementById("switchToShopOwner");
 
-    // Toggle between Shop Owner and SuperAdmin login
-    toggleRole.addEventListener("click", function (event) {
+    switchToAdmin.addEventListener("click", function (event) {
         event.preventDefault();
-        isSuperAdmin = !isSuperAdmin;
-
-        container.classList.remove("reverse");
-        void container.offsetWidth; // Forces reflow
-
-        if (isSuperAdmin) {
-            loginTitle.textContent = "SuperAdmin Login";
-            toggleRole.textContent = "Switch to Shop Owner";
-            container.classList.add("switch-role");
-        } else {
-            loginTitle.textContent = "Shop Owner Login";
-            toggleRole.textContent = "Switch to SuperAdmin";
-            setTimeout(() => {
-                container.classList.add("reverse");
-            }, 600);
-        }
+        console.log("Switching to Super Admin form");
+    
+        // Show Super Admin Form & Hide Shop Owner Form
+        shopOwnerForm.classList.add("hidden"); // Use class to hide
+        superAdminForm.classList.remove("hidden"); // Use class to show
+    
+        // Move the image section left
+        imageSection.classList.add("move-left");
+    
+        // Change the image after transition
+        setTimeout(() => {
+            loginImage.src = "super-admin-login.jpg";
+        }, 250);
+    });
+    
+    switchToShopOwner.addEventListener("click", function (event) {
+        event.preventDefault();
+        console.log("Switching to Shop Owner form");
+    
+        // Show Shop Owner Form & Hide Super Admin Form
+        superAdminForm.classList.add("hidden"); // Use class to hide
+        shopOwnerForm.classList.remove("hidden"); // Use class to show
+    
+        // Move the image section back
+        imageSection.classList.remove("move-left");
+    
+        // Change the image back
+        setTimeout(() => {
+            loginImage.src = "shop-owner-login.jpg";
+        }, 250);
     });
 
     // Handle login form submission

@@ -3,40 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SuperAdmin & Shop Owner</title>
+    <title>PetPal Login</title>
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-
     <div class="container">
-        <!-- Left Section - Login Form -->
-        <div class="login-section">
-            <h1 id="loginTitle">Shop Owner Login</h1>
-            <div class="toggle-container">
-                <a href="#" id="toggleRole">Switch to SuperAdmin</a>
+
+
+        <!-- Form Section -->
+        <div class="form-section">
+
+            <!-- Shop Owner Login Form -->
+            <div class="form-container" id="shop-owner-form">
+                <img src="logo.png" alt="PetPal Logo" class="logo">
+                <h2>Shop Owner Login</h2>
+                <form id="shopOwnerLoginForm">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email">
+                    
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter your password">
+                    
+                    <div class="switch">
+                        <a href="#" id="switchToAdmin">Switch to Super Admin</a>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    
+                    <button class="btn">Log in</button>
+                </form>
             </div>
 
-            <form id="loginForm">
-                <label>Email</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-
-                <label>Password</label>
-                <input type="password" id="password" placeholder="Enter your password" required>
-
-                <button type="submit">Sign in</button>
-            </form>
-
-            <p class="demo-credentials">
-                Demo credentials: <br>
-                <span id="demoEmail">shop@example.com</span> <br>
-                <span id="demoPassword">shop123</span>
-            </p>
+            <!-- Super Admin Login Form -->
+            <div class="form-container hidden" id="super-admin-form">
+                <img src="logo.png" alt="PetPal Logo" class="logo">
+                <h2>Super Admin Login</h2>
+                <form id="superAdminLoginForm">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email">
+                    
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter your password">
+                    
+                    <div class="switch">
+                        <a href="#" id="switchToShopOwner">Switch to Shop Owner</a>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    
+                    <button class="btn">Log in</button>
+                </form>
+            </div>
         </div>
 
-        <!-- Right Section - Logo -->
-        <div class="logo-section">
-            <img src="logo.png" alt="Brand Logo">
+        <!-- Image Section -->
+        <div class="image-section">
+            <img src="shop-owner-login.jpg" id="loginImage" alt="Login Image">
         </div>
+        
     </div>
 
     <script src="login.js"></script>

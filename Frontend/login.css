@@ -1,114 +1,147 @@
-/* General Reset */
+/* Global styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
 }
 
-body, html {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff; /* White background */
-}
-
+/* Main container */
 .container {
+    display: flex;
     width: 100vw;
     height: 100vh;
-    display: flex;
 }
 
-/* Left Section - Login Form */
-.login-section {
-    width: 50%;
+/* Image Section (60% width) */
+.image-section {
+    width: 60%;
+    height: 100%;
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the section properly */
+}
+
+/* Form Section (40% width) */
+.form-section {
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 40px;
+    align-items: center;
 }
 
-.login-section h1 {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #FF6600; /* Orange Theme */
+/* Logo */
+.logo {
+    width: 300px;
+    margin-bottom: 30px;
+    margin-right: 210px;
 }
 
-.toggle-container {
-    text-align: right;
-    margin-bottom: 20px;
-}
-
-.toggle-container a {
-    color: #FF6600; /* Orange Theme */
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.toggle-container a:hover {
-    text-decoration: underline;
-}
-
-/* Form Styling */
-form {
+.form-section {
+    width: 40%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100vh; /* Make sure it fills the height */
+}
+
+.form-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Hide the inactive form completely */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Ensure active form is visible */
+.form-container:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #9a4e0f;
+    margin-bottom: 25px;
 }
 
 label {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
+    display: block;
+    font-size: 1.1em;
+    margin-top: 10px;
 }
 
 input {
     width: 100%;
     padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
+    font-size: 1.1em;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
 }
 
-button {
-    background: #FF6600; /* Orange Button */
-    color: white;
-    padding: 12px;
+/* Button */
+.btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 25px;
+    background: #9a4e0f;
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
-    font-weight: bold;
 }
 
-button:hover {
-    background: #CC5500; /* Darker Orange */
+.btn:hover {
+    background: #7f3b08;
 }
 
-/* Right Section - Logo */
-.logo-section {
-    width: 50%;
+/* Switch Links */
+.switch {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #FFF3E0; /* Light Orange Background */
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 1.1em;
 }
 
-.logo-section img {
-    width: 120px;
-    height: auto;
-}
-
-/* Demo Credentials */
-.demo-credentials {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #555;
-}
-
-.demo-credentials span {
+.switch a {
+    text-decoration: none;
+    color: #9a4e0f;
     font-weight: bold;
-    color: #FF6600; /* Orange Theme */
+}
+
+.switch a:hover {
+    text-decoration: underline;
+}
+
+/* Hide Form */
+.hidden {
+    display: none;
+}
+
+/* Transition Effect */
+.image-section {
+    transition: transform 0.3s ease-in-out;
+}
+
+.form-section {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.move-left {
+    transform: translateX(-70%);
 }
