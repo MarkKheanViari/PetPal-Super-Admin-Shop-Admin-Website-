@@ -13,3 +13,6 @@
 [02-Mar-2025 10:09:14 Europe/Berlin] ❌ Missing input data in update_service.php
 [02-Mar-2025 10:09:14 Europe/Berlin] ✅ Running SQL Update: service_id=52, price=444, description=321
 [02-Mar-2025 10:09:14 Europe/Berlin] ✅ Service updated successfully!
+[03-Mar-2025 09:30:03 Europe/Berlin] ❌ Missing input data in update_service.php
+[03-Mar-2025 09:30:03 Europe/Berlin] ✅ Running SQL Update: service_id=54, price=600, description=UTOY
+[03-Mar-2025 09:30:03 Europe/Berlin] ✅ Service updated successfully!
