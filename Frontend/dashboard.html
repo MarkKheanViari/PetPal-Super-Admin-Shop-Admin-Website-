@@ -99,21 +99,27 @@
             <button class="view-all" onclick="window.location.href='product_inventory.html#productInventorySection'">View Inventory</button>
         </section>
 
-        <section class="veterinary-appointments section">
-            <h2>Veterinary Appointments</h2>
-            <div id="dashboardVetAppointments" class="appointment-list">
-                <!-- Veterinary appointments will be dynamically inserted here -->
+        <section class="appointments-schedule">
+            <div class="tab-buttons">
+              <button class="tab-btn active" data-tab="appointments">Appointments</button>
+              <button class="tab-btn" data-tab="schedule">Schedule</button>
             </div>
-            <button class="view-all" onclick="window.location.href='product_inventory.html#vetAppointmentsSection'">View Appointments</button>
-        </section>
-        
-        <section class="grooming-schedule section">
-            <h2>Grooming Schedule</h2>
-            <div id="dashboardGroomingSchedule" class="grooming-list">
-                <!-- Grooming appointments will be dynamically inserted here -->
+            <div class="tab-content" id="appointments-tab">
+              <h2>Veterinary Appointments</h2>
+              <div id="dashboardVetAppointments" class="appointment-list">
+                <!-- Appointment cards will be inserted here -->
+              </div>
+              <button class="view-all" onclick="window.location.href='appointments.html'">View All Appointments</button>
             </div>
-            <button class="view-all" onclick="window.location.href='product_inventory.html#groomingScheduleSection'">View Schedule</button>
-        </section>
+            <div class="tab-content" id="schedule-tab" style="display: none;">
+              <h2>Grooming Schedule</h2>
+              <div id="dashboardGroomingSchedule" class="grooming-list">
+                <!-- Grooming schedule cards will be inserted here -->
+              </div>
+              <button class="view-all" onclick="window.location.href='appointments.html'">View Full Schedule</button>
+            </div>
+          </section>
+          
     </main>
 
     <footer class="footer">

@@ -59,9 +59,14 @@ html {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     background-color: #f8fafc;
-    padding-top: 90px;
+    padding-top: 90px;opacity: 1;
+    transition: opacity 0.5s ease; /* Adjust timing and easing as needed */
   }
   
+  /* Fade-out state */
+  .fade-out {
+    opacity: 0;
+  }
 /* Navbar Styling */
 .navbar {
   display: flex;
@@ -512,3 +517,39 @@ html {
     font-weight: bold;
   }
   
+
+  /* Container for the tabbed interface */
+.appointments-schedule {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+/* Tab buttons styling */
+.tab-buttons {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 10px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tab-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Tab content styling */
+.tab-content {
+  display: block;
+}

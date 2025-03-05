@@ -136,56 +136,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const category = categoryElement.value;
     
     if (!shopOwnerId) {
-        console.error("No shop owner ID found. Cannot fetch products.");
+        console.error("❌ No shop owner ID found. Cannot fetch products.");
         return;
     }
   
-    // Get sort option from the sortFilter element
-    const sortElement = document.getElementById('sortFilter');
-    const sortOption = sortElement ? sortElement.value : "oldToLatest";
-    console.log('Selected sort option:', sortOption);
-  
     const url = `http://192.168.1.3/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
     console.log(`Fetching products from: ${url}`);
-  
+    
     fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        if (!data.success || !Array.isArray(data.products)) {
-          console.error("Invalid response from server:", data);
-          const productList = document.getElementById('productList');
-          if (productList) productList.innerHTML = '<p>No products found.</p>';
-          return;
-        }
-  
-        let products = data.products;
-        console.log("Products before sorting:", products);
-  
-        // Sorting logic based on selected option:
-        switch(sortOption) {
-          case 'oldToLatest':
-            products.sort((a, b) => parseInt(a.id, 10) - parseInt(b.id, 10));
-            break;
-          case 'name':
-            products.sort((a, b) => a.name.localeCompare(b.name));
-            break;
-          case 'price':
-            products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-            break;
-          default:
-            console.warn('Unknown sort option:', sortOption);
-        }
-  
-        console.log("Products after sorting:", products);
-        displayProducts(products);
-      })
-      .catch(error => console.error('Error fetching products:', error));
-  }
-  
-  
-  // Optionally, you can update filterProducts() to simply call fetchProducts()
-  function filterProducts() {
-    fetchProducts();
+        .then(response => response.json())
+        .then(data => {
+            if (!data.success || !Array.isArray(data.products)) {
+                console.error("❌ Invalid response from server:", data);
+                const productList = document.getElementById('productList');
+                if (productList) productList.innerHTML = '<p>No products found.</p>';
+                return;
+            }
+            displayProducts(data.products);
+        })
+        .catch(error => console.error('❌ Error fetching products:', error));
   }
   
   // ✅ Extracted function for better readability

@@ -7,105 +7,43 @@ body {
   background-color: #fff7e6; /* Light orange background */
 }
 
-/* Sidebar Styling */
 .sidebar {
   width: 250px;
-  background-color: #fff; /* White Sidebar */
-  color: #1f2937; /* Dark Text */
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Sidebar Header */
-.sidebar-header {
-  font-size: 20px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #1f2937;
-  margin-bottom: 20px;
-}
-
-/* Sidebar Styling */
-.sidebar {
-  width: 250px;
-  background-color: #FF8C00; /* Bright Orange */
+  background-color: #ff6f00; /* Orange */
   color: white;
   padding: 20px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
 }
 
-/* Sidebar Header */
-.sidebar-header {
-  font-size: 20px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: white;
+.sidebar h2 {
+  text-align: center;
   margin-bottom: 20px;
 }
 
-/* Sidebar Menu */
-.sidebar-menu {
+.sidebar ul {
   list-style: none;
   padding: 0;
 }
 
-.sidebar-menu li {
-  padding: 10px;
-  border-radius: 8px;
-  transition: background 0.3s ease;
+.sidebar ul li {
+  padding: 12px;
 }
 
-.sidebar-menu li a {
+.sidebar ul li a {
   color: white;
   text-decoration: none;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Sidebar Hover & Active States */
-.sidebar-menu li:hover, .sidebar-menu li a.active {
-  background: #FF6A00; /* Darker Orange */
-}
-
-/* Settings (Bottom Position) */
-.settings {
-  margin-top: auto;
+  display: block;
   padding: 10px;
-  border-radius: 8px;
-  transition: background 0.3s ease;
+  border-radius: 5px;
 }
 
-.settings a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.settings:hover {
-  background: #FF6A00; /* Darker Orange */
-}
-
-/* Sidebar Icons */
-.sidebar-menu i, .settings i {
-  font-size: 18px;
-  color: white;
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  background-color: #e65100; /* Darker Orange */
 }
 
 /* Responsive Sidebar */
@@ -124,6 +62,7 @@ body {
 .dashboard {
   flex: 1;
   padding: 20px;
+  margin-left: 300px;
 }
 
 /* Stats Cards */

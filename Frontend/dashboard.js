@@ -222,7 +222,21 @@ function createProductElement(product) {
     `;
   return productElement;
 }
-
+const tabButtons = document.querySelectorAll(".tab-btn");
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", function() {
+      // Remove active class from all buttons
+      tabButtons.forEach(b => b.classList.remove("active"));
+      // Hide all tab contents
+      document.querySelectorAll(".tab-content").forEach(content => {
+        content.style.display = "none";
+      });
+      // Activate the clicked tab and display its content
+      this.classList.add("active");
+      const tab = this.getAttribute("data-tab");
+      document.getElementById(tab + "-tab").style.display = "block";
+    });
+  });
 // Function to fetch orders notifications
 // Global storage for notifications
 let allNotifications = [];
@@ -394,6 +408,21 @@ document.addEventListener('DOMContentLoaded', function() {
   loadNotifications();
   // Poll every 60 seconds if desired:
   setInterval(loadNotifications, 60000);
+});
+
+links.forEach(link => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    const targetUrl = this.getAttribute("href");
+
+    // Add the fade-out class to start the transition
+    document.body.classList.add("fade-out");
+
+    // Wait for the transition to complete (match this with your CSS timing)
+    setTimeout(() => {
+      window.location.href = targetUrl;
+    }, 500);
+  });
 });
 
 

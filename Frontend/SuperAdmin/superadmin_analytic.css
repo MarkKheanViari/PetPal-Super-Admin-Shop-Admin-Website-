@@ -1,0 +1,77 @@
+/* General Layout */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff3e0; /* Light orange background */
+    margin: 0;
+    display: flex;
+  }
+  
+  /* Sidebar (similar to your other pages) */
+  .sidebar {
+    width: 250px;
+    background-color: #ff6f00;
+    color: white;
+    padding: 20px;
+    min-height: 100vh;
+    position: fixed;
+  }
+  .sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  .sidebar ul li {
+    padding: 12px;
+  }
+  .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+  }
+  .sidebar ul li a.active,
+  .sidebar ul li a:hover {
+    background-color: #e65100;
+  }
+  
+  /* Main Analytics Container */
+  .analytics-container {
+    margin-left: 280px;
+    padding: 40px;
+    width: 100%;
+  }
+  
+  /* Statistics Cards */
+  .analytics-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .stat-card {
+    background-color: #ff9800;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1 1 200px;
+    text-align: center;
+  }
+  
+  /* Charts Section */
+  .charts-section {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  .chart-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    flex: 1 1 400px;
+  }
+  

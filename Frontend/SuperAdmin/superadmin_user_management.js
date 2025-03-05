@@ -12,8 +12,9 @@ function setupModal() {
 
     if (openModalBtn) {
         openModalBtn.addEventListener("click", function () {
-            modal.style.display = "block";
+            modal.style.display = "flex"; // Now it will center properly
         });
+        
     }
 
     if (closeModalBtn) {
@@ -172,3 +173,4 @@ function setActiveFilter(activeBtn) {
     document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
     activeBtn.classList.add("active");
 }
+

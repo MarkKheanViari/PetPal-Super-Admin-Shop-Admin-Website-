@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SuperAdmin - Analytics</title>
+  <link rel="stylesheet" href="superadmin_analytic.css" />
+  <!-- Chart.js for graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Sidebar Navigation (reuse your sidebar style) -->
+  <aside class="sidebar">
+    <h2>SuperAdmin</h2>
+    <ul>
+      <li><a href="superadmin.html">Dashboard</a></li>
+      <li><a href="superadmin_user_management.html">User Management</a></li>
+      <li><a href="superadmin_content_management.html">Content Management</a></li>
+      <li><a href="analytics.html" class="active">Analytics</a></li>
+      <li><a href="settings.html">Settings</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Analytics Content -->
+  <main class="analytics-container">
+    <h1>Analytics Overview</h1>
+    
+    <!-- Statistics Cards -->
+    <div class="analytics-cards">
+      <div class="stat-card">
+        <h3>Total Users</h3>
+        <p id="totalUsers">Loading...</p>
+      </div>
+      <div class="stat-card">
+        <h3>Active Shop Owners</h3>
+        <p id="activeShopOwners">Loading...</p>
+      </div>
+      <div class="stat-card">
+        <h3>Active Customers</h3>
+        <p id="activeCustomers">Loading...</p>
+      </div>
+      <div class="stat-card">
+        <h3>Pending Products</h3>
+        <p id="pendingProducts">Loading...</p>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts-section">
+      <div class="chart-card">
+        <h2>User Registration Trends</h2>
+        <canvas id="userTrendChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2>Product Approval Status</h2>
+        <canvas id="productChart"></canvas>
+      </div>
+    </div>
+  </main>
+
+  <script src="analytics.js"></script>
+</body>
+</html>
