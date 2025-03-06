@@ -43,3 +43,18 @@
 [06-Mar-2025 05:59:55 Europe/Berlin] ❌ Missing input data in update_service.php
 [06-Mar-2025 05:59:55 Europe/Berlin] ✅ Running SQL Update: service_id=54, price=500, description=jbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndik
 [06-Mar-2025 05:59:55 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 09:47:28 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 09:47:28 Europe/Berlin] ✅ Running SQL Update: service_id=50, price=321, description=Give your pet a gentle, refreshing wash that leaves their coat clean, soft, and smelling great.
+[06-Mar-2025 09:47:28 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 09:47:59 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 09:47:59 Europe/Berlin] ✅ Running SQL Update: service_id=54, price=500, description=Protect your furry friend from pesky parasites with a targeted treatment that helps remove and prevent infestations.
+[06-Mar-2025 09:47:59 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 09:48:20 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 09:48:20 Europe/Berlin] ✅ Running SQL Update: service_id=56, price=2, description=Keep your pet’s coat healthy and tangle-free while reducing shedding through regular brushing sessions.
+[06-Mar-2025 09:48:20 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 09:48:41 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 09:48:41 Europe/Berlin] ✅ Running SQL Update: service_id=58, price=22, description=Maintain your pet’s paw health and comfort with careful nail clipping to prevent overgrowth and cracking.
+[06-Mar-2025 09:48:41 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 09:49:10 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 09:49:10 Europe/Berlin] ✅ Running SQL Update: service_id=52, price=444, description=Ensure your pet’s overall well-being with a thorough veterinary check-up to catch any issues early and keep them healthy.
+[06-Mar-2025 09:49:10 Europe/Berlin] ✅ Service updated successfully!

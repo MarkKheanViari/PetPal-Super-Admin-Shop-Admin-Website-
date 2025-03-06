@@ -881,3 +881,40 @@ Array
     [description] => jbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndik
 )
 🔍 Login Attempt: Email: ken@gmail.com | Retrieved ID: 3
+🔍 Login Attempt: Email: ken@gmail.com | Retrieved ID: 3
+🔍 Login Attempt: Email: ken@gmail.com | Retrieved ID: 3
+Array
+(
+    [service_id] => 50
+    [price] => 321
+    [description] => Give your pet a gentle, refreshing wash that leaves their coat clean, soft, and smelling great.
+)
+Array
+(
+    [service_id] => 54
+    [price] => 500
+    [description] => Protect your furry friend from pesky parasites with a targeted treatment that helps remove and prevent infestations.
+)
+Array
+(
+    [service_id] => 56
+    [price] => 2
+    [description] => Keep your pet’s coat healthy and tangle-free while reducing shedding through regular brushing sessions.
+)
+Array
+(
+    [service_id] => 58
+    [price] => 22
+    [description] => Maintain your pet’s paw health and comfort with careful nail clipping to prevent overgrowth and cracking.
+)
+🔍 Incoming Request: 
+[06-Mar-2025 09:48:46 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Brushing"}
+[06-Mar-2025 09:48:46 Europe/Berlin] ✅ Service 'Brushing' removed successfully.
+Array
+(
+    [service_id] => 52
+    [price] => 444
+    [description] => Ensure your pet’s overall well-being with a thorough veterinary check-up to catch any issues early and keep them healthy.
+)
+🔍 Login Attempt: Email: ken@gmail.com | Retrieved ID: 3
