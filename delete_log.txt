@@ -50,3 +50,9 @@ DELETE request received: {"product_id":29,"shop_owner_id":1}
 DELETE request received: {"product_id":30,"shop_owner_id":1}
 DELETE request received: {"product_id":13,"shop_owner_id":1}
 DELETE request received: {"product_id":31,"shop_owner_id":1}
+DELETE request received: {"product_id":23,"shop_owner_id":3}
+DELETE request received: {"product_id":24,"shop_owner_id":3}
+DELETE request received: {"product_id":25,"shop_owner_id":3}
+DELETE request received: {"product_id":26,"shop_owner_id":3}
+DELETE request received: {"product_id":27,"shop_owner_id":3}
+DELETE request received: {"product_id":28,"shop_owner_id":3}

@@ -169,7 +169,7 @@ const veterinaryServices = [
 
 
 function fetchGroomingServices() {
-  fetch('http://192.168.1.65/backend/fetch_grooming_services.php')
+  fetch('http://192.168.168.55/backend/fetch_grooming_services.php')
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('groomingServicesContainer');
@@ -196,7 +196,7 @@ function fetchGroomingServices() {
 }
 
 function fetchVeterinaryServices() {
-  fetch('http://192.168.1.65/backend/fetch_veterinary_services.php')
+  fetch('http://192.168.168.55/backend/fetch_veterinary_services.php')
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('veterinaryServicesContainer');
@@ -228,7 +228,7 @@ function removeServiceFromModal() {
 
   if (!confirm(`Are you sure you want to remove "${serviceName}"?`)) return;
 
-  fetch('http://192.168.1.65/backend/remove_service.php', {
+  fetch('http://192.168.168.55/backend/remove_service.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ service_name: serviceName })
@@ -306,7 +306,7 @@ document.getElementById('editServiceForm').addEventListener('submit', function(e
     description: serviceDescription.trim()
   });
 
-  fetch('http://192.168.1.65/backend/update_service.php', {
+  fetch('http://192.168.168.55/backend/update_service.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -345,7 +345,7 @@ function deleteService() {
 
   console.log("🔵 Sending Delete Request:", { service_id: serviceId });  // ✅ Debugging log
 
-  fetch('http://192.168.1.65/backend/delete_service.php', {
+  fetch('http://192.168.168.55/backend/delete_service.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ service_id: serviceId })  // ✅ Correct field name
@@ -378,7 +378,7 @@ function openAddServiceModal(serviceType) {
   serviceOption.innerHTML = '<option value="" disabled selected>Select Service</option>';
 
   // Fetch existing services from DB
-  fetch(`http://192.168.1.65/backend/fetch_${serviceType.toLowerCase()}_services.php`)
+  fetch(`http://192.168.168.55/backend/fetch_${serviceType.toLowerCase()}_services.php`)
     .then(res => res.json())
     .then(data => {
       const activeServices = data.services.filter(service => service.removed == 0).map(service => service.service_name);
@@ -414,7 +414,7 @@ document.getElementById('addServiceForm').addEventListener('submit', function(e)
   const servicePrice = document.getElementById('servicePrice').value;
   const serviceDescription = document.getElementById('serviceDescription').value;
 
-  fetch('http://192.168.1.65/backend/create_service.php', {
+  fetch('http://192.168.168.55/backend/create_service.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
