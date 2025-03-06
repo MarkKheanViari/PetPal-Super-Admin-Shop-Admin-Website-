@@ -25,3 +25,21 @@
 [02-Mar-2025 12:55:18 Europe/Berlin] ❌ Missing input data in update_service.php
 [02-Mar-2025 12:55:18 Europe/Berlin] ✅ Running SQL Update: service_id=58, price=400, description=e
 [02-Mar-2025 12:55:18 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 05:41:01 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 05:41:01 Europe/Berlin] ✅ Running SQL Update: service_id=54, price=5000, description=qfkewfebfqljbwfiqwvfbqwndikqw qfkewfebfqljbwfiqwvfbqwndikqw qfkewfebfqljbwfiqwvfbqwndikqw qfkewfebfqljbwfiqwvfbqwndikqw
+[06-Mar-2025 05:41:01 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 05:41:41 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 05:41:41 Europe/Berlin] ✅ Running SQL Update: service_id=54, price=5000, description=jbwfiqwvfbqwndikqw
+[06-Mar-2025 05:41:41 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 05:57:19 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 05:57:19 Europe/Berlin] ✅ Running SQL Update: service_id=54, price=5000, description=jbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqw
+[06-Mar-2025 05:57:19 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 05:57:40 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 05:57:40 Europe/Berlin] ✅ Running SQL Update: service_id=54, price=5000, description=jbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndik
+[06-Mar-2025 05:57:40 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 05:59:46 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 05:59:46 Europe/Berlin] ✅ Running SQL Update: service_id=52, price=444, description=jbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndik
+[06-Mar-2025 05:59:46 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 05:59:55 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 05:59:55 Europe/Berlin] ✅ Running SQL Update: service_id=54, price=500, description=jbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndikqwjbwfiqwvfbqwndik
+[06-Mar-2025 05:59:55 Europe/Berlin] ✅ Service updated successfully!

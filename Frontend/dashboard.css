@@ -59,14 +59,9 @@ html {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     background-color: #f8fafc;
-    padding-top: 90px;opacity: 1;
-    transition: opacity 0.5s ease; /* Adjust timing and easing as needed */
+    padding-top: 90px;
   }
   
-  /* Fade-out state */
-  .fade-out {
-    opacity: 0;
-  }
 /* Navbar Styling */
 .navbar {
   display: flex;

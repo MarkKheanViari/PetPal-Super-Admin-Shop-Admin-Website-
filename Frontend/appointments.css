@@ -27,13 +27,7 @@
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     background-color: #f8fafc;
-    padding-top: 90px;opacity: 1;
-    transition: opacity 0.5s ease; /* Adjust timing and easing as needed */
-  }
-  
-  /* Fade-out state */
-  .fade-out {
-    opacity: 0;
+    padding-top: 90px;
   }
   
   /* Navbar */
@@ -663,3 +657,11 @@ thead{
   cursor: pointer;
 }
   
+.edit-btn{
+  background-color: #fff;
+    color: #e67e22;
+    padding: 0.5rem 1rem;
+    border:#e67e22 1px solid ;
+    border-radius: 4px;
+    cursor: pointer;
+}

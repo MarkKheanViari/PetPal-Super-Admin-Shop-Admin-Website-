@@ -37,7 +37,7 @@ let currentFilter = "all"; // Default filter
 // 📌 Fetch Users and Apply Filters
 async function fetchUsers(filter = "all", searchQuery = "") {
     try {
-        const response = await fetch("http://192.168.1.3/backend/frontend/superadmin/fetch_users.php");
+        const response = await fetch("http://192.168.168.203/backend/frontend/superadmin/fetch_users.php");
         const data = await response.json();
         allUsers = data.users || [];
 
@@ -75,6 +75,8 @@ function displayUsers(filterType = "all", searchQuery = "") {
     } else if (filterType === "customers") {
         filteredUsers = filteredUsers.filter(user => user.type === "Customer");
     }
+    
+    
 
     // ✅ Apply Search Filtering
     if (searchQuery) {
@@ -145,7 +147,7 @@ async function addShopOwner() {
     }
 
     try {
-        const response = await fetch("http://192.168.1.3/backend/Frontend/SuperAdmin/add_shop_owner.php", {
+        const response = await fetch("http://192.168.168.203/backend/Frontend/SuperAdmin/add_shop_owner.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, email, password })
@@ -173,4 +175,80 @@ function setActiveFilter(activeBtn) {
     document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
     activeBtn.classList.add("active");
 }
+
+// Listen for clicks on any edit button (event delegation)
+document.getElementById("userTable").addEventListener("click", function(e) {
+    if (e.target.classList.contains("edit-btn")) {
+        // Get the user's id from the first cell (assuming it's in the format "#id")
+        const row = e.target.closest("tr");
+        const idText = row.querySelector("td").innerText;
+        const userId = idText.replace("#", "");
+        
+        // Find the user from allUsers array
+        const user = allUsers.find(u => u.id == userId);
+        if (user) {
+            openEditUserModal(user);
+        }
+    }
+});
+function openEditUserModal(user) {
+    const userModal = document.getElementById("userModal");
+    document.getElementById("modalTitle").innerText = "Edit User";
+    document.getElementById("userUsername").value = user.username;
+    document.getElementById("userEmail").value = user.email; 
+    // Clear the password field so that a new password can be entered if needed
+    document.getElementById("userPassword").value = "";
+
+    // Store the user's ID in a data attribute for use during update
+    userModal.dataset.userId = user.id;
+
+    // Display the modal
+    userModal.style.display = "flex";
+}
+
+
+
+document.querySelector(".close-user-btn").addEventListener("click", function() {
+    document.getElementById("userModal").style.display = "none";
+});
+
+document.getElementById("saveUserBtn").addEventListener("click", async function() {
+    const userModal = document.getElementById("userModal");
+    const userId = userModal.dataset.userId;
+    const username = document.getElementById("userUsername").value.trim();
+    const email = document.getElementById("userEmail").value.trim();
+    const password = document.getElementById("userPassword").value.trim();
+
+    // Basic validation
+    if (!username || !email) {
+        alert("⚠️ Please fill in all required fields.");
+        return;
+    }
+
+    // Construct the payload; include the password only if provided (so it resets)
+    const payload = { id: userId, username, email };
+    if (password) {
+        payload.password = password;
+    }
+
+    try {
+        const response = await fetch("update_user.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            alert("✅ User updated successfully!");
+            userModal.style.display = "none";
+            fetchUsers(); // Refresh the user list
+        } else {
+            alert("❌ Error: " + result.message);
+        }
+    } catch (error) {
+        console.error("❌ Error updating user:", error);
+    }
+});
 

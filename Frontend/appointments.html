@@ -65,8 +65,8 @@
       <div class="seller-info">
         <div class="seller-avatar"></div>
         <div class="seller-details">
-          <h1>Seller's Name</h1>
-          <p class="seller-type">Pet Shop Owner</p>
+          <h1  id="welcomeText"></h1>
+          <p class="seller-type">PetPal</p>
           <p class="seller-description">
             Manage your shop's orders, products, grooming, and veterinary
             services
@@ -83,14 +83,19 @@
       <section class="appointments">
         <div class="head-service">
           <h2>Grooming Services</h2>
-          <button class="view-details-btn" onclick="openAddServiceModal('Grooming')">
+          <button
+            class="view-details-btn"
+            onclick="openAddServiceModal('Grooming')"
+          >
             Add Grooming Service
           </button>
         </div>
         <table id="groomingServicesTable" class="services-table">
           <thead>
             <tr>
-              <th onclick="sortTable('groomingServicesTable', 0)">Service Name</th>
+              <th onclick="sortTable('groomingServicesTable', 0)">
+                Service Name
+              </th>
               <th onclick="sortTable('groomingServicesTable', 1)">Price</th>
               <th>Description</th>
               <th>Actions</th>
@@ -101,18 +106,23 @@
           </tbody>
         </table>
       </section>
-      
+
       <section class="appointments">
         <div class="head-service">
           <h2>Veterinary Services</h2>
-          <button class="view-details-btn" onclick="openAddServiceModal('Veterinary')">
+          <button
+            class="view-details-btn"
+            onclick="openAddServiceModal('Veterinary')"
+          >
             Add Veterinary Service
           </button>
         </div>
         <table id="veterinaryServicesTable" class="services-table">
           <thead>
             <tr>
-              <th onclick="sortTable('veterinaryServicesTable', 0)">Service Name</th>
+              <th onclick="sortTable('veterinaryServicesTable', 0)">
+                Service Name
+              </th>
               <th onclick="sortTable('veterinaryServicesTable', 1)">Price</th>
               <th>Description</th>
               <th>Actions</th>
@@ -180,25 +190,29 @@
         </div>
         <form id="editServiceForm">
           <input type="hidden" id="editServiceId" />
-    
+
           <div class="modal-section">
             <label><strong>Service Name:</strong></label>
             <input type="text" id="editServiceName" readonly />
           </div>
-    
+
           <div class="modal-section">
             <label><strong>Price:</strong></label>
             <input type="number" id="editServicePrice" required />
           </div>
-    
+
           <div class="modal-section">
             <label><strong>Description:</strong></label>
             <textarea id="editServiceDescription" required></textarea>
           </div>
-    
+
           <!-- Buttons Container -->
           <div class="modal-button">
-            <button class="remove-btn" type="button" onclick="removeServiceFromModal()">
+            <button
+              class="remove-btn"
+              type="button"
+              onclick="removeServiceFromModal()"
+            >
               Remove Service
             </button>
             <button class="save-btn" type="submit">Save Changes</button>
@@ -206,7 +220,6 @@
         </form>
       </div>
     </div>
-    
 
     <!-- Footer -->
     <footer class="footer">
@@ -222,8 +235,8 @@
     <script>
       (function () {
         // Base URL for API endpoints
-        const apiBaseUrl = "http://192.168.1.3/backend/";
-    
+        const apiBaseUrl = "http://192.168.168.203/backend/";
+
         // Service options arrays
         const groomingServicesList = [
           "Brushing",
@@ -240,7 +253,7 @@
           "Flea & Tick Treatment",
           "Anal Gland Expression",
         ];
-    
+
         const veterinaryServicesList = [
           "Wellness Exam",
           "Vaccination Check",
@@ -259,21 +272,21 @@
           "Gastrointestinal Check",
           "Behavioral Consultation",
         ];
-    
+
         // Hold the current service type for adding new services
         let currentServiceType = "";
-    
+
         // ------------------------
         // Fetch & Populate Services
         // ------------------------
-    
+
         // Fetch services based on type and populate corresponding table
         function fetchServices(serviceType, tableId) {
           const endpoint =
             serviceType.toLowerCase() === "grooming"
               ? "fetch_grooming_services.php"
               : "fetch_veterinary_services.php";
-    
+
           fetch(apiBaseUrl + endpoint)
             .then((res) => res.json())
             .then((data) => populateServicesTable(data, tableId))
@@ -281,63 +294,66 @@
               console.error(`Error fetching ${serviceType} services:`, err)
             );
         }
-    
+
         // Populate a given table with service data
         function populateServicesTable(data, tableId) {
-  const tableBody = document.getElementById(tableId).querySelector("tbody");
-  tableBody.innerHTML = "";
+          const tableBody = document
+            .getElementById(tableId)
+            .querySelector("tbody");
+          tableBody.innerHTML = "";
 
-  // Filter only non-removed (active) services
-  const activeServices = data.services.filter(
-    (service) => service.removed == 0
-  );
+          // Filter only non-removed (active) services
+          const activeServices = data.services.filter(
+            (service) => service.removed == 0
+          );
 
-  // Check if we have any active services
-  if (activeServices.length === 0) {
-    const tr = document.createElement("tr");
-    // Adjust colspan to match your total number of columns (e.g., 4)
-    tr.innerHTML = `
+          // Check if we have any active services
+          if (activeServices.length === 0) {
+            const tr = document.createElement("tr");
+            // Adjust colspan to match your total number of columns (e.g., 4)
+            tr.innerHTML = `
       <td colspan="4" style="text-align: center; color: #666;">
         No service added yet
       </td>
     `;
-    tableBody.appendChild(tr);
-    return;
-  }
+            tableBody.appendChild(tr);
+            return;
+          }
 
-  // Otherwise, populate rows as usual
-  activeServices.forEach((service) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
+          // Otherwise, populate rows as usual
+          activeServices.forEach((service) => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
       <td>${service.service_name}</td>
       <td>₱${service.price}</td>
       <td>${service.description || "No description provided."}</td>
       <td>
-        <button class="edit-btn" onclick='openEditModal(${JSON.stringify(service)})'>
+        <button class="edit-btn" onclick='openEditModal(${JSON.stringify(
+          service
+        )})'>
           Edit
         </button>
       </td>
     `;
-    tableBody.appendChild(tr);
-  });
-}
+            tableBody.appendChild(tr);
+          });
+        }
 
-    
         // ------------------------
         // Sorting Functionality
         // ------------------------
-    
+
         // Sort table by a given column index
         function sortTable(tableId, colIndex) {
           const table = document.getElementById(tableId);
           const tbody = table.querySelector("tbody");
           const rows = Array.from(tbody.querySelectorAll("tr"));
           const isNumeric = colIndex === 1; // only Price column is numeric
-    
+
           rows.sort((a, b) => {
             let cellA = a.cells[colIndex].textContent.trim();
             let cellB = b.cells[colIndex].textContent.trim();
-    
+
             if (isNumeric) {
               cellA = parseFloat(cellA.replace("₱", ""));
               cellB = parseFloat(cellB.replace("₱", ""));
@@ -346,26 +362,26 @@
               return cellA.localeCompare(cellB);
             }
           });
-    
+
           // Append sorted rows back to the tbody
           rows.forEach((row) => tbody.appendChild(row));
         }
-    
+
         // ------------------------
         // Modal & Form Handling
         // ------------------------
-    
+
         // Open the Add Service modal and populate dropdown options
         function openAddServiceModal(serviceType) {
           currentServiceType = serviceType;
           document.getElementById(
             "addServiceModalTitle"
           ).innerText = `Add ${serviceType} Service`;
-    
+
           const serviceOption = document.getElementById("serviceOption");
           serviceOption.innerHTML =
             '<option value="" disabled selected>Select Service</option>';
-    
+
           // Fetch existing services to determine which ones are available
           fetch(apiBaseUrl + `fetch_${serviceType.toLowerCase()}_services.php`)
             .then((res) => res.json())
@@ -376,23 +392,24 @@
               const removedServices = data.services
                 .filter((s) => s.removed == 1)
                 .map((s) => s.service_name);
-    
+
               const availableServices = (
                 serviceType === "Grooming"
                   ? groomingServicesList
                   : veterinaryServicesList
               ).filter(
                 (service) =>
-                  !activeServices.includes(service) || removedServices.includes(service)
+                  !activeServices.includes(service) ||
+                  removedServices.includes(service)
               );
-    
+
               availableServices.forEach((service) => {
                 const option = document.createElement("option");
                 option.value = service;
                 option.textContent = service;
                 serviceOption.appendChild(option);
               });
-    
+
               document.getElementById("addServiceForm").reset();
               document.getElementById("addServiceModal").style.display = "flex";
             })
@@ -400,28 +417,29 @@
               console.error("Error fetching services for modal:", error)
             );
         }
-    
+
         // Close a modal by ID
         function closeModal(modalId) {
           document.getElementById(modalId).style.display = "none";
         }
-    
+
         // Open the Edit Service modal and populate with service details
         function openEditModal(service) {
           document.getElementById("editServiceId").value = service.service_id;
-          document.getElementById("editServiceName").value = service.service_name;
+          document.getElementById("editServiceName").value =
+            service.service_name;
           document.getElementById("editServicePrice").value = service.price;
           document.getElementById("editServiceDescription").value =
             service.description || "";
           document.getElementById("editServiceModal").style.display = "flex";
         }
-    
+
         // Remove a service from within the edit modal
         function removeServiceFromModal() {
           const serviceName = document.getElementById("editServiceName").value;
           if (!confirm(`Are you sure you want to remove "${serviceName}"?`))
             return;
-    
+
           fetch(apiBaseUrl + "remove_service.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -436,7 +454,9 @@
                 addToDropdown(serviceName);
               } else {
                 alert(
-                  `❌ Failed to remove service: ${data.error || "Unknown error"}`
+                  `❌ Failed to remove service: ${
+                    data.error || "Unknown error"
+                  }`
                 );
               }
             })
@@ -444,7 +464,7 @@
               console.error("Error removing service from modal:", err)
             );
         }
-    
+
         // Add a removed service back to the Add Service dropdown
         function addToDropdown(serviceName) {
           const serviceOption = document.getElementById("serviceOption");
@@ -458,7 +478,7 @@
             serviceOption.appendChild(option);
           }
         }
-    
+
         // Remove a service from the dropdown after it’s added
         function removeFromDropdown(serviceName) {
           const serviceOption = document.getElementById("serviceOption");
@@ -468,28 +488,29 @@
             }
           });
         }
-    
+
         // Refresh both Grooming and Veterinary services
         function refreshServices() {
           fetchServices("Grooming", "groomingServicesTable");
           fetchServices("Veterinary", "veterinaryServicesTable");
         }
-    
+
         // ------------------------
         // Form Submission Handlers
         // ------------------------
-    
+
         // Handle edit service form submission
         document
           .getElementById("editServiceForm")
           .addEventListener("submit", function (e) {
             e.preventDefault();
             const serviceId = document.getElementById("editServiceId").value;
-            const servicePrice = document.getElementById("editServicePrice").value;
+            const servicePrice =
+              document.getElementById("editServicePrice").value;
             const serviceDescription = document.getElementById(
               "editServiceDescription"
             ).value;
-    
+
             fetch(apiBaseUrl + "update_service.php", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -517,7 +538,7 @@
                 alert("❌ Server error! Check console for details.");
               });
           });
-    
+
         // Handle add service form submission
         document
           .getElementById("addServiceForm")
@@ -527,7 +548,7 @@
             const servicePrice = document.getElementById("servicePrice").value;
             const serviceDescription =
               document.getElementById("serviceDescription").value;
-    
+
             fetch(apiBaseUrl + "create_service.php", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -549,19 +570,17 @@
                   alert("❌ Failed to add service.");
                 }
               })
-              .catch((error) =>
-                console.error("Error adding service:", error)
-              );
+              .catch((error) => console.error("Error adding service:", error));
           });
-    
+
         // ------------------------
         // Initialization
         // ------------------------
-    
+
         document.addEventListener("DOMContentLoaded", function () {
           refreshServices();
         });
-    
+
         // Expose functions for inline HTML event handling
         window.sortTable = sortTable;
         window.openAddServiceModal = openAddServiceModal;
@@ -569,9 +588,8 @@
         window.removeServiceFromModal = removeServiceFromModal;
         window.closeModal = closeModal;
       })();
-      
     </script>
-    
+  <script src="index.js"></script>
     <script src="notification.js"></script>
   </body>
 </html>
