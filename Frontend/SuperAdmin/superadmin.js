@@ -7,29 +7,39 @@ document.addEventListener("DOMContentLoaded", function () {
 // 📌 Fetch User Counts for Bar Chart
 async function fetchUserCounts() {
   try {
-    const response = await fetch("http://192.168.1.65/backend/Frontend/Superadmin/superadmin_stats.php");
+    const response = await fetch(
+      "http://192.168.1.9/backend/Frontend/Superadmin/superadmin_stats.php"
+    );
     const data = await response.json();
-    
+
     console.log("✅ User Stats Response:", data); // Debugging
 
     // ✅ Set default values if API response is missing data
-    document.getElementById("totalUsers").textContent = data.totalUsers ?? "N/A";
-    document.getElementById("activeShopOwners").textContent = data.activeShopOwners ?? "N/A";
-    document.getElementById("activeCustomers").textContent = data.activeCustomers ?? "N/A";
-    document.getElementById("pendingProducts").textContent = data.pendingProducts ?? "N/A";
+    document.getElementById("totalUsers").textContent =
+      data.totalUsers ?? "N/A";
+    document.getElementById("activeShopOwners").textContent =
+      data.activeShopOwners ?? "N/A";
+    document.getElementById("activeCustomers").textContent =
+      data.activeCustomers ?? "N/A";
+    document.getElementById("pendingProducts").textContent =
+      data.pendingProducts ?? "N/A";
 
     // ✅ Pass data to graph function
-    renderUserChart(["Active Customers", "Active Shop Owners"], [data.activeCustomers, data.activeShopOwners]);
+    renderUserChart(
+      ["Active Customers", "Active Shop Owners"],
+      [data.activeCustomers, data.activeShopOwners]
+    );
   } catch (error) {
     console.error("❌ Error fetching user stats:", error);
   }
 }
 
-
 // 📌 Fetch User Statistics for Graph
 async function fetchUserStatistics() {
   try {
-    const response = await fetch("http://192.168.1.65/backend/Frontend/Superadmin/fetch_user_counts.php"); // ✅ Fix directory
+    const response = await fetch(
+      "http://192.168.1.9/backend/Frontend/Superadmin/fetch_user_counts.php"
+    ); // ✅ Fix directory
     const data = await response.json();
 
     renderUserChart(data.months, data.mobile_users, data.shop_owners);
@@ -40,8 +50,12 @@ async function fetchUserStatistics() {
 
 // Tab Switching Logic
 function openTab(event, tabName) {
-  document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
-  document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+  document
+    .querySelectorAll(".tab-content")
+    .forEach((tab) => tab.classList.remove("active"));
+  document
+    .querySelectorAll(".tab-btn")
+    .forEach((btn) => btn.classList.remove("active"));
 
   document.getElementById(tabName).classList.add("active");
   event.currentTarget.classList.add("active");
@@ -50,7 +64,9 @@ function openTab(event, tabName) {
 // Fetch Users and Limit to 3
 async function fetchUsers() {
   try {
-    const response = await fetch("http://192.168.1.65/backend/frontend/superadmin/fetch_users.php");
+    const response = await fetch(
+      "http://192.168.1.9/backend/frontend/superadmin/fetch_users.php"
+    );
     const data = await response.json();
 
     const userTable = document.getElementById("userTable");
@@ -59,7 +75,7 @@ async function fetchUsers() {
     // ✅ Limit to first 3 Users
     const usersToShow = data.users.slice(0, 3);
     if (usersToShow.length > 0) {
-      usersToShow.forEach(user => {
+      usersToShow.forEach((user) => {
         userTable.innerHTML += `
           <tr>
             <td>#${user.id}</td>
@@ -82,15 +98,17 @@ async function fetchUsers() {
 // Fetch Products and Limit to 3
 async function fetchProducts() {
   try {
-      const response = await fetch("http://192.168.1.65/backend/Frontend/SuperAdmin/fetch_products.php?page=dashboard");
-      const data = await response.json();
+    const response = await fetch(
+      "http://192.168.1.9/backend/Frontend/SuperAdmin/fetch_products.php?page=dashboard"
+    );
+    const data = await response.json();
 
-      const productTable = document.getElementById("productTable");
-      productTable.innerHTML = "";
+    const productTable = document.getElementById("productTable");
+    productTable.innerHTML = "";
 
-      // ✅ Display only ID, Name, Owner, and Actions
-      data.products.slice(0, 3).forEach(product => {
-          productTable.innerHTML += `
+    // ✅ Display only ID, Name, Owner, and Actions
+    data.products.slice(0, 3).forEach((product) => {
+      productTable.innerHTML += `
               <tr>
                   <td>${product.id}</td>
                   <td>${product.name}</td>
@@ -101,36 +119,35 @@ async function fetchProducts() {
                   </td>
               </tr>
           `;
-      });
+    });
   } catch (error) {
-      console.error("❌ Error fetching products:", error);
+    console.error("❌ Error fetching products:", error);
   }
 }
-
 
 async function fetchRecentActivities() {
   try {
-      const response = await fetch("http://192.168.1.65/backend/Frontend/Superadmin/fetch_recent_activities.php");
-      const data = await response.json();
+    const response = await fetch(
+      "http://192.168.1.9/backend/Frontend/Superadmin/fetch_recent_activities.php"
+    );
+    const data = await response.json();
 
-      const activityList = document.getElementById("activityList");
-      activityList.innerHTML = ""; // Clear previous content
+    const activityList = document.getElementById("activityList");
+    activityList.innerHTML = ""; // Clear previous content
 
-      if (data.activities.length > 0) {
-          data.activities.forEach(activity => {
-              const li = document.createElement("li");
-              li.textContent = activity;
-              activityList.appendChild(li);
-          });
-      } else {
-          activityList.innerHTML = "<li>No Recent Activities</li>";
-      }
+    if (data.activities.length > 0) {
+      data.activities.forEach((activity) => {
+        const li = document.createElement("li");
+        li.textContent = activity;
+        activityList.appendChild(li);
+      });
+    } else {
+      activityList.innerHTML = "<li>No Recent Activities</li>";
+    }
   } catch (error) {
-      console.error("❌ Error fetching recent activities:", error);
+    console.error("❌ Error fetching recent activities:", error);
   }
 }
-
-
 
 // 📌 Render Bar Graph Chart
 // 📌 Store chart instance to prevent duplicates
@@ -185,4 +202,3 @@ function renderUserChart(labels, dataValues) {
     },
   });
 }
-

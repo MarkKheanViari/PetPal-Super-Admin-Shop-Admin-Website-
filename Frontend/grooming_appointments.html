@@ -5,6 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="appointments.css">
     <title>Grooming Appointments</title>
+    <style>
+        /* Table Container & Global Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 1rem;
+}
+
+/* Table Header Styles */
+table thead th {
+  background-color: var(--primary-color, #e67e22);
+  color: #fff;
+  padding: 12px 8px;
+  text-align: left;
+  font-size: 1rem;
+  border-bottom: 2px solid var(--primary-dark, #d35400);
+}
+
+/* Table Body Cell Styles */
+table tbody td {
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  font-size: 0.95rem;
+  color: var(--text-color, #333);
+}
+
+/* Alternating Row Colors */
+table tbody tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+/* Hover Effect on Rows */
+table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Status Styles */
+.status-pending {
+  color: orange;
+  font-weight: bold;
+}
+.status-approved {
+  color: green;
+  font-weight: bold;
+}
+.status-declined {
+  color: red;
+  font-weight: bold;
+}
+
+/* Action Buttons within Table */
+table tbody button {
+  background-color: var(--primary-color, #e67e22);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-right: 5px;
+}
+
+table tbody button:hover {
+  background-color: var(--primary-dark, #d35400);
+}
+
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -16,11 +85,27 @@
             <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
             <li><a href="product_inventory.html" class="nav-link">Products</a></li>
             <li><a href="orders.html" class="nav-link">Orders</a></li>
-            <li><a href="appointments.html" class="nav-link active">Services</a></li>
+            <li><a href="appointments.html" class="nav-link">Services</a></li>
+            <li><a href="grooming_appointments.html" class="nav-link active">Grooming Appointment</a></li>
+            <li><a href="veterinary_appointments.html" class="nav-link">Veterinary Appointments</a></li>
             <li class="notification-bell">
                 <i class="bell-icon">🔔</i>
                 <span id="notifCount" class="badge">0</span>
-            </li>
+                <div id="notifDropdown" class="notif-dropdown">
+                  <div class="notif-header">
+                    <span class="notif-title">Notifications</span>
+                    <button type="button" id="notifExitBtn" class="notif-exit-btn">X</button>
+                  </div>
+                  <div class="notif-filter">
+                    <button type="button" class="notif-filter-btn active" data-filter="all">All</button>
+                    <button type="button" class="notif-filter-btn" data-filter="order">Orders</button>
+                    <button type="button" class="notif-filter-btn" data-filter="appointment">Appointments</button>
+                  </div>
+                  <div id="notifItemsContainer">
+                    <!-- Notifications will be populated here -->
+                  </div>
+                </div>
+              </li>
         </ul>
     </nav>
 
@@ -41,25 +126,27 @@
     </header>
 
     <!-- Grooming Appointments Table -->
-    <section>
-        <h2>Grooming Appointments</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Owner Name</th>
-                    <th>Pet Name</th>
-                    <th>Service</th>
-                    <th>Appointment Date</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="appointmentsTableBody">
-                <!-- Appointments will be dynamically added here -->
-            </tbody>
-        </table>
-    </section>
+    <main class="content">
+        <section class="appointments">
+            <h2>Grooming Appointments</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Owner Name</th>
+                        <th>Pet Name</th>
+                        <th>Service</th>
+                        <th>Appointment Date</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="appointmentsTableBody">
+                    <!-- Appointments will be dynamically added here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
 
     <!-- JavaScript -->
     <script>
@@ -68,7 +155,7 @@
         });
 
         function fetchAppointments() {
-            fetch("http://192.168.1.65/backend/fetch_all_appointments.php")
+            fetch("http://192.168.1.9/backend/fetch_all_appointments.php")
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
@@ -119,7 +206,7 @@
         }
 
         function updateStatus(appointmentId, newStatus) {
-            fetch("http://192.168.1.65/backend/update_appointment_status.php", {
+            fetch("http://192.168.1.9/backend/update_appointment_status.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ appointment_id: appointmentId, status: newStatus })
@@ -136,5 +223,6 @@
             .catch(error => console.error("Error updating status:", error));
         }
     </script>
+    <script src="notification.js"></script>
 </body>
 </html>

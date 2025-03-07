@@ -19,6 +19,8 @@
         <li>
           <a href="appointments.html" class="nav-link active">Services</a>
         </li>
+        <li><a href="grooming_appointments.html" class="nav-link">Grooming Appointments</a></li>
+        <li><a href="veterinary_appointments.html" class="nav-link">Veterinary Appointments</a></li>
         <li class="notification-bell">
           <i class="bell-icon">🔔</i>
           <span id="notifCount" class="badge">0</span>
@@ -143,7 +145,12 @@
     <div id="addServiceModal" class="modal">
       <div class="modal-content">
         <div class="service-head">
-          <h2 id="addServiceModalTitle">Add New Service</h2>
+          <h2 id="addSer
+          
+          
+          
+          
+          viceModalTitle">Add New Service</h2>
           <button class="cancel-btn" onclick="closeModal('addServiceModal')">
             &times;
           </button>
@@ -243,7 +250,7 @@
 
       (function () {
         // Base URL for API endpoints
-        const apiBaseUrl = "http://192.168.1.65/backend/";
+        const apiBaseUrl = "http://192.168.1.9/backend/";
 
         // Service options arrays
         const groomingServicesList = [

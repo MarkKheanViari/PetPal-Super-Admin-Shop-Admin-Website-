@@ -76,27 +76,15 @@ html {
 .nav-link {
   text-decoration: none;
   color: var(--text-color);
-  font-size: 16px; /* Fixed font size */
+  font-size: 16px;
   font-weight: 500;
-  padding: 10px 20px; /* Fixed padding */
+  padding: 5px 10px;
   border-radius: 4px;
-  min-width: 20%; /* Ensures all links have the same width */
+  min-width: 160px;
   text-align: center;
-  display: inline-block; /* Ensures consistent spacing */
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-.nav-link {
-  text-decoration: none;
-  color: var(--text-color);
-  font-size: 16px; /* Default font size */
-  font-weight: 500;
-  padding: 10px 20px; /* Default padding */
-  border-radius: 4px;
-  min-width: 160px; /* Ensures all links have the same width */
-  text-align: center;
-  display: inline-block; /* Ensures consistent spacing */
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
+
 
 /* 🔹 Adjust for tablets (max-width: 900px) */
 @media (max-width: 900px) {
