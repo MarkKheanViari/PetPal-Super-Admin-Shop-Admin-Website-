@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="appointments.css">
+    <title>Grooming Appointments</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo" />
+        </div>
+        <ul class="nav-right">
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="product_inventory.html" class="nav-link">Products</a></li>
+            <li><a href="orders.html" class="nav-link">Orders</a></li>
+            <li><a href="appointments.html" class="nav-link active">Services</a></li>
+            <li class="notification-bell">
+                <i class="bell-icon">🔔</i>
+                <span id="notifCount" class="badge">0</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="seller-header">
+        <div class="seller-info">
+            <div class="seller-avatar"></div>
+            <div class="seller-details">
+                <h1 id="welcomeText"></h1>
+                <p class="seller-type">PetPal</p>
+                <p class="seller-description">Manage your shop's orders, products, grooming, and veterinary services</p>
+            </div>
+        </div>
+        <div class="btn-seller-pref">
+            <button class="edit-profile">Edit Profile</button>
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </div>
+    </header>
+
+    <!-- Grooming Appointments Table -->
+    <section>
+        <h2>Grooming Appointments</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Owner Name</th>
+                    <th>Pet Name</th>
+                    <th>Service</th>
+                    <th>Appointment Date</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="appointmentsTableBody">
+                <!-- Appointments will be dynamically added here -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchAppointments();
+        });
+
+        function fetchAppointments() {
+            fetch("http://192.168.1.65/backend/fetch_all_appointments.php")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayAppointments(data.appointments);
+                    } else {
+                        alert("No appointments found.");
+                    }
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        }
+
+        function displayAppointments(appointments) {
+            const tableBody = document.getElementById("appointmentsTableBody");
+            if (!tableBody) {
+                console.error("Error: Table body not found!");
+                return;
+            }
+            tableBody.innerHTML = ""; // Clear existing data
+
+            appointments.forEach((appointment) => {
+                if (appointment.service_type === "Grooming") { // Only show Grooming appointments
+                    const row = `
+                        <tr>
+                            <td>${appointment.name}</td>
+                            <td>${appointment.pet_name} (${appointment.pet_breed})</td>
+                            <td>${appointment.service_name}</td>
+                            <td>${appointment.appointment_date}</td>
+                            <td>₱${appointment.price}</td>
+                            <td><span class="${getStatusClass(appointment.status)}">${appointment.status}</span></td>
+                            <td>
+                                <button onclick="updateStatus(${appointment.id}, 'Approved')">Approve</button>
+                                <button onclick="updateStatus(${appointment.id}, 'Declined')">Decline</button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                }
+            });
+        }
+
+        function getStatusClass(status) {
+            switch (status) {
+                case "Pending": return "status-pending";
+                case "Approved": return "status-approved";
+                case "Declined": return "status-declined";
+                default: return "";
+            }
+        }
+
+        function updateStatus(appointmentId, newStatus) {
+            fetch("http://192.168.1.65/backend/update_appointment_status.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ appointment_id: appointmentId, status: newStatus })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Status updated successfully!");
+                    fetchAppointments(); // Refresh the table
+                } else {
+                    alert("Error updating status.");
+                }
+            })
+            .catch(error => console.error("Error updating status:", error));
+        }
+    </script>
+</body>
+</html>

@@ -58,3 +58,15 @@
 [06-Mar-2025 09:49:10 Europe/Berlin] ❌ Missing input data in update_service.php
 [06-Mar-2025 09:49:10 Europe/Berlin] ✅ Running SQL Update: service_id=52, price=444, description=Ensure your pet’s overall well-being with a thorough veterinary check-up to catch any issues early and keep them healthy.
 [06-Mar-2025 09:49:10 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 12:09:02 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 12:09:02 Europe/Berlin] ✅ Running SQL Update: service_id=76, price=31, description=Gently removes dirt, loose fur, and tangles while promoting a healthy and shiny coat.
+[06-Mar-2025 12:09:02 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 12:09:08 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 12:09:08 Europe/Berlin] ✅ Running SQL Update: service_id=82, price=300, description=Thoroughly cleans and removes wax buildup to prevent infections and maintain ear hygiene.
+[06-Mar-2025 12:09:08 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 12:09:17 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 12:09:17 Europe/Berlin] ✅ Running SQL Update: service_id=78, price=450, description=A routine check-up to assess overall pet health, detect early signs of illness, and provide preventive care recommendations.
+[06-Mar-2025 12:09:17 Europe/Berlin] ✅ Service updated successfully!
+[06-Mar-2025 12:09:24 Europe/Berlin] ❌ Missing input data in update_service.php
+[06-Mar-2025 12:09:24 Europe/Berlin] ✅ Running SQL Update: service_id=80, price=560, description=Ensures pets are up-to-date on their vaccinations, protecting them from common diseases and boosting their immunity.
+[06-Mar-2025 12:09:24 Europe/Berlin] ✅ Service updated successfully!

@@ -918,3 +918,27 @@ Array
     [description] => Ensure your pet’s overall well-being with a thorough veterinary check-up to catch any issues early and keep them healthy.
 )
 🔍 Login Attempt: Email: ken@gmail.com | Retrieved ID: 3
+Array
+(
+    [service_id] => 76
+    [price] => 31
+    [description] => Gently removes dirt, loose fur, and tangles while promoting a healthy and shiny coat.
+)
+Array
+(
+    [service_id] => 82
+    [price] => 300
+    [description] => Thoroughly cleans and removes wax buildup to prevent infections and maintain ear hygiene.
+)
+Array
+(
+    [service_id] => 78
+    [price] => 450
+    [description] => A routine check-up to assess overall pet health, detect early signs of illness, and provide preventive care recommendations.
+)
+Array
+(
+    [service_id] => 80
+    [price] => 560
+    [description] => Ensures pets are up-to-date on their vaccinations, protecting them from common diseases and boosting their immunity.
+)

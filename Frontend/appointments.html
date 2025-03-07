@@ -87,19 +87,19 @@
       <section class="appointments">
         <div class="head-service">
           <h2>Grooming Services</h2>
-          <button
-            class="view-details-btn"
-            onclick="openAddServiceModal('Grooming')"
-          >
-            Add Grooming Service
-          </button>
+          <div class="service-buttons">
+            <button class="view-details-btn" onclick="openAddServiceModal('Grooming')">
+              Add Grooming Service
+            </button>
+            <button class="view-details-btn" onclick="viewAppointments('grooming_appointments.html')">
+              View Grooming Appointments
+            </button>
+          </div>
         </div>
         <table id="groomingServicesTable" class="services-table">
           <thead>
             <tr>
-              <th onclick="sortTable('groomingServicesTable', 0)">
-                Service Name
-              </th>
+              <th onclick="sortTable('groomingServicesTable', 0)">Service Name</th>
               <th onclick="sortTable('groomingServicesTable', 1)">Price</th>
               <th>Description</th>
               <th>Actions</th>
@@ -114,19 +114,19 @@
       <section class="appointments">
         <div class="head-service">
           <h2>Veterinary Services</h2>
-          <button
-            class="view-details-btn"
-            onclick="openAddServiceModal('Veterinary')"
-          >
-            Add Veterinary Service
-          </button>
+          <div class="service-buttons">
+            <button class="view-details-btn" onclick="openAddServiceModal('Veterinary')">
+              Add Veterinary Service
+            </button>
+            <button class="view-details-btn" onclick="viewAppointments('veterinary_appointments.html')">
+              View Veterinary Appointments
+            </button>
+          </div>
         </div>
         <table id="veterinaryServicesTable" class="services-table">
           <thead>
             <tr>
-              <th onclick="sortTable('veterinaryServicesTable', 0)">
-                Service Name
-              </th>
+              <th onclick="sortTable('veterinaryServicesTable', 0)">Service Name</th>
               <th onclick="sortTable('veterinaryServicesTable', 1)">Price</th>
               <th>Description</th>
               <th>Actions</th>
@@ -237,9 +237,13 @@
 
     <!-- Integrated JavaScript -->
     <script>
+      function viewAppointments(page) {
+      window.location.href = page;
+    }
+
       (function () {
         // Base URL for API endpoints
-        const apiBaseUrl = "http://192.168.168.203/backend/";
+        const apiBaseUrl = "http://192.168.1.65/backend/";
 
         // Service options arrays
         const groomingServicesList = [

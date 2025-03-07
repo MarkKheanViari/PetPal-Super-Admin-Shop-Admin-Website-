@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function fetchAnalyticsData() {
     try {
       // Fetch your analytics data (modify the URL if needed)
-      const response = await fetch("http://192.168.168.203/backend/Frontend/Superadmin/superadmin_stats.php");
+      const response = await fetch("http://192.168.1.65/backend/Frontend/Superadmin/superadmin_stats.php");
       const data = await response.json();
   
       // Update statistic cards
