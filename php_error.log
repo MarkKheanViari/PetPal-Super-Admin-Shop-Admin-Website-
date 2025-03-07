@@ -70,3 +70,8 @@
 [06-Mar-2025 12:09:24 Europe/Berlin] ❌ Missing input data in update_service.php
 [06-Mar-2025 12:09:24 Europe/Berlin] ✅ Running SQL Update: service_id=80, price=560, description=Ensures pets are up-to-date on their vaccinations, protecting them from common diseases and boosting their immunity.
 [06-Mar-2025 12:09:24 Europe/Berlin] ✅ Service updated successfully!
+[07-Mar-2025 08:04:13 Europe/Berlin] ❌ Missing input data in update_service.php
+[07-Mar-2025 08:04:13 Europe/Berlin] ❌ Invalid price value: -31
+[07-Mar-2025 08:04:23 Europe/Berlin] ❌ Missing input data in update_service.php
+[07-Mar-2025 08:04:23 Europe/Berlin] ✅ Running SQL Update: service_id=76, price=0, description=Gently removes dirt, loose fur, and tangles while promoting a healthy and shiny coat.
+[07-Mar-2025 08:04:23 Europe/Berlin] ✅ Service updated successfully!
