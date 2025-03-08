@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function fetchUserCounts() {
   try {
     const response = await fetch(
-      "http://192.168.168.55/backend/Frontend/Superadmin/superadmin_stats.php"
+      "http://192.168.58.55/backend/Frontend/Superadmin/superadmin_stats.php"
     );
     const data = await response.json();
 
@@ -38,7 +38,7 @@ async function fetchUserCounts() {
 async function fetchUserStatistics() {
   try {
     const response = await fetch(
-      "http://192.168.168.55/backend/Frontend/Superadmin/fetch_user_counts.php"
+      "http://192.168.58.55/backend/Frontend/Superadmin/fetch_user_counts.php"
     ); // ✅ Fix directory
     const data = await response.json();
 
@@ -65,7 +65,7 @@ function openTab(event, tabName) {
 async function fetchUsers() {
   try {
     const response = await fetch(
-      "http://192.168.168.55/backend/frontend/superadmin/fetch_users.php"
+      "http://192.168.58.55/backend/frontend/superadmin/fetch_users.php"
     );
     const data = await response.json();
 
@@ -99,7 +99,7 @@ async function fetchUsers() {
 async function fetchProducts() {
   try {
     const response = await fetch(
-      "http://192.168.168.55/backend/Frontend/SuperAdmin/fetch_products.php?page=dashboard"
+      "http://192.168.58.55/backend/Frontend/SuperAdmin/fetch_products.php?page=dashboard"
     );
     const data = await response.json();
 
@@ -128,7 +128,7 @@ async function fetchProducts() {
 async function fetchRecentActivities() {
   try {
     const response = await fetch(
-      "http://192.168.168.55/backend/Frontend/Superadmin/fetch_recent_activities.php"
+      "http://192.168.58.55/backend/Frontend/Superadmin/fetch_recent_activities.php"
     );
     const data = await response.json();
 

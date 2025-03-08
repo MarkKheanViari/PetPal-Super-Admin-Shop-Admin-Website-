@@ -6,7 +6,7 @@ async function fetchAnalyticsData() {
   try {
     // Fetch your analytics data (modify the URL if needed)
     const response = await fetch(
-      "http://192.168.168.55/backend/Frontend/Superadmin/superadmin_stats.php"
+      "http://192.168.58.55/backend/Frontend/Superadmin/superadmin_stats.php"
     );
     const data = await response.json();
 

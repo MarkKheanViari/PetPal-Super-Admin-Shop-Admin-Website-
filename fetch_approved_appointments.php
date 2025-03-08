@@ -17,16 +17,13 @@ if (!isset($_GET["mobile_user_id"])) {
 
 $mobile_user_id = intval($_GET["mobile_user_id"]);
 
-// ✅ Updated query with correct join condition
+// ✅ Fetch both Approved & Declined appointments
 $sql = "SELECT a.id, a.service_name, a.service_type, a.appointment_date, s.price, a.status 
         FROM appointments a 
         JOIN services s ON a.service_name = s.service_name
-        WHERE a.mobile_user_id = ? AND a.status = 'Approved' AND a.notification_sent = 0";
+        WHERE a.mobile_user_id = ? AND a.status IN ('Approved', 'Declined') AND a.notification_sent = 0";
 
 $stmt = $conn->prepare($sql);
-if (!$stmt) {
-    die(json_encode(["success" => false, "message" => "SQL Error: " . $conn->error]));
-}
 $stmt->bind_param("i", $mobile_user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -39,8 +36,8 @@ if ($result->num_rows > 0) {
     $response["success"] = true;
     $response["appointments"] = $appointments;
 
-    // ✅ Mark these appointments as notified
-    $update_sql = "UPDATE appointments SET notification_sent = 1 WHERE mobile_user_id = ? AND status = 'Approved'";
+    // ✅ Mark as notified so they don't appear again
+    $update_sql = "UPDATE appointments SET notification_sent = 1 WHERE mobile_user_id = ? AND status IN ('Approved', 'Declined')";
     $update_stmt = $conn->prepare($update_sql);
     $update_stmt->bind_param("i", $mobile_user_id);
     $update_stmt->execute();
