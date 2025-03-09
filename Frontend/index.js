@@ -46,43 +46,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 📝 Handle product update submission (only if form exists)
   const editProductForm = document.getElementById("editProductForm");
-if (editProductForm) {
-    editProductForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
+    if (editProductForm) {
+        editProductForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
 
-        const selectedCategory = document.getElementById("editProductCategory").value;
-        formData.append("category", selectedCategory);
+            const selectedCategory = document.getElementById("editProductCategory").value;
+            formData.append("category", selectedCategory);
 
-        const shopOwnerId = localStorage.getItem("shop_owner_id");
-        formData.append("shop_owner_id", shopOwnerId);
+            const shopOwnerId = localStorage.getItem("shop_owner_id");
+            formData.append("shop_owner_id", shopOwnerId);
 
-        console.log("🔍 Form Data Before Sending:");
-        for (const [key, value] of formData.entries()) {
-            console.log(`${key}: ${value}`);
-        }
-
-        try {
-            const response = await fetch("http://192.168.1.65/backend/update_product.php", {
-                method: "POST",
-                body: formData,
-            });
-
-            const data = await response.json();
-            console.log("✅ Server Response:", data);
-
-            if (data.success) {
-                alert("✅ Product updated successfully!");
-                fetchProducts(); // Refresh product list
-                toggleEditForm(false); // Close modal
-            } else {
-                console.error("❌ Failed to update product:", data.message);
+            // If no new image file is selected, append existing image to form data
+            const newImageFile = document.getElementById("editProductImage").files[0];
+            if (!newImageFile) {
+                // Append existing image value from the hidden input field
+                formData.append("existing_image", document.getElementById("existingImage").value);
             }
-        } catch (error) {
-            console.error("❌ Error updating product:", error);
-        }
-    });
-}
+
+            console.log("🔍 Form Data Before Sending:");
+            for (const [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+
+            try {
+                const response = await fetch("http://192.168.1.65/backend/update_product.php", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const data = await response.json();
+                console.log("✅ Server Response:", data);
+
+                if (data.success) {
+                    alert("✅ Product updated successfully!");
+                    fetchProducts(); // Refresh product list
+                    toggleEditForm(false); // Close modal
+                } else {
+                    console.error("❌ Failed to update product:", data.message);
+                }
+            } catch (error) {
+                console.error("❌ Error updating product:", error);
+            }
+        });
+    }
 
   // 📝 Handle product add submission (only if form exists)
   const productForm = document.getElementById("productForm");
@@ -248,7 +255,7 @@ function deleteProduct(productId) {
 
 function editProduct(id, name, price, description, quantity, image, category) {
     console.log(`🔍 Editing Product ID: ${id}`);
-    console.log(`📌 Name: ${name}, Price: ${price}, Desc: ${description}, Quantity: ${quantity}, Category: ${category}`);
+    console.log(`📌 Name: ${name}, Price: ${price}, Desc: ${description}, Quantity: ${quantity}, Category: ${category}, Image: ${image}`);
 
     // Set form fields with existing product data
     document.getElementById("editProductId").value = id;
@@ -256,8 +263,8 @@ function editProduct(id, name, price, description, quantity, image, category) {
     document.getElementById("editProductPrice").value = price;
     document.getElementById("editProductDescription").value = description;
     document.getElementById("editProductQuantity").value = quantity;
-
-    // **Fix Category Selection**
+    
+    // ✅ Fix Category Selection
     const categoryDropdown = document.getElementById("editProductCategory");
     if (categoryDropdown) {
         let optionExists = false;
@@ -273,6 +280,16 @@ function editProduct(id, name, price, description, quantity, image, category) {
         }
     } else {
         console.error("❌ Category dropdown not found.");
+    }
+
+    // ✅ Preserve existing image
+    document.getElementById("existingImage").value = image;
+
+    // ✅ Display Image Preview
+    const imagePreview = document.getElementById("editProductImagePreview");
+    if (imagePreview) {
+        imagePreview.src = image;
+        imagePreview.style.display = "block";
     }
 
     // Show modal

@@ -16,19 +16,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quantity = $_POST["product_quantity"] ?? "";
     $category = $_POST["category"] ?? "";
     $shopOwnerId = $_POST["shop_owner_id"] ?? "";
+    $existingImage = $_POST["existing_image"] ?? "";  // Get existing image path if no new image
 
-    // ✅ Debug: Log received values
+    // Debugging: Log the received values
     error_log("🔍 Updating Product ID: $id");
     error_log("📌 Name: $name, Price: $price, Desc: $description, Quantity: $quantity, Category: $category, Shop Owner: $shopOwnerId");
+    error_log("📌 Existing Image: $existingImage");
 
-    // ✅ Validate Required Fields
+    // Validate Required Fields
     if (empty($id) || empty($name) || empty($price) || empty($description) || empty($quantity) || empty($shopOwnerId) || empty($category)) {
         error_log("❌ Missing required fields");
         echo json_encode(["success" => false, "message" => "Missing required fields"]);
         exit();
     }
 
-    // ✅ Ensure category is valid
+    // Ensure category is valid
     $allowed_categories = ["Food", "Treats", "Essentials", "Supplies", "Accessories", "Grooming", "Hygiene", "Toys", "Enrichment", "Healthcare", "Training"];
     if (!in_array($category, $allowed_categories)) {
         error_log("❌ Invalid category: $category");
@@ -36,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // ✅ Fetch existing product data (to retain current image if not updated)
+    // Check if the product exists
     $checkStmt = $conn->prepare("SELECT category, image FROM products WHERE id = ? AND shop_owner_id = ?");
     $checkStmt->bind_param("ii", $id, $shopOwnerId);
     $checkStmt->execute();
@@ -49,12 +51,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $existingProduct = $checkResult->fetch_assoc();
-    $existingImage = $existingProduct['image']; // ✅ Keep existing image if no new one is uploaded
+    $existingImageFromDB = $existingProduct['image']; // Get the current image from DB
 
-    error_log("📌 Existing Image in DB: " . $existingImage);
+    error_log("📌 Existing Image in DB: $existingImageFromDB");
 
-    // ✅ Handle Image Upload (Only Update If a New Image is Uploaded)
+    // Handle Image Upload (if provided)
+    $imageFileName = !empty($existingImage) ? $existingImage : $existingImageFromDB; // Default to existing image if no new file
+
     if (!empty($_FILES["product_image"]["name"])) {
+        // New image uploaded, generate new image filename
         $targetDir = "uploads/";
         if (!is_dir($targetDir)) {
             mkdir($targetDir, 0777, true);
@@ -67,21 +72,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo json_encode(["success" => false, "message" => "❌ Failed to upload image."]);
             exit();
         }
-    } else {
-        $imageFileName = $existingImage; // ✅ Keep the old image if no new one is uploaded
     }
 
-    // ✅ Debugging Image Before Updating
-    error_log("📌 Final Image Used: " . $imageFileName);
+    error_log("📌 Final Image Path: $imageFileName");
 
-    // ✅ Update SQL Query (Always Keep Image)
+    // Update SQL Query
     $sql = "UPDATE products SET name=?, price=?, description=?, quantity=?, category=?, image=? WHERE id=? AND shop_owner_id=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sdsssisi", $name, $price, $description, $quantity, $category, $imageFileName, $id, $shopOwnerId);
 
-    // ✅ Execute the update query
+    // Debug Query Execution
     if ($stmt->execute()) {
-        error_log("✅ SQL Update Successful: Category updated to $category, Image retained as $imageFileName");
+        error_log("✅ SQL Update Successful: Category updated to $category");
         echo json_encode(["success" => true, "message" => "✅ Product updated successfully"]);
     } else {
         error_log("❌ SQL Update Failed: " . $stmt->error);
