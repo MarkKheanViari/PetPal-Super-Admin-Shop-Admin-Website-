@@ -2,8 +2,9 @@
 include 'db.php';
 
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
+header("Content-Type: application/json");
 
 $response = ["success" => false, "message" => "Something went wrong"];
 
@@ -12,16 +13,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $price = $_POST['product_price'] ?? "";
     $description = $_POST['product_description'] ?? "";
     $quantity = $_POST['product_quantity'] ?? "";
-    $category = $_POST['category'] ?? "unknown";  // Default category is 'unknown'
+    $category = $_POST['category'] ?? "unknown"; // Default category
     $shopOwnerId = $_POST['shop_owner_id'] ?? "";
 
-    if (empty($name) || empty($price) || empty($description) || empty($quantity) || empty($shopOwnerId) || empty($category)) {
+    // ✅ Allowed Categories
+    $allowed_categories = ["Food", "Treats", "Essentials", "Supplies", "Accessories", "Grooming", "Hygiene", "Toys", "Enrichment", "Healthcare", "Training"];
+
+    // ✅ Validate required fields
+    if (empty($name) || empty($price) || empty($description) || empty($quantity) || empty($shopOwnerId)) {
         $response["message"] = "Missing required fields.";
         echo json_encode($response);
         exit;
     }
 
-    // Handle Image Upload
+    // ✅ Validate category
+    if (!in_array($category, $allowed_categories)) {
+        $response["message"] = "Invalid category.";
+        echo json_encode($response);
+        exit;
+    }
+
+    // ✅ Handle Image Upload
     $imageFileName = null;
     if (!empty($_FILES['product_image']['name'])) {
         $targetDir = "uploads/";
@@ -38,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Insert Product into Database
+    // ✅ Insert Product into Database
     $sql = "INSERT INTO products (name, price, description, quantity, category, image, shop_owner_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sdssssi", $name, $price, $description, $quantity, $category, $imageFileName, $shopOwnerId);

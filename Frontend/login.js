@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        "http://192.168.1.9/backend/authenticate.php",
+        "http://192.168.1.65/backend/authenticate.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

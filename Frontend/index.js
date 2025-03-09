@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         const response = await fetch(
-          "http://192.168.1.9/backend/update_product.php",
+          "http://192.168.1.65/backend/update_product.php",
           {
             method: "POST",
             body: formData,
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         const response = await fetch(
-          "http://192.168.1.9/backend/add_product.php",
+          "http://192.168.1.65/backend/add_product.php",
           {
             method: "POST",
             body: formData,
@@ -136,7 +136,7 @@ function fetchProducts() {
   const shopOwnerId = localStorage.getItem("shop_owner_id");
   const categoryElement = document.getElementById("categoryFilter");
   if (!categoryElement) {
-    console.warn("Category filter element not found.");
+    console.warn("⚠️ Category filter element not found.");
     return;
   }
   const category = categoryElement.value;
@@ -146,8 +146,12 @@ function fetchProducts() {
     return;
   }
 
-  const url = `http://192.168.1.9/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
-  console.log(`Fetching products from: ${url}`);
+  let url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`;
+  if (category !== "all") {
+    url += `&category=${encodeURIComponent(category)}`;
+  }
+
+  console.log(`🔄 Fetching products from: ${url}`);
 
   fetch(url)
     .then((response) => response.json())
@@ -163,57 +167,8 @@ function fetchProducts() {
     .catch((error) => console.error("❌ Error fetching products:", error));
 }
 
-// ✅ Extracted function for better readability
-function displayProducts(products) {
-  const productList = document.getElementById("productList");
-  if (!productList) return;
-  productList.innerHTML = ""; // Clear previous content
 
-  if (products.length === 0) {
-    productList.innerHTML =
-      "<p>No products available for the selected category.</p>";
-    return;
-  }
 
-  products.forEach((product) => {
-    if (!product.id) {
-      console.warn(`⚠️ Missing product ID for`, product);
-      return;
-    }
-
-    const productItem = document.createElement("div");
-    productItem.className = "product-card";
-
-    // Ensure image path is correct
-    let imagePath = product.image; // ✅ Use the API response directly
-    console.log("🖼️ Image Path Debug:", imagePath); // ✅ Debug image paths
-
-    productItem.innerHTML = `
-            <div class="product-header">
-                <span class="price-badge">Price: ₱${product.price}</span>
-                <button class="menu-btn" onclick="toggleMenu(${product.id})">⋮</button>
-                
-                <!-- Dropdown Menu -->
-                <div class="menu-dropdown" id="menu-${product.id}" style="display: none;">
-                    <button onclick="editProduct(${product.id}, '${product.name}', '${product.price}', 
-                        '${product.description}', '${product.quantity}', '${imagePath}')">Edit</button>
-                    <button onclick="deleteProduct(${product.id})">Delete</button>
-                </div>
-            </div>
-            <div class="product-image">
-                <img src="${imagePath}" alt="Product Image" onerror="this.onerror=null; this.src='http://192.168.1.9/frontend/default-product.jpg';">
-            </div>
-            <div class="product-details">
-                <h3>${product.name}</h3>
-                <p>In Stock: ${product.quantity}</p>
-            </div>
-        `;
-
-    productList.appendChild(productItem);
-  });
-
-  console.log("✅ Products displayed successfully.");
-}
 
 // Toggle menu visibility
 function toggleMenu(productId) {
@@ -364,7 +319,7 @@ function saveEdit() {
 
 function viewOrderDetails(orderId) {
   fetch(
-    `http://192.168.1.9/backend/fetch_order_details.php?order_id=${orderId}`
+    `http://192.168.1.65/backend/fetch_order_details.php?order_id=${orderId}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -405,7 +360,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchOrders() {
-  fetch("http://192.168.1.9/backend/fetch_orders.php")
+  fetch("http://192.168.1.65/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       const ordersContainer = document.getElementById("ordersContainer");
@@ -445,7 +400,7 @@ function deleteProduct(productId) {
 
   const shopOwnerId = localStorage.getItem("shop_owner_id");
 
-  fetch("http://192.168.1.9/backend/delete_product.php", {
+  fetch("http://192.168.1.65/backend/delete_product.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -463,7 +418,7 @@ function deleteProduct(productId) {
         document.getElementById(`product-${productId}`)?.remove();
 
         fetch(
-          "http://192.168.1.9/backend/fetch_product.php?refresh=true"
+          "http://192.168.1.65/backend/fetch_product.php?refresh=true"
         ).then(() => console.log("Mobile app will fetch latest products"));
 
         setTimeout(fetchProducts, 1000);
@@ -491,14 +446,23 @@ function showToast(message, isError = false) {
 function filterProducts() {
   const categoryElement = document.getElementById("categoryFilter");
   if (!categoryElement) {
-    console.warn("Category filter element not found.");
+    console.warn("⚠️ Category filter element not found.");
     return;
   }
   const category = categoryElement.value;
   const shopOwnerId = localStorage.getItem("shop_owner_id");
 
-  const url = `http://192.168.1.9/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
-  console.log(`Fetching products from: ${url}`);
+  if (!shopOwnerId) {
+    console.error("❌ No shop owner ID found. Cannot filter products.");
+    return;
+  }
+
+  let url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`;
+  if (category !== "all") {
+    url += `&category=${encodeURIComponent(category)}`;
+  }
+
+  console.log(`🔄 Fetching filtered products from: ${url}`);
 
   fetch(url)
     .then((response) => response.json())
@@ -506,12 +470,14 @@ function filterProducts() {
       if (data.success) {
         displayProducts(data.products);
       } else {
+        console.warn("⚠️ No products found for this category.");
         const productList = document.getElementById("productList");
         if (productList) productList.innerHTML = "<p>No products found.</p>";
       }
     })
     .catch((error) => console.error("❌ Error fetching products:", error));
 }
+
 
 function toggleAddForm(show) {
   document.getElementById("addProductSection").style.display = show
@@ -601,7 +567,7 @@ function toggleEditForm(show) {
 function showProductPreview(product) {
   let imagePath = product.image;
   if (!imagePath.startsWith("http") && !imagePath.startsWith("/")) {
-    imagePath = `http://192.168.1.9/backend/uploads/${imagePath}`;
+    imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
   }
 
   const previewModal = document.getElementById("previewModal");
@@ -659,29 +625,29 @@ function displayProducts(products) {
     productItem.className = "product-card";
 
     let imagePath = product.image;
-    if (!imagePath.startsWith("http") && !imagePath.startsWith("/")) {
-      imagePath = `http://192.168.1.9/backend/uploads/${imagePath}`;
+    if (!imagePath.startsWith("http")) {
+      imagePath = `http://192.168.1.65/backend/uploads/${encodeURIComponent(product.image)}`;
     }
 
     productItem.innerHTML = `
-            <div class="product-header">
-                <span class="price-badge">Price: ₱${product.price}</span>
-                <button class="menu-btn" onclick="toggleMenu(${product.id})">⋮</button>
-                
-                <div class="menu-dropdown" id="menu-${product.id}" style="display: none;">
-                    <button onclick="editProduct(${product.id}, '${product.name}', '${product.price}', 
-                        '${product.description}', '${product.quantity}', '${imagePath}')">Edit</button>
-                    <button onclick="deleteProduct(${product.id})">Delete</button>
-                </div>
+        <div class="product-header">
+            <span class="price-badge">Price: ₱${product.price}</span>
+            <button class="menu-btn" onclick="toggleMenu(${product.id})">⋮</button>
+            
+            <div class="menu-dropdown" id="menu-${product.id}" style="display: none;">
+                <button onclick="editProduct(${product.id}, '${product.name}', '${product.price}', 
+                    '${product.description}', '${product.quantity}', '${imagePath}')">Edit</button>
+                <button onclick="deleteProduct(${product.id})">Delete</button>
             </div>
-            <div class="product-image">
-                <img src="${imagePath}" alt="Product Image" onerror="this.onerror=null; this.src='default-product.jpg';">
-            </div>
-            <div class="product-details">
-                <h3>${product.name}</h3>
-                <p>In Stock: ${product.quantity}</p>
-            </div>
-        `;
+        </div>
+        <div class="product-image">
+            <img src="${imagePath}" alt="Product Image" onerror="this.onerror=null; this.src='default-product.jpg';">
+        </div>
+        <div class="product-details">
+            <h3>${product.name}</h3>
+            <p>In Stock: ${product.quantity}</p>
+        </div>
+    `;
 
     productItem.addEventListener("click", function (event) {
       if (
@@ -698,3 +664,4 @@ function displayProducts(products) {
 
   console.log("✅ Products displayed successfully.");
 }
+

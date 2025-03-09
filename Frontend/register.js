@@ -24,7 +24,7 @@ document
 
     try {
       const response = await fetch(
-        "http://192.168.1.9/backend/register.php",
+        "http://192.168.1.65/backend/register.php",
         {
           method: "POST",
           headers: {
