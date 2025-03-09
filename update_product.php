@@ -17,25 +17,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $category = $_POST["category"] ?? "";
     $shopOwnerId = $_POST["shop_owner_id"] ?? "";
 
-    // ✅ Allowed Categories
+    // ✅ Debug: Log received values
+    error_log("🔍 Updating Product ID: $id");
+    error_log("📌 Name: $name, Price: $price, Desc: $description, Quantity: $quantity, Category: $category, Shop Owner: $shopOwnerId");
+
+    // ✅ Validate Required Fields
+    if (empty($id) || empty($name) || empty($price) || empty($description) || empty($quantity) || empty($shopOwnerId) || empty($category)) {
+        error_log("❌ Missing required fields");
+        echo json_encode(["success" => false, "message" => "Missing required fields"]);
+        exit();
+    }
+
+    // ✅ Ensure category is valid
     $allowed_categories = ["Food", "Treats", "Essentials", "Supplies", "Accessories", "Grooming", "Hygiene", "Toys", "Enrichment", "Healthcare", "Training"];
-
-    // ✅ Validate required fields
-    if (empty($id) || empty($name) || empty($price) || empty($description) || empty($quantity) || empty($shopOwnerId)) {
-        $response["message"] = "Missing required fields.";
-        echo json_encode($response);
-        exit;
+    if (!in_array($category, $allowed_categories)) {
+        error_log("❌ Invalid category: $category");
+        echo json_encode(["success" => false, "message" => "Invalid category: $category"]);
+        exit();
     }
 
-    // ✅ Validate category
-    if (!empty($category) && !in_array($category, $allowed_categories)) {
-        $response["message"] = "Invalid category.";
-        echo json_encode($response);
-        exit;
+    // ✅ Fetch existing product data (to retain current image if not updated)
+    $checkStmt = $conn->prepare("SELECT category, image FROM products WHERE id = ? AND shop_owner_id = ?");
+    $checkStmt->bind_param("ii", $id, $shopOwnerId);
+    $checkStmt->execute();
+    $checkResult = $checkStmt->get_result();
+
+    if ($checkResult->num_rows === 0) {
+        error_log("❌ Product not found for update.");
+        echo json_encode(["success" => false, "message" => "Product not found."]);
+        exit();
     }
 
-    // ✅ Handle Image Upload (if provided)
-    $imageFileName = null;
+    $existingProduct = $checkResult->fetch_assoc();
+    $existingImage = $existingProduct['image']; // ✅ Keep existing image if no new one is uploaded
+
+    error_log("📌 Existing Image in DB: " . $existingImage);
+
+    // ✅ Handle Image Upload (Only Update If a New Image is Uploaded)
     if (!empty($_FILES["product_image"]["name"])) {
         $targetDir = "uploads/";
         if (!is_dir($targetDir)) {
@@ -45,32 +63,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $targetFilePath = $targetDir . $imageFileName;
 
         if (!move_uploaded_file($_FILES["product_image"]["tmp_name"], $targetFilePath)) {
-            $response["message"] = "Failed to upload image.";
-            echo json_encode($response);
-            exit;
+            error_log("❌ Failed to upload image.");
+            echo json_encode(["success" => false, "message" => "❌ Failed to upload image."]);
+            exit();
         }
+    } else {
+        $imageFileName = $existingImage; // ✅ Keep the old image if no new one is uploaded
     }
 
-    // ✅ Update Product in Database
-    $sql = "UPDATE products SET name=?, price=?, description=?, quantity=?, category=? " . 
-           ($imageFileName ? ", image=?" : "") . " WHERE id=? AND shop_owner_id=?";
+    // ✅ Debugging Image Before Updating
+    error_log("📌 Final Image Used: " . $imageFileName);
+
+    // ✅ Update SQL Query (Always Keep Image)
+    $sql = "UPDATE products SET name=?, price=?, description=?, quantity=?, category=?, image=? WHERE id=? AND shop_owner_id=?";
     $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sdsssisi", $name, $price, $description, $quantity, $category, $imageFileName, $id, $shopOwnerId);
 
-    if ($imageFileName) {
-        $stmt->bind_param("sdsssisi", $name, $price, $description, $quantity, $category, $imageFileName, $id, $shopOwnerId);
-    } else {
-        $stmt->bind_param("sdssisi", $name, $price, $description, $quantity, $category, $id, $shopOwnerId);
-    }
-
+    // ✅ Execute the update query
     if ($stmt->execute()) {
-        $response = ["success" => true, "message" => "Product updated successfully"];
+        error_log("✅ SQL Update Successful: Category updated to $category, Image retained as $imageFileName");
+        echo json_encode(["success" => true, "message" => "✅ Product updated successfully"]);
     } else {
-        $response["message"] = "Database error: " . $stmt->error;
+        error_log("❌ SQL Update Failed: " . $stmt->error);
+        echo json_encode(["success" => false, "message" => "❌ Database error: " . $stmt->error]);
     }
 
     $stmt->close();
 }
 
 $conn->close();
-echo json_encode($response);
 ?>

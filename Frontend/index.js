@@ -46,41 +46,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 📝 Handle product update submission (only if form exists)
   const editProductForm = document.getElementById("editProductForm");
-  if (editProductForm) {
+if (editProductForm) {
     editProductForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-      formData.append("shop_owner_id", localStorage.getItem("shop_owner_id"));
+        e.preventDefault();
+        const formData = new FormData(e.target);
 
-      try {
-        const response = await fetch(
-          "http://192.168.1.65/backend/update_product.php",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
+        const selectedCategory = document.getElementById("editProductCategory").value;
+        formData.append("category", selectedCategory);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+        const shopOwnerId = localStorage.getItem("shop_owner_id");
+        formData.append("shop_owner_id", shopOwnerId);
+
+        console.log("🔍 Form Data Before Sending:");
+        for (const [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
         }
 
-        const data = await response.json();
-        if (data.success) {
-          alert("✅ Product updated successfully!");
-          fetchProducts(); // Refresh product list
+        try {
+            const response = await fetch("http://192.168.1.65/backend/update_product.php", {
+                method: "POST",
+                body: formData,
+            });
 
-          // Close the modal after updating
-          toggleEditForm(false);
-        } else {
-          throw new Error(data.message || "❌ Failed to update product");
+            const data = await response.json();
+            console.log("✅ Server Response:", data);
+
+            if (data.success) {
+                alert("✅ Product updated successfully!");
+                fetchProducts(); // Refresh product list
+                toggleEditForm(false); // Close modal
+            } else {
+                console.error("❌ Failed to update product:", data.message);
+            }
+        } catch (error) {
+            console.error("❌ Error updating product:", error);
         }
-      } catch (error) {
-        console.error("❌ Error updating product:", error);
-        alert("❌ Failed to update product: " + error.message);
-      }
     });
-  }
+}
 
   // 📝 Handle product add submission (only if form exists)
   const productForm = document.getElementById("productForm");
@@ -116,12 +118,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+  
 
   if (checkAuth()) {
     filterProducts();
     fetchProducts();
   }
+
 });
+
 
 // 🔑 Global logout function
 function logout() {
@@ -136,7 +141,7 @@ function fetchProducts() {
   const shopOwnerId = localStorage.getItem("shop_owner_id");
   const categoryElement = document.getElementById("categoryFilter");
   if (!categoryElement) {
-    console.warn("⚠️ Category filter element not found.");
+    console.warn("Category filter element not found.");
     return;
   }
   const category = categoryElement.value;
@@ -146,12 +151,8 @@ function fetchProducts() {
     return;
   }
 
-  let url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`;
-  if (category !== "all") {
-    url += `&category=${encodeURIComponent(category)}`;
-  }
-
-  console.log(`🔄 Fetching products from: ${url}`);
+  const url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+  console.log(`Fetching products from: ${url}`);
 
   fetch(url)
     .then((response) => response.json())
@@ -166,7 +167,6 @@ function fetchProducts() {
     })
     .catch((error) => console.error("❌ Error fetching products:", error));
 }
-
 
 
 
@@ -246,24 +246,37 @@ function deleteProduct(productId) {
   if (menu) menu.style.display = "none";
 }
 
-function editProduct(id, name, price, description, quantity, category, image) {
-  document.getElementById("editProductId").value = id;
-  document.getElementById("editProductName").value = name;
-  document.getElementById("editProductPrice").value = price;
-  document.getElementById("editProductDescription").value = description;
-  document.getElementById("editProductQuantity").value = quantity;
-  // Set the category value
-  document.getElementById("editProductCategory").value = category;
+function editProduct(id, name, price, description, quantity, image, category) {
+    console.log(`🔍 Editing Product ID: ${id}`);
+    console.log(`📌 Name: ${name}, Price: ${price}, Desc: ${description}, Quantity: ${quantity}, Category: ${category}`);
 
-  // Show product image in the edit form
-  const imagePreview = document.getElementById("editProductImagePreview");
-  if (imagePreview) {
-    imagePreview.src = image;
-    imagePreview.style.display = "block";
-  }
+    // Set form fields with existing product data
+    document.getElementById("editProductId").value = id;
+    document.getElementById("editProductName").value = name;
+    document.getElementById("editProductPrice").value = price;
+    document.getElementById("editProductDescription").value = description;
+    document.getElementById("editProductQuantity").value = quantity;
 
-  // Open the edit form
-  toggleEditForm(true);
+    // **Fix Category Selection**
+    const categoryDropdown = document.getElementById("editProductCategory");
+    if (categoryDropdown) {
+        let optionExists = false;
+        for (let option of categoryDropdown.options) {
+            if (option.value === category) {
+                option.selected = true;
+                optionExists = true;
+                break;
+            }
+        }
+        if (!optionExists) {
+            console.warn(`⚠️ Category "${category}" not found in dropdown.`);
+        }
+    } else {
+        console.error("❌ Category dropdown not found.");
+    }
+
+    // Show modal
+    toggleEditForm(true);
 }
 
 function closeEditForm() {
@@ -625,29 +638,31 @@ function displayProducts(products) {
     productItem.className = "product-card";
 
     let imagePath = product.image;
-    if (!imagePath.startsWith("http")) {
-      imagePath = `http://192.168.1.65/backend/uploads/${encodeURIComponent(product.image)}`;
+    if (!imagePath.startsWith("http") && !imagePath.startsWith("/")) {
+      imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
     }
 
     productItem.innerHTML = `
-        <div class="product-header">
-            <span class="price-badge">Price: ₱${product.price}</span>
-            <button class="menu-btn" onclick="toggleMenu(${product.id})">⋮</button>
-            
-            <div class="menu-dropdown" id="menu-${product.id}" style="display: none;">
-                <button onclick="editProduct(${product.id}, '${product.name}', '${product.price}', 
-                    '${product.description}', '${product.quantity}', '${imagePath}')">Edit</button>
-                <button onclick="deleteProduct(${product.id})">Delete</button>
+            <div class="product-header">
+                <span class="price-badge">Price: ₱${product.price}</span>
+                <button class="menu-btn" onclick="toggleMenu(${product.id})">⋮</button>
+                
+                <div class="menu-dropdown" id="menu-${product.id}" style="display: none;">
+                    <button onclick="editProduct(${product.id}, '${product.name}', '${product.price}', 
+                        '${product.description}', '${product.quantity}', '${imagePath}', '${product.category}')">
+                        Edit
+                    </button>
+                    <button onclick="deleteProduct(${product.id})">Delete</button>
+                </div>
             </div>
-        </div>
-        <div class="product-image">
-            <img src="${imagePath}" alt="Product Image" onerror="this.onerror=null; this.src='default-product.jpg';">
-        </div>
-        <div class="product-details">
-            <h3>${product.name}</h3>
-            <p>In Stock: ${product.quantity}</p>
-        </div>
-    `;
+            <div class="product-image">
+                <img src="${imagePath}" alt="Product Image" onerror="this.onerror=null; this.src='default-product.jpg';">
+            </div>
+            <div class="product-details">
+                <h3>${product.name}</h3>
+                <p>In Stock: ${product.quantity}</p>
+            </div>
+        `;
 
     productItem.addEventListener("click", function (event) {
       if (
@@ -664,4 +679,3 @@ function displayProducts(products) {
 
   console.log("✅ Products displayed successfully.");
 }
-
