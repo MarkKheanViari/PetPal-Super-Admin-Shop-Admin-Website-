@@ -56,9 +56,9 @@ $products = [];
 while ($row = $result->fetch_assoc()) {
     // ✅ Ensure correct image path with encoding
     if (!empty($row['image'])) {
-        $image_path = "http://192.168.58.55/backend/uploads/" . rawurlencode($row['image']);
+        $image_path = "http://192.168.1.9/backend/uploads/" . rawurlencode($row['image']);
     } else {
-        $image_path = "http://192.168.58.55/backend/uploads/default.jpg";
+        $image_path = "http://192.168.1.9/backend/uploads/default.jpg";
     }
     
     $row['image'] = $image_path;

@@ -1413,3 +1413,38 @@ body.modal-open {
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
+
+#notificationContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+.toast {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: #fff;
+  opacity: 0.9;
+  transition: opacity 0.5s;
+}
+.toast.success { background-color: #4caf50; }
+.toast.error { background-color: #f44336; }
+.toast.fade-out { opacity: 0; }
+#debugPanel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 0.8em;
+  padding: 10px;
+}
+.log-entry { margin-bottom: 5px; }
+.log-entry.info { color: #4caf50; }
+.log-entry.warn { color: #ff9800; }
+.log-entry.error { color: #f44336; }
+

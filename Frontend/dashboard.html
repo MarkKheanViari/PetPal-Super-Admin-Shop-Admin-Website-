@@ -17,8 +17,7 @@
             <li><a href="product_inventory.html" class="nav-link">Products</a></li>
             <li><a href="orders.html" class="nav-link">Orders</a></li>
             <li><a href="appointments.html" class="nav-link">Services</a></li>
-            <li><a href="grooming_appointments.html" class="nav-link">Grooming Appointments</a></li>
-            <li><a href="veterinary_appointments.html" class="nav-link">Veterinary Appointments</a></li>
+            <li><a href="grooming_appointments.html" class="nav-link">Appointments</a></li>
             <!-- Notification Bell -->
             <li class="notification-bell">
                 <i class="bell-icon">🔔</i>
@@ -100,27 +99,27 @@
             </div>
             <button class="view-all" onclick="window.location.href='product_inventory.html#productInventorySection'">View Inventory</button>
         </section>
+        <div id="dashboardVetSummary"></div>
 
-        <section class="appointments-schedule">
-            <div class="tab-buttons">
-              <button class="tab-btn active" data-tab="appointments">Grooming</button>
-              <button class="tab-btn" data-tab="schedule">Veterinary</button>
-            </div>
-            <div class="tab-content" id="appointments-tab">
-              <h2>Appointments</h2>
-              <div id="dashboardVetAppointments" class="appointment-list">
-                <!-- Appointment cards will be inserted here -->
-              </div>
-              <button class="view-all" onclick="window.location.href='appointments.html'">View All Appointments</button>
-            </div>
-            <div class="tab-content" id="schedule-tab" style="display: none;">
-              <h2>Appointments</h2>
-              <div id="dashboardGroomingSchedule" class="grooming-list">
-                <!-- Grooming schedule cards will be inserted here -->
-              </div>
-              <button class="view-all" onclick="window.location.href='appointments.html'">View Full Schedule</button>
-            </div>
-          </section>
+        <section class="section appointments-summary-section">
+          <!-- Filter dropdown (if needed) -->
+          <label for="serviceFilter">Filter by Service:</label>
+          <select id="serviceFilter">
+            <option value="All">All</option>
+            <option value="Grooming">Grooming</option>
+            <option value="Veterinary">Veterinary</option>
+          </select>
+
+<!-- Container for the appointment cards -->
+          <div id="appointmentsContainer"></div>
+
+          <button class="view-all" onclick="window.location.href='grooming_appointments.html'" style="margin-top:10px;">
+            View Appointments
+          </button>
+        </section>
+        
+        
+        
           
     </main>
 

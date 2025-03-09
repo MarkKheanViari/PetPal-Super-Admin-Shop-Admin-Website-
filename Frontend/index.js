@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         const response = await fetch(
-          "http://192.168.58.55/backend/update_product.php",
+          "http://192.168.1.9/backend/update_product.php",
           {
             method: "POST",
             body: formData,
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         const response = await fetch(
-          "http://192.168.58.55/backend/add_product.php",
+          "http://192.168.1.9/backend/add_product.php",
           {
             method: "POST",
             body: formData,
@@ -146,7 +146,7 @@ function fetchProducts() {
     return;
   }
 
-  const url = `http://192.168.58.55/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+  const url = `http://192.168.1.9/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
   console.log(`Fetching products from: ${url}`);
 
   fetch(url)
@@ -201,7 +201,7 @@ function displayProducts(products) {
                 </div>
             </div>
             <div class="product-image">
-                <img src="${imagePath}" alt="Product Image" onerror="this.onerror=null; this.src='http://192.168.58.55/frontend/default-product.jpg';">
+                <img src="${imagePath}" alt="Product Image" onerror="this.onerror=null; this.src='http://192.168.1.9/frontend/default-product.jpg';">
             </div>
             <div class="product-details">
                 <h3>${product.name}</h3>
@@ -364,7 +364,7 @@ function saveEdit() {
 
 function viewOrderDetails(orderId) {
   fetch(
-    `http://192.168.58.55/backend/fetch_order_details.php?order_id=${orderId}`
+    `http://192.168.1.9/backend/fetch_order_details.php?order_id=${orderId}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchOrders() {
-  fetch("http://192.168.58.55/backend/fetch_orders.php")
+  fetch("http://192.168.1.9/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       const ordersContainer = document.getElementById("ordersContainer");
@@ -445,7 +445,7 @@ function deleteProduct(productId) {
 
   const shopOwnerId = localStorage.getItem("shop_owner_id");
 
-  fetch("http://192.168.58.55/backend/delete_product.php", {
+  fetch("http://192.168.1.9/backend/delete_product.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -463,7 +463,7 @@ function deleteProduct(productId) {
         document.getElementById(`product-${productId}`)?.remove();
 
         fetch(
-          "http://192.168.58.55/backend/fetch_product.php?refresh=true"
+          "http://192.168.1.9/backend/fetch_product.php?refresh=true"
         ).then(() => console.log("Mobile app will fetch latest products"));
 
         setTimeout(fetchProducts, 1000);
@@ -497,7 +497,7 @@ function filterProducts() {
   const category = categoryElement.value;
   const shopOwnerId = localStorage.getItem("shop_owner_id");
 
-  const url = `http://192.168.58.55/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+  const url = `http://192.168.1.9/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
   console.log(`Fetching products from: ${url}`);
 
   fetch(url)
@@ -601,7 +601,7 @@ function toggleEditForm(show) {
 function showProductPreview(product) {
   let imagePath = product.image;
   if (!imagePath.startsWith("http") && !imagePath.startsWith("/")) {
-    imagePath = `http://192.168.58.55/backend/uploads/${imagePath}`;
+    imagePath = `http://192.168.1.9/backend/uploads/${imagePath}`;
   }
 
   const previewModal = document.getElementById("previewModal");
@@ -660,7 +660,7 @@ function displayProducts(products) {
 
     let imagePath = product.image;
     if (!imagePath.startsWith("http") && !imagePath.startsWith("/")) {
-      imagePath = `http://192.168.58.55/backend/uploads/${imagePath}`;
+      imagePath = `http://192.168.1.9/backend/uploads/${imagePath}`;
     }
 
     productItem.innerHTML = `

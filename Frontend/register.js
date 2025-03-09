@@ -23,17 +23,20 @@ document
     }
 
     try {
-      const response = await fetch("http://192.168.58.55/backend/register.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          email: email,
-          password: password,
-        }),
-      });
+      const response = await fetch(
+        "http://192.168.1.9/backend/register.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+            email: email,
+            password: password,
+          }),
+        }
+      );
 
       const data = await response.json();
 
