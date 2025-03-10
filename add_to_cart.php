@@ -29,9 +29,9 @@ if ($productResult->num_rows == 0) {
 $productData = $productResult->fetch_assoc();
 $currentStock = intval($productData['quantity']);
 
-if ($currentStock < $quantity) {
-    echo json_encode(["success" => false, "message" => "Not enough stock available"]);
-    exit();
+// ✅ Limit the quantity to what is available in stock
+if ($quantity > $currentStock) {
+    $quantity = $currentStock; // Limit the quantity to the available stock
 }
 
 // ✅ Check if item is already in the cart
@@ -45,6 +45,11 @@ if ($cartResult->num_rows > 0) {
     $cartData = $cartResult->fetch_assoc();
     $newQuantity = $cartData['quantity'] + $quantity;
 
+    // If the new quantity exceeds the available stock, limit it
+    if ($newQuantity > $currentStock) {
+        $newQuantity = $currentStock;
+    }
+
     $updateCartQuery = $conn->prepare("UPDATE cart SET quantity = ? WHERE id = ?");
     $updateCartQuery->bind_param("ii", $newQuantity, $cartData['id']);
     $updateCartQuery->execute();
@@ -55,7 +60,7 @@ if ($cartResult->num_rows > 0) {
     $insertCartQuery->execute();
 }
 
-// No stock update anymore
+// ✅ No stock update necessary as stock is not being modified
 
 echo json_encode(["success" => true, "message" => "Added to cart successfully"]);
 

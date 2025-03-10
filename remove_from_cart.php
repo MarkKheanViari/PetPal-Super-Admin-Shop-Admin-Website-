@@ -27,15 +27,12 @@ $cartData = $cartResult->fetch_assoc();
 $product_id = $cartData['product_id'];
 $quantity = $cartData['quantity'];
 
-// ✅ Delete from cart
+// ✅ Delete the product from the cart
 $deleteCartQuery = $conn->prepare("DELETE FROM cart WHERE id = ?");
 $deleteCartQuery->bind_param("i", $cart_id);
 $deleteCartQuery->execute();
 
-// ✅ Restore stock in products table
-$updateStockQuery = $conn->prepare("UPDATE products SET quantity = quantity + ? WHERE id = ?");
-$updateStockQuery->bind_param("ii", $quantity, $product_id);
-$updateStockQuery->execute();
+// ✅ No stock update needed, stock remains unchanged
 
 echo json_encode(["success" => true, "message" => "Removed from cart successfully"]);
 
