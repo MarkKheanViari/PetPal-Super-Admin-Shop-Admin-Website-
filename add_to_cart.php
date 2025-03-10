@@ -55,10 +55,7 @@ if ($cartResult->num_rows > 0) {
     $insertCartQuery->execute();
 }
 
-// ✅ Update stock in products table
-$updateStockQuery = $conn->prepare("UPDATE products SET quantity = quantity - ? WHERE id = ?");
-$updateStockQuery->bind_param("ii", $quantity, $product_id);
-$updateStockQuery->execute();
+// No stock update anymore
 
 echo json_encode(["success" => true, "message" => "Added to cart successfully"]);
 

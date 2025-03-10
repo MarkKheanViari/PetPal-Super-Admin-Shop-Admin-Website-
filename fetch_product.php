@@ -60,12 +60,7 @@ $result = $stmt->get_result();
 $products = [];
 while ($row = $result->fetch_assoc()) {
     // ✅ Ensure correct image path
-    if (!empty($row['image'])) {
-        $image_path = "http://192.168.1.65/backend/uploads/" . rawurlencode($row['image']);
-    } else {
-        $image_path = "http://192.168.1.65/backend/uploads/default.jpg";
-    }
-    
+    $image_path = !empty($row['image']) ? "http://192.168.1.65/backend/uploads/" . rawurlencode($row['image']) : "http://192.168.1.65/backend/uploads/default.jpg";
     $row['image'] = $image_path;
 
     // ✅ Format price & ensure non-negative stock
