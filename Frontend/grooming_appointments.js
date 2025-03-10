@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchAppointments() {
-  fetch("http://192.168.1.65/backend/fetch_all_appointments.php")
+  fetch("http://192.168.1.9/backend/fetch_all_appointments.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
@@ -61,7 +61,7 @@ function getStatusClass(status) {
 }
 
 function updateStatus(appointmentId, newStatus) {
-  fetch("http://192.168.1.65/backend/update_appointment_status.php", {
+  fetch("http://192.168.1.9/backend/update_appointment_status.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ appointment_id: appointmentId, status: newStatus }),

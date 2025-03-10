@@ -5,6 +5,6 @@
         "price": "500.00",
         "description": "Bago lang eto",
         "quantity": 50,
-        "image": "http:\/\/192.168.1.65\/backend\/uploads\/1738588465_catfood.jpg"
+        "image": "http:\/\/192.168.1.9\/backend\/uploads\/1738588465_catfood.jpg"
     }
 ]

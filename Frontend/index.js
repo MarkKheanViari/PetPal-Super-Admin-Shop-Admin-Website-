@@ -44,52 +44,68 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => errorDiv.remove(), 5000);
   }
 
-  // 📝 Handle product update submission (only if form exists)
   const editProductForm = document.getElementById("editProductForm");
-    if (editProductForm) {
-        editProductForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
+  if (editProductForm) {
+    editProductForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+  
+      // Validate price input (must be > 0)
+      const priceValue = parseFloat(document.getElementById("editProductPrice").value);
+      if (priceValue <= 0) {
+        alert("❌ Price must be greater than 0.");
+        return;
+      }
+      // Validate quantity input (must be > 0)
+      const quantityValue = parseFloat(document.getElementById("editProductQuantity").value);
+      if (quantityValue <= 0) {
+        alert("❌ Quantity must be greater than 0.");
+        return;
+      }
+  
+      const selectedCategory = document.getElementById("editProductCategory").value;
+      formData.append("category", selectedCategory);
+  
+      const shopOwnerId = localStorage.getItem("shop_owner_id");
+      formData.append("shop_owner_id", shopOwnerId);
+  
+      // Append new image file if selected; otherwise, preserve existing image
+      const newImageFile = document.getElementById("editProductImage").files[0];
+      if (newImageFile) {
+        formData.append("product_image", newImageFile);
+      } else {
+        const existingImageValue = document.getElementById("existingImage").value;
+        formData.append("existing_image", existingImageValue);
+      }
 
-            const selectedCategory = document.getElementById("editProductCategory").value;
-            formData.append("category", selectedCategory);
-
-            const shopOwnerId = localStorage.getItem("shop_owner_id");
-            formData.append("shop_owner_id", shopOwnerId);
-
-            // If no new image file is selected, append existing image to form data
-            const newImageFile = document.getElementById("editProductImage").files[0];
-            if (!newImageFile) {
-                // Append existing image value from the hidden input field
-                formData.append("existing_image", document.getElementById("existingImage").value);
-            }
-
-            console.log("🔍 Form Data Before Sending:");
-            for (const [key, value] of formData.entries()) {
-                console.log(`${key}: ${value}`);
-            }
-
-            try {
-                const response = await fetch("http://192.168.1.65/backend/update_product.php", {
-                    method: "POST",
-                    body: formData,
-                });
-
-                const data = await response.json();
-                console.log("✅ Server Response:", data);
-
-                if (data.success) {
-                    alert("✅ Product updated successfully!");
-                    fetchProducts(); // Refresh product list
-                    toggleEditForm(false); // Close modal
-                } else {
-                    console.error("❌ Failed to update product:", data.message);
-                }
-            } catch (error) {
-                console.error("❌ Error updating product:", error);
-            }
+  
+      console.log("🔍 Form Data Before Sending:");
+      for (const [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      }
+  
+      try {
+        const response = await fetch("http://192.168.1.9/backend/update_product.php", {
+          method: "POST",
+          body: formData,
         });
-    }
+  
+        const data = await response.json();
+        console.log("✅ Server Response:", data);
+  
+        if (data.success) {
+          alert("✅ Product updated successfully!");
+          fetchProducts(); // Refresh product list
+          toggleEditForm(false); // Close modal
+        } else {
+          console.error("❌ Failed to update product:", data.message);
+        }
+      } catch (error) {
+        console.error("❌ Error updating product:", error);
+      }
+    });
+  }
+  
 
   // 📝 Handle product add submission (only if form exists)
   const productForm = document.getElementById("productForm");
@@ -97,25 +113,46 @@ document.addEventListener("DOMContentLoaded", function () {
     productForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
+  
+      // Validate the price input
+      const priceInput = e.target.querySelector('[name="product_price"]');
+      if (!priceInput) {
+        alert("❌ Price input field not found. Please check your form markup.");
+        return;
+      }
+      const priceValue = parseFloat(priceInput.value);
+      if (priceValue <= 0) {
+        alert("❌ Price must be greater than 0.");
+        return;
+      }
+  
+      // Validate the quantity input
+      const quantityInput = e.target.querySelector('[name="product_quantity"]');
+      if (!quantityInput) {
+        alert("❌ Quantity input field not found. Please check your form markup.");
+        return;
+      }
+      const quantityValue = parseFloat(quantityInput.value);
+      if (quantityValue <= 0) {
+        alert("❌ Quantity must be greater than 0.");
+        return;
+      }
+  
+      // Now append your other form data
       formData.append("shop_owner_id", localStorage.getItem("shop_owner_id"));
-
+  
       try {
-        const response = await fetch(
-          "http://192.168.1.65/backend/add_product.php",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
-
+        const response = await fetch("http://192.168.1.9/backend/add_product.php", {
+          method: "POST",
+          body: formData,
+        });
+  
         const data = await response.json();
         if (data.success) {
           alert("✅ Product added successfully!");
           e.target.reset();
           fetchProducts(); // Refresh product list
-
-          // Close the modal after adding
-          toggleModal("addProductModal", false);
+          toggleModal("addProductModal", false); // Close the modal
         } else {
           throw new Error(data.error || "Failed to add product");
         }
@@ -127,13 +164,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
 
+
   if (checkAuth()) {
     filterProducts();
     fetchProducts();
   }
-
 });
-
 
 // 🔑 Global logout function
 function logout() {
@@ -142,7 +178,6 @@ function logout() {
   localStorage.removeItem("shop_owner_id");
   window.location.href = "login.html"; // Redirect to login page after logout
 }
-
 // 📦 Fetch and display products
 function fetchProducts() {
   const shopOwnerId = localStorage.getItem("shop_owner_id");
@@ -158,7 +193,7 @@ function fetchProducts() {
     return;
   }
 
-  const url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+  const url = `http://192.168.1.9/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
   console.log(`Fetching products from: ${url}`);
 
   fetch(url)
@@ -174,8 +209,6 @@ function fetchProducts() {
     })
     .catch((error) => console.error("❌ Error fetching products:", error));
 }
-
-
 
 // Toggle menu visibility
 function toggleMenu(productId) {
@@ -254,46 +287,48 @@ function deleteProduct(productId) {
 }
 
 function editProduct(id, name, price, description, quantity, image, category) {
-    console.log(`🔍 Editing Product ID: ${id}`);
-    console.log(`📌 Name: ${name}, Price: ${price}, Desc: ${description}, Quantity: ${quantity}, Category: ${category}, Image: ${image}`);
+  console.log(`🔍 Editing Product ID: ${id}`);
+  console.log(
+    `📌 Name: ${name}, Price: ${price}, Desc: ${description}, Quantity: ${quantity}, Category: ${category}, Image: ${image}`
+  );
 
-    // Set form fields with existing product data
-    document.getElementById("editProductId").value = id;
-    document.getElementById("editProductName").value = name;
-    document.getElementById("editProductPrice").value = price;
-    document.getElementById("editProductDescription").value = description;
-    document.getElementById("editProductQuantity").value = quantity;
-    
-    // ✅ Fix Category Selection
-    const categoryDropdown = document.getElementById("editProductCategory");
-    if (categoryDropdown) {
-        let optionExists = false;
-        for (let option of categoryDropdown.options) {
-            if (option.value === category) {
-                option.selected = true;
-                optionExists = true;
-                break;
-            }
-        }
-        if (!optionExists) {
-            console.warn(`⚠️ Category "${category}" not found in dropdown.`);
-        }
-    } else {
-        console.error("❌ Category dropdown not found.");
+  // Set form fields with existing product data
+  document.getElementById("editProductId").value = id;
+  document.getElementById("editProductName").value = name;
+  document.getElementById("editProductPrice").value = price;
+  document.getElementById("editProductDescription").value = description;
+  document.getElementById("editProductQuantity").value = quantity;
+
+  // ✅ Fix Category Selection
+  const categoryDropdown = document.getElementById("editProductCategory");
+  if (categoryDropdown) {
+    let optionExists = false;
+    for (let option of categoryDropdown.options) {
+      if (option.value === category) {
+        option.selected = true;
+        optionExists = true;
+        break;
+      }
     }
-
-    // ✅ Preserve existing image
-    document.getElementById("existingImage").value = image;
-
-    // ✅ Display Image Preview
-    const imagePreview = document.getElementById("editProductImagePreview");
-    if (imagePreview) {
-        imagePreview.src = image;
-        imagePreview.style.display = "block";
+    if (!optionExists) {
+      console.warn(`⚠️ Category "${category}" not found in dropdown.`);
     }
+  } else {
+    console.error("❌ Category dropdown not found.");
+  }
 
-    // Show modal
-    toggleEditForm(true);
+  // ✅ Preserve existing image
+  document.getElementById("existingImage").value = image;
+
+  // ✅ Display Image Preview
+  const imagePreview = document.getElementById("editProductImagePreview");
+  if (imagePreview) {
+    imagePreview.src = image;
+    imagePreview.style.display = "block";
+  }
+
+  // Show modal
+  toggleEditForm(true);
 }
 
 function closeEditForm() {
@@ -349,7 +384,7 @@ function saveEdit() {
 
 function viewOrderDetails(orderId) {
   fetch(
-    `http://192.168.1.65/backend/fetch_order_details.php?order_id=${orderId}`
+    `http://192.168.1.9/backend/fetch_order_details.php?order_id=${orderId}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -390,7 +425,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchOrders() {
-  fetch("http://192.168.1.65/backend/fetch_orders.php")
+  fetch("http://192.168.1.9/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       const ordersContainer = document.getElementById("ordersContainer");
@@ -430,7 +465,7 @@ function deleteProduct(productId) {
 
   const shopOwnerId = localStorage.getItem("shop_owner_id");
 
-  fetch("http://192.168.1.65/backend/delete_product.php", {
+  fetch("http://192.168.1.9/backend/delete_product.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -447,9 +482,9 @@ function deleteProduct(productId) {
         alert("✅ Product deleted successfully!");
         document.getElementById(`product-${productId}`)?.remove();
 
-        fetch(
-          "http://192.168.1.65/backend/fetch_product.php?refresh=true"
-        ).then(() => console.log("Mobile app will fetch latest products"));
+        fetch("http://192.168.1.9/backend/fetch_product.php?refresh=true").then(
+          () => console.log("Mobile app will fetch latest products")
+        );
 
         setTimeout(fetchProducts, 1000);
       } else {
@@ -487,7 +522,7 @@ function filterProducts() {
     return;
   }
 
-  let url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`;
+  let url = `http://192.168.1.9/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`;
   if (category !== "all") {
     url += `&category=${encodeURIComponent(category)}`;
   }
@@ -507,7 +542,6 @@ function filterProducts() {
     })
     .catch((error) => console.error("❌ Error fetching products:", error));
 }
-
 
 function toggleAddForm(show) {
   document.getElementById("addProductSection").style.display = show
@@ -596,9 +630,11 @@ function toggleEditForm(show) {
 
 function showProductPreview(product) {
   let imagePath = product.image;
-  if (!imagePath.startsWith("http") && !imagePath.startsWith("/")) {
-    imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
+  if (!imagePath.startsWith("http")) {
+      imagePath = `http://192.168.1.9/backend/uploads/${imagePath}`;
   }
+  document.querySelector("img").src = imagePath;
+
 
   const previewModal = document.getElementById("previewModal");
   const previewName = document.getElementById("previewName");
@@ -656,7 +692,7 @@ function displayProducts(products) {
 
     let imagePath = product.image;
     if (!imagePath.startsWith("http") && !imagePath.startsWith("/")) {
-      imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
+      imagePath = `http://192.168.1.9/backend/uploads/${imagePath}`;
     }
 
     productItem.innerHTML = `

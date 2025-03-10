@@ -56,7 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     error_log("📌 Existing Image in DB: $existingImageFromDB");
 
     // Handle Image Upload (if provided)
-    $imageFileName = !empty($existingImage) ? $existingImage : $existingImageFromDB; // Default to existing image if no new file
+    // Use the posted existing_image if available; otherwise use the one from DB
+    $imageFileName = !empty($existingImage) ? $existingImage : $existingImageFromDB;
 
     if (!empty($_FILES["product_image"]["name"])) {
         // New image uploaded, generate new image filename
@@ -79,7 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Update SQL Query
     $sql = "UPDATE products SET name=?, price=?, description=?, quantity=?, category=?, image=? WHERE id=? AND shop_owner_id=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sdsssisi", $name, $price, $description, $quantity, $category, $imageFileName, $id, $shopOwnerId);
+    // Corrected binding types: "sdsissii"
+    $stmt->bind_param("sdsissii", $name, $price, $description, $quantity, $category, $imageFileName, $id, $shopOwnerId);
 
     // Debug Query Execution
     if ($stmt->execute()) {
