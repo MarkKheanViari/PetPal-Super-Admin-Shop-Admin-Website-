@@ -19,9 +19,7 @@
         <li>
           <a href="appointments.html" class="nav-link active">Services</a>
         </li>
-        <li>
-          <a href="grooming_appointments.html" class="nav-link">Appointments</a>
-        </li>
+        <li><a href="grooming_appointments.html" class="nav-link">Appointments</a></li>
         <li class="notification-bell">
           <i class="bell-icon">🔔</i>
           <span id="notifCount" class="badge">0</span>
@@ -68,7 +66,7 @@
       <div class="seller-info">
         <div class="seller-avatar"></div>
         <div class="seller-details">
-          <h1 id="welcomeText"></h1>
+          <h1  id="welcomeText"></h1>
           <p class="seller-type">PetPal</p>
           <p class="seller-description">
             Manage your shop's orders, products, grooming, and veterinary
@@ -78,8 +76,9 @@
       </div>
       <div class="btn-seller-pref">
         <button class="edit-profile">Edit Profile</button>
-        <button onclick="logout()" class="logout-btn">Logout</button>
+      <button onclick="logout()" class="logout-btn">Logout</button>
       </div>
+      
     </header>
 
     <!-- Main Content -->
@@ -90,16 +89,10 @@
         <div class="head-service">
           <h2>Grooming Services</h2>
           <div class="service-buttons">
-            <button
-              class="view-details-btn"
-              onclick="openAddServiceModal('Grooming')"
-            >
+            <button class="view-details-btn" onclick="openAddServiceModal('Grooming')">
               Add Grooming Service
             </button>
-            <button
-              class="view-details-btn"
-              onclick="viewAppointments('grooming_appointments.html')"
-            >
+            <button class="view-details-btn" onclick="viewAppointments('grooming_appointments.html')">
               View Grooming Appointments
             </button>
           </div>
@@ -107,9 +100,7 @@
         <table id="groomingServicesTable" class="services-table">
           <thead>
             <tr>
-              <th onclick="sortTable('groomingServicesTable', 0)">
-                Service Name
-              </th>
+              <th onclick="sortTable('groomingServicesTable', 0)">Service Name</th>
               <th onclick="sortTable('groomingServicesTable', 1)">Price</th>
               <th>Description</th>
               <th>Actions</th>
@@ -125,16 +116,10 @@
         <div class="head-service">
           <h2>Veterinary Services</h2>
           <div class="service-buttons">
-            <button
-              class="view-details-btn"
-              onclick="openAddServiceModal('Veterinary')"
-            >
+            <button class="view-details-btn" onclick="openAddServiceModal('Veterinary')">
               Add Veterinary Service
             </button>
-            <button
-              class="view-details-btn"
-              onclick="viewAppointments('veterinary_appointments.html')"
-            >
+            <button class="view-details-btn" onclick="viewAppointments('veterinary_appointments.html')">
               View Veterinary Appointments
             </button>
           </div>
@@ -142,9 +127,7 @@
         <table id="veterinaryServicesTable" class="services-table">
           <thead>
             <tr>
-              <th onclick="sortTable('veterinaryServicesTable', 0)">
-                Service Name
-              </th>
+              <th onclick="sortTable('veterinaryServicesTable', 0)">Service Name</th>
               <th onclick="sortTable('veterinaryServicesTable', 1)">Price</th>
               <th>Description</th>
               <th>Actions</th>
@@ -161,16 +144,12 @@
     <div id="addServiceModal" class="modal">
       <div class="modal-content">
         <div class="service-head">
-          <h2
-            id="addSer
+          <h2 id="addSer
           
           
           
           
-          viceModalTitle"
-          >
-            Add New Service
-          </h2>
+          viceModalTitle">Add New Service</h2>
           <button class="cancel-btn" onclick="closeModal('addServiceModal')">
             &times;
           </button>
@@ -265,12 +244,12 @@
     <!-- Integrated JavaScript -->
     <script>
       function viewAppointments(page) {
-        window.location.href = page;
-      }
+      window.location.href = page;
+    }
 
       (function () {
         // Base URL for API endpoints
-        const apiBaseUrl = "http://192.168.1.9/backend/";
+        const apiBaseUrl = "http://192.168.1.65/backend/";
 
         // Service options arrays
         const groomingServicesList = [
@@ -624,7 +603,7 @@
         window.closeModal = closeModal;
       })();
     </script>
-    <script src="index.js"></script>
+  <script src="index.js"></script>
     <script src="notification.js"></script>
   </body>
 </html>

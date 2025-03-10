@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // The autoHide parameter controls whether the dialogue should auto-disappear.
   function showDialogue(message, type = "info", autoHide = true) {
     dialogueBox.textContent = message;
-    dialogueBox.className = "";
+    dialogueBox.className = ""; 
     dialogueBox.classList.add("dialogue", type);
     dialogueBox.style.display = "block";
 
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        "http://192.168.1.9/backend/authenticate.php",
+        "http://192.168.1.65/backend/authenticate.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -93,14 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("🔹 Stored Values:");
         console.log("shop_owner_id:", localStorage.getItem("shop_owner_id"));
-        console.log(
-          "shop_owner_token:",
-          localStorage.getItem("shop_owner_token")
-        );
-        console.log(
-          "shop_owner_username:",
-          localStorage.getItem("shop_owner_username")
-        );
+        console.log("shop_owner_token:", localStorage.getItem("shop_owner_token"));
+        console.log("shop_owner_username:", localStorage.getItem("shop_owner_username"));
 
         // Delay redirection so the user sees the message until dashboard loads.
         setTimeout(() => {

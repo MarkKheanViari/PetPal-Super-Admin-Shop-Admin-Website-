@@ -69,7 +69,7 @@ let allAppointments = [];
 
 // Fetch all appointments from backend
 function fetchAllAppointments() {
-  fetch("http://192.168.1.9/backend/fetch_all_appointments.php")
+  fetch("http://192.168.1.65/backend/fetch_all_appointments.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
@@ -188,7 +188,7 @@ function renderSalesChart() {
   ========== ORDERS & PRODUCTS CODE (unchanged) ==========
 */
 function fetchOrders() {
-  fetch("http://192.168.1.9/backend/fetch_orders.php")
+  fetch("http://192.168.1.65/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       const ordersContainer = document.getElementById("dashboardOrdersContainer");
@@ -200,8 +200,7 @@ function fetchOrders() {
       ordersContainer.innerHTML = ""; // Clear previous content
 
       if (data.success) {
-        // Limit display to the first 3 orders (assuming the array is sorted by latest first)
-        data.orders.slice(0, 3).forEach((order) => {
+        data.orders.forEach((order) => {
           // Calculate total quantity based on order items if available
           const totalQuantity = order.items
             ? order.items.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0)
@@ -236,13 +235,11 @@ function fetchOrders() {
 
 
 function fetchProducts() {
-  fetch("http://192.168.1.9/backend/fetch_product.php")
+  fetch("http://192.168.1.65/backend/fetch_product.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
-        let dashboardProductsContainer = document.getElementById(
-          "dashboardProductsContainer"
-        );
+        let dashboardProductsContainer = document.getElementById("dashboardProductsContainer");
         if (dashboardProductsContainer) {
           dashboardProductsContainer.innerHTML = "";
           // Limit the display to the first 3 products
@@ -286,15 +283,13 @@ function createProductElement(product) {
 let allNotifications = [];
 
 function fetchOrderNotifications() {
-  return fetch("http://192.168.1.9/backend/fetch_orders.php")
+  return fetch("http://192.168.1.65/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success && Array.isArray(data.orders)) {
         return data.orders.map((order) => ({
           type: "Order",
-          message: `Order from ${order.username} - ₱${parseFloat(
-            order.total_price
-          ).toFixed(2)}`,
+          message: `Order from ${order.username} - ₱${parseFloat(order.total_price).toFixed(2)}`,
           id: order.id,
         }));
       }
@@ -307,9 +302,7 @@ function fetchOrderNotifications() {
 }
 
 function fetchAppointmentNotifications() {
-  const groomingPromise = fetch(
-    "http://192.168.1.9/backend/fetch_grooming_appointments.php"
-  )
+  const groomingPromise = fetch("http://192.168.1.65/backend/fetch_grooming_appointments.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success && Array.isArray(data.appointments)) {
@@ -326,9 +319,7 @@ function fetchAppointmentNotifications() {
       return [];
     });
 
-  const vetPromise = fetch(
-    "http://192.168.1.9/backend/fetch_veterinary_appointments.php"
-  )
+  const vetPromise = fetch("http://192.168.1.65/backend/fetch_veterinary_appointments.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success && Array.isArray(data.appointments)) {
@@ -352,10 +343,7 @@ function fetchAppointmentNotifications() {
 }
 
 function loadNotifications() {
-  Promise.all([
-    fetchOrderNotifications(),
-    fetchAppointmentNotifications(),
-  ]).then((results) => {
+  Promise.all([fetchOrderNotifications(), fetchAppointmentNotifications()]).then((results) => {
     const notifications = [...results[0], ...results[1]];
     allNotifications = notifications;
     updateNotifBadge(notifications.length);
@@ -377,13 +365,9 @@ function updateNotifDropdown(filter) {
   container.innerHTML = "";
   let filteredNotifications = allNotifications;
   if (filter === "order") {
-    filteredNotifications = allNotifications.filter(
-      (n) => n.type.toLowerCase() === "order"
-    );
+    filteredNotifications = allNotifications.filter((n) => n.type.toLowerCase() === "order");
   } else if (filter === "appointment") {
-    filteredNotifications = allNotifications.filter(
-      (n) => n.type.toLowerCase() === "appointment"
-    );
+    filteredNotifications = allNotifications.filter((n) => n.type.toLowerCase() === "appointment");
   }
   if (filteredNotifications.length === 0) {
     container.innerHTML = `<div class="notif-item">No new notifications</div>`;
@@ -414,9 +398,7 @@ document.querySelectorAll(".notif-filter-btn").forEach((btn) => {
   btn.addEventListener("click", function (event) {
     event.preventDefault();
     event.stopPropagation();
-    document
-      .querySelectorAll(".notif-filter-btn")
-      .forEach((b) => b.classList.remove("active"));
+    document.querySelectorAll(".notif-filter-btn").forEach((b) => b.classList.remove("active"));
     this.classList.add("active");
     const filter = this.getAttribute("data-filter");
     updateNotifDropdown(filter);
@@ -424,22 +406,18 @@ document.querySelectorAll(".notif-filter-btn").forEach((btn) => {
 });
 
 // Toggle notification dropdown visibility when clicking the bell
-document
-  .querySelector(".notification-bell")
-  .addEventListener("click", function (event) {
-    const dropdown = document.getElementById("notifDropdown");
-    if (dropdown) dropdown.classList.toggle("active");
-    event.stopPropagation();
-  });
+document.querySelector(".notification-bell").addEventListener("click", function (event) {
+  const dropdown = document.getElementById("notifDropdown");
+  if (dropdown) dropdown.classList.toggle("active");
+  event.stopPropagation();
+});
 
 // Exit button to close the notification dropdown
-document
-  .getElementById("notifExitBtn")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-    event.stopPropagation();
-    document.getElementById("notifDropdown").classList.remove("active");
-  });
+document.getElementById("notifExitBtn").addEventListener("click", function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+  document.getElementById("notifDropdown").classList.remove("active");
+});
 
 // Hide dropdown if clicking outside
 document.addEventListener("click", function () {

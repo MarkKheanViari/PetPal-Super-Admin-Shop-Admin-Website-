@@ -1,19 +1,19 @@
-[31-Jan-2025 04:25:19 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.9' (using password: YES)
-[31-Jan-2025 04:25:43 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.9' (using password: YES)
-[31-Jan-2025 04:29:43 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.9' (using password: YES)
-[31-Jan-2025 04:42:55 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.9' (using password: YES)
-[31-Jan-2025 04:52:13 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.9' (using password: YES)
-[31-Jan-2025 04:54:48 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.9' (using password: YES)
+[31-Jan-2025 04:25:19 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.65' (using password: YES)
+[31-Jan-2025 04:25:43 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.65' (using password: YES)
+[31-Jan-2025 04:29:43 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.65' (using password: YES)
+[31-Jan-2025 04:42:55 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.65' (using password: YES)
+[31-Jan-2025 04:52:13 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.65' (using password: YES)
+[31-Jan-2025 04:54:48 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.65' (using password: YES)
 [31-Jan-2025 05:06:07 Europe/Berlin] Error in fetch_product.php: Table 'petpal.products' doesn't exist
 [31-Jan-2025 05:06:45 Europe/Berlin] Error in fetch_product.php: Table 'petpal.products' doesn't exist
-[31-Jan-2025 05:12:44 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.9' (using password: YES)
+[31-Jan-2025 05:12:44 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.65' (using password: YES)
 [31-Jan-2025 05:13:21 Europe/Berlin] Error in fetch_product.php: Table 'petpal.products' doesn't exist
-[31-Jan-2025 05:14:57 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.9' (using password: YES)
+[31-Jan-2025 05:14:57 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.65' (using password: YES)
 [31-Jan-2025 05:15:30 Europe/Berlin] Error in fetch_product.php: Invalid shop owner ID
-[31-Jan-2025 05:19:24 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.9' (using password: YES)
+[31-Jan-2025 05:19:24 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.65' (using password: YES)
 [31-Jan-2025 05:19:38 Europe/Berlin] Error in fetch_product.php: Invalid shop owner ID
-[31-Jan-2025 05:19:55 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.9' (using password: YES)
-[31-Jan-2025 05:30:35 Europe/Berlin] Error in add_product.php: Access denied for user ''@'192.168.1.9' (using password: NO)
+[31-Jan-2025 05:19:55 Europe/Berlin] Error in add_product.php: Access denied for user 'your_username'@'192.168.1.65' (using password: YES)
+[31-Jan-2025 05:30:35 Europe/Berlin] Error in add_product.php: Access denied for user ''@'192.168.1.65' (using password: NO)
 [31-Jan-2025 05:33:51 Europe/Berlin] PHP Warning:  Undefined variable $servername in C:\xampp\htdocs\backend\add_product.php on line 36
 [31-Jan-2025 05:33:51 Europe/Berlin] PHP Warning:  Undefined variable $username in C:\xampp\htdocs\backend\add_product.php on line 36
-[31-Jan-2025 05:33:51 Europe/Berlin] Error in add_product.php: Access denied for user ''@'192.168.1.9' (using password: NO)
+[31-Jan-2025 05:33:51 Europe/Berlin] Error in add_product.php: Access denied for user ''@'192.168.1.65' (using password: NO)

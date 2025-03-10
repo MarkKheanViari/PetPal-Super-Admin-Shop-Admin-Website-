@@ -1,59 +1,44 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 header("Content-Type: application/json");
-require 'db.php';
+header("Access-Control-Allow-Origin: *"); // Allow requests from any origin
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-// ✅ Decode JSON input
+include 'db.php'; // Ensure this file contains your DB connection
+
+// Get the JSON input
 $data = json_decode(file_get_contents("php://input"), true);
 
-// ✅ Use "mobile_user_id" to match database column
-if (!$data || !isset($data["mobile_user_id"])) {
-    http_response_code(400);
-    echo json_encode(["success" => false, "error" => "Missing mobile_user_id"]);
+// Debug: Log the incoming request
+file_put_contents("debug_clear_history.txt", print_r($data, true), FILE_APPEND);
+
+// Check if required field is present
+if (!isset($data['mobile_user_id'])) {
+    echo json_encode(["success" => false, "message" => "Missing required field: mobile_user_id"]);
     exit();
 }
 
-$mobile_user_id = intval($data["mobile_user_id"]);
+$mobileUserId = $data['mobile_user_id'];
 
-// ✅ Check if service history exists
-$checkHistory = $conn->prepare("SELECT id FROM service_requests WHERE mobile_user_id = ?");
-if (!$checkHistory) {
-    http_response_code(500);
-    die(json_encode(["success" => false, "error" => "SQL Error (checkHistory): " . $conn->error]));
-}
-$checkHistory->bind_param("i", $mobile_user_id);
-$checkHistory->execute();
-$historyResult = $checkHistory->get_result();
+// Debug: Log received user ID
+file_put_contents("debug_clear_history.txt", "Received UserID=$mobileUserId\n", FILE_APPEND);
 
-if ($historyResult->num_rows === 0) {
-    http_response_code(200); // Not an error, just no history
-    echo json_encode(["success" => false, "error" => "No service history found"]);
-    $checkHistory->close();
-    $conn->close();
-    exit();
-}
-$checkHistory->close();
+// ✅ Instead of deleting, update the status to "Cleared"
+$query = "UPDATE appointments SET status = 'Cleared' WHERE mobile_user_id = ? AND status IN ('Pending', 'Approved', 'Declined')";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $mobileUserId);
 
-// ✅ Delete service history using mobile_user_id
-$query = $conn->prepare("DELETE FROM service_requests WHERE mobile_user_id = ?");
-if (!$query) {
-    http_response_code(500);
-    die(json_encode(["success" => false, "error" => "SQL Error (delete): " . $conn->error]));
-}
-$query->bind_param("i", $mobile_user_id);
-if ($query->execute()) {
-    http_response_code(200);
-    echo json_encode(["success" => true, "message" => "✅ Service history cleared"]);
+if ($stmt->execute()) {
+    if ($stmt->affected_rows > 0) {
+        echo json_encode(["success" => true, "message" => "Service history cleared successfully"]);
+    } else {
+        echo json_encode(["success" => false, "message" => "No appointments found to update"]);
+    }
 } else {
-    http_response_code(500);
-    echo json_encode([
-        "success" => false,
-        "error" => "❌ Failed to clear history",
-        "sql_error" => $conn->error
-    ]);
+    echo json_encode(["success" => false, "message" => "Database error"]);
 }
 
-$query->close();
+// Close connections
+$stmt->close();
 $conn->close();
 ?>

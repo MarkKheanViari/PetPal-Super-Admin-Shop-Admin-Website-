@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   
       try {
-        const response = await fetch("http://192.168.1.9/backend/update_product.php", {
+        const response = await fetch("http://192.168.1.65/backend/update_product.php", {
           method: "POST",
           body: formData,
         });
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("shop_owner_id", localStorage.getItem("shop_owner_id"));
   
       try {
-        const response = await fetch("http://192.168.1.9/backend/add_product.php", {
+        const response = await fetch("http://192.168.1.65/backend/add_product.php", {
           method: "POST",
           body: formData,
         });
@@ -193,7 +193,7 @@ function fetchProducts() {
     return;
   }
 
-  const url = `http://192.168.1.9/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+  const url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
   console.log(`Fetching products from: ${url}`);
 
   fetch(url)
@@ -384,7 +384,7 @@ function saveEdit() {
 
 function viewOrderDetails(orderId) {
   fetch(
-    `http://192.168.1.9/backend/fetch_order_details.php?order_id=${orderId}`
+    `http://192.168.1.65/backend/fetch_order_details.php?order_id=${orderId}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -425,7 +425,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchOrders() {
-  fetch("http://192.168.1.9/backend/fetch_orders.php")
+  fetch("http://192.168.1.65/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       const ordersContainer = document.getElementById("ordersContainer");
@@ -465,7 +465,7 @@ function deleteProduct(productId) {
 
   const shopOwnerId = localStorage.getItem("shop_owner_id");
 
-  fetch("http://192.168.1.9/backend/delete_product.php", {
+  fetch("http://192.168.1.65/backend/delete_product.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -482,7 +482,7 @@ function deleteProduct(productId) {
         alert("✅ Product deleted successfully!");
         document.getElementById(`product-${productId}`)?.remove();
 
-        fetch("http://192.168.1.9/backend/fetch_product.php?refresh=true").then(
+        fetch("http://192.168.1.65/backend/fetch_product.php?refresh=true").then(
           () => console.log("Mobile app will fetch latest products")
         );
 
@@ -522,7 +522,7 @@ function filterProducts() {
     return;
   }
 
-  let url = `http://192.168.1.9/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`;
+  let url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`;
   if (category !== "all") {
     url += `&category=${encodeURIComponent(category)}`;
   }
@@ -631,7 +631,7 @@ function toggleEditForm(show) {
 function showProductPreview(product) {
   let imagePath = product.image;
   if (!imagePath.startsWith("http")) {
-      imagePath = `http://192.168.1.9/backend/uploads/${imagePath}`;
+      imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
   }
   document.querySelector("img").src = imagePath;
 
@@ -692,7 +692,7 @@ function displayProducts(products) {
 
     let imagePath = product.image;
     if (!imagePath.startsWith("http") && !imagePath.startsWith("/")) {
-      imagePath = `http://192.168.1.9/backend/uploads/${imagePath}`;
+      imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
     }
 
     productItem.innerHTML = `
