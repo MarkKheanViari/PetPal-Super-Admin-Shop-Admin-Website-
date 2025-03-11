@@ -32,7 +32,39 @@ $status = "Pending";
 
 error_log("🛠 Mobile User ID: $mobile_user_id, Total: $total_price, Payment: $payment_method");
 
-// ✅ Step 2: Insert into `orders`
+// ✅ Step 2: Check Stock Availability Before Placing Order
+foreach ($data['cart_items'] as $item) {
+    if (!isset($item['product_id'], $item['quantity'])) {
+        echo json_encode(["success" => false, "message" => "❌ Missing fields in cart_items"]);
+        exit();
+    }
+
+    $product_id = $item['product_id'];
+    $quantity = $item['quantity'];
+
+    // 🔍 Check stock availability
+    $stockQuery = "SELECT quantity FROM products WHERE id = ?";
+    $stockStmt = $conn->prepare($stockQuery);
+    $stockStmt->bind_param("i", $product_id);
+    $stockStmt->execute();
+    $stockResult = $stockStmt->get_result();
+    $stockStmt->close();
+
+    if ($stockResult->num_rows === 0) {
+        echo json_encode(["success" => false, "message" => "❌ Product ID $product_id not found!"]);
+        exit();
+    }
+
+    $row = $stockResult->fetch_assoc();
+    $currentStock = $row["quantity"];
+
+    if ($currentStock < $quantity) {
+        echo json_encode(["success" => false, "message" => "❌ Not enough stock for Product ID: $product_id"]);
+        exit();
+    }
+}
+
+// ✅ Step 3: Insert into `orders`
 $query = "INSERT INTO orders (mobile_user_id, total_price, payment_method, status) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($query);
 
@@ -53,19 +85,15 @@ $stmt->close();
 
 error_log("✅ Order Inserted: ID $order_id");
 
-// ✅ Step 3: Insert Cart Items
+// ✅ Step 4: Insert Cart Items & Update Stock
 foreach ($data['cart_items'] as $item) {
-    if (!isset($item['product_id'], $item['quantity'], $item['price'])) {
-        echo json_encode(["success" => false, "message" => "❌ Missing fields in cart_items"]);
-        exit();
-    }
-
     $product_id = $item['product_id'];
     $quantity = $item['quantity'];
     $price = $item['price'];
 
     error_log("🛒 Adding Item - Product: $product_id, Quantity: $quantity, Price: $price");
 
+    // ✅ Insert into `order_items`
     $itemQuery = "INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)";
     $itemStmt = $conn->prepare($itemQuery);
 
@@ -81,10 +109,17 @@ foreach ($data['cart_items'] as $item) {
         exit();
     }
     $itemStmt->close();
+
+    // ✅ Reduce stock in `products` table
+    $updateStockQuery = "UPDATE products SET quantity = quantity - ? WHERE id = ?";
+    $updateStockStmt = $conn->prepare($updateStockQuery);
+    $updateStockStmt->bind_param("ii", $quantity, $product_id);
+    $updateStockStmt->execute();
+    $updateStockStmt->close();
 }
 
-// ✅ Step 4: Final Response
+// ✅ Step 5: Final Response
 $conn->close();
 
-echo json_encode(["success" => true, "message" => "✅ Order placed successfully!"]);
+echo json_encode(["success" => true, "message" => "✅ Order placed successfully! Stock updated."]);
 ?>

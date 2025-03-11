@@ -11,27 +11,33 @@ $product_id = isset($data['product_id']) ? intval($data['product_id']) : 0;
 $quantity = isset($data['quantity']) ? intval($data['quantity']) : 1;
 
 if ($mobile_user_id == 0 || $product_id == 0) {
-    echo json_encode(["success" => false, "message" => "Invalid user or product ID"]);
+    echo json_encode(["success" => false, "message" => "❌ Invalid user or product ID"]);
     exit();
 }
 
-// ✅ Check if product exists and has enough stock
+// ✅ Check if product exists and has stock
 $productQuery = $conn->prepare("SELECT quantity FROM products WHERE id = ?");
 $productQuery->bind_param("i", $product_id);
 $productQuery->execute();
 $productResult = $productQuery->get_result();
 
 if ($productResult->num_rows == 0) {
-    echo json_encode(["success" => false, "message" => "Product not found"]);
+    echo json_encode(["success" => false, "message" => "❌ Product not found"]);
     exit();
 }
 
 $productData = $productResult->fetch_assoc();
 $currentStock = intval($productData['quantity']);
 
-// ✅ Limit the quantity to what is available in stock
+// ✅ Prevent adding to cart if stock is 0
+if ($currentStock == 0) {
+    echo json_encode(["success" => false, "message" => "❌ This product is out of stock"]);
+    exit();
+}
+
+// ✅ Ensure requested quantity does not exceed stock
 if ($quantity > $currentStock) {
-    $quantity = $currentStock; // Limit the quantity to the available stock
+    $quantity = $currentStock;
 }
 
 // ✅ Check if item is already in the cart
@@ -45,7 +51,6 @@ if ($cartResult->num_rows > 0) {
     $cartData = $cartResult->fetch_assoc();
     $newQuantity = $cartData['quantity'] + $quantity;
 
-    // If the new quantity exceeds the available stock, limit it
     if ($newQuantity > $currentStock) {
         $newQuantity = $currentStock;
     }
@@ -62,7 +67,7 @@ if ($cartResult->num_rows > 0) {
 
 // ✅ No stock update necessary as stock is not being modified
 
-echo json_encode(["success" => true, "message" => "Added to cart successfully"]);
+echo json_encode(["success" => true, "message" => "✅ Added to cart successfully"]);
 
 $conn->close();
 ?>
