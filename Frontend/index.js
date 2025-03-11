@@ -383,29 +383,33 @@ function saveEdit() {
 }
 
 function viewOrderDetails(orderId) {
-  fetch(
-    `http://192.168.1.65/backend/fetch_order_details.php?order_id=${orderId}`
-  )
-    .then((response) => response.json())
-    .then((data) => {
+  console.log("🔍 Fetching Order Details for Order ID:", orderId); // ✅ Check if function runs
+
+  fetch(`http://192.168.1.65/backend/fetch_order_details.php?order_id=${orderId}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log("✅ Order Data Received:", data); // ✅ See API response
+
       if (data.success) {
-        document.getElementById("customerName").value = data.order.username;
-        document.getElementById("customerAddress").value =
-          data.order.location || "No Address Provided";
-        document.getElementById("customerContact").value =
-          data.order.contact_number || "No Contact Info";
-        document.getElementById("paymentMethod").value =
-          data.order.payment_method;
-        document.getElementById("orderAmount").value = `₱${parseFloat(
-          data.order.total_price
-        ).toFixed(2)}`;
+        document.getElementById("customerName").value = data.order.customer_name;
+        document.getElementById("customerAddress").value = data.order.location || "No Address Provided";
+        document.getElementById("customerContact").value = data.order.contact_number || "No Contact Info";
+        document.getElementById("paymentMethod").value = data.order.payment_method;
+        document.getElementById("orderAmount").value = `₱${parseFloat(data.order.total_price).toFixed(2)}`;
+        
+        // ✅ Display Order Date
+        document.getElementById("orderDate").value = data.order.created_at;
+
+        // ✅ Display Order Status
+        document.getElementById("orderStatus").value = data.order.status || "Unknown";
 
         toggleModal("orderModal", true);
       } else {
-        alert("❌ Error fetching order details");
+        console.error("❌ API Returned Error:", data.message);
+        alert("❌ Error fetching order details: " + data.message);
       }
     })
-    .catch((error) => console.error("❌ ERROR Fetching Order Details:", error));
+    .catch(error => console.error("❌ ERROR Fetching Order Details:", error));
 }
 
 function closeModal() {

@@ -1,27 +1,41 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET");
 header("Content-Type: application/json");
 
-include "db.php"; // Ensure database connection works
+include "db.php"; // Database connection
 
 $response = array();
 
-$query = "SELECT o.id, o.mobile_user_id, o.total_price, o.payment_method, o.status, o.created_at, 
-                 mu.username, mu.contact_number, mu.location
+// ✅ Fetch all orders with user details
+$query = "SELECT o.id, 
+                 o.mobile_user_id, 
+                 o.total_price, 
+                 o.payment_method, 
+                 o.status, 
+                 o.created_at, 
+                 mu.username, 
+                 mu.contact_number, 
+                 mu.location
           FROM orders o
           JOIN mobile_users mu ON o.mobile_user_id = mu.id
-          ORDER BY o.created_at DESC";
+          ORDER BY o.created_at DESC"; // Orders sorted by newest first
 
 $result = $conn->query($query);
 
 if ($result->num_rows > 0) {
     $orders = array();
+
     while ($row = $result->fetch_assoc()) {
         $order_id = $row["id"];
 
-        // Fetch order items for each order
-        $items_query = "SELECT oi.product_id, p.name AS product_name, oi.quantity, oi.price 
+        // ✅ Convert created_at to a human-readable format
+        $formatted_date = date("F j, Y, g:i A", strtotime($row["created_at"]));
+
+        // ✅ Fetch order items for each order
+        $items_query = "SELECT oi.product_id, 
+                               p.name AS product_name, 
+                               oi.quantity, 
+                               oi.price 
                         FROM order_items oi
                         JOIN products p ON oi.product_id = p.id
                         WHERE oi.order_id = ?";
@@ -42,7 +56,7 @@ if ($result->num_rows > 0) {
         }
         $stmt->close();
 
-        // Build order response
+        // ✅ Build the order response
         $orders[] = array(
             "id" => $row["id"],
             "mobile_user_id" => $row["mobile_user_id"],
@@ -52,10 +66,11 @@ if ($result->num_rows > 0) {
             "total_price" => number_format((float)$row["total_price"], 2), // ✅ Ensure price is formatted
             "payment_method" => $row["payment_method"],
             "status" => $row["status"],
-            "created_at" => $row["created_at"],
-            "items" => $items
+            "created_at" => $formatted_date, // ✅ Now readable
+            "items" => $items // ✅ Ensures "items" exists even if empty
         );
     }
+
     $response["success"] = true;
     $response["orders"] = $orders;
 } else {
@@ -63,6 +78,7 @@ if ($result->num_rows > 0) {
     $response["message"] = "No orders found";
 }
 
-echo json_encode($response, JSON_PRETTY_PRINT); // ✅ Returns structured JSON response
+// ✅ Return the JSON response
+echo json_encode($response, JSON_PRETTY_PRINT);
 $conn->close();
 ?>

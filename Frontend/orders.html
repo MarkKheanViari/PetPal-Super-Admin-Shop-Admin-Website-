@@ -77,6 +77,19 @@
             <input type="text" id="orderAmount" placeholder="Total Amount" readonly>
         </div>
 
+        <div class="modal-section">
+            <h3>Order Status</h3>
+            <input type="text" id="orderStatus" placeholder="Order Status" readonly>
+        </div>
+
+                <!-- Order Date Section -->
+        <div class="modal-section">
+            <h3>Order Date</h3>
+            <input type="text" id="orderDate" placeholder="Order Date" readonly>
+        </div>
+
+        
+
         <!-- Modal Buttons -->
         <div class="modal-buttons">
             <button class="cancel-btn" type="button" onclick="toggleModal('orderModal', false)">Cancel</button>
@@ -84,6 +97,29 @@
         </div>
     </div>
 </div>
+
+<!-- Update Order Status Modal -->
+<div id="updateStatusModal" class="modal">
+    <div class="modal-content">
+        <h2>Update Order Status</h2>
+
+        <input type="hidden" id="updateOrderId">
+
+        <label for="updateStatus">Select New Status:</label>
+        <select id="updateStatus">
+            <option value="Pending">Pending</option>
+            <option value="To Ship">To Ship</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Delivered">Delivered</option>
+        </select>
+
+        <div class="modal-buttons">
+            <button class="cancel-btn" type="button" onclick="toggleModal('updateStatusModal', false)">Cancel</button>
+            <button class="confirm-btn" onclick="updateOrderStatus()">Update</button>
+        </div>
+    </div>
+</div>
+
 
     <main class="content">
         <section id="ordersSection" class="recent-orders">
