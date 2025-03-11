@@ -6,6 +6,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seller Dashboard</title>
     <link rel="stylesheet" href="index.css">
+    <style>
+        /* Container holding the table */
+.orders-table-container {
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: auto; /* Enables horizontal scroll on small screens */
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Table styles */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.orders-table thead {
+  background-color: #f5f5f5;
+}
+
+.orders-table th,
+.orders-table td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.orders-table th {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.orders-table td {
+  font-size: 0.9rem;
+}
+
+/* Example styling for buttons */
+.view-details-btn,
+.update-status-btn {
+  padding: 0.4rem 0.75rem;
+  margin: 0 0.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.view-details-btn {
+  background-color: #ff8c00; /* Orange */
+  color: #fff;
+}
+
+.update-status-btn {
+  background-color: #ccc; /* Gray */
+  color: #333;
+}
+
+.view-details-btn:hover {
+  background-color: #e37f00;
+}
+
+.update-status-btn:hover {
+  background-color: #b3b3b3;
+}
+
+/* Example for status styling (Pending, Completed, etc.) */
+.order-status {
+  font-weight: bold;
+}
+/* Container for the modal backdrop */
+#updateStatusModal {
+  display: none; /* Initially hidden */
+  position: fixed; 
+  z-index: 9999; /* Ensures the modal is on top of other elements */
+  left: 0; 
+  top: 0; 
+  width: 100vw; 
+  height: 100vh; 
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+/* Modal content box */
+#updateStatusModal .modal-content {
+  width: 500px; /* Increase width for a bigger modal */
+  max-width: 90%; /* Ensures it stays responsive on smaller screens */
+  background-color: #fff; 
+  padding: 2rem; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+  position: relative;
+}
+
+/* Modal heading */
+#updateStatusModal .modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem; /* Larger heading text */
+}
+
+/* Labels and Select styling */
+#updateStatusModal label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+#updateStatusModal select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+/* Button container */
+#updateStatusModal .modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Buttons styling */
+#updateStatusModal .cancel-btn,
+#updateStatusModal .confirm-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#updateStatusModal .cancel-btn {
+  background-color: #ccc;
+  color: #333;
+}
+
+#updateStatusModal .confirm-btn {
+  background-color: #ff8c00; /* Example color (orange) */
+  color: #fff;
+}
+
+#updateStatusModal .cancel-btn:hover {
+  background-color: #b3b3b3;
+}
+
+#updateStatusModal .confirm-btn:hover {
+  background-color: #e37f00;
+}
+
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -29,13 +185,15 @@
                   <div class="notif-filter">
                     <button type="button" class="notif-filter-btn active" data-filter="all">All</button>
                     <button type="button" class="notif-filter-btn" data-filter="order">Orders</button>
-                    <button type="button" class="notif-filter-btn" data-filter="appointment">Appointments</button>
+                    <button type="button" class="notif-filter-btn" data-filter="appointment">Services</button>
                   </div>
                   <div id="notifItemsContainer">
                     <!-- Notifications will be populated here -->
                   </div>
                 </div>
               </li>
+              
+              
         </ul>
     </nav>
     

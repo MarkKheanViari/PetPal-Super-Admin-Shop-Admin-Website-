@@ -1,167 +1,175 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Ensu/* General Layout */
+body {
     font-family: Arial, sans-serif;
-}
-
-.wrapper {
+    background-color: #fff3e0; /* Light orange background */
+    margin: 0;
     display: flex;
-}
-
-/* Sidebar */
-.sidebar {
+  }
+  
+  /* Sidebar (similar to your other pages) */
+  .sidebar {
     width: 250px;
-    background-color: #ff6f00; /* Orange */
+    background-color: #ff6f00;
     color: white;
     padding: 20px;
     min-height: 100vh;
     position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
   }
-  
   .sidebar h2 {
     text-align: center;
     margin-bottom: 20px;
   }
-  
   .sidebar ul {
     list-style: none;
     padding: 0;
   }
-  
   .sidebar ul li {
     padding: 12px;
   }
-  
   .sidebar ul li a {
     color: white;
     text-decoration: none;
-    display: block;
     padding: 10px;
+    display: block;
     border-radius: 5px;
   }
-  
-  .sidebar ul li a:hover,
-  .sidebar ul li a.active {
-    background-color: #e65100; /* Darker Orange */
+  .sidebar ul li a.active,
+  .sidebar ul li a:hover {
+    background-color: #e65100;
   }
-/* Main Content */
-.main-content {
-    flex-grow: 1;
+  /* Main content area (similar to superadmin.css) */
+  .dashboard {
+    flex: 1;
     padding: 20px;
-    background-color: #fff3e0; /* Light Orange Background */
-    margin-left: 250px;
-}
-
-/* Header */
-.header-container {
+    margin-left: 250px; /* Offset for fixed sidebar */
+    background-color: #fff7e6; /* Or #fff3e0, whichever you used */
+  }
+  
+  /* Then add your Content Management-specific styles below... */
+  
+  
+  /* Main Dashboard Content */
+  .dashboard {
+    flex: 1;
+    padding: 20px;
+    margin-left: 300px; /* Offset for sidebar */
+    background-color: #fff3e0; /* Light orange background */
+  }
+  
+  /* Header */
+  .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-}
-
-/* Search Bar */
-.search-bar {
+  }
+  
+  .search-bar {
     padding: 8px;
     width: 250px;
-    border: 1px solid #ffa726; /* Lighter Orange */
+    border: 1px solid #ffa726;
     border-radius: 5px;
-}
-
-/* Filter Buttons */
-.filter-buttons {
+  }
+  
+  /* Filter Buttons */
+  .filter-buttons {
     margin-bottom: 20px;
-}
-
-.filter-btn {
+  }
+  
+  .filter-btn {
     padding: 8px 15px;
     border: none;
     border-radius: 5px;
-    background-color: #ffcc80; /* Light Orange */
+    background-color: #ffcc80;
     cursor: pointer;
     margin-right: 5px;
-}
-
-.filter-btn.active {
-    background-color: #ff6f00; /* Orange */
+  }
+  
+  .filter-btn.active {
+    background-color: #ff6f00;
     color: white;
-}
-
-/* Table Container */
-.table-container {
+  }
+  
+  /* Table Container */
+  .table-container {
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Product Table */
-.product-table {
+  }
+  
+ /* Table Container: Widen and add horizontal scroll if needed */
+.table-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    overflow-x: auto;
+    margin: 0 auto;
+  }
+  
+  /* Product Table: Full width, adjusted padding, and modern design */
+  .product-table {
     width: 100%;
     border-collapse: collapse;
-}
-
-.product-table th,
-.product-table td {
-    padding: 10px;
+  }
+  
+  /* Table Headers: New background and padding for a bolder look */
+  .product-table th {
+    background: #ff8c00; /* Adjust header background as desired */
+    color: #fff;
+    font-weight: 600;
+    padding: 15px;
+    border-bottom: 2px solid #e65100;
+    text-align: left;
+  }
+  
+  /* Table Cells: Increased padding and clean divider */
+  .product-table td {
+    padding: 15px;
     border-bottom: 1px solid #ddd;
     text-align: left;
-}
-
-/* Status Labels */
-.status-pending {
-    color: #ff9800; /* Orange */
-    font-weight: bold;
-}
-
-.status-approved {
-    color: #f57c00; /* Slightly Darker Orange */
-    font-weight: bold;
-}
-
-.status-rejected {
-    color: #d84315; /* Dark Red-Orange */
-    font-weight: bold;
-}
-
-/* Buttons */
-.action-btn {
+  }
+  
+  /* Row Hover Effect: Subtle background change on hover */
+  .product-table tr:hover {
+    background-color: #ffe0b2;
+  }
+  
+  
+  /* Action Buttons */
+  .action-btn {
     border: none;
     padding: 5px 8px;
     margin: 0 3px;
     cursor: pointer;
-}
-
-/* Approve Button */
-.approve-btn {
-    background-color: #ff6f00; /* Orange */
+  }
+  
+  .approve-btn {
+    background-color: #ff6f00;
     color: white;
-}
-
-.approve-btn:hover {
-    background-color: #e65100; /* Darker Orange */
-}
-
-/* Reject Button */
-.reject-btn {
-    background-color: #d84315; /* Deep Red-Orange */
+  }
+  
+  .approve-btn:hover {
+    background-color: #e65100;
+  }
+  
+  .reject-btn {
+    background-color: #d84315;
     color: white;
-}
-
-.reject-btn:hover {
-    background-color: #bf360c; /* Darker Red-Orange */
-}
-
-/* More Options Button */
-.more-btn {
-    background-color: #ff8f00; /* Brighter Orange */
+  }
+  
+  .reject-btn:hover {
+    background-color: #bf360c;
+  }
+  
+  .more-btn {
+    background-color: #ff8f00;
     color: white;
-}
-
-.more-btn:hover {
-    background-color: #e65100; /* Darker Orange */
-}
+  }
+  
+  .more-btn:hover {
+    background-color: #e65100;
+  }
+  
