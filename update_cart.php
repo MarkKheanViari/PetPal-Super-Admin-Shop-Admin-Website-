@@ -9,6 +9,7 @@ $data = json_decode(file_get_contents("php://input"), true);
 $cart_id = isset($data['cart_id']) ? intval($data['cart_id']) : 0;
 $new_quantity = isset($data['quantity']) ? intval($data['quantity']) : 1;
 
+// Check if quantity is valid
 if ($cart_id == 0 || $new_quantity <= 0) {
     echo json_encode(["success" => false, "message" => "Invalid cart item or quantity"]);
     exit();
@@ -35,8 +36,9 @@ $stockResult = $stockCheck->get_result();
 $stockRow = $stockResult->fetch_assoc();
 $available_stock = $stockRow["quantity"];
 
+// ✅ If requested quantity exceeds stock, reject the request
 if ($new_quantity > $available_stock) {
-    echo json_encode(["success" => false, "message" => "Not enough stock available"]);
+    echo json_encode(["success" => false, "message" => "Not enough stock available, only " . $available_stock . " units in stock"]);
     exit();
 }
 
