@@ -22,11 +22,11 @@ if (!isset($_GET["mobile_user_id"])) {
 $mobile_user_id = intval($_GET["mobile_user_id"]);
 
 // ✅ Debug: Log the user ID received
-error_log("Fetching appointments for user_id: $mobile_user_id");
+error_log("Fetching mobile appointments for user_id: $mobile_user_id");
 
-// ✅ Fetch appointments along with price from `services` table
+// ✅ Fetch appointments from `mobile_appointments` and join with `services` to get price
 $sql = "SELECT a.service_name, a.service_type, a.appointment_date, s.price, a.status 
-        FROM appointments a 
+        FROM mobile_appointments a 
         JOIN services s ON a.service_name = s.service_name
         WHERE a.mobile_user_id = ?";
         
@@ -46,5 +46,12 @@ if ($result->num_rows > 0) {
     $response["message"] = "No appointments found";
 }
 
+// ✅ Debug: Log response before sending
+error_log("Response: " . json_encode($response));
+
 echo json_encode($response);
+
+// Close connections
+$stmt->close();
+$conn->close();
 ?>

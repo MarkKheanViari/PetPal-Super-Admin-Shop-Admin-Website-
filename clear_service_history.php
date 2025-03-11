@@ -10,32 +10,43 @@ include 'db.php'; // Ensure this file contains your DB connection
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Debug: Log the incoming request
-file_put_contents("debug_clear_history.txt", print_r($data, true), FILE_APPEND);
+file_put_contents("debug_clear_history.txt", "Incoming request: " . print_r($data, true) . "\n", FILE_APPEND);
 
-// Check if required field is present
+// ✅ Check if `mobile_user_id` is provided
 if (!isset($data['mobile_user_id'])) {
+    file_put_contents("debug_clear_history.txt", "Error: Missing mobile_user_id\n", FILE_APPEND);
     echo json_encode(["success" => false, "message" => "Missing required field: mobile_user_id"]);
     exit();
 }
 
-$mobileUserId = $data['mobile_user_id'];
+$mobileUserId = intval($data['mobile_user_id']);
 
-// Debug: Log received user ID
-file_put_contents("debug_clear_history.txt", "Received UserID=$mobileUserId\n", FILE_APPEND);
+// ✅ Debug: Log received user ID
+file_put_contents("debug_clear_history.txt", "Processing UserID=$mobileUserId\n", FILE_APPEND);
 
-// ✅ Instead of deleting, update the status to "Cleared"
-$query = "UPDATE appointments SET status = 'Cleared' WHERE mobile_user_id = ? AND status IN ('Pending', 'Approved', 'Declined')";
+// ✅ DELETE only `Approved` and `Declined` appointments from `mobile_appointments`
+$query = "DELETE FROM mobile_appointments WHERE mobile_user_id = ? AND status IN ('Approved', 'Declined')";
 $stmt = $conn->prepare($query);
+
+if (!$stmt) {
+    file_put_contents("debug_clear_history.txt", "Error preparing statement: " . $conn->error . "\n", FILE_APPEND);
+    echo json_encode(["success" => false, "message" => "Database error (prepare failed)"]);
+    exit();
+}
+
 $stmt->bind_param("i", $mobileUserId);
 
 if ($stmt->execute()) {
+    file_put_contents("debug_clear_history.txt", "Query executed successfully. Rows affected: " . $stmt->affected_rows . "\n", FILE_APPEND);
+    
     if ($stmt->affected_rows > 0) {
-        echo json_encode(["success" => true, "message" => "Service history cleared successfully"]);
+        echo json_encode(["success" => true, "message" => "Approved & Declined appointments cleared successfully"]);
     } else {
-        echo json_encode(["success" => false, "message" => "No appointments found to update"]);
+        echo json_encode(["success" => false, "message" => "No approved or declined appointments found to delete"]);
     }
 } else {
-    echo json_encode(["success" => false, "message" => "Database error"]);
+    file_put_contents("debug_clear_history.txt", "Error executing query: " . $stmt->error . "\n", FILE_APPEND);
+    echo json_encode(["success" => false, "message" => "Database error while clearing history"]);
 }
 
 // Close connections

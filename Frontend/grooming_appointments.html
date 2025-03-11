@@ -217,7 +217,7 @@
       });
 
       function fetchAppointments() {
-        fetch("http://192.168.1.9/backend/fetch_all_appointments.php")
+        fetch("http://192.168.1.65/backend/fetch_all_appointments.php")
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
@@ -294,25 +294,34 @@
       }
 
       function updateStatus(appointmentId, newStatus) {
-        fetch("http://192.168.1.9/backend/update_appointment_status.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            appointment_id: appointmentId,
-            status: newStatus,
-          }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.success) {
-              alert("Status updated successfully!");
-              fetchAppointments(); // Refresh the table
-            } else {
-              alert("Error updating status.");
-            }
-          })
-          .catch((error) => console.error("Error updating status:", error));
+  const requestBody = {
+    id: appointmentId, // ✅ Now using `id`
+    status: newStatus,
+  };
+
+  console.log("📡 Sending API Request:", requestBody); // ✅ Log request payload
+
+  fetch("http://192.168.1.65/backend/update_appointment_status.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(requestBody),
+  })
+    .then((response) => response.text()) // 🔍 Get raw response
+    .then((text) => {
+      console.log("📡 RAW API RESPONSE:", text); // ✅ Log raw response
+      return JSON.parse(text); // Now parse as JSON
+    })
+    .then((data) => {
+      if (data.success) {
+        alert("✅ Status updated successfully!");
+        fetchAppointments(); // Refresh the table
+      } else {
+        alert("❌ Error updating status: " + data.message);
       }
+    })
+    .catch((error) => console.error("❌ Error updating status:", error));
+}
+
     </script>
     <script src="notification.js"></script>
   </body>

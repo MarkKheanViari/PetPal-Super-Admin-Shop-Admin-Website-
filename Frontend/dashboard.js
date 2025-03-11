@@ -69,7 +69,7 @@ let allAppointments = [];
 
 // Fetch all appointments from backend
 function fetchAllAppointments() {
-  fetch("http://192.168.1.9/backend/fetch_all_appointments.php")
+  fetch("http://192.168.1.65/backend/fetch_all_appointments.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
@@ -188,7 +188,7 @@ function renderSalesChart() {
   ========== ORDERS & PRODUCTS CODE (unchanged) ==========
 */
 function fetchOrders() {
-  fetch("http://192.168.1.9/backend/fetch_orders.php")
+  fetch("http://192.168.1.65/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       const ordersContainer = document.getElementById("dashboardOrdersContainer");
@@ -236,7 +236,7 @@ function fetchOrders() {
 
 
 function fetchProducts() {
-  fetch("http://192.168.1.9/backend/fetch_product.php")
+  fetch("http://192.168.1.65/backend/fetch_product.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
@@ -286,7 +286,7 @@ function createProductElement(product) {
 let allNotifications = [];
 
 function fetchOrderNotifications() {
-  return fetch("http://192.168.1.9/backend/fetch_orders.php")
+  return fetch("http://192.168.1.65/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success && Array.isArray(data.orders)) {
@@ -308,7 +308,7 @@ function fetchOrderNotifications() {
 
 function fetchAppointmentNotifications() {
   const groomingPromise = fetch(
-    "http://192.168.1.9/backend/fetch_grooming_appointments.php"
+    "http://192.168.1.65/backend/fetch_grooming_appointments.php"
   )
     .then((response) => response.json())
     .then((data) => {
@@ -327,7 +327,7 @@ function fetchAppointmentNotifications() {
     });
 
   const vetPromise = fetch(
-    "http://192.168.1.9/backend/fetch_veterinary_appointments.php"
+    "http://192.168.1.65/backend/fetch_veterinary_appointments.php"
   )
     .then((response) => response.json())
     .then((data) => {

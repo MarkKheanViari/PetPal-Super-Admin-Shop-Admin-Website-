@@ -1,95 +1,63 @@
 <?php
-header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-include 'db.php'; // Database connection
+include 'db.php'; // Ensure this file connects to the database
 
-$response = array();
-
-// Check if request is POST
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    $response["success"] = false;
-    $response["message"] = "Invalid request method";
-    echo json_encode($response);
-    exit();
-}
-
-// Read JSON input
+// Get the JSON input
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Validate required fields except address & phone_number
-$requiredFields = ["mobile_user_id", "name", "pet_name", "pet_breed", "service_type", "service_name", "appointment_date", "payment_method"];
-foreach ($requiredFields as $field) {
-    if (empty($data[$field])) {
-        $response["success"] = false;
-        $response["message"] = "Missing required field: $field";
-        echo json_encode($response);
-        exit();
-    }
-}
+// Debugging: Log request data
+file_put_contents("debug_schedule_appointment.txt", print_r($data, true), FILE_APPEND);
 
-// Assign values
-$mobile_user_id = intval($data["mobile_user_id"]);
-$name = $conn->real_escape_string($data["name"]);
-$pet_name = $conn->real_escape_string($data["pet_name"]);
-$pet_breed = $conn->real_escape_string($data["pet_breed"]);
-$service_type = $conn->real_escape_string($data["service_type"]);
-$service_name = $conn->real_escape_string($data["service_name"]);
-$notes = isset($data["notes"]) ? $conn->real_escape_string($data["notes"]) : "";
-$appointment_date = $conn->real_escape_string($data["appointment_date"]);
-$payment_method = $conn->real_escape_string($data["payment_method"]);
-
-// Default Address & Phone Number (Empty for now)
-$address = isset($data["address"]) ? $conn->real_escape_string($data["address"]) : "";
-$phone_number = isset($data["phone_number"]) ? $conn->real_escape_string($data["phone_number"]) : "";
-
-// 🔹 Fetch Address & Contact Number from `mobile_users` if empty
-if (empty($address) || empty($phone_number)) {
-    $query = "SELECT location, contact_number FROM mobile_users WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $mobile_user_id);
-    $stmt->execute();
-    $stmt->bind_result($db_location, $db_contact_number);
-    $stmt->fetch();
-    $stmt->close();
-
-    if (empty($address)) {
-        $address = $db_location;
-    }
-    if (empty($phone_number)) {
-        $phone_number = $db_contact_number;
-    }
-}
-
-// SQL Query to insert into appointments table
-$sql = "INSERT INTO appointments (mobile_user_id, name, address, phone_number, pet_name, pet_breed, service_type, service_name, notes, appointment_date, payment_method, status)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Pending')";
-
-$stmt = $conn->prepare($sql);
-if ($stmt === false) {
-    $response["success"] = false;
-    $response["message"] = "Database error: " . $conn->error;
-    echo json_encode($response);
+// Check required fields
+if (!isset($data['mobile_user_id'], $data['service_type'], $data['service_name'], $data['name'], $data['address'], 
+           $data['phone_number'], $data['pet_name'], $data['pet_breed'], $data['appointment_date'], $data['payment_method'])) {
+    echo json_encode(["success" => false, "message" => "Missing required fields"]);
     exit();
 }
 
-// Bind parameters and execute
-$stmt->bind_param("issssssssss", $mobile_user_id, $name, $address, $phone_number, $pet_name, $pet_breed, $service_type, $service_name, $notes, $appointment_date, $payment_method);
+$mobileUserId = $data['mobile_user_id'];
+$serviceType = $data['service_type'];
+$serviceName = $data['service_name'];
+$name = $data['name'];
+$address = $data['address'];
+$phoneNumber = $data['phone_number'];
+$petName = $data['pet_name'];
+$petBreed = $data['pet_breed'];
+$appointmentDate = $data['appointment_date'];
+$paymentMethod = $data['payment_method'];
+$notes = $data['notes'] ?? "";
 
-if ($stmt->execute()) {
-    $response["success"] = true;
-    $response["message"] = "Appointment scheduled successfully";
-    $response["appointment_id"] = $stmt->insert_id;
-} else {
-    $response["success"] = false;
-    $response["message"] = "Failed to schedule appointment: " . $stmt->error;
+// ✅ Insert into `appointments`
+$query = "INSERT INTO appointments (mobile_user_id, service_type, service_name, name, address, phone_number, pet_name, pet_breed, appointment_date, payment_method, notes, status) 
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Pending')";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("issssssssss", $mobileUserId, $serviceType, $serviceName, $name, $address, $phoneNumber, $petName, $petBreed, $appointmentDate, $paymentMethod, $notes);
+
+if (!$stmt->execute()) {
+    echo json_encode(["success" => false, "message" => "Database error: Could not insert into appointments"]);
+    exit();
 }
 
-$stmt->close();
-$conn->close();
+// ✅ Insert into `mobile_appointments`
+$queryMobile = "INSERT INTO mobile_appointments (mobile_user_id, service_type, service_name, name, address, phone_number, pet_name, pet_breed, appointment_date, payment_method, notes, status) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Pending')";
+$stmtMobile = $conn->prepare($queryMobile);
+$stmtMobile->bind_param("issssssssss", $mobileUserId, $serviceType, $serviceName, $name, $address, $phoneNumber, $petName, $petBreed, $appointmentDate, $paymentMethod, $notes);
 
-// Return JSON response
-echo json_encode($response);
+if (!$stmtMobile->execute()) {
+    echo json_encode(["success" => false, "message" => "Database error: Could not insert into mobile_appointments"]);
+    exit();
+}
+
+// ✅ Success response
+echo json_encode(["success" => true, "message" => "Appointment scheduled successfully"]);
+
+// Close connections
+$stmt->close();
+$stmtMobile->close();
+$conn->close();
 ?>
