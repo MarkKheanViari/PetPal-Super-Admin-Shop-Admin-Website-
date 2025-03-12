@@ -28,8 +28,8 @@ $cartItems = [];
 while ($row = $result->fetch_assoc()) {
     // ✅ Ensure full image URL & handle missing images
     $row['image'] = !empty($row['image']) 
-        ? "http://192.168.1.3/backend/uploads/" . $row['image'] 
-        : "http://192.168.1.3/backend/uploads/default.jpg";
+        ? "http://192.168.1.65/backend/uploads/" . $row['image'] 
+        : "http://192.168.1.65/backend/uploads/default.jpg";
 
     $cartItems[] = $row;
 }

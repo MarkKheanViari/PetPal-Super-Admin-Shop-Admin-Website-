@@ -85,16 +85,25 @@ $stmt->close();
 
 error_log("✅ Order Inserted: ID $order_id");
 
-// ✅ Step 4: Insert Cart Items & Update Stock
+// ✅ Step 4: Insert Cart Items with Name, Image, and Description, and `mobile_user_id`
 foreach ($data['cart_items'] as $item) {
+    if (!isset($item['product_id'], $item['quantity'], $item['price'], $item['name'], $item['image'], $item['description'])) {
+        echo json_encode(["success" => false, "message" => "❌ Missing fields in cart_items"]);
+        exit();
+    }
+
     $product_id = $item['product_id'];
     $quantity = $item['quantity'];
     $price = $item['price'];
+    $name = $item['name'];
+    $image = $item['image'];
+    $description = $item['description'];
 
-    error_log("🛒 Adding Item - Product: $product_id, Quantity: $quantity, Price: $price");
+    error_log("🛒 Adding Item - Product: $product_id, Name: $name, Image: $image, Description: $description, Quantity: $quantity, Price: $price");
 
-    // ✅ Insert into `order_items`
-    $itemQuery = "INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)";
+    // ✅ Insert into `order_items` including `mobile_user_id`
+    $itemQuery = "INSERT INTO order_items (order_id, mobile_user_id, product_id, name, image, description, quantity, price) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $itemStmt = $conn->prepare($itemQuery);
 
     if (!$itemStmt) {
@@ -102,7 +111,7 @@ foreach ($data['cart_items'] as $item) {
         exit();
     }
 
-    $itemStmt->bind_param("iiid", $order_id, $product_id, $quantity, $price);
+    $itemStmt->bind_param("iiisssid", $order_id, $mobile_user_id, $product_id, $name, $image, $description, $quantity, $price);
 
     if (!$itemStmt->execute()) {
         echo json_encode(["success" => false, "message" => "❌ Order Item Insert Error: " . $itemStmt->error]);
