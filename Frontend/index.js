@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   
       try {
-        const response = await fetch("http://192.168.1.65/backend/update_product.php", {
+        const response = await fetch("http://192.168.1.3/backend/update_product.php", {
           method: "POST",
           body: formData,
         });
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("shop_owner_id", localStorage.getItem("shop_owner_id"));
   
       try {
-        const response = await fetch("http://192.168.1.65/backend/add_product.php", {
+        const response = await fetch("http://192.168.1.3/backend/add_product.php", {
           method: "POST",
           body: formData,
         });
@@ -193,7 +193,7 @@ function fetchProducts() {
     return;
   }
 
-  const url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
+  const url = `http://192.168.1.3/backend/fetch_product.php?shop_owner_id=${shopOwnerId}&category=${category}`;
   console.log(`Fetching products from: ${url}`);
 
   fetch(url)
@@ -262,29 +262,44 @@ window.onclick = function (event) {
   }
 };
 
-function deleteProduct(productId) {
-  if (!confirm("Are you sure you want to delete this product?")) return;
+async function deleteProduct(productId) {
+  // Show confirmation dialog and wait for the user's response.
+  const confirmed = await confirm("Are you sure you want to delete this product?");
+  if (!confirmed) {
+    return; // If the user clicks Cancel, exit without deleting.
+  }
 
-  fetch("delete_product.php", {
+  const shopOwnerId = localStorage.getItem("shop_owner_id");
+
+  fetch("http://192.168.1.3/backend/delete_product.php", {
     method: "POST",
-    body: JSON.stringify({ product_id: productId }),
     headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      product_id: parseInt(productId, 10),
+      shop_owner_id: parseInt(shopOwnerId, 10)
+    }),
   })
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
         alert("✅ Product deleted successfully!");
-        displayProducts(data.products); // Refresh product list
+        // Optionally, remove the product from the UI directly:
+        document.getElementById(`product-${productId}`)?.remove();
+        // Or refresh the product list:
+        setTimeout(fetchProducts, 1000);
       } else {
-        alert("❌ Error deleting product: " + data.message);
+        alert("❌ Failed to delete product: " + data.error);
       }
     })
-    .catch((error) => console.error("Error:", error));
-
-  // Hide the menu after clicking delete
-  const menu = document.getElementById(`menu-${productId}`);
-  if (menu) menu.style.display = "none";
+    .catch((error) => {
+      console.error("❌ Error deleting product:", error);
+      alert("❌ Failed to delete product: " + error.message);
+    });
 }
+
+
+
+
 
 function editProduct(id, name, price, description, quantity, image, category) {
   console.log(`🔍 Editing Product ID: ${id}`);
@@ -385,7 +400,7 @@ function saveEdit() {
 function viewOrderDetails(orderId) {
   console.log("🔍 Fetching Order Details for Order ID:", orderId); // ✅ Check if function runs
 
-  fetch(`http://192.168.1.65/backend/fetch_order_details.php?order_id=${orderId}`)
+  fetch(`http://192.168.1.3/backend/fetch_order_details.php?order_id=${orderId}`)
     .then(response => response.json())
     .then(data => {
       console.log("✅ Order Data Received:", data); // ✅ See API response
@@ -429,7 +444,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchOrders() {
-  fetch("http://192.168.1.65/backend/fetch_orders.php")
+  fetch("http://192.168.1.3/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       const ordersContainer = document.getElementById("ordersContainer");
@@ -462,34 +477,30 @@ function fetchOrders() {
     .catch((error) => console.error("❌ ERROR Fetching Orders:", error));
 }
 
-function deleteProduct(productId) {
-  if (!confirm("Are you sure you want to delete this product?")) {
-    return;
+async function deleteProduct(productId) {
+  // Show confirmation dialog and wait for the user's response.
+  const confirmed = await confirm("Are you sure you want to delete this product?");
+  if (!confirmed) {
+    return; // If the user clicks Cancel, exit without deleting.
   }
 
   const shopOwnerId = localStorage.getItem("shop_owner_id");
 
-  fetch("http://192.168.1.65/backend/delete_product.php", {
+  fetch("http://192.168.1.3/backend/delete_product.php", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       product_id: parseInt(productId, 10),
-      shop_owner_id: parseInt(shopOwnerId, 10),
+      shop_owner_id: parseInt(shopOwnerId, 10)
     }),
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Response received:", data);
       if (data.success) {
         alert("✅ Product deleted successfully!");
+        // Optionally, remove the product from the UI directly:
         document.getElementById(`product-${productId}`)?.remove();
-
-        fetch("http://192.168.1.65/backend/fetch_product.php?refresh=true").then(
-          () => console.log("Mobile app will fetch latest products")
-        );
-
+        // Or refresh the product list:
         setTimeout(fetchProducts, 1000);
       } else {
         alert("❌ Failed to delete product: " + data.error);
@@ -500,6 +511,7 @@ function deleteProduct(productId) {
       alert("❌ Failed to delete product: " + error.message);
     });
 }
+
 
 function showToast(message, isError = false) {
   const toast = document.getElementById("toast");
@@ -526,7 +538,7 @@ function filterProducts() {
     return;
   }
 
-  let url = `http://192.168.1.65/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`;
+  let url = `http://192.168.1.3/backend/fetch_product.php?shop_owner_id=${shopOwnerId}`;
   if (category !== "all") {
     url += `&category=${encodeURIComponent(category)}`;
   }
@@ -635,7 +647,7 @@ function toggleEditForm(show) {
 function showProductPreview(product) {
   let imagePath = product.image;
   if (!imagePath.startsWith("http")) {
-      imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
+      imagePath = `http://192.168.1.3/backend/uploads/${imagePath}`;
   }
   document.querySelector("img").src = imagePath;
 
@@ -696,7 +708,7 @@ function displayProducts(products) {
 
     let imagePath = product.image;
     if (!imagePath.startsWith("http") && !imagePath.startsWith("/")) {
-      imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
+      imagePath = `http://192.168.1.3/backend/uploads/${imagePath}`;
     }
 
     productItem.innerHTML = `
@@ -736,3 +748,54 @@ function displayProducts(products) {
 
   console.log("✅ Products displayed successfully.");
 }
+
+// Initialize custom modal dialogs for alert and confirm
+(function () {
+  // Create modal overlay element if it doesn't exist
+  const modalOverlay = document.createElement("div");
+  modalOverlay.id = "customModalOverlay";
+  modalOverlay.innerHTML = `
+    <div id="customModal">
+      <p id="customModalMessage"></p>
+      <div id="customModalButtons"></div>
+    </div>
+  `;
+  document.body.appendChild(modalOverlay);
+
+  // Override window.alert to use custom modal
+  window.alert = function(message) {
+    return new Promise(resolve => {
+      const modalMessage = document.getElementById("customModalMessage");
+      const modalButtons = document.getElementById("customModalButtons");
+      modalMessage.textContent = message;
+      modalButtons.innerHTML = `<button id="customOkButton">OK</button>`;
+      modalOverlay.style.display = "flex";
+      document.getElementById("customOkButton").onclick = function() {
+        modalOverlay.style.display = "none";
+        resolve();
+      };
+    });
+  };
+
+  // Override window.confirm to use custom modal, returns true if OK, false if Cancel.
+  window.confirm = function(message) {
+    return new Promise(resolve => {
+      const modalMessage = document.getElementById("customModalMessage");
+      const modalButtons = document.getElementById("customModalButtons");
+      modalMessage.textContent = message;
+      modalButtons.innerHTML = `
+        <button id="customOkButton">OK</button>
+        <button id="customCancelButton">Cancel</button>
+      `;
+      modalOverlay.style.display = "flex";
+      document.getElementById("customOkButton").onclick = function() {
+        modalOverlay.style.display = "none";
+        resolve(true);
+      };
+      document.getElementById("customCancelButton").onclick = function() {
+        modalOverlay.style.display = "none";
+        resolve(false);
+      };
+    });
+  };
+})();

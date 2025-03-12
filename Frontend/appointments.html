@@ -5,6 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PetPal - All Appointments</title>
     <link rel="stylesheet" href="appointments.css" />
+    <style>
+      /* Custom Modal Styles for Dialogs */
+      #customModalOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+      }
+      #customModal {
+        background: #fff;
+        border: 2px solid #ff8c00;
+        border-radius: 8px;
+        padding: 20px;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+      #customModal p {
+        margin: 20px 0;
+      }
+      #customModal button {
+        background-color: #ff8c00;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        margin: 0 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      #customModal button:hover {
+        background-color: #e37f00;
+      }
+    </style>
+    <script>
+      (function () {
+        // Create modal overlay element if it doesn't exist
+        const modalOverlay = document.createElement("div");
+        modalOverlay.id = "customModalOverlay";
+        modalOverlay.innerHTML = `
+          <div id="customModal">
+            <p id="customModalMessage"></p>
+            <div id="customModalButtons"></div>
+          </div>
+        `;
+        document.addEventListener("DOMContentLoaded", function () {
+          document.body.appendChild(modalOverlay);
+        });
+  
+        // Override window.alert to use custom modal
+        window.alert = function(message) {
+          return new Promise(resolve => {
+            const modalMessage = document.getElementById("customModalMessage");
+            const modalButtons = document.getElementById("customModalButtons");
+            modalMessage.textContent = message;
+            modalButtons.innerHTML = `<button id="customOkButton">OK</button>`;
+            modalOverlay.style.display = "flex";
+            document.getElementById("customOkButton").onclick = function() {
+              modalOverlay.style.display = "none";
+              resolve();
+            };
+          });
+        };
+  
+        // Override window.confirm to use custom modal, returns true (Yes) or false (No)
+        window.confirm = function(message) {
+          return new Promise(resolve => {
+            const modalMessage = document.getElementById("customModalMessage");
+            const modalButtons = document.getElementById("customModalButtons");
+            modalMessage.textContent = message;
+            modalButtons.innerHTML = `
+              <button id="customYesButton">Yes</button>
+              <button id="customNoButton">No</button>
+            `;
+            modalOverlay.style.display = "flex";
+            document.getElementById("customYesButton").onclick = function() {
+              modalOverlay.style.display = "none";
+              resolve(true);
+            };
+            document.getElementById("customNoButton").onclick = function() {
+              modalOverlay.style.display = "none";
+              resolve(false);
+            };
+          });
+        };
+      })();
+    </script>
   </head>
   <body>
     <!-- Navbar -->
@@ -161,9 +255,7 @@
     <div id="addServiceModal" class="modal">
       <div class="modal-content">
         <div class="service-head">
-          <h2 id="addServiceModalTitle">
-            Add New Service
-          </h2>
+          <h2 id="addServiceModalTitle">Add New Service</h2>
           <button class="cancel-btn" onclick="closeModal('addServiceModal')">
             &times;
           </button>
@@ -263,7 +355,7 @@
 
       (function () {
         // Base URL for API endpoints
-        const apiBaseUrl = "http://192.168.1.65/backend/";
+        const apiBaseUrl = "http://192.168.1.3/backend/";
 
         // Service options arrays
         const groomingServicesList = [

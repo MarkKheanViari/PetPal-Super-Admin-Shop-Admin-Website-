@@ -99,3 +99,105 @@ Incoming request: Array
 )
 
 Processing update for ID: 2 with status: Declined
+Incoming request: 
+❌ Missing required fields
+Incoming request: Array
+(
+    [id] => 6
+    [status] => Declined
+)
+
+Processing update for ID: 6 with status: Declined
+Incoming request: 
+❌ Missing required fields
+Incoming request: Array
+(
+    [id] => 6
+    [status] => Approved
+)
+
+Processing update for ID: 6 with status: Approved
+Incoming request: 
+❌ Missing required fields
+Incoming request: Array
+(
+    [id] => 6
+    [status] => Declined
+)
+
+Processing update for ID: 6 with status: Declined
+Incoming request: 
+❌ Missing required fields
+Incoming request: Array
+(
+    [id] => 6
+    [status] => Declined
+)
+
+Processing update for ID: 6 with status: Declined
+❌ Error: No rows were updated in `appointments`.
+Incoming request: 
+❌ Missing required fields
+Incoming request: Array
+(
+    [id] => 5
+    [status] => Declined
+)
+
+Processing update for ID: 5 with status: Declined
+Incoming request: 
+❌ Missing required fields
+Incoming request: Array
+(
+    [id] => 6
+    [status] => Declined
+)
+
+Processing update for ID: 6 with status: Declined
+❌ Error: No rows were updated in `appointments`.
+Incoming request: 
+❌ Missing required fields
+Incoming request: Array
+(
+    [id] => 6
+    [status] => Approved
+)
+
+Processing update for ID: 6 with status: Approved
+Incoming request: 
+❌ Missing required fields
+Incoming request: Array
+(
+    [id] => 6
+    [status] => Declined
+)
+
+Processing update for ID: 6 with status: Declined
+Incoming request: 
+❌ Missing required fields
+Incoming request: Array
+(
+    [id] => 6
+    [status] => Approved
+)
+
+Processing update for ID: 6 with status: Approved
+Incoming request: 
+❌ Missing required fields
+Incoming request: Array
+(
+    [id] => 5
+    [status] => Approved
+)
+
+Processing update for ID: 5 with status: Approved
+Incoming request: 
+❌ Missing required fields
+Incoming request: Array
+(
+    [id] => 6
+    [status] => Approved
+)
+
+Processing update for ID: 6 with status: Approved
+❌ Error: No rows were updated in `appointments`.

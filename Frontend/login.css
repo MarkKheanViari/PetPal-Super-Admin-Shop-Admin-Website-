@@ -4,116 +4,117 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
-}
-
-body, html {
+  }
+  
+  /* Make the body fill the viewport height */
+  html, body {
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff; /* White background */
-}
-
-.container {
+    background: #fff;
+  }
+  
+  /* Container takes full viewport, split into 2 columns */
+  .container {
     width: 100vw;
     height: 100vh;
     display: flex;
-}
-
-/* Left Section - Login Form */
-.login-section {
+  }
+  
+  /* Left Section - Login Form */
+  .login-section {
     width: 50%;
-    display: flex;
-    flex-direction: column;
+    display: flex;                /* Use flex to center the container */
     justify-content: center;
+    align-items: center;
+    background: #fff;
+  }
+  
+  /* A wrapper to control the form’s max width and spacing */
+  .login-container {
+    width: 100%;
+    max-width: 400px;            /* Limit how wide the form can grow */
     padding: 40px;
-}
-
-.login-section h1 {
+  }
+  
+  /* Headings, toggles, etc. */
+  .login-container h1 {
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 10px;
     color: #FF6600; /* Orange Theme */
-}
-
-.toggle-container {
+  }
+  
+  .toggle-container {
     text-align: right;
     margin-bottom: 20px;
-}
-
-.toggle-container a {
+  }
+  
+  .toggle-container a {
     color: #FF6600; /* Orange Theme */
     text-decoration: none;
     font-size: 14px;
-}
-
-.toggle-container a:hover {
+  }
+  
+  .toggle-container a:hover {
     text-decoration: underline;
-}
-
-/* Form Styling */
-form {
+  }
+  
+  /* Form elements */
+  form {
     display: flex;
     flex-direction: column;
-}
-
-label {
+    align-items: flex-start; /* Align everything to the left edge */
+  }
+  
+  label {
     font-size: 16px;
     font-weight: bold;
     color: #333;
-}
-
-input {
+    margin: 10px 0 5px 0; /* spacing above label, less below */
+  }
+  
+  input {
     width: 100%;
     padding: 12px;
-    margin: 10px 0;
+    margin-bottom: 5px;   /* so error message can sit right below */
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
-}
-
-button {
-    background: #FF6600; /* Orange Button */
+  }
+  
+  button {
+    width: 100%;          /* Make button same width as input */
+    background: #FF6600;  /* Orange Button */
     color: white;
     padding: 12px;
+    margin-top: 10px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     font-weight: bold;
-}
-
-button:hover {
+    text-align: center;
+  }
+  
+  button:hover {
     background: #CC5500; /* Darker Orange */
-}
-
-/* Right Section - Logo */
-.logo-section {
+  }
+  
+  /* Right Section - Logo */
+  .logo-section {
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #FFF3E0; /* Light Orange Background */
-}
-
-.logo-section img {
+  }
+  
+  .logo-section img {
     width: 120px;
     height: auto;
-}
-
-/* Demo Credentials */
-.demo-credentials {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #555;
-}
-
-.demo-credentials span {
-    font-weight: bold;
-    color: #FF6600; /* Orange Theme */
-}
-
-.dialogue {
+  }
+  
+  /* If you use any dialogue or toast messages */
+  .dialogue {
     position: fixed;
     top: 20px;
     left: 50%;

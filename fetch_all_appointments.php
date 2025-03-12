@@ -6,15 +6,34 @@ header('Content-Type: application/json');
 
 $response = ["success" => false];
 
-// Fetch all appointments
-$sql = "SELECT a.id, a.name, a.pet_name, a.pet_breed, a.service_type, 
-               a.service_name, a.appointment_date, s.price, a.status 
-        FROM appointments a 
-        JOIN services s ON a.service_name = s.service_name";
+// Include columns from `mobile_appointments` (alias `m`)
+$sql = "
+    SELECT 
+        a.id,
+        a.name,
+        a.pet_name,
+        a.pet_breed,
+        a.service_type,
+        a.service_name,
+        a.appointment_date,
+        s.price,
+        a.status,
+        -- Extra fields from mobile_appointments
+        m.address,
+        m.phone_number,
+        m.notes,
+        m.payment_method
+    FROM appointments AS a
+    JOIN services AS s 
+        ON a.service_name = s.service_name
+    LEFT JOIN mobile_appointments AS m
+        ON a.id = m.id
+    ORDER BY a.appointment_date DESC
+";
 
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
+if ($result && $result->num_rows > 0) {
     $appointments = [];
     while ($row = $result->fetch_assoc()) {
         $appointments[] = $row;
@@ -26,4 +45,5 @@ if ($result->num_rows > 0) {
 }
 
 echo json_encode($response);
+$conn->close();
 ?>

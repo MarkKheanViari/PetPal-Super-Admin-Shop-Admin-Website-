@@ -3,25 +3,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const toggleRole = document.getElementById("toggleRole");
   const loginTitle = document.getElementById("loginTitle");
   const container = document.querySelector(".container");
-  const dialogueBox = document.getElementById("dialogueBox"); // a dialogue container in your HTML
+
+  // Error containers for each input
+  const emailError = document.getElementById("emailError");
+  const passwordError = document.getElementById("passwordError");
+
+  // Show/Hide password elements
+  const passwordInput = document.getElementById("password");
+  const togglePasswordBtn = document.getElementById("togglePassword");
 
   let isSuperAdmin = false; // Default role is Shop Owner
 
-  // Function to show dialogue messages with different styles based on type (e.g., "success", "error", "info")
-  // The autoHide parameter controls whether the dialogue should auto-disappear.
-  function showDialogue(message, type = "info", autoHide = true) {
-    dialogueBox.textContent = message;
-    dialogueBox.className = "";
-    dialogueBox.classList.add("dialogue", type);
-    dialogueBox.style.display = "block";
-
-    if (autoHide) {
-      setTimeout(() => {
-        dialogueBox.style.display = "none";
-      }, 3000);
-    }
-  }
-
+  // Clear error message when user types
+  document.getElementById("email").addEventListener("input", function () {
+    emailError.textContent = "";
+  });
+  passwordInput.addEventListener("input", function () {
+    passwordError.textContent = "";
+  });
+  
   // Toggle between Shop Owner and SuperAdmin login
   toggleRole.addEventListener("click", function (event) {
     event.preventDefault();
@@ -43,15 +43,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Toggle show/hide password functionality within the input field
+  togglePasswordBtn.addEventListener("click", function () {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      togglePasswordBtn.textContent = "Hide";
+    } else {
+      passwordInput.type = "password";
+      togglePasswordBtn.textContent = "Show";
+    }
+  });
+
   // Handle login form submission
   loginForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const password = passwordInput.value.trim();
 
-    if (!email || !password) {
-      showDialogue("⚠️ Please enter both email and password.", "error");
+    // Clear previous error messages
+    emailError.textContent = "";
+    passwordError.textContent = "";
+
+    let hasError = false;
+
+    if (!email) {
+      emailError.textContent = "⚠️ Please enter your email.";
+      hasError = true;
+    }
+    if (!password) {
+      passwordError.textContent = "⚠️ Please enter your password.";
+      hasError = true;
+    }
+    if (hasError) {
       return;
     }
 
@@ -63,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        "http://192.168.1.65/backend/authenticate.php",
+        "http://192.168.1.3/backend/authenticate.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -79,39 +103,46 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("🔍 Login Response:", result);
 
       if (result.success) {
-        // Show success message without auto hiding
-        showDialogue("✅ Login Successful!", "success", false);
-
-        // Store shop owner details
+        // Successful login: store credentials as before
         if (result.shop_owner_id) {
           localStorage.setItem("shop_owner_id", result.shop_owner_id);
         } else {
           console.error("❌ Error: shop_owner_id is missing in response.");
         }
-        localStorage.setItem("shop_owner_token", result.token || ""); // Store token
+        localStorage.setItem("shop_owner_token", result.token || "");
         localStorage.setItem("shop_owner_username", result.username || email);
-
+      
         console.log("🔹 Stored Values:");
         console.log("shop_owner_id:", localStorage.getItem("shop_owner_id"));
-        console.log(
-          "shop_owner_token:",
-          localStorage.getItem("shop_owner_token")
-        );
-        console.log(
-          "shop_owner_username:",
-          localStorage.getItem("shop_owner_username")
-        );
-
-        // Delay redirection so the user sees the message until dashboard loads.
+        console.log("shop_owner_token:", localStorage.getItem("shop_owner_token"));
+        console.log("shop_owner_username:", localStorage.getItem("shop_owner_username"));
+      
+        // Display the redesigned popup overlay
+        const popupOverlay = document.getElementById("popupOverlay");
+        popupOverlay.style.display = "flex";
+      
+        // Delay redirection so user can see the popup (adjust as needed)
         setTimeout(() => {
           window.location.href = result.redirect;
         }, 1500);
-      } else {
-        showDialogue("❌ Error: " + result.message, "error");
+      }
+      
+       else {
+        // Determine where to display error based on error message content.
+        const message = result.message.toLowerCase();
+        if (message.includes("email") || message.includes("user")) {
+          emailError.textContent = " " + result.message;
+        } else if (message.includes("password")) {
+          passwordError.textContent = " " + result.message;
+        } else {
+          // Default error below the password input
+          passwordError.textContent = " " + result.message;
+        }
       }
     } catch (error) {
       console.error("❌ Login failed:", error);
-      showDialogue("❌ Error connecting to server. Please try again.", "error");
+      // Display connection error below the password input by default.
+      passwordError.textContent = "❌ Error connecting to server. Please try again.";
     }
   });
 });
