@@ -6,7 +6,7 @@ let currentFilter = "all"; // Track active filter
 async function fetchProducts() {
   try {
     const response = await fetch(
-      "http://192.168.1.3/backend/Frontend/SuperAdmin/fetch_products.php"
+      "http://192.168.1.65/backend/Frontend/SuperAdmin/fetch_products.php"
     );
     const data = await response.json();
 

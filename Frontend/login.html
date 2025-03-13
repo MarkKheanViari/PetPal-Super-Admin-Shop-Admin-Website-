@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login - SuperAdmin & Shop Owner</title>
   <link rel="stylesheet" href="login.css" />
-  <!-- Inline styles for password toggle; move to CSS if you prefer -->
+  <!-- Inline styles for password toggle and popup overlay -->
   <style>
     .password-container {
       position: relative;
@@ -23,7 +23,7 @@
       transform: translateY(-50%);
       cursor: pointer;
       user-select: none;
-      color: #007BFF;
+      color: #FF6600;
       font-size: 0.9em;
     }
     .error-message {
@@ -37,70 +37,67 @@
       content: "";
       margin-right: 5px;
     }
-    /* Large Popup Overlay */
-/* Redesigned Popup Overlay */
-.popup-overlay {
-  position: fixed;
-  top: 0; 
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* dark overlay */
-  display: none;               /* hidden by default */
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
+    /* Redesigned Popup Overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* dark overlay */
+      display: none; /* hidden by default */
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
 
-/* Popup Content with animation */
-.popup-content {
-  background: #fff;
-  width: 90%;
-  max-width: 400px;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-  overflow: hidden;
-  animation: popupFadeIn 0.5s ease-out;
-}
+    /* Popup Content with animation */
+    .popup-content {
+      background: #fff;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      overflow: hidden;
+      animation: popupFadeIn 0.5s ease-out;
+    }
 
-/* Header with accent background */
-.popup-header {
-  background: #ff8c00; /* green success color */
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-}
+    /* Header with accent background */
+    .popup-header {
+      background: #ff8c00; /* green success color */
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
 
-.popup-header h2 {
-  margin: 0;
-  font-size: 24px;
-}
+    .popup-header h2 {
+      margin: 0;
+      font-size: 24px;
+    }
 
-/* Body styling */
-.popup-body {
-  padding: 30px 20px;
-  text-align: center;
-}
+    /* Body styling */
+    .popup-body {
+      padding: 30px 20px;
+      text-align: center;
+    }
 
-.popup-body p {
-  font-size: 18px;
-  color: #333;
-  margin: 0;
-}
+    .popup-body p {
+      font-size: 18px;
+      color: #333;
+      margin: 0;
+    }
 
-/* Animation Keyframes */
-@keyframes popupFadeIn {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-
+    /* Animation Keyframes */
+    @keyframes popupFadeIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -137,11 +134,14 @@
 
     <!-- Right Section - Logo -->
     <div class="logo-section">
-      <img src="logo.png" alt="Brand Logo" />
+      <div class="logo-container">
+        <img id="logoImage" src="Bago.png" alt="Brand Logo" />
+      </div>
     </div>
   </div>
-<!-- Redesigned Popup Overlay -->
-<div id="popupOverlay" class="popup-overlay">
+
+  <!-- Redesigned Popup Overlay -->
+  <div id="popupOverlay" class="popup-overlay">
     <div class="popup-content">
       <div class="popup-header">
         <h2>Success!</h2>
@@ -151,8 +151,7 @@
       </div>
     </div>
   </div>
-  
-  
+
   <script src="login.js"></script>
 </body>
 </html>

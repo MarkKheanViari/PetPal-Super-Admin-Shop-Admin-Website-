@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const toggleRole = document.getElementById("toggleRole");
   const loginTitle = document.getElementById("loginTitle");
   const container = document.querySelector(".container");
+  const logoImage = document.getElementById("logoImage"); // Target the logo image
 
   // Error containers for each input
   const emailError = document.getElementById("emailError");
@@ -21,25 +22,39 @@ document.addEventListener("DOMContentLoaded", function () {
   passwordInput.addEventListener("input", function () {
     passwordError.textContent = "";
   });
-  
+
   // Toggle between Shop Owner and SuperAdmin login
   toggleRole.addEventListener("click", function (event) {
     event.preventDefault();
     isSuperAdmin = !isSuperAdmin;
 
-    container.classList.remove("reverse");
-    void container.offsetWidth; // Forces reflow
-
+    // Add or remove the switch-role class to trigger the transition
     if (isSuperAdmin) {
       loginTitle.textContent = "SuperAdmin Login";
       toggleRole.textContent = "Switch to Shop Owner";
       container.classList.add("switch-role");
+
+      // Fade out the current image
+      logoImage.classList.add("fade");
+      setTimeout(() => {
+        // Change the image source after the fade-out
+        logoImage.src = "Untitled design (2).png";
+        // Fade in the new image
+        logoImage.classList.remove("fade");
+      }, 250); // Match the fade duration (half of the 0.5s transition)
     } else {
       loginTitle.textContent = "Shop Owner Login";
       toggleRole.textContent = "Switch to SuperAdmin";
+      container.classList.remove("switch-role");
+
+      // Fade out the current image
+      logoImage.classList.add("fade");
       setTimeout(() => {
-        container.classList.add("reverse");
-      }, 600);
+        // Change the image source after the fade-out
+        logoImage.src = "Bago.png";
+        // Fade in the new image
+        logoImage.classList.remove("fade");
+      }, 250); // Match the fade duration (half of the 0.5s transition)
     }
   });
 
@@ -87,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        "http://192.168.1.3/backend/authenticate.php",
+        "http://192.168.1.65/backend/authenticate.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -111,23 +126,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         localStorage.setItem("shop_owner_token", result.token || "");
         localStorage.setItem("shop_owner_username", result.username || email);
-      
+
         console.log("🔹 Stored Values:");
         console.log("shop_owner_id:", localStorage.getItem("shop_owner_id"));
         console.log("shop_owner_token:", localStorage.getItem("shop_owner_token"));
         console.log("shop_owner_username:", localStorage.getItem("shop_owner_username"));
-      
+
         // Display the redesigned popup overlay
         const popupOverlay = document.getElementById("popupOverlay");
         popupOverlay.style.display = "flex";
-      
+
         // Delay redirection so user can see the popup (adjust as needed)
         setTimeout(() => {
           window.location.href = result.redirect;
         }, 1500);
-      }
-      
-       else {
+      } else {
         // Determine where to display error based on error message content.
         const message = result.message.toLowerCase();
         if (message.includes("email") || message.includes("user")) {

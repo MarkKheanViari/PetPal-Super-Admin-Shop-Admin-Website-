@@ -23,7 +23,7 @@ document
     }
 
     try {
-      const response = await fetch("http://192.168.1.3/backend/register.php", {
+      const response = await fetch("http://192.168.1.65/backend/register.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

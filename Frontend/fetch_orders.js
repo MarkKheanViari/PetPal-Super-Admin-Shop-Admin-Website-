@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchOrders() {
-  fetch("http://192.168.1.3/backend/fetch_orders.php")
+  fetch("http://192.168.1.65/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       const ordersContainer = document.getElementById("ordersContainer");
@@ -108,7 +108,7 @@ function updateOrderStatus() {
 
   console.log(`🚀 Updating Order ${orderId} to Status: ${newStatus}`);
 
-  fetch("http://192.168.1.3/backend/update_order_status.php", {
+  fetch("http://192.168.1.65/backend/update_order_status.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
