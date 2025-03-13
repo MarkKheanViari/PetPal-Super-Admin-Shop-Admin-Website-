@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const shopOwnerForm = document.getElementById("shop-owner-form");
     const superAdminForm = document.getElementById("super-admin-form");
     const imageSection = document.querySelector(".image-section");
+    const formSection = document.querySelector(".form-section");
     const loginImage = document.getElementById("loginImage");
 
     const switchToAdmin = document.getElementById("switchToAdmin");
@@ -9,37 +10,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
     switchToAdmin.addEventListener("click", function (event) {
         event.preventDefault();
-        console.log("Switching to Super Admin form");
-    
-        // Show Super Admin Form & Hide Shop Owner Form
-        shopOwnerForm.classList.add("hidden"); // Use class to hide
-        superAdminForm.classList.remove("hidden"); // Use class to show
-    
-        // Move the image section left
+
+        // Move image left and form right
         imageSection.classList.add("move-left");
-    
-        // Change the image after transition
+        formSection.classList.add("move-right");
+
+        // Smooth fade out current form
+        shopOwnerForm.classList.add("move-left-form");
+
         setTimeout(() => {
             loginImage.src = "super-admin-login.jpg";
-        }, 250);
+            shopOwnerForm.classList.add("hidden");
+            superAdminForm.classList.remove("hidden");
+
+            // Reset animation class for smooth blending
+            formSection.classList.remove("move-left");
+            shopOwnerForm.classList.remove("move-left-form");
+        }, 400); // Reduced delay to improve blending
     });
-    
+
     switchToShopOwner.addEventListener("click", function (event) {
         event.preventDefault();
-        console.log("Switching to Shop Owner form");
-    
-        // Show Shop Owner Form & Hide Super Admin Form
-        superAdminForm.classList.add("hidden"); // Use class to hide
-        shopOwnerForm.classList.remove("hidden"); // Use class to show
-    
-        // Move the image section back
+
+        // Move image right and bring form back
         imageSection.classList.remove("move-left");
-    
-        // Change the image back
+        formSection.classList.remove("move-right");
+
+        // Smooth fade out current form
+        superAdminForm.classList.add("move-left-form");
+
         setTimeout(() => {
             loginImage.src = "shop-owner-login.jpg";
-        }, 250);
+            superAdminForm.classList.add("hidden");
+            shopOwnerForm.classList.remove("hidden");
+
+            // Reset animation class for smooth blending
+            formSection.classList.remove("move-left");
+            superAdminForm.classList.remove("move-left-form");
+        }, 400);
     });
+
+
 
     // Handle login form submission
     loginForm.addEventListener("submit", async function (event) {

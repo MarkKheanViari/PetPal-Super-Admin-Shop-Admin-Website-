@@ -11,27 +11,24 @@
     display: flex;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
 /* Image Section (60% width) */
 .image-section {
     width: 60%;
     height: 100%;
+    position: absolute;
+    right: 0;
+    transition: transform 0.2s ease-in-out;
+
 }
 
 .image-section img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image fills the section properly */
-}
-
-/* Form Section (40% width) */
-.form-section {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    object-fit: cover;
 }
 
 /* Logo */
@@ -48,7 +45,9 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 100vh; /* Make sure it fills the height */
+    left: 0;
+    height: 100vh;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .form-container {
@@ -144,4 +143,8 @@ input {
 
 .move-left {
     transform: translateX(-70%);
+}
+
+.move-right {
+    transform: translateX(150%);
 }
