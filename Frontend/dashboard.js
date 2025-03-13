@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("📢 Dashboard.js Loaded!");
 
+  fetchSalesMetrics();
+
   // --- Chibi Helper & Tooltip ---
   const chibiHelper = document.getElementById("chibi-helper");
   const tooltip = document.getElementById("chibi-tooltip");
@@ -84,6 +86,92 @@ function fetchAllAppointments() {
     .catch((error) => console.error("Error fetching appointments:", error));
 }
 
+// Fetch sales metrics for the top cards
+function fetchSalesMetrics() {
+  fetch("http://192.168.1.65/backend/fetch_orders.php")
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data.success || !Array.isArray(data.orders)) {
+        console.warn("No orders found for sales metrics.");
+        // Fallback values for cards
+        document.querySelector(".metrics .metric-card:nth-child(1) .metric-value").textContent = "₱0";
+        document.querySelector(".metrics .metric-card:nth-child(1) .metric-label").textContent = "YTD";
+        document.querySelector(".metrics .metric-card:nth-child(2) .metric-value").textContent = "N/A";
+        document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = "0%";
+        return;
+      }
+
+      // Step 1: Calculate Total Sales for Delivered Orders
+      const deliveredOrders = data.orders.filter(order => order.status === "Delivered");
+      const totalSales = deliveredOrders.reduce((sum, order) => sum + parseFloat(order.total_price || 0), 0);
+
+      // Update the first card (Total Sales) with peso sign
+      document.querySelector(".metrics .metric-card:nth-child(1) .metric-value").textContent = `₱${totalSales.toLocaleString()}`;
+      document.querySelector(".metrics .metric-card:nth-child(1) .metric-label").textContent = "YTD";
+
+      // Step 2: Calculate Top Selling Product
+      // Aggregate quantities by product_id from order items
+      const productQuantities = {};
+      data.orders.forEach(order => {
+        // Only consider items from delivered orders for top-selling product
+        if (order.status === "Delivered" && Array.isArray(order.items)) {
+          order.items.forEach(item => {
+            const productId = item.product_id;
+            const quantity = parseInt(item.quantity || 0);
+            productQuantities[productId] = (productQuantities[productId] || 0) + quantity;
+          });
+        }
+      });
+
+      // Calculate total quantity sold across all products (from delivered orders)
+      const totalQuantitySold = Object.values(productQuantities).reduce((sum, qty) => sum + qty, 0);
+
+      // Find the product with the highest quantity
+      let topProductId = null;
+      let topProductName = "N/A";
+      let maxQuantity = 0;
+      for (const [productId, quantity] of Object.entries(productQuantities)) {
+        if (quantity > maxQuantity) {
+          maxQuantity = quantity;
+          topProductId = productId;
+        }
+      }
+
+      // Calculate the percentage for the top product
+      const topProductPercentage = totalQuantitySold > 0 ? ((maxQuantity / totalQuantitySold) * 100).toFixed(2) : 0;
+
+      // Find the product name from the order items
+      if (topProductId) {
+        let topProductFound = false;
+        for (const order of data.orders) {
+          if (topProductFound) break;
+          if (Array.isArray(order.items)) {
+            const topProductItem = order.items.find(item => item.product_id == topProductId);
+            if (topProductItem) {
+              topProductName = topProductItem.product_name || "Unknown Product";
+              topProductFound = true;
+            }
+          }
+        }
+      }
+
+      // Update the second card (Top Selling Product)
+      document.querySelector(".metrics .metric-card:nth-child(2) .metric-value").textContent = topProductName;
+      document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = `${topProductPercentage}%`;
+
+      // Third card (Monthly Growth) - On standby, leave as is
+      // document.querySelector(".metrics .metric-card:nth-child(3) .metric-value").textContent = "20%";
+      // document.querySelector(".metrics .metric-card:nth-child(3) .metric-label").textContent = "2%";
+    })
+    .catch((error) => {
+      console.error("Error fetching sales metrics:", error);
+      // Fallback values for cards on error
+      document.querySelector(".metrics .metric-card:nth-child(1) .metric-value").textContent = "₱0";
+      document.querySelector(".metrics .metric-card:nth-child(1) .metric-label").textContent = "YTD";
+      document.querySelector(".metrics .metric-card:nth-child(2) .metric-value").textContent = "N/A";
+      document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = "0%";
+    });
+}
 // Filter the appointments by service type (All, Grooming, Veterinary)
 function applyAppointmentsFilter() {
   const serviceFilter = document.getElementById("serviceFilter");
@@ -145,43 +233,79 @@ function displayAppointmentCards(appointments) {
   ========== SALES CHART CODE (unchanged) ==========
 */
 function renderSalesChart() {
-  const ctx = document.getElementById("salesChart").getContext("2d");
-  new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-      datasets: [
-        {
-          label: "Monthly Sales (₱)",
-          data: [1000, 1200, 900, 1400, 1100, 1300, 1500],
-          backgroundColor: [
-            "#FFB74D",
-            "#FFA726",
-            "#FB8C00",
-            "#F57C00",
-            "#EF6C00",
-            "#E65100",
-            "#D84315",
+  fetch("http://192.168.1.65/backend/fetch_orders.php")
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data.success || !Array.isArray(data.orders)) {
+        console.warn("No orders found for sales chart.");
+        return;
+      }
+
+      // Step 1: Filter delivered orders and group by month
+      const monthlySales = {};
+      const currentYear = new Date().getFullYear(); // Only consider the current year for YTD
+
+      data.orders.forEach(order => {
+        if (order.status !== "Delivered") return; // Only count delivered orders
+
+        const orderDate = new Date(order.created_at);
+        if (orderDate.getFullYear() !== currentYear) return; // Skip orders not in the current year
+
+        const month = orderDate.toLocaleString("default", { month: "short" }); // e.g., "Jan"
+        const totalPrice = parseFloat(order.total_price || 0);
+
+        monthlySales[month] = (monthlySales[month] || 0) + totalPrice;
+      });
+
+      // Step 2: Prepare chart data
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const salesData = months.map(month => monthlySales[month] || 0);
+
+      // Step 3: Render the chart
+      const ctx = document.getElementById("salesChart").getContext("2d");
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: months.slice(0, new Date().getMonth() + 1), // Only show months up to the current month
+          datasets: [
+            {
+              label: "Monthly Sales (₱)",
+              data: salesData.slice(0, new Date().getMonth() + 1),
+              backgroundColor: [
+                "#FFB74D",
+                "#FFA726",
+                "#FB8C00",
+                "#F57C00",
+                "#EF6C00",
+                "#E65100",
+                "#D84315",
+                "#FFB74D",
+                "#FFA726",
+                "#FB8C00",
+                "#F57C00",
+                "#EF6C00",
+              ],
+              borderColor: "black",
+              borderWidth: 1,
+            },
           ],
-          borderColor: "black",
-          borderWidth: 1,
         },
-      ],
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            callback: function (value) {
-              return "₱" + value.toLocaleString();
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function (value) {
+                  return "₱" + value.toLocaleString();
+                },
+              },
             },
           },
         },
-      },
-    },
-  });
+      });
+    })
+    .catch((error) => console.error("Error fetching orders for sales chart:", error));
 }
 
 /* 

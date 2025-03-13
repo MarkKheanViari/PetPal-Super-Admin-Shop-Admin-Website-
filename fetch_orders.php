@@ -27,6 +27,7 @@ if ($result->num_rows > 0) {
 
     while ($row = $result->fetch_assoc()) {
         $order_id = $row["id"];
+        error_log("Order ID: $order_id, Raw Total Price: " . $row["total_price"]); // Debug log
 
         // ✅ Convert created_at to a human-readable format
         $formatted_date = date("F j, Y, g:i A", strtotime($row["created_at"]));
@@ -50,8 +51,8 @@ if ($result->num_rows > 0) {
             $items[] = array(
                 "product_id" => $item["product_id"],
                 "product_name" => $item["product_name"],
-                "quantity" => isset($item["quantity"]) ? (int)$item["quantity"] : 0, // ✅ Fix missing quantity
-                "price" => number_format((float)$item["price"], 2) // ✅ Standardized price format
+                "quantity" => isset($item["quantity"]) ? (int)$item["quantity"] : 0,
+                "price" => number_format((float)$item["price"], 2)
             );
         }
         $stmt->close();
@@ -61,13 +62,13 @@ if ($result->num_rows > 0) {
             "id" => $row["id"],
             "mobile_user_id" => $row["mobile_user_id"],
             "username" => $row["username"],
-            "contact_number" => $row["contact_number"] ?: "No Contact Info", // ✅ Avoids undefined values
-            "location" => $row["location"] ?: "No Address Provided", // ✅ Avoids undefined values
-            "total_price" => number_format((float)$row["total_price"], 2), // ✅ Ensure price is formatted
+            "contact_number" => $row["contact_number"] ?: "No Contact Info",
+            "location" => $row["location"] ?: "No Address Provided",
+            "total_price" => number_format((float)$row["total_price"], 2),
             "payment_method" => $row["payment_method"],
             "status" => $row["status"],
-            "created_at" => $formatted_date, // ✅ Now readable
-            "items" => $items // ✅ Ensures "items" exists even if empty
+            "created_at" => $formatted_date,
+            "items" => $items
         );
     }
 

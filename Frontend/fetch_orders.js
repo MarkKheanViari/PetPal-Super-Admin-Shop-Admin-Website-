@@ -6,6 +6,7 @@ function fetchOrders() {
   fetch("http://192.168.1.65/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
+      console.log("Fetched Orders Data:", data); // Debug log to check the full JSON response
       const ordersContainer = document.getElementById("ordersContainer");
 
       if (!ordersContainer) {
@@ -16,11 +17,9 @@ function fetchOrders() {
       ordersContainer.innerHTML = ""; // Clear existing data
 
       if (data.success) {
-        // Create a table element
         const table = document.createElement("table");
         table.classList.add("orders-table");
 
-        // Build the table header
         const thead = document.createElement("thead");
         thead.innerHTML = `
           <tr>
@@ -33,19 +32,17 @@ function fetchOrders() {
         `;
         table.appendChild(thead);
 
-        // Build the table body
         const tbody = document.createElement("tbody");
 
         data.orders.forEach((order) => {
-          // 1) Determine text color based on status
+          console.log("Order ID:", order.id, "Total Price:", order.total_price); // Debug log for each order
           const statusColor = getStatusColor(order.status);
 
-          // 2) Build row
           const tr = document.createElement("tr");
           tr.innerHTML = `
             <td>${order.username || "Unknown"}</td>
             <td>${order.created_at}</td>
-            <td>₱${parseFloat(order.total_price).toFixed(2)}</td>
+            <td>₱${order.total_price ? order.total_price : "0.00"}</td>
             <td>
               <span class="order-status" style="color: ${statusColor}">
                 ${order.status}
@@ -90,9 +87,6 @@ function getStatusColor(status) {
   }
 }
 
-
-
-
 function openUpdateStatus(orderId, currentStatus) {
   console.log("🔄 Opening Update Status Modal for Order:", orderId);
 
@@ -130,6 +124,3 @@ function updateOrderStatus() {
     })
     .catch((error) => console.error("❌ ERROR Updating Order Status:", error));
 }
-
-
-
