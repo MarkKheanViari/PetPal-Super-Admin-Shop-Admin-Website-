@@ -5,6 +5,7 @@ $pass = "";           // ✅ Database password
 $dbname = "marketplace";  // ✅ Your database name
 
 
+
 // ✅ Enable error reporting for debugging (DO NOT USE IN PRODUCTION)
 error_reporting(E_ALL);
 ini_set('display_errors', 0); // Keep this disabled in production

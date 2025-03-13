@@ -15,6 +15,14 @@ try {
     }
 
     $contact_number = $data->contact_number;
+
+    // Format the phone number to E.164 format if it starts with '09'
+    if (substr(trim($contact_number), 0, 2) === '09' && strlen(trim($contact_number)) == 11) {
+        $contact_number = '+63' . substr(trim($contact_number), 2);
+    } elseif (substr(trim($contact_number), 0, 1) !== '+' || strlen(trim($contact_number)) < 10) {
+        throw new Exception('Invalid contact number format');
+    }
+
     $otp = $data->otp;
     $new_password = password_hash($data->new_password, PASSWORD_DEFAULT);
 
