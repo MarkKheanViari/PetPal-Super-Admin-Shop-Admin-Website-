@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       logoImage.classList.add("fade");
       setTimeout(() => {
         // Change the image source after the fade-out
-        logoImage.src = "Untitled design (2).png";
+        logoImage.src = "HAHA1.png";
         // Fade in the new image
         logoImage.classList.remove("fade");
       }, 250); // Match the fade duration (half of the 0.5s transition)
