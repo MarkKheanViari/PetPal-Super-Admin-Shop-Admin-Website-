@@ -71,7 +71,7 @@ let allAppointments = [];
 
 // Fetch all appointments from backend
 function fetchAllAppointments() {
-  fetch("http://192.168.1.65/backend/fetch_all_appointments.php")
+  fetch("http://192.168.137.14/backend/fetch_all_appointments.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
@@ -88,32 +88,54 @@ function fetchAllAppointments() {
 
 // Fetch sales metrics for the top cards
 function fetchSalesMetrics() {
-  fetch("http://192.168.1.65/backend/fetch_orders.php")
+  fetch("http://192.168.137.14/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
+      console.log("📊 Raw Orders Data for Sales Metrics:", data); // Debug log: Raw JSON response
+
       if (!data.success || !Array.isArray(data.orders)) {
         console.warn("No orders found for sales metrics.");
         // Fallback values for cards
         document.querySelector(".metrics .metric-card:nth-child(1) .metric-value").textContent = "₱0";
         document.querySelector(".metrics .metric-card:nth-child(1) .metric-label").textContent = "YTD";
         document.querySelector(".metrics .metric-card:nth-child(2) .metric-value").textContent = "N/A";
-        document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = "0%";
+        document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = "0 units";
+        document.querySelector(".metrics .metric-card:nth-child(3) .metric-value").textContent = "N/A";
+        document.querySelector(".metrics .metric-card:nth-child(3) .metric-label").textContent = "0 units";
         return;
       }
 
-      // Step 1: Calculate Total Sales for Delivered Orders
+      // Step 1: Filter for Delivered Orders
       const deliveredOrders = data.orders.filter(order => order.status === "Delivered");
-      const totalSales = deliveredOrders.reduce((sum, order) => sum + parseFloat(order.total_price || 0), 0);
+      console.log("📦 Delivered Orders:", deliveredOrders); // Debug log: Filtered orders
 
-      // Update the first card (Total Sales) with peso sign
-      document.querySelector(".metrics .metric-card:nth-child(1) .metric-value").textContent = `₱${totalSales.toLocaleString()}`;
+      // Step 2: Calculate Total Sales for Delivered Orders
+      let totalSales = 0;
+      deliveredOrders.forEach(order => {
+        const rawPrice = order.total_price || "0.00"; // Use raw string
+        const parsedPrice = parseFloat(rawPrice.replace(/[^0-9.-]+/g, '')) || 0; // Remove non-numeric characters and parse
+        // Fallback: Calculate total from items if parsedPrice is suspiciously low
+        const itemsTotal = order.items ? order.items.reduce((sum, item) => {
+          const itemPrice = parseFloat(item.price) || 0;
+          const itemQuantity = parseInt(item.quantity) || 0;
+          return sum + (itemPrice * itemQuantity);
+        }, 0) : 0;
+        const finalPrice = parsedPrice > 10 ? parsedPrice : itemsTotal; // Use itemsTotal if parsedPrice is too low
+        console.log(`Order ID: ${order.id}, Raw Total Price: ${rawPrice}, Parsed Price: ${parsedPrice}, Items Total: ${itemsTotal}, Final Price: ${finalPrice}`); // Debug log
+        totalSales += finalPrice;
+      });
+
+      // Ensure totalSales is formatted with two decimal places
+      totalSales = totalSales.toFixed(2);
+      console.log("💰 Total Sales (before display):", totalSales); // Debug log: Final total
+
+      // Update the first card (Total Sales) with peso sign and proper formatting
+      document.querySelector(".metrics .metric-card:nth-child(1) .metric-value").textContent = `₱${parseFloat(totalSales).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
       document.querySelector(".metrics .metric-card:nth-child(1) .metric-label").textContent = "YTD";
 
-      // Step 2: Calculate Top Selling Product
-      // Aggregate quantities by product_id from order items
+      // Step 3: Calculate Top Selling Product (by quantity)
       const productQuantities = {};
       data.orders.forEach(order => {
-        // Only consider items from delivered orders for top-selling product
         if (order.status === "Delivered" && Array.isArray(order.items)) {
           order.items.forEach(item => {
             const productId = item.product_id;
@@ -123,10 +145,8 @@ function fetchSalesMetrics() {
         }
       });
 
-      // Calculate total quantity sold across all products (from delivered orders)
-      const totalQuantitySold = Object.values(productQuantities).reduce((sum, qty) => sum + qty, 0);
+      console.log("📈 Product Quantities:", productQuantities); // Debug log: Product quantities
 
-      // Find the product with the highest quantity
       let topProductId = null;
       let topProductName = "N/A";
       let maxQuantity = 0;
@@ -137,10 +157,6 @@ function fetchSalesMetrics() {
         }
       }
 
-      // Calculate the percentage for the top product
-      const topProductPercentage = totalQuantitySold > 0 ? ((maxQuantity / totalQuantitySold) * 100).toFixed(2) : 0;
-
-      // Find the product name from the order items
       if (topProductId) {
         let topProductFound = false;
         for (const order of data.orders) {
@@ -157,11 +173,44 @@ function fetchSalesMetrics() {
 
       // Update the second card (Top Selling Product)
       document.querySelector(".metrics .metric-card:nth-child(2) .metric-value").textContent = topProductName;
-      document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = `${topProductPercentage}%`;
+      document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = `${maxQuantity} units`;
 
-      // Third card (Monthly Growth) - On standby, leave as is
-      // document.querySelector(".metrics .metric-card:nth-child(3) .metric-value").textContent = "20%";
-      // document.querySelector(".metrics .metric-card:nth-child(3) .metric-label").textContent = "2%";
+      // Step 4: Calculate Least Sold Product (by quantity)
+      let leastProductId = null;
+      let leastProductName = "N/A";
+      let minQuantity = Infinity;
+      for (const [productId, quantity] of Object.entries(productQuantities)) {
+        if (quantity < minQuantity) {
+          minQuantity = quantity;
+          leastProductId = productId;
+        }
+      }
+
+      if (leastProductId !== null) {
+        let leastProductFound = false;
+        for (const order of data.orders) {
+          if (leastProductFound) break;
+          if (Array.isArray(order.items)) {
+            const leastProductItem = order.items.find(item => item.product_id == leastProductId);
+            if (leastProductItem) {
+              leastProductName = leastProductItem.product_name || "Unknown Product";
+              leastProductFound = true;
+            }
+          }
+        }
+      }
+
+      // Update the third card (Least Sold Product)
+      document.querySelector(".metrics .metric-card:nth-child(3) .metric-value").textContent = leastProductName;
+      document.querySelector(".metrics .metric-card:nth-child(3) .metric-label").textContent = `${minQuantity} units`;
+
+      // Fallback if no products are found
+      if (!topProductName || !leastProductName) {
+        document.querySelector(".metrics .metric-card:nth-child(2) .metric-value").textContent = "N/A";
+        document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = "0 units";
+        document.querySelector(".metrics .metric-card:nth-child(3) .metric-value").textContent = "N/A";
+        document.querySelector(".metrics .metric-card:nth-child(3) .metric-label").textContent = "0 units";
+      }
     })
     .catch((error) => {
       console.error("Error fetching sales metrics:", error);
@@ -169,9 +218,12 @@ function fetchSalesMetrics() {
       document.querySelector(".metrics .metric-card:nth-child(1) .metric-value").textContent = "₱0";
       document.querySelector(".metrics .metric-card:nth-child(1) .metric-label").textContent = "YTD";
       document.querySelector(".metrics .metric-card:nth-child(2) .metric-value").textContent = "N/A";
-      document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = "0%";
+      document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = "0 units";
+      document.querySelector(".metrics .metric-card:nth-child(3) .metric-value").textContent = "N/A";
+      document.querySelector(".metrics .metric-card:nth-child(3) .metric-label").textContent = "0 units";
     });
 }
+
 // Filter the appointments by service type (All, Grooming, Veterinary)
 function applyAppointmentsFilter() {
   const serviceFilter = document.getElementById("serviceFilter");
@@ -199,7 +251,6 @@ function formatAppointmentDate(dateString) {
 }
 
 // Display appointments as cards with no time
-// Display appointments as cards with no time and without the placeholder square
 function displayAppointmentCards(appointments) {
   const container = document.getElementById("appointmentsContainer");
   if (!container) return;
@@ -209,7 +260,6 @@ function displayAppointmentCards(appointments) {
     const card = document.createElement("div");
     card.classList.add("appointment-card");
 
-    // Card layout: only details, date, and options button (no image placeholder)
     card.innerHTML = `
       <div class="appointment-details">
         <h3>${appointment.service_name}</h3>
@@ -233,7 +283,7 @@ function displayAppointmentCards(appointments) {
   ========== SALES CHART CODE (unchanged) ==========
 */
 function renderSalesChart() {
-  fetch("http://192.168.1.65/backend/fetch_orders.php")
+  fetch("http://192.168.137.14/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       if (!data.success || !Array.isArray(data.orders)) {
@@ -252,10 +302,23 @@ function renderSalesChart() {
         if (orderDate.getFullYear() !== currentYear) return; // Skip orders not in the current year
 
         const month = orderDate.toLocaleString("default", { month: "short" }); // e.g., "Jan"
-        const totalPrice = parseFloat(order.total_price || 0);
 
-        monthlySales[month] = (monthlySales[month] || 0) + totalPrice;
+        // Calculate total price with fallback
+        const rawPrice = order.total_price || "0.00";
+        const parsedPrice = parseFloat(rawPrice.replace(/[^0-9.-]+/g, '')) || 0;
+        const itemsTotal = order.items ? order.items.reduce((sum, item) => {
+          const itemPrice = parseFloat(item.price) || 0;
+          const itemQuantity = parseInt(item.quantity) || 0;
+          return sum + (itemPrice * itemQuantity);
+        }, 0) : 0;
+        const finalPrice = parsedPrice > 10 ? parsedPrice : itemsTotal; // Use itemsTotal if parsedPrice is too low
+
+        console.log(`[Chart] Order ID: ${order.id}, Month: ${month}, Raw Total Price: ${rawPrice}, Parsed Price: ${parsedPrice}, Items Total: ${itemsTotal}, Final Price: ${finalPrice}`); // Debug log
+
+        monthlySales[month] = (monthlySales[month] || 0) + finalPrice;
       });
+
+      console.log("📅 Monthly Sales:", monthlySales); // Debug log: Monthly totals
 
       // Step 2: Prepare chart data
       const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -312,7 +375,7 @@ function renderSalesChart() {
   ========== ORDERS & PRODUCTS CODE (unchanged) ==========
 */
 function fetchOrders() {
-  fetch("http://192.168.1.65/backend/fetch_orders.php")
+  fetch("http://192.168.137.14/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       const ordersContainer = document.getElementById("dashboardOrdersContainer");
@@ -355,9 +418,8 @@ function fetchOrders() {
     .catch((error) => console.error("❌ Error fetching orders:", error));
 }
 
-
 function fetchProducts() {
-  fetch("http://192.168.1.65/backend/fetch_product.php")
+  fetch("http://192.168.137.14/backend/fetch_product.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
@@ -407,7 +469,7 @@ function createProductElement(product) {
 let allNotifications = [];
 
 function fetchOrderNotifications() {
-  return fetch("http://192.168.1.65/backend/fetch_orders.php")
+  return fetch("http://192.168.137.14/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.success && Array.isArray(data.orders)) {
@@ -429,7 +491,7 @@ function fetchOrderNotifications() {
 
 function fetchAppointmentNotifications() {
   const groomingPromise = fetch(
-    "http://192.168.1.65/backend/fetch_grooming_appointments.php"
+    "http://192.168.137.14/backend/fetch_grooming_appointments.php"
   )
     .then((response) => response.json())
     .then((data) => {
@@ -448,7 +510,7 @@ function fetchAppointmentNotifications() {
     });
 
   const vetPromise = fetch(
-    "http://192.168.1.65/backend/fetch_veterinary_appointments.php"
+    "http://192.168.137.14/backend/fetch_veterinary_appointments.php"
   )
     .then((response) => response.json())
     .then((data) => {
@@ -573,9 +635,7 @@ document.addEventListener("click", function () {
 // Periodically refresh notifications (every 60 seconds)
 setInterval(loadNotifications, 60000);
 
-//
 // Placeholder logout function (customize as needed)
-//
 function logout() {
   alert("Logging out...");
   // Add your logout logic here.

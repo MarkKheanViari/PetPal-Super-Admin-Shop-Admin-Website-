@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchOrders() {
-  fetch("http://192.168.1.65/backend/fetch_orders.php")
+  fetch("http://192.168.137.14/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
       console.log("Fetched Orders Data:", data); // Debug log to check the full JSON response
@@ -96,13 +96,43 @@ function openUpdateStatus(orderId, currentStatus) {
   toggleModal("updateStatusModal", true);
 }
 
+function viewOrderDetails(orderId) {
+  console.log("🔍 Fetching Order Details for Order ID:", orderId); // ✅ Check if function runs
+
+  fetch(`http://192.168.137.14/backend/fetch_order_details.php?order_id=${orderId}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log("✅ Order Data Received:", data); // ✅ See API response
+
+      if (data.success) {
+        document.getElementById("customerName").value = data.order.customer_name;
+        document.getElementById("customerAddress").value = data.order.location || "No Address Provided";
+        document.getElementById("customerContact").value = data.order.contact_number || "No Contact Info";
+        document.getElementById("paymentMethod").value = data.order.payment_method;
+        document.getElementById("orderAmount").value = `₱${parseFloat(data.order.total_price).toFixed(2)}`;
+        
+        // ✅ Display Order Date
+        document.getElementById("orderDate").value = data.order.created_at;
+
+        // ✅ Display Order Status
+        document.getElementById("orderStatus").value = data.order.status || "Unknown";
+
+        toggleModal("orderModal", true);
+      } else {
+        console.error("❌ API Returned Error:", data.message);
+        alert("❌ Error fetching order details: " + data.message);
+      }
+    })
+    .catch(error => console.error("❌ ERROR Fetching Order Details:", error));
+}
+
 function updateOrderStatus() {
   const orderId = document.getElementById("updateOrderId").value;
   const newStatus = document.getElementById("updateStatus").value;
 
   console.log(`🚀 Updating Order ${orderId} to Status: ${newStatus}`);
 
-  fetch("http://192.168.1.65/backend/update_order_status.php", {
+  fetch("http://192.168.137.14/backend/update_order_status.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

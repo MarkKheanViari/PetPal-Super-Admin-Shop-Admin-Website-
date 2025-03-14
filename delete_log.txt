@@ -70,3 +70,7 @@ DELETE request received: {"product_id":85,"shop_owner_id":3}
 DELETE request received: {"product_id":86,"shop_owner_id":3}
 DELETE request received: {"product_id":87,"shop_owner_id":3}
 DELETE request received: {"product_id":88,"shop_owner_id":3}
+DELETE request received: {"product_id":71,"shop_owner_id":3}
+DELETE request received: {"product_id":73,"shop_owner_id":3}
+DELETE request received: {"product_id":74,"shop_owner_id":3}
+DELETE request received: {"product_id":76,"shop_owner_id":3}

@@ -10,7 +10,8 @@ $response = array();
 
 // Check if request is POST
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    $response["error"] = "Invalid Request";
+    $response["success"] = false;
+    $response["message"] = "Invalid Request";
     echo json_encode($response);
     exit();
 }
@@ -20,6 +21,14 @@ $data = json_decode(file_get_contents("php://input"), true);
 $email = $data["email"] ?? "";
 $password = $data["password"] ?? "";
 $role = $data["role"] ?? "";
+
+// Validate input
+if (empty($email) || empty($password) || empty($role)) {
+    $response["success"] = false;
+    $response["message"] = "Email, password, and role are required";
+    echo json_encode($response);
+    exit();
+}
 
 // SuperAdmin Login
 if ($role === "superadmin") {
@@ -31,8 +40,8 @@ if ($role === "superadmin") {
     if ($row = $result->fetch_assoc()) {
         if (password_verify($password, $row["password"])) {
             $response["success"] = true;
-            $response["redirect"] = "http://192.168.1.65/backend/Frontend/SuperAdmin/superadmin.html";
-            $response["token"] = bin2hex(random_bytes(16)); // ✅ Generate token
+            $response["redirect"] = "http://192.168.137.14/backend/Frontend/SuperAdmin/superadmin.html";
+            $response["token"] = bin2hex(random_bytes(16));
         } else {
             $response["success"] = false;
             $response["message"] = "Incorrect password";
@@ -41,8 +50,7 @@ if ($role === "superadmin") {
         $response["success"] = false;
         $response["message"] = "SuperAdmin not found";
     }
-} 
-else {
+} else {
     // Fetch `id` as `shop_owner_id`
     $stmt = $conn->prepare("SELECT id, username, password FROM shop_owners WHERE email = ?");
     $stmt->bind_param("s", $email);
@@ -57,7 +65,7 @@ else {
             $response["shop_owner_id"] = $row["id"];
             $response["username"] = $row["username"];
             $response["redirect"] = "dashboard.html";
-            $response["token"] = bin2hex(random_bytes(16)); // ✅ Generate token
+            $response["token"] = bin2hex(random_bytes(16));
         } else {
             $response["success"] = false;
             $response["message"] = "Incorrect password";
@@ -68,7 +76,7 @@ else {
     }
 }
 
-// ✅ Send JSON response
+// Send JSON response
 echo json_encode($response);
 $conn->close();
 ?>

@@ -98,6 +98,74 @@
         opacity: 1;
       }
     }
+    /* Forgot Password Link */
+    .forgot-password {
+      text-align: right;
+      margin-bottom: 15px;
+    }
+
+    .forgot-password a {
+      color: #FF6600;
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    /* Popup Form Styling */
+    .popup-body form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .popup-body label {
+      font-size: 1em;
+      color: #333;
+      text-align: left;
+    }
+
+    .popup-body input {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    .popup-body .password-container {
+      width: 100%;
+    }
+
+    .popup-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .popup-buttons button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    .popup-buttons button[type="submit"] {
+      background: #ff8c00;
+      color: white;
+    }
+
+    .popup-buttons button[type="button"] {
+      background: #ddd;
+      color: #333;
+    }
+
+    .popup-buttons button:hover {
+      opacity: 0.9;
+    }
   </style>
 </head>
 <body>
@@ -127,6 +195,11 @@
           </div>
           <div id="passwordError" class="error-message"></div>
 
+          <!-- Add Forgot Password link -->
+          <div class="forgot-password">
+            <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+          </div>
+
           <button type="submit">Sign in</button>
         </form>
       </div>
@@ -140,7 +213,7 @@
     </div>
   </div>
 
-  <!-- Redesigned Popup Overlay -->
+  <!-- Existing Success Popup Overlay -->
   <div id="popupOverlay" class="popup-overlay">
     <div class="popup-content">
       <div class="popup-header">
@@ -152,6 +225,56 @@
     </div>
   </div>
 
+  <!-- New Forgot Password Popup Overlay -->
+  <div id="forgotPasswordPopup" class="popup-overlay">
+    <div class="popup-content">
+      <div class="popup-header">
+        <h2>Reset Password</h2>
+      </div>
+      <div class="popup-body">
+        <form id="forgotPasswordForm">
+          <label for="resetEmail">Email</label>
+          <input 
+            type="email" 
+            id="resetEmail" 
+            placeholder="Enter your email" 
+            required 
+          />
+          <div id="emailResetError" class="error-message"></div>
+          
+          <label for="currentPassword">Current Password</label>
+          <div class="password-container">
+            <input
+              type="password"
+              id="currentPassword"
+              placeholder="Enter current password"
+              required
+            />
+            <span id="toggleCurrentPassword" class="toggle-password">Show</span>
+          </div>
+          <div id="currentPasswordError" class="error-message"></div>
+
+          <label for="newPassword">New Password</label>
+          <div class="password-container">
+            <input
+              type="password"
+              id="newPassword"
+              placeholder="Enter new password"
+              required
+            />
+            <span id="toggleNewPassword" class="toggle-password">Show</span>
+          </div>
+          <div id="newPasswordError" class="error-message"></div>
+
+          <div class="popup-buttons">
+            <button type="button" id="cancelReset">Cancel</button>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script src="login.js"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92016bc84e8653d3',t:'MTc0MTkzMDY2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
