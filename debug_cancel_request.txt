@@ -30,3 +30,11 @@ Array
     [appointment_date] => 2025-03-11
 )
 Received: UserID=1, Service=Vaccination Check, Type=Veterinary, Date=2025-03-11
+Array
+(
+    [mobile_user_id] => 4
+    [service_name] => Bathing
+    [service_type] => Grooming
+    [appointment_date] => 2025-03-17
+)
+Received: UserID=4, Service=Bathing, Type=Grooming, Date=2025-03-17

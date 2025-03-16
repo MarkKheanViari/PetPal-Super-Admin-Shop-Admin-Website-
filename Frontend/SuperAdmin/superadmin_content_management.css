@@ -1,175 +1,392 @@
-/* Ensu/* General Layout */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fff3e0; /* Light orange background */
+/* 📌 General Reset and Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-orange: #ff8c00;
+    --dark-orange: #e65100;
+    --light-orange: #fff7e6;
+    --white: #ffffff;
+    --gray-light: #f5f5f5;
+    --gray-medium: #d1d5db;
+    --gray-dark: #4b5563;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, #ff8c00, #e65100);
+    --sidebar-width: 250px;
+    --sidebar-spacing: 20px;
+}
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #fff7e6 0%, #fef3e0 100%);
+    color: var(--gray-dark);
     display: flex;
-  }
-  
-  /* Sidebar (similar to your other pages) */
-  .sidebar {
-    width: 250px;
-    background-color: #ff6f00;
-    color: white;
+    min-height: 100vh;
+}
+
+/* 📌 Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--gradient);
+    color: var(--white);
     padding: 20px;
     min-height: 100vh;
     position: fixed;
-  }
-  .sidebar h2 {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, width 0.3s ease;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
     text-align: center;
-    margin-bottom: 20px;
-  }
-  .sidebar ul {
+    background: linear-gradient(90deg, #fff, #ddd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar ul {
     list-style: none;
     padding: 0;
-  }
-  .sidebar ul li {
-    padding: 12px;
-  }
-  .sidebar ul li a {
-    color: white;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: var(--white);
     text-decoration: none;
-    padding: 10px;
-    display: block;
-    border-radius: 5px;
-  }
-  .sidebar ul li a.active,
-  .sidebar ul li a:hover {
-    background-color: #e65100;
-  }
-  /* Main content area (similar to superadmin.css) */
-  .dashboard {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.sidebar ul li a i {
+    font-size: 1.1rem;
+}
+
+/* 📌 Wrapper for Sidebar & Content */
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+/* 📌 Main Content */
+.main-content {
+    margin-left: calc(var(--sidebar-width) + var(--sidebar-spacing));
     flex: 1;
-    padding: 20px;
-    margin-left: 250px; /* Offset for fixed sidebar */
-    background-color: #fff7e6; /* Or #fff3e0, whichever you used */
-  }
-  
-  /* Then add your Content Management-specific styles below... */
-  
-  
-  /* Main Dashboard Content */
-  .dashboard {
-    flex: 1;
-    padding: 20px;
-    margin-left: 300px; /* Offset for sidebar */
-    background-color: #fff3e0; /* Light orange background */
-  }
-  
-  /* Header */
-  .header-container {
+    padding: 40px;
+    background: var(--white);
+    border-top-left-radius: 30px;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 📌 Header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-container h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 📌 Search Bar */
+.search-bar {
+    width: 300px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 25px;
+    background: var(--gray-light);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2);
+    background: var(--white);
+}
+
+/* 📌 Content Management Section */
+.content-management {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+}
+
+/* 📌 Content Header */
+.content-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-  }
-  
-  .search-bar {
-    padding: 8px;
-    width: 250px;
-    border: 1px solid #ffa726;
-    border-radius: 5px;
-  }
-  
-  /* Filter Buttons */
-  .filter-buttons {
+}
+
+.content-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gray-dark);
+}
+
+.content-management p {
+    font-size: 0.9rem;
+    color: var(--gray-medium);
     margin-bottom: 20px;
-  }
-  
-  .filter-btn {
-    padding: 8px 15px;
+}
+
+/* 📌 Filter Buttons */
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.filter-btn {
+    background: var(--gray-light);
     border: none;
-    border-radius: 5px;
-    background-color: #ffcc80;
+    padding: 10px 20px;
     cursor: pointer;
-    margin-right: 5px;
-  }
-  
-  .filter-btn.active {
-    background-color: #ff6f00;
-    color: white;
-  }
-  
-  /* Table Container */
-  .table-container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-  
- /* Table Container: Widen and add horizontal scroll if needed */
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gray-dark);
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--gradient);
+    color: var(--white);
+    box-shadow: 0 3px 10px rgba(255, 140, 0, 0.2);
+}
+
+/* 📌 Table */
 .table-container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    width: 100%;
     overflow-x: auto;
-    margin: 0 auto;
-  }
-  
-  /* Product Table: Full width, adjusted padding, and modern design */
-  .product-table {
+    border-radius: 10px;
+}
+
+.product-table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  /* Table Headers: New background and padding for a bolder look */
-  .product-table th {
-    background: #ff8c00; /* Adjust header background as desired */
-    color: #fff;
+    margin-top: 15px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.product-table th,
+.product-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.product-table th {
+    background: var(--gradient);
+    color: var(--white);
     font-weight: 600;
-    padding: 15px;
-    border-bottom: 2px solid #e65100;
-    text-align: left;
-  }
-  
-  /* Table Cells: Increased padding and clean divider */
-  .product-table td {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  /* Row Hover Effect: Subtle background change on hover */
-  .product-table tr:hover {
-    background-color: #ffe0b2;
-  }
-  
-  
-  /* Action Buttons */
-  .action-btn {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.product-table td {
+    font-size: 0.9rem;
+    color: var(--gray-dark);
+}
+
+.product-table tr {
+    transition: background 0.3s ease;
+}
+
+.product-table tr:hover {
+    background: rgba(255, 140, 0, 0.05);
+}
+
+/* 📌 Status Labels */
+.status-pending {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: rgba(255, 204, 128, 0.2);
+    color: #ff8c00;
+}
+
+.status-approved {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+.status-rejected {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.status-unknown {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: rgba(107, 114, 128, 0.2);
+    color: var(--gray-dark);
+}
+
+/* 📌 Action Buttons */
+.approve-btn {
+    background: var(--gradient);
+    color: var(--white);
+    padding: 8px 15px;
     border: none;
-    padding: 5px 8px;
-    margin: 0 3px;
     cursor: pointer;
-  }
-  
-  .approve-btn {
-    background-color: #ff6f00;
-    color: white;
-  }
-  
-  .approve-btn:hover {
-    background-color: #e65100;
-  }
-  
-  .reject-btn {
-    background-color: #d84315;
-    color: white;
-  }
-  
-  .reject-btn:hover {
-    background-color: #bf360c;
-  }
-  
-  .more-btn {
-    background-color: #ff8f00;
-    color: white;
-  }
-  
-  .more-btn:hover {
-    background-color: #e65100;
-  }
-  
+    border-radius: 15px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.approve-btn:hover {
+    background: var(--dark-orange);
+    box-shadow: 0 3px 10px rgba(255, 140, 0, 0.2);
+}
+
+.reject-btn {
+    background: #ef4444;
+    color: var(--white);
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.reject-btn:hover {
+    background: #dc2626;
+    box-shadow: 0 3px 10px rgba(239, 68, 68, 0.2);
+}
+
+.more-btn {
+    background: #6b7280;
+    color: var(--white);
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.more-btn:hover {
+    background: #4b5563;
+    box-shadow: 0 3px 10px rgba(107, 114, 128, 0.2);
+}
+
+/* 📌 Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 1000;
+    }
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+        border-top-left-radius: 0;
+    }
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    .search-bar {
+        width: 100%;
+    }
+    .product-table th,
+    .product-table td {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    .filter-buttons {
+        flex-wrap: wrap;
+    }
+    .filter-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+}
+
+/* 📌 Hamburger Menu for Mobile */
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-orange);
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+}
+
+/* 📌 Spinner for Loading State */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-orange);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

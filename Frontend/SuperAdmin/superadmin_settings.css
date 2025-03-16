@@ -1,31 +1,48 @@
 /* 📌 General Layout */
+:root {
+    --primary-orange: #ff8c00;
+    --dark-orange: #e65100;
+    --light-orange: #fff7e6;
+    --white: #ffffff;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, #ff8c00, #e65100);
+    --sidebar-width: 180px;
+    --sidebar-spacing: 20px;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
-    background-color: #fff7e6; /* Light Orange */
+    background-color: var(--light-orange);
 }
 
-/* 📌 Sidebar */
+/* 📌 Sidebar (Slimmed Down) */
 .sidebar {
-    width: 250px;
-    background-color: #ff8c00; /* Dark orange sidebar */
+    width: var(--sidebar-width);
+    background: var(--gradient);
     color: white;
-    padding: 20px;
+    padding: 15px;
     min-height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
 }
 
 .sidebar-header {
-    font-size: 22px;
-    font-weight: bold;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    margin: 0;
 }
 
 .sidebar ul {
@@ -34,21 +51,28 @@ body {
 }
 
 .sidebar ul li {
-    padding: 10px;
-    border-radius: 5px;
+    margin-bottom: 8px;
 }
 
 .sidebar ul li a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background 0.3s ease;
 }
 
-.sidebar ul li a:hover {
-    background-color: #ff6600; /* Slightly darker orange */
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar ul li a i {
+    font-size: 16px;
 }
 
 /* 📌 Settings Icon at Bottom */
@@ -71,8 +95,8 @@ body {
 .settings-container {
     flex: 1;
     padding: 20px;
-    margin-left: 270px;
-    background: white;
+    margin-left: calc(var(--sidebar-width) + var(--sidebar-spacing)); /* Updated to match superadmin.css */
+    background: var(--white);
 }
 
 /* 📌 Tabs */
@@ -83,7 +107,7 @@ body {
 }
 
 .tab-btn {
-    background: #ff8c00; /* Orange */
+    background: var(--primary-orange);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -93,7 +117,7 @@ body {
 }
 
 .tab-btn.active {
-    background: #cc5500; /* Darker Orange */
+    background: #cc5500;
 }
 
 /* 📌 Tab Content */
@@ -140,5 +164,35 @@ input, select {
 }
 
 .save-btn:hover {
-    background: #cc5500; /* Darker Orange */
+    background: #cc5500;
+}
+
+/* 📌 Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 150px;
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 1000;
+    }
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    .settings-container {
+        margin-left: 0; /* No margin when sidebar is hidden */
+    }
+}
+
+/* 📌 Hamburger Menu for Mobile */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--primary-orange);
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
 }

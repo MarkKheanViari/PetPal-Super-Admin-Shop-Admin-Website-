@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SuperAdmin - User Management</title>
     <link rel="stylesheet" href="superadmin_user_management.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Optional: Toastify for notifications -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
-
 <body>
-
     <div class="wrapper">
         <!-- Sidebar -->
         <aside class="sidebar">
             <h2>SuperAdmin</h2>
             <ul>
-                <li><a href="superadmin.html">Dashboard</a></li>
-                <li><a href="superadmin_user_management.html" class="active">User Management</a></li>
-                <li><a href="superadmin_content_management.html">Content Management</a></li>
-                <li><a href="analytics.html">Analytics</a></li>
-                <li><a href="settings.html">Settings</a></li>
+                <li><a href="superadmin.html"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+                <li><a href="superadmin_user_management.html" class="active"><i class="fas fa-users"></i> User Management</a></li>
+                <li><a href="superadmin_content_management.html"><i class="fas fa-box"></i> Content Management</a></li>
+                <li><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
         </aside>
 
@@ -27,26 +28,22 @@
         <main class="main-content">
             <div class="header-container">
                 <h1>User Management</h1>
-                <input type="text" id="searchBar" class="search-bar" placeholder="Search users..."
-                    onkeyup="filterUsers()">
+                <input type="text" id="searchBar" class="search-bar" placeholder="Search users..." aria-label="Search users">
             </div>
 
             <div class="user-management">
                 <div class="user-header">
                     <h2>User Accounts</h2>
-                    <button class="add-user-btn">Add User</button>
+                    <button class="add-user-btn" aria-label="Add a new user">Add User</button>
                 </div>
                 <p>Manage user accounts, view details, and modify permissions.</p>
 
                 <!-- User Filters -->
                 <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="customers">Customers</button>
-                    <button class="filter-btn" data-filter="shopOwners">Shop Owners</button>
-
+                    <button class="filter-btn active" data-filter="all" aria-label="Show all users">All</button>
+                    <button class="filter-btn" data-filter="customers" aria-label="Show customers">Customers</button>
+                    <button class="filter-btn" data-filter="shopOwners" aria-label="Show shop owners">Shop Owners</button>
                 </div>
-
-
 
                 <!-- User Table -->
                 <div class="table-container">
@@ -70,29 +67,67 @@
     </div>
 
     <!-- Add Shop Owner Modal -->
-    <div id="addShopOwnerModal" class="modal">
+    <div id="addShopOwnerModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Add Shop Owner</h2>
+            <span class="close-btn" aria-label="Close modal" role="button" tabindex="0">×</span>
+            <h2 id="modalTitle">Add Shop Owner</h2>
             <p>Create a new shop owner account. Only shop owner accounts can be created by admin.</p>
 
-            <label for="shopOwnerUsername">Username</label>
-            <input type="text" id="shopOwnerUsername" placeholder="Enter username">
+            <form id="addShopOwnerForm" class="modal-form">
+                <div class="form-group">
+                    <label for="shopOwnerUsername">Username</label>
+                    <input type="text" id="shopOwnerUsername" placeholder="Enter username" required aria-required="true">
+                    <span class="error-message" id="usernameError"></span>
+                </div>
 
-            <label for="shopOwnerEmail">Email</label>
-            <input type="email" id="shopOwnerEmail" placeholder="Enter email">
+                <div class="form-group">
+                    <label for="shopOwnerEmail">Email</label>
+                    <input type="email" id="shopOwnerEmail" placeholder="Enter email" required aria-required="true">
+                    <span class="error-message" id="emailError"></span>
+                </div>
 
-            <label for="shopOwnerPassword">Password</label>
-            <input type="password" id="shopOwnerPassword" placeholder="Create password">
+                <div class="form-group">
+                    <label for="shopOwnerPassword">Password</label>
+                    <input type="password" id="shopOwnerPassword" placeholder="Create password" required aria-required="true">
+                    <span class="error-message" id="passwordError"></span>
+                </div>
 
-            <button id="createShopOwnerBtn" class="primary-btn">Create Shop Owner</button>
+                <button type="submit" id="createShopOwnerBtn" class="primary-btn">Create Shop Owner</button>
+            </form>
         </div>
     </div>
 
+    <!-- Edit User Modal -->
+    <div id="userModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close-user-btn" aria-label="Close modal" role="button" tabindex="0">×</span>
+            <h2 id="modalTitle">Edit User</h2>
+            <p>Update user details below.</p>
 
+            <form id="editUserForm" class="modal-form">
+                <div class="form-group">
+                    <label for="userUsername">Username</label>
+                    <input type="text" id="userUsername" placeholder="Enter username" required aria-required="true">
+                    <span class="error-message" id="editUsernameError"></span>
+                </div>
 
+                <div class="form-group">
+                    <label for="userEmail">Email</label>
+                    <input type="email" id="userEmail" placeholder="Enter email" required aria-required="true">
+                    <span class="error-message" id="editEmailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="userPassword">Password (optional)</label>
+                    <input type="password" id="userPassword" placeholder="Enter new password (leave blank to keep current)">
+                    <span class="error-message" id="editPasswordError"></span>
+                </div>
+
+                <button type="submit" id="saveUserBtn" class="primary-btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
 
     <script src="superadmin_user_management.js"></script>
 </body>
-
 </html>

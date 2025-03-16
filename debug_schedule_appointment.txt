@@ -194,3 +194,31 @@ Array
     [payment_method] => Cash
     [notes] => take care of my baby please
 )
+Array
+(
+    [mobile_user_id] => 4
+    [service_type] => Grooming
+    [service_name] => Bathing
+    [name] => Ma'am Angelica Vidal
+    [address] => Angelica@gmail.com
+    [phone_number] => 111111111
+    [pet_name] => percyjackson
+    [pet_breed] => Pusakal
+    [appointment_date] => 2025-3-17
+    [payment_method] => Cash
+    [notes] => Alagaan niyo alaga ko thanks
+)
+Array
+(
+    [mobile_user_id] => 4
+    [service_type] => Veterinary
+    [service_name] => Vaccination Check
+    [name] => test usr
+    [address] => hahahaha
+    [phone_number] => 13546
+    [pet_name] => mhyco
+    [pet_breed] => pitbull
+    [appointment_date] => 2025-3-21
+    [payment_method] => Cash
+    [notes] => haha
+)

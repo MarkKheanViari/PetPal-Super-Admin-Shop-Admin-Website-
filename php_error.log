@@ -82,3 +82,6 @@
 [14-Mar-2025 07:19:49 Europe/Berlin] ❌ Missing input data in update_service.php
 [14-Mar-2025 07:19:49 Europe/Berlin] ✅ Running SQL Update: service_id=76, price=700, description=Gently removes dirt, loose fur, and tangles while promoting a healthy and shiny coat.
 [14-Mar-2025 07:19:49 Europe/Berlin] ✅ Service updated successfully!
+[14-Mar-2025 10:41:59 Europe/Berlin] ❌ Missing input data in update_service.php
+[14-Mar-2025 10:41:59 Europe/Berlin] ✅ Running SQL Update: service_id=86, price=500, description=WALA LANG
+[14-Mar-2025 10:41:59 Europe/Berlin] ✅ Service updated successfully!

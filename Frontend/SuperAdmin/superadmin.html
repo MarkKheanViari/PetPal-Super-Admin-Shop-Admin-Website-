@@ -5,78 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SuperAdmin Dashboard</title>
     <link rel="stylesheet" href="superadmin.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for Bar Graph -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Optional: Toastify for notifications -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
-
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
-        <h2>SuperAdmin</h2>
+        <div class="sidebar-header">
+            <i class="fas fa-cube"></i>
+            <h2>SuperAdmin</h2>
+        </div>
         <ul>
-            <li><a href="superadmin.html"  class="active">Dashboard</a></li>
-            <li><a href="superadmin_user_management.html">User Management</a></li>
-            <li><a href="superadmin_content_management.html">Content Management</a></li>
-            <li><a href="analytics.html">Analytics</a></li>
-            <li><a href="settings.html">Settings</a></li>
+            <li><a href="superadmin.html" class="active"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+            <li><a href="superadmin_user_management.html"><i class="fas fa-users"></i> User Management</a></li>
+            <li><a href="superadmin_content_management.html"><i class="fas fa-box"></i> Content Management</a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
         </ul>
     </aside>
-    
 
-<!-- FontAwesome for Icons -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-
-    <!-- Dashboard Content -->
+    <!-- Main Dashboard Content -->
     <main class="dashboard">
-        <h1>Dashboard Overview</h1>
-    
-        <!-- Top Statistics Cards -->
+        <!-- Top Header -->
+        <header class="dashboard-header">
+            <h1>Dashboard Overview</h1>
+            <button id="logoutBtn" class="logout-btn" aria-label="Logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </header>
+
+        <!-- Top Statistics Cards with Icons -->
         <div class="stats-container">
             <div class="stat-card">
-                <h3>Total Users</h3>
-                <p id="totalUsers">Loading...</p>
+                <i class="fas fa-users stat-icon"></i>
+                <div class="stat-content">
+                    <h3>Total Users</h3>
+                    <p id="totalUsers">Loading...</p>
+                </div>
             </div>
             <div class="stat-card">
-                <h3>Active Shop Owners</h3>
-                <p id="activeShopOwners">Loading...</p>
+                <i class="fas fa-store stat-icon"></i>
+                <div class="stat-content">
+                    <h3>Active Shop Owners</h3>
+                    <p id="activeShopOwners">Loading...</p>
+                </div>
             </div>
             <div class="stat-card">
-                <h3>Active Customers</h3>
-                <p id="activeCustomers">Loading...</p>
+                <i class="fas fa-user-check stat-icon"></i>
+                <div class="stat-content">
+                    <h3>Active Customers</h3>
+                    <p id="activeCustomers">Loading...</p>
+                </div>
             </div>
             <div class="stat-card">
-                <h3>Pending Products</h3>
-                <p id="pendingProducts">Loading...</p>
+                <i class="fas fa-box-open stat-icon"></i>
+                <div class="stat-content">
+                    <h3>Pending Products</h3>
+                    <p id="pendingProducts">Loading...</p>
+                </div>
             </div>
         </div>
-    
+
+        <!-- Graph & Activities Section -->
         <section class="dashboard-container">
-            <!-- Graph Section -->
-            <div class="graph-container">
+            <div class="graph-container card">
                 <h2>User Statistics</h2>
                 <canvas id="userChart"></canvas>
             </div>
-    
-            <!-- Recent Activities -->
-            <div class="activities-container">
+            <div class="activities-container card">
                 <h2>Recent Activities</h2>
                 <ul id="activityList">
                     <li>Loading activities...</li>
                 </ul>
             </div>
         </section>
-    
+
         <!-- Management Section -->
-        <section class="management-section">
+        <section class="management-section card">
             <h2>Management Panel</h2>
-    
-            <!-- Tab Buttons -->
             <div class="tab-container">
                 <button class="tab-btn active" onclick="openTab(event, 'userManagement')">User Management</button>
                 <button class="tab-btn" onclick="openTab(event, 'productManagement')">Product Management</button>
             </div>
-    
-            <!-- User Management -->
             <div id="userManagement" class="tab-content active">
                 <table>
                     <thead>
@@ -93,8 +106,6 @@
                     </tbody>
                 </table>
             </div>
-    
-            <!-- Product Management -->
             <div id="productManagement" class="tab-content">
                 <table>
                     <thead>
@@ -112,9 +123,8 @@
             </div>
         </section>
     </main>
-    
+
     <!-- JavaScript -->
     <script src="superadmin.js"></script>
-
 </body>
 </html>

@@ -1,34 +1,57 @@
-/* General Layout */
-body {
-    font-family: Arial, sans-serif;
+/* 📌 General Reset and Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-orange: #ff8c00;
+    --dark-orange: #e65100;
+    --light-orange: #fff7e6;
+    --white: #ffffff;
+    --gray-light: #f5f5f5;
+    --gray-medium: #d1d5db;
+    --gray-dark: #4b5563;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, #ff8c00, #e65100);
+    --sidebar-width: 220px;
+    --sidebar-spacing: 20px;
+}
+
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    background-color: #fff3e0; /* Light orange background */
+    box-sizing: border-box;
 }
 
-/* Wrapper for Sidebar & Content */
-.wrapper {
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #fff7e6 0%, #fef3e0 100%);
+    color: var(--gray-dark);
     display: flex;
-    width: 100%;
+    min-height: 100vh;
 }
 
-/* Sidebar */
+/* 📌 Sidebar */
 .sidebar {
-    width: 250px;
-    background-color: #ff6f00; /* Orange */
-    color: white;
+    width: var(--sidebar-width);
+    background: var(--gradient);
+    color: var(--white);
     padding: 20px;
     min-height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, width 0.3s ease;
 }
 
 .sidebar h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
     text-align: center;
-    margin-bottom: 20px;
+    background: linear-gradient(90deg, #fff, #ddd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .sidebar ul {
@@ -37,152 +60,130 @@ body {
 }
 
 .sidebar ul li {
-    padding: 12px;
+    margin-bottom: 10px;
 }
 
 .sidebar ul li a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .sidebar ul li a:hover,
 .sidebar ul li a.active {
-    background-color: #e65100; /* Darker Orange */
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
 }
 
-/* 📌 Modal Styling */
-.modal {
-    display: none; /* hidden by default */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
+.sidebar ul li a i {
+    font-size: 1.1rem;
+}
+
+/* 📌 Wrapper for Sidebar & Content */
+.wrapper {
+    display: flex;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* No second 'display' property here */
-    align-items: center;
-    justify-content: center;
 }
 
-
-/* 📌 Modal Content Box */
-.modal-content {
-    background: white;
-    width: 420px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
-    text-align: left;
-}
-
-/* 📌 Close Button */
-.close-btn {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-/* 📌 Headings & Paragraph */
-.modal-content h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.modal-content p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-/* 📌 Input Fields */
-.modal-content input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-/* 📌 Submit Button */
-.primary-btn {
-    background-color: #ff9800; /* Orange */
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    font-size: 14px;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.primary-btn:hover {
-    background-color: #e65100; /* Darker Orange */
-}
-
-/* Main Content */
+/* 📌 Main Content */
 .main-content {
-    margin-left: 280px;
+    margin-left: calc(var(--sidebar-width) + var(--sidebar-spacing));
     flex: 1;
     padding: 40px;
-    background: white;
+    background: var(--white);
+    border-top-left-radius: 30px;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Header */
+/* 📌 Header */
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
+.header-container h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 📌 Search Bar */
 .search-bar {
     width: 300px;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 25px;
+    background: var(--gray-light);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
-/* User Management Section */
+.search-bar:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2);
+    background: var(--white);
+}
+
+/* 📌 User Management Section */
 .user-management {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
 }
 
-/* User Header */
+/* 📌 User Header */
 .user-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
+.user-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gray-dark);
+}
+
+.user-management p {
+    font-size: 0.9rem;
+    color: var(--gray-medium);
+    margin-bottom: 20px;
+}
+
+/* 📌 Add User Button */
 .add-user-btn {
-    background: #ff9800; /* Orange */
-    color: white;
-    padding: 10px 15px;
+    background: var(--gradient);
+    color: var(--white);
+    padding: 10px 20px;
     border: none;
+    border-radius: 25px;
     cursor: pointer;
-    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .add-user-btn:hover {
-    background: #e65100; /* Darker Orange */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
 }
 
-/* Filter Buttons */
+/* 📌 Filter Buttons */
 .filter-buttons {
     display: flex;
     gap: 10px;
@@ -190,88 +191,361 @@ body {
 }
 
 .filter-btn {
-    background: #ffe0b2; /* Light Orange */
+    background: var(--gray-light);
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gray-dark);
+    transition: all 0.3s ease;
 }
 
-.filter-btn.active {
-    background: #ff9800; /* Orange */
-    color: white;
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--gradient);
+    color: var(--white);
+    box-shadow: 0 3px 10px rgba(255, 140, 0, 0.2);
 }
 
-/* Table */
+/* 📌 Table */
 .table-container {
     overflow-x: auto;
+    border-radius: 10px;
 }
 
 .user-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
+    background: var(--white);
+    box-shadow: var(--shadow);
 }
 
 .user-table th,
 .user-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
+    padding: 15px;
     text-align: left;
+    border-bottom: 1px solid var(--gray-light);
 }
 
 .user-table th {
-    background: #ff6f00; /* Orange */
-    color: white;
+    background: var(--gradient);
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
 }
 
-/* Status Labels */
-.status {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 15px;
-    font-size: 14px;
-    font-weight: bold;
+.user-table td {
+    font-size: 0.9rem;
+    color: var(--gray-dark);
 }
 
-.status.active {
-    background-color: #ffcc80; /* Light Orange */
-    color: black;
+.user-table tr {
+    transition: background 0.3s ease;
 }
 
-.status.suspended {
-    background-color: #ff9800; /* Orange */
-    color: white;
+.user-table tr:hover {
+    background: rgba(255, 140, 0, 0.05);
 }
 
-.status.inactive {
-    background-color: #e65100; /* Dark Orange */
-    color: white;
-}
-
-/* Buttons */
+/* 📌 Buttons */
 .edit-btn {
-    background: #ff9800; /* Orange */
-    color: white;
-    padding: 6px 10px;
+    background: var(--gradient);
+    color: var(--white);
+    padding: 8px 15px;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
 }
 
 .edit-btn:hover {
-    background: #e65100; /* Darker Orange */
+    background: var(--dark-orange);
+    box-shadow: 0 3px 10px rgba(255, 140, 0, 0.2);
 }
 
-.delete-btn {
-    background: #d84315; /* Deep Red-Orange */
-    color: white;
-    padding: 6px 10px;
+/* 📌 Modal Styling (Enhanced with Glassmorphism) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    padding: 20px;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    width: 100%;
+    max-width: 480px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(12px);
+    position: relative;
+    text-align: left;
+    animation: slideIn 0.3s ease forwards;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Entry Animation */
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Exit Animation */
+@keyframes slideOut {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-50px) scale(0.95);
+        opacity: 0;
+    }
+}
+
+/* Close Button */
+.close-btn,
+.close-user-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--gray-dark);
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-btn:hover,
+.close-user-btn:hover {
+    color: var(--dark-orange);
+    transform: rotate(90deg);
+}
+
+.close-btn:focus,
+.close-user-btn:focus {
+    outline: none;
+    color: var(--primary-orange);
+}
+
+/* Modal Title and Description */
+.modal-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--gray-dark);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.modal-content p {
+    font-size: 0.95rem;
+    color: var(--gray-medium);
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* Form Styling */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.modal-content label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gray-dark);
+    margin-bottom: 8px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--gray-light);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background: var(--gray-light);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+}
+
+/* Error Message Styling */
+.error-message {
+    display: block;
+    font-size: 0.8rem;
+    color: #ef4444;
+    margin-top: 5px;
+    min-height: 20px;
+}
+
+/* Input Validation States */
+.modal-content input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.modal-content input:valid:not(:placeholder-shown) {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.05);
+}
+
+/* Primary Button (Submit) */
+.primary-btn {
+    background: var(--gradient);
+    color: var(--white);
+    padding: 14px;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.delete-btn:hover {
-    background: #bf360c; /* Darker Red-Orange */
+.primary-btn:hover {
+    background: var(--dark-orange);
+    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.primary-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.3);
+}
+
+.primary-btn.loading::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-left-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Disabled State for Button */
+.primary-btn:disabled {
+    background: var(--gray-medium);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 📌 Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 1000;
+    }
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+        border-top-left-radius: 0;
+    }
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    .search-bar {
+        width: 100%;
+    }
+    .user-table th,
+    .user-table td {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    .modal-content {
+        width: 90%;
+        max-width: 400px;
+        padding: 20px;
+    }
+    .modal-content h2 {
+        font-size: 1.5rem;
+    }
+    .modal-content p {
+        font-size: 0.9rem;
+    }
+    .modal-content input {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    .primary-btn {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 📌 Hamburger Menu for Mobile */
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-orange);
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+}
+
+/* 📌 Spinner for Loading State */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-orange);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
 }

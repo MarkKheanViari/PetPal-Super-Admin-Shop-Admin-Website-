@@ -1,3 +1,8 @@
+// 📌 Global Variables
+let allUsers = [];
+let currentFilter = "all"; // Default filter
+
+// 📌 Initialize on Page Load
 document.addEventListener("DOMContentLoaded", function () {
   setupModal();
   setupEventListeners();
@@ -6,39 +11,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // 📌 Initialize Modal Functionality
 function setupModal() {
-  const modal = document.getElementById("addShopOwnerModal");
+  const addModal = document.getElementById("addShopOwnerModal");
+  const editModal = document.getElementById("userModal");
   const openModalBtn = document.querySelector(".add-user-btn");
-  const closeModalBtn = document.querySelector(".close-btn");
+  const closeAddModalBtn = document.querySelector(".close-btn");
+  const closeEditModalBtn = document.querySelector(".close-user-btn");
 
   if (openModalBtn) {
     openModalBtn.addEventListener("click", function () {
-      modal.style.display = "flex"; // Now it will center properly
+      addModal.style.display = "flex";
+      addModal.setAttribute("aria-hidden", "false");
+      addModal.querySelector(".modal-content").style.animation = "slideIn 0.3s ease forwards";
     });
   }
 
-  if (closeModalBtn) {
-    closeModalBtn.addEventListener("click", function () {
-      modal.style.display = "none";
+  if (closeAddModalBtn) {
+    closeAddModalBtn.addEventListener("click", function () {
+      const modalContent = addModal.querySelector(".modal-content");
+      modalContent.style.animation = "slideOut 0.3s ease forwards";
+      modalContent.addEventListener("animationend", function () {
+        addModal.style.display = "none";
+        addModal.setAttribute("aria-hidden", "true");
+        document.getElementById("addShopOwnerForm").reset();
+        document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
+      }, { once: true });
+    });
+  }
+
+  if (closeEditModalBtn) {
+    closeEditModalBtn.addEventListener("click", function () {
+      const modalContent = editModal.querySelector(".modal-content");
+      modalContent.style.animation = "slideOut 0.3s ease forwards";
+      modalContent.addEventListener("animationend", function () {
+        editModal.style.display = "none";
+        editModal.setAttribute("aria-hidden", "true");
+        document.getElementById("editUserForm").reset();
+        document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
+      }, { once: true });
     });
   }
 
   window.addEventListener("click", function (event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
+    if (event.target === addModal) {
+      closeAddModalBtn.click();
+    } else if (event.target === editModal) {
+      closeEditModalBtn.click();
     }
   });
 }
 
-// 📌 Global Variables
-let allUsers = [];
-let currentFilter = "all"; // Default filter
-
 // 📌 Fetch Users and Apply Filters
 async function fetchUsers(filter = "all", searchQuery = "") {
+  const userTable = document.getElementById("userTable");
+  userTable.innerHTML = "<tr><td colspan='5'><div class='spinner'></div></td></tr>";
   try {
-    const response = await fetch(
-      "http://192.168.137.14/backend/frontend/superadmin/fetch_users.php"
-    );
+    const response = await fetch("http://192.168.1.65/backend/frontend/superadmin/fetch_users.php");
     const data = await response.json();
     allUsers = data.users || [];
 
@@ -57,6 +84,7 @@ async function fetchUsers(filter = "all", searchQuery = "") {
     displayUsers(filter, searchQuery);
   } catch (error) {
     console.error("❌ Error fetching users:", error);
+    userTable.innerHTML = "<tr><td colspan='5'>Error loading users</td></tr>";
   }
 }
 
@@ -64,10 +92,7 @@ async function fetchUsers(filter = "all", searchQuery = "") {
 function displayUsers(filterType = "all", searchQuery = "") {
   currentFilter = filterType; // ✅ Update the active filter
   const userTable = document.getElementById("userTable");
-  if (!userTable)
-    return console.error(
-      "❌ ERROR: 'userTable' element is missing in the HTML."
-    );
+  if (!userTable) return console.error("❌ ERROR: 'userTable' element is missing in the HTML.");
 
   userTable.innerHTML = "";
 
@@ -94,14 +119,14 @@ function displayUsers(filterType = "all", searchQuery = "") {
   if (filteredUsers.length > 0) {
     filteredUsers.forEach((user) => {
       userTable.innerHTML += `
-                <tr>
-                    <td>#${user.id}</td>
-                    <td>${user.username || "Unknown"}</td>
-                    <td>${user.type}</td>
-                    <td>${user.email}</td>
-                    <td><button class="edit-btn">Edit</button></td>
-                </tr>
-            `;
+        <tr>
+          <td>#${user.id}</td>
+          <td>${user.username || "Unknown"}</td>
+          <td>${user.type}</td>
+          <td>${user.email}</td>
+          <td><button class="edit-btn">Edit</button></td>
+        </tr>
+      `;
     });
   } else {
     userTable.innerHTML = "<tr><td colspan='5'>No Users Found</td></tr>";
@@ -113,15 +138,12 @@ function setupEventListeners() {
   // ✅ Attach Filter Buttons and Make Them Work!
   document.querySelectorAll(".filter-btn").forEach((button) => {
     button.addEventListener("click", function () {
-      document
-        .querySelectorAll(".filter-btn")
-        .forEach((btn) => btn.classList.remove("active"));
+      document.querySelectorAll(".filter-btn").forEach((btn) => btn.classList.remove("active"));
       this.classList.add("active");
 
       let filterType = this.getAttribute("data-filter");
       console.log(`🔹 Applying Filter: ${filterType}`); // Debugging
-
-      displayUsers(filterType); // ✅ Apply filter to displayed users
+      displayUsers(filterType, document.getElementById("searchBar").value.trim().toLowerCase());
     });
   });
 
@@ -129,137 +151,180 @@ function setupEventListeners() {
   const searchBar = document.getElementById("searchBar");
   if (searchBar) {
     searchBar.addEventListener("keyup", function () {
-      displayUsers(currentFilter, searchBar.value.trim().toLowerCase());
+      displayUsers(currentFilter, this.value.trim().toLowerCase());
     });
   }
 
-  // ✅ Create Shop Owner Button
-  const createShopOwnerBtn = document.getElementById("createShopOwnerBtn");
-  if (createShopOwnerBtn) {
-    createShopOwnerBtn.addEventListener("click", addShopOwner);
+  // ✅ Add Shop Owner Form Submission
+  const addForm = document.getElementById("addShopOwnerForm");
+  if (addForm) {
+    addForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      const username = document.getElementById("shopOwnerUsername").value.trim();
+      const email = document.getElementById("shopOwnerEmail").value.trim();
+      const password = document.getElementById("shopOwnerPassword").value.trim();
+      const btn = document.getElementById("createShopOwnerBtn");
+
+      let hasError = false;
+      document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
+
+      if (!username) {
+        document.getElementById("usernameError").textContent = "Username is required";
+        hasError = true;
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById("emailError").textContent = "Valid email is required";
+        hasError = true;
+      }
+      if (!password || password.length < 6) {
+        document.getElementById("passwordError").textContent = "Password must be at least 6 characters";
+        hasError = true;
+      }
+
+      if (!hasError) {
+        btn.classList.add("loading");
+        btn.disabled = true;
+        await addShopOwner(username, email, password);
+        btn.classList.remove("loading");
+        btn.disabled = false;
+      }
+    });
   }
+
+  // ✅ Edit User Form Submission
+  const editForm = document.getElementById("editUserForm");
+  if (editForm) {
+    editForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      const userModal = document.getElementById("userModal");
+      const userId = userModal.dataset.userId;
+      const username = document.getElementById("userUsername").value.trim();
+      const email = document.getElementById("userEmail").value.trim();
+      const password = document.getElementById("userPassword").value.trim();
+      const btn = document.getElementById("saveUserBtn");
+
+      let hasError = false;
+      document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
+
+      if (!username) {
+        document.getElementById("editUsernameError").textContent = "Username is required";
+        hasError = true;
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById("editEmailError").textContent = "Valid email is required";
+        hasError = true;
+      }
+      if (password && password.length < 6) {
+        document.getElementById("editPasswordError").textContent = "Password must be at least 6 characters";
+        hasError = true;
+      }
+
+      if (!hasError) {
+        btn.classList.add("loading");
+        btn.disabled = true;
+        const payload = { id: userId, username, email };
+        if (password) payload.password = password;
+        await saveUserChanges(payload);
+        btn.classList.remove("loading");
+        btn.disabled = false;
+      }
+    });
+  }
+
+  // ✅ Edit Button Event Delegation
+  document.getElementById("userTable").addEventListener("click", function (e) {
+    if (e.target.classList.contains("edit-btn")) {
+      const row = e.target.closest("tr");
+      const idText = row.querySelector("td").innerText;
+      const userId = idText.replace("#", "");
+      const user = allUsers.find((u) => u.id == userId);
+      if (user) {
+        openEditUserModal(user);
+      }
+    }
+  });
 }
 
 // 📌 Function to Add Shop Owner
-async function addShopOwner() {
-  const username = document.getElementById("shopOwnerUsername").value.trim();
-  const email = document.getElementById("shopOwnerEmail").value.trim();
-  const password = document.getElementById("shopOwnerPassword").value.trim();
-
-  if (!username || !email || !password) {
-    alert("⚠️ All fields are required.");
-    return;
-  }
-
+async function addShopOwner(username, email, password) {
   try {
-    const response = await fetch(
-      "http://192.168.137.14/backend/Frontend/SuperAdmin/add_shop_owner.php",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password }),
-      }
-    );
+    const response = await fetch("http://192.168.1.65/backend/Frontend/SuperAdmin/add_shop_owner.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, email, password }),
+    });
 
     const result = await response.json();
 
     if (result.success) {
-      alert("✅ Shop Owner Created Successfully!");
-      document.getElementById("shopOwnerUsername").value = "";
-      document.getElementById("shopOwnerEmail").value = "";
-      document.getElementById("shopOwnerPassword").value = "";
-
-      fetchUsers(); // Refresh table
+      Toastify({
+        text: "✅ Shop Owner Created Successfully!",
+        duration: 3000,
+        style: { background: "var(--primary-orange)" }
+      }).showToast();
+      document.getElementById("addShopOwnerForm").reset();
+      document.querySelector(".close-btn").click();
+      fetchUsers();
     } else {
-      alert("❌ Error: " + result.message);
+      throw new Error(result.message || "Failed to add shop owner");
     }
   } catch (error) {
     console.error("❌ Error adding shop owner:", error);
+    Toastify({
+      text: "❌ Error: " + error.message,
+      duration: 3000,
+      style: { background: "#ef4444" }
+    }).showToast();
   }
 }
 
-// 📌 Function to Highlight Active Filter Button
-function setActiveFilter(activeBtn) {
-  document
-    .querySelectorAll(".filter-btn")
-    .forEach((btn) => btn.classList.remove("active"));
-  activeBtn.classList.add("active");
-}
-
-// Listen for clicks on any edit button (event delegation)
-document.getElementById("userTable").addEventListener("click", function (e) {
-  if (e.target.classList.contains("edit-btn")) {
-    // Get the user's id from the first cell (assuming it's in the format "#id")
-    const row = e.target.closest("tr");
-    const idText = row.querySelector("td").innerText;
-    const userId = idText.replace("#", "");
-
-    // Find the user from allUsers array
-    const user = allUsers.find((u) => u.id == userId);
-    if (user) {
-      openEditUserModal(user);
-    }
-  }
-});
+// 📌 Function to Open Edit User Modal
 function openEditUserModal(user) {
   const userModal = document.getElementById("userModal");
   document.getElementById("modalTitle").innerText = "Edit User";
   document.getElementById("userUsername").value = user.username;
   document.getElementById("userEmail").value = user.email;
-  // Clear the password field so that a new password can be entered if needed
   document.getElementById("userPassword").value = "";
-
-  // Store the user's ID in a data attribute for use during update
   userModal.dataset.userId = user.id;
-
-  // Display the modal
   userModal.style.display = "flex";
+  userModal.setAttribute("aria-hidden", "false");
+  userModal.querySelector(".modal-content").style.animation = "slideIn 0.3s ease forwards";
 }
 
-document
-  .querySelector(".close-user-btn")
-  .addEventListener("click", function () {
-    document.getElementById("userModal").style.display = "none";
-  });
+// 📌 Function to Save User Changes
+async function saveUserChanges(payload) {
+  try {
+    const response = await fetch("http://192.168.1.65/backend/update_user.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-document
-  .getElementById("saveUserBtn")
-  .addEventListener("click", async function () {
-    const userModal = document.getElementById("userModal");
-    const userId = userModal.dataset.userId;
-    const username = document.getElementById("userUsername").value.trim();
-    const email = document.getElementById("userEmail").value.trim();
-    const password = document.getElementById("userPassword").value.trim();
+    const result = await response.json();
 
-    // Basic validation
-    if (!username || !email) {
-      alert("⚠️ Please fill in all required fields.");
-      return;
+    if (result.success) {
+      Toastify({
+        text: "✅ User Updated Successfully!",
+        duration: 3000,
+        style: { background: "var(--primary-orange)" }
+      }).showToast();
+      document.querySelector(".close-user-btn").click();
+      fetchUsers();
+    } else {
+      throw new Error(result.message || "Failed to update user");
     }
+  } catch (error) {
+    console.error("❌ Error updating user:", error);
+    Toastify({
+      text: "❌ Error: " + error.message,
+      duration: 3000,
+      style: { background: "#ef4444" }
+    }).showToast();
+  }
+}
 
-    // Construct the payload; include the password only if provided (so it resets)
-    const payload = { id: userId, username, email };
-    if (password) {
-      payload.password = password;
-    }
-
-    try {
-      const response = await fetch("update_user.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        alert("✅ User updated successfully!");
-        userModal.style.display = "none";
-        fetchUsers(); // Refresh the user list
-      } else {
-        alert("❌ Error: " + result.message);
-      }
-    } catch (error) {
-      console.error("❌ Error updating user:", error);
-    }
-  });
+// 📌 Function to Highlight Active Filter Button
+function setActiveFilter(activeBtn) {
+  document.querySelectorAll(".filter-btn").forEach((btn) => btn.classList.remove("active"));
+  activeBtn.classList.add("active");
+}
