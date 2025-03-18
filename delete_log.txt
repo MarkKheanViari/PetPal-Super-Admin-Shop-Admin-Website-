@@ -74,3 +74,6 @@ DELETE request received: {"product_id":71,"shop_owner_id":3}
 DELETE request received: {"product_id":73,"shop_owner_id":3}
 DELETE request received: {"product_id":74,"shop_owner_id":3}
 DELETE request received: {"product_id":76,"shop_owner_id":3}
+DELETE request received: {"product_id":79,"shop_owner_id":3}
+DELETE request received: {"product_id":81,"shop_owner_id":3}
+DELETE request received: {"product_id":83,"shop_owner_id":3}

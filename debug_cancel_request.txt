@@ -38,3 +38,11 @@ Array
     [appointment_date] => 2025-03-17
 )
 Received: UserID=4, Service=Bathing, Type=Grooming, Date=2025-03-17
+Array
+(
+    [mobile_user_id] => 4
+    [service_name] => Bathing
+    [service_type] => Grooming
+    [appointment_date] => 2025-03-18
+)
+Received: UserID=4, Service=Bathing, Type=Grooming, Date=2025-03-18

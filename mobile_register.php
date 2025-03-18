@@ -11,7 +11,7 @@ try {
     $data = json_decode($json);
 
     // Debugging log to see the received data
-    file_put_contents("debug_log.txt", json_encode($data, JSON_PRETTY_PRINT), FILE_APPEND);
+    file_put_contents("debug_log.txt", "Register Request: " . json_encode($data, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
 
     if (!$data || !isset($data->username) || !isset($data->email) || !isset($data->password) || !isset($data->location) || !isset($data->age) || !isset($data->contact_number)) {
         throw new Exception('Missing required fields');
@@ -45,8 +45,11 @@ try {
     $stmt->bind_param("ssssss", $username, $email, $password, $location, $age, $contact_number);
 
     if (!$stmt->execute()) {
+        file_put_contents("debug_log.txt", "DB Error: " . $stmt->error . "\n", FILE_APPEND);
         throw new Exception('Database error: ' . $stmt->error);
     }
+
+    file_put_contents("debug_log.txt", "User Registered: $username, Hash: $password\n", FILE_APPEND);
 
     echo json_encode([
         'success' => true,
