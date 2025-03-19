@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET");
-header("Content-Type: application/json");
+header("Content-Type: text/html");
 
 include "db.php"; // Include your database connection
 
@@ -19,13 +19,13 @@ $order_id = intval($_GET['order_id']);
 $updateOrderQuery = "UPDATE orders SET status = 'Paid' WHERE id = ?";
 $stmt = $conn->prepare($updateOrderQuery);
 $stmt->bind_param("i", $order_id);
-
-if ($stmt->execute()) {
-    echo json_encode(["success" => true, "message" => "✅ Payment successful! Order marked as paid."]);
-} else {
-    echo json_encode(["success" => false, "message" => "❌ Failed to update order status"]);
-}
-
+$stmt->execute();
 $stmt->close();
 $conn->close();
+
+// ✅ Redirect user to an intermediate webpage that will open the deep link
+$intermediate_url = "https://192.168.1.65/deeplink_redirect.php?order_id=$order_id";
+
+header("Location: $intermediate_url");
+exit();
 ?>
