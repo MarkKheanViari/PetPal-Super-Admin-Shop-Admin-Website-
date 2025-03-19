@@ -7,11 +7,10 @@
     --light-orange: #fff7e6;
     --white: #ffffff;
     --gray-light: #f5f5f5;
-    --gray-medium: #d1d5db;
     --gray-dark: #4b5563;
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     --gradient: linear-gradient(135deg, #ff8c00, #e65100);
-    --sidebar-width: 220px;
+    --sidebar-width: 250px;  /* Choose one value for consistency */
     --sidebar-spacing: 20px;
 }
 
@@ -29,7 +28,6 @@ body {
     min-height: 100vh;
 }
 
-/* 📌 Sidebar */
 .sidebar {
     width: var(--sidebar-width);
     background: var(--gradient);

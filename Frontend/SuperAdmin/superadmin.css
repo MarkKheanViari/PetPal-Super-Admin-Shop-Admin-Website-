@@ -10,10 +10,9 @@
     --gray-dark: #4b5563;
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     --gradient: linear-gradient(135deg, #ff8c00, #e65100);
-    --sidebar-width: 180px; /* Sidebar width */
-    --sidebar-spacing: 20px; /* Spacing between sidebar and main content */
+    --sidebar-width: 250px;  /* Choose one value for consistency */
+    --sidebar-spacing: 20px;
 }
-
 * {
     margin: 0;
     padding: 0;
@@ -28,32 +27,25 @@ body {
     background: linear-gradient(135deg, #fff7e6 0%, #fef3e0 100%);
     color: var(--gray-dark);
 }
-
-/* 📌 Sidebar (Slimmed Down) */
 .sidebar {
     width: var(--sidebar-width);
     background: var(--gradient);
     color: var(--white);
-    padding: 15px;
+    padding: 20px;
     min-height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
-}
-
-.sidebar-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 25px;
+    transition: transform 0.3s ease, width 0.3s ease;
 }
 
 .sidebar h2 {
-    font-size: 18px;
-    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
     background: linear-gradient(90deg, #fff, #ddd);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -65,7 +57,7 @@ body {
 }
 
 .sidebar ul li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .sidebar ul li a {
@@ -73,23 +65,23 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px;
+    gap: 10px;
+    padding: 12px 15px;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 0.95rem;
+    font-weight: 500;
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .sidebar ul li a:hover,
 .sidebar ul li a.active {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     transform: translateX(5px);
 }
 
 .sidebar ul li a i {
-    font-size: 16px;
+    font-size: 1.1rem;
 }
-
 /* 📌 Dashboard Layout */
 .dashboard {
     flex: 1;

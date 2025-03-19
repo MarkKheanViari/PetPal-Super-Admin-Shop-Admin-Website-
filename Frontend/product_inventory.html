@@ -156,41 +156,6 @@
     </div>
   </div>
   
-  <!-- Edit Profile Modal -->
-  <div id="editProfileModal" class="modal" style="display: none;">
-    <div class="modal-content">
-      <span class="close-btn" onclick="toggleProfileModal(false)">&times;</span>
-      <h2>Edit Profile</h2>
-      <form id="editProfileForm" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="profileUsername">Name:</label>
-          <input type="text" id="profileUsername" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="profileEmail">Email:</label>
-          <input type="email" id="profileEmail" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="profilePassword">Password (optional):</label>
-          <input type="password" id="profilePassword" name="password">
-        </div>
-        <div class="form-group">
-          <label for="profileImage">Profile Image (optional):</label>
-          <input type="file" id="profileImage" name="profile_image" accept="image/*">
-        </div>
-        <div class="form-action">
-          <button type="button" onclick="toggleProfileModal(false)">Cancel</button>
-          <button type="submit">Save Changes</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  
-  
-  
-  
-      
-
     <!-- Edit Product Modal -->
     <!-- Overlay for background blur -->
     <div class="floating-overlay" id="editOverlay" onclick="toggleEditForm(false)"></div>
