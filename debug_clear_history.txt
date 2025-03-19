@@ -50,3 +50,10 @@ Incoming request: Array
 
 Processing UserID=4
 Query executed successfully. Rows affected: 0
+Incoming request: Array
+(
+    [mobile_user_id] => 4
+)
+
+Processing UserID=4
+Query executed successfully. Rows affected: 0

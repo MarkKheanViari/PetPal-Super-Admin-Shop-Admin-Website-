@@ -250,3 +250,17 @@ Array
     [payment_method] => Cash
     [notes] => wala pong talong
 )
+Array
+(
+    [mobile_user_id] => 13
+    [service_type] => Grooming
+    [service_name] => Brushing
+    [name] => rap
+    [address] => narvasralph8@gmail.com
+    [phone_number] => 09469788936
+    [pet_name] => tofu
+    [pet_breed] => pomeranian
+    [appointment_date] => 2025-3-20
+    [payment_method] => Cash
+    [notes] => 
+)
