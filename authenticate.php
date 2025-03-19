@@ -40,7 +40,7 @@ if ($role === "superadmin") {
     if ($row = $result->fetch_assoc()) {
         if (password_verify($password, $row["password"])) {
             $response["success"] = true;
-            $response["redirect"] = "http://192.168.1.65/backend/Frontend/SuperAdmin/superadmin.html";
+            $response["redirect"] = "http://192.168.1.13/backend/Frontend/SuperAdmin/superadmin.html";
             $response["token"] = bin2hex(random_bytes(16));
         } else {
             $response["success"] = false;

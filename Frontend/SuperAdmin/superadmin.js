@@ -35,7 +35,7 @@ function setupEventListeners() {
 // 📌 Fetch User Counts for Bar Chart
 async function fetchUserCounts() {
   try {
-      const response = await fetch("http://192.168.1.65/backend/Frontend/Superadmin/superadmin_stats.php");
+      const response = await fetch("http://192.168.1.13/backend/Frontend/Superadmin/superadmin_stats.php");
       const data = await response.json();
 
       console.log("✅ User Stats Response:", data); // Debugging
@@ -59,7 +59,7 @@ async function fetchUserCounts() {
 // 📌 Fetch User Statistics for Graph (Unused in this version, but kept for reference)
 async function fetchUserStatistics() {
   try {
-      const response = await fetch("http://192.168.1.65/backend/Frontend/Superadmin/fetch_user_counts.php");
+      const response = await fetch("http://192.168.1.13/backend/Frontend/Superadmin/fetch_user_counts.php");
       const data = await response.json();
       renderUserChart(data.months, data.mobile_users, data.shop_owners);
   } catch (error) {
@@ -79,7 +79,7 @@ function openTab(event, tabName) {
 // Fetch Users and Limit to 3
 async function fetchUsers() {
   try {
-      const response = await fetch("http://192.168.1.65/backend/frontend/superadmin/fetch_users.php");
+      const response = await fetch("http://192.168.1.13/backend/frontend/superadmin/fetch_users.php");
       const data = await response.json();
 
       const userTable = document.getElementById("userTable");
@@ -110,7 +110,7 @@ async function fetchUsers() {
 // Fetch Products and Limit to 3
 async function fetchProducts() {
   try {
-      const response = await fetch("http://192.168.1.65/backend/Frontend/SuperAdmin/fetch_products.php?page=dashboard");
+      const response = await fetch("http://192.168.1.13/backend/Frontend/SuperAdmin/fetch_products.php?page=dashboard");
       const data = await response.json();
 
       const productTable = document.getElementById("productTable");
@@ -138,7 +138,7 @@ async function fetchProducts() {
 // Fetch Recent Activities
 async function fetchRecentActivities() {
   try {
-      const response = await fetch("http://192.168.1.65/backend/Frontend/Superadmin/fetch_recent_activities.php");
+      const response = await fetch("http://192.168.1.13/backend/Frontend/Superadmin/fetch_recent_activities.php");
       const data = await response.json();
 
       const activityList = document.getElementById("activityList");
