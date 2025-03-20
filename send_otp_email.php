@@ -2,12 +2,8 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Enable error reporting for debugging
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require 'vendor/autoload.php'; // Path to Composer's autoloader
+include 'db.php'; // Include your database connection
 
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
@@ -27,30 +23,38 @@ try {
     $email = $data->email;
     $otp = $data->otp;
 
+    // Calculate expiration time (15 minutes from now)
+    $expiresAt = date('Y-m-d H:i:s', strtotime('+15 minutes'));
+
+    // Store the OTP in the database (replace if exists)
+    $stmt = $conn->prepare("INSERT INTO otps (email, otp, expires_at) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE otp = ?, expires_at = ?");
+    $stmt->bind_param("sssss", $email, $otp, $expiresAt, $otp, $expiresAt);
+    if (!$stmt->execute()) {
+        throw new Exception('Failed to store OTP in database');
+    }
+
     // Log the email and OTP
-    file_put_contents("gmail_debug_log.txt", "Email: $email, OTP: $otp\n", FILE_APPEND);
+    file_put_contents("gmail_debug_log.txt", "Email: $email, OTP: $otp, Expires At: $expiresAt\n", FILE_APPEND);
 
     $mail = new PHPMailer(true);
-    // Enable verbose debug output
-    $mail->SMTPDebug = 2; // 2 for detailed debug output
     // Server settings
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'kheantastic@gmail.com';
-    $mail->Password = 'huvn seuy vvbn vyms'; // Replace with your new App Password
+    $mail->Password = 'huvn seuy vvbn vyms'; // Replace with your new App Password (no spaces)
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
     // Recipients
-    $mail->setFrom('myemail@gmail.com', 'Your App Name');
+    $mail->setFrom('PetPalSupport@gmail.com', 'PetPal Support Service');
     $mail->addAddress($email);
 
     // Content
     $mail->isHTML(true);
-    $mail->Subject = 'Password Reset OTP';
-    $mail->Body    = "Your OTP for password reset is: <b>$otp</b>";
-    $mail->AltBody = "Your OTP for password reset is: $otp";
+    $mail->Subject = 'Password Reset Code';
+    $mail->Body    = "Your password reset code is: <b>$otp</b>. This code will expire in 15 minutes.";
+    $mail->AltBody = "Your password reset code is: $otp. This code will expire in 15 minutes.";
 
     $mail->send();
     $debugOutput = ob_get_clean(); // Capture the debug output
@@ -62,4 +66,6 @@ try {
     http_response_code(400);
     echo json_encode(['success' => false, 'message' => "Failed to send OTP: {$mail->ErrorInfo}"]);
 }
+
+$conn->close();
 ?>
