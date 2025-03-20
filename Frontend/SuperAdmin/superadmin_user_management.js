@@ -65,7 +65,7 @@ async function fetchUsers(filter = "all", searchQuery = "") {
   const userTable = document.getElementById("userTable");
   userTable.innerHTML = "<tr><td colspan='5'><div class='spinner'></div></td></tr>";
   try {
-    const response = await fetch("http://192.168.1.65/backend/frontend/superadmin/fetch_users.php");
+    const response = await fetch("http://192.168.1.12/backend/frontend/superadmin/fetch_users.php");
     const data = await response.json();
     allUsers = data.users || [];
 
@@ -248,7 +248,7 @@ function setupEventListeners() {
 // 📌 Function to Add Shop Owner
 async function addShopOwner(username, email, password) {
   try {
-    const response = await fetch("http://192.168.1.65/backend/Frontend/SuperAdmin/add_shop_owner.php", {
+    const response = await fetch("http://192.168.1.12/backend/Frontend/SuperAdmin/add_shop_owner.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, email, password }),
@@ -294,7 +294,7 @@ function openEditUserModal(user) {
 // 📌 Function to Save User Changes
 async function saveUserChanges(payload) {
   try {
-    const response = await fetch("http://192.168.1.65/backend/update_user.php", {
+    const response = await fetch("http://192.168.1.12/backend/update_user.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
