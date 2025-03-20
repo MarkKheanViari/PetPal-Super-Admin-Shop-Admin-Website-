@@ -49,50 +49,59 @@ document.addEventListener("DOMContentLoaded", function () {
     editProductForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
-  
+
       // Validate price input (must be > 0)
-      const priceValue = parseFloat(document.getElementById("editProductPrice").value);
+      const priceValue = parseFloat(
+        document.getElementById("editProductPrice").value
+      );
       if (priceValue <= 0) {
         alert("❌ Price must be greater than 0.");
         return;
       }
       // Validate quantity input (must be > 0)
-      const quantityValue = parseFloat(document.getElementById("editProductQuantity").value);
+      const quantityValue = parseFloat(
+        document.getElementById("editProductQuantity").value
+      );
       if (quantityValue <= 0) {
         alert("❌ Quantity must be greater than 0.");
         return;
       }
-  
-      const selectedCategory = document.getElementById("editProductCategory").value;
+
+      const selectedCategory = document.getElementById(
+        "editProductCategory"
+      ).value;
       formData.append("category", selectedCategory);
-  
+
       const shopOwnerId = localStorage.getItem("shop_owner_id");
       formData.append("shop_owner_id", shopOwnerId);
-  
+
       // Append new image file if selected; otherwise, preserve existing image
       const newImageFile = document.getElementById("editProductImage").files[0];
       if (newImageFile) {
         formData.append("product_image", newImageFile);
       } else {
-        const existingImageValue = document.getElementById("existingImage").value;
+        const existingImageValue =
+          document.getElementById("existingImage").value;
         formData.append("existing_image", existingImageValue);
       }
 
-  
       console.log("🔍 Form Data Before Sending:");
       for (const [key, value] of formData.entries()) {
         console.log(`${key}: ${value}`);
       }
-  
+
       try {
-        const response = await fetch("http://192.168.1.65/backend/update_product.php", {
-          method: "POST",
-          body: formData,
-        });
-  
+        const response = await fetch(
+          "http://192.168.1.65/backend/update_product.php",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
         const data = await response.json();
         console.log("✅ Server Response:", data);
-  
+
         if (data.success) {
           alert("✅ Product updated successfully!");
           fetchProducts(); // Refresh product list
@@ -105,7 +114,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  
 
   // 📝 Handle product add submission (only if form exists)
   const productForm = document.getElementById("productForm");
@@ -113,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     productForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
-  
+
       // Validate the price input
       const priceInput = e.target.querySelector('[name="product_price"]');
       if (!priceInput) {
@@ -125,11 +133,13 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("❌ Price must be greater than 0.");
         return;
       }
-  
+
       // Validate the quantity input
       const quantityInput = e.target.querySelector('[name="product_quantity"]');
       if (!quantityInput) {
-        alert("❌ Quantity input field not found. Please check your form markup.");
+        alert(
+          "❌ Quantity input field not found. Please check your form markup."
+        );
         return;
       }
       const quantityValue = parseFloat(quantityInput.value);
@@ -137,16 +147,19 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("❌ Quantity must be greater than 0.");
         return;
       }
-  
+
       // Now append your other form data
       formData.append("shop_owner_id", localStorage.getItem("shop_owner_id"));
-  
+
       try {
-        const response = await fetch("http://192.168.1.65/backend/add_product.php", {
-          method: "POST",
-          body: formData,
-        });
-  
+        const response = await fetch(
+          "http://192.168.1.65/backend/add_product.php",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
         const data = await response.json();
         if (data.success) {
           alert("✅ Product added successfully!");
@@ -162,8 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  
-
 
   if (checkAuth()) {
     filterProducts();
@@ -264,7 +275,9 @@ window.onclick = function (event) {
 
 async function deleteProduct(productId) {
   // Show confirmation dialog and wait for the user's response.
-  const confirmed = await confirm("Are you sure you want to delete this product?");
+  const confirmed = await confirm(
+    "Are you sure you want to delete this product?"
+  );
   if (!confirmed) {
     return; // If the user clicks Cancel, exit without deleting.
   }
@@ -276,7 +289,7 @@ async function deleteProduct(productId) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       product_id: parseInt(productId, 10),
-      shop_owner_id: parseInt(shopOwnerId, 10)
+      shop_owner_id: parseInt(shopOwnerId, 10),
     }),
   })
     .then((response) => response.json())
@@ -296,10 +309,6 @@ async function deleteProduct(productId) {
       alert("❌ Failed to delete product: " + error.message);
     });
 }
-
-
-
-
 
 function editProduct(id, name, price, description, quantity, image, category) {
   console.log(`🔍 Editing Product ID: ${id}`);
@@ -449,7 +458,9 @@ function fetchOrders() {
 
 async function deleteProduct(productId) {
   // Show confirmation dialog and wait for the user's response.
-  const confirmed = await confirm("Are you sure you want to delete this product?");
+  const confirmed = await confirm(
+    "Are you sure you want to delete this product?"
+  );
   if (!confirmed) {
     return; // If the user clicks Cancel, exit without deleting.
   }
@@ -461,7 +472,7 @@ async function deleteProduct(productId) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       product_id: parseInt(productId, 10),
-      shop_owner_id: parseInt(shopOwnerId, 10)
+      shop_owner_id: parseInt(shopOwnerId, 10),
     }),
   })
     .then((response) => response.json())
@@ -481,7 +492,6 @@ async function deleteProduct(productId) {
       alert("❌ Failed to delete product: " + error.message);
     });
 }
-
 
 function showToast(message, isError = false) {
   const toast = document.getElementById("toast");
@@ -617,10 +627,9 @@ function toggleEditForm(show) {
 function showProductPreview(product) {
   let imagePath = product.image;
   if (!imagePath.startsWith("http")) {
-      imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
+    imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
   }
   document.querySelector("img").src = imagePath;
-
 
   const previewModal = document.getElementById("previewModal");
   const previewName = document.getElementById("previewName");
@@ -673,37 +682,94 @@ function displayProducts(products) {
       return;
     }
 
+    // Create the main product card
     const productItem = document.createElement("div");
     productItem.className = "product-card";
 
+    // Determine the correct image path
     let imagePath = product.image;
     if (!imagePath.startsWith("http") && !imagePath.startsWith("/")) {
       imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
     }
 
-    productItem.innerHTML = `
-            <div class="product-header">
-                <span class="price-badge">Price: ₱${product.price}</span>
-                <button class="menu-btn" onclick="toggleMenu(${product.id})">⋮</button>
-                
-                <div class="menu-dropdown" id="menu-${product.id}" style="display: none;">
-                    <button onclick="editProduct(${product.id}, '${product.name}', '${product.price}', 
-                        '${product.description}', '${product.quantity}', '${imagePath}', '${product.category}')">
-                        Edit
-                    </button>
-                    <button onclick="deleteProduct(${product.id})">Delete</button>
-                </div>
-            </div>
-            <div class="product-image">
-                <img src="${imagePath}" alt="Product Image" onerror="this.onerror=null; this.src='default-product.jpg';">
-            </div>
-            <div class="product-details">
-                <h3>${product.name}</h3>
-                <p>In Stock: ${product.quantity}</p>
-            </div>
-        `;
+    // Build header elements
+    const header = document.createElement("div");
+    header.className = "product-header";
 
-    productItem.addEventListener("click", function (event) {
+    const priceBadge = document.createElement("span");
+    priceBadge.className = "price-badge";
+    priceBadge.textContent = `Price: ₱${product.price}`;
+
+    const menuBtn = document.createElement("button");
+    menuBtn.className = "menu-btn";
+    menuBtn.textContent = "⋮";
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleMenu(product.id);
+    });
+
+    const menuDropdown = document.createElement("div");
+    menuDropdown.className = "menu-dropdown";
+    menuDropdown.id = `menu-${product.id}`;
+    menuDropdown.style.display = "none";
+
+    // Create the Edit button without inline JS
+    const editButton = document.createElement("button");
+    editButton.textContent = "Edit";
+    editButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      editProduct(
+        product.id,
+        product.name,
+        product.price,
+        product.description,
+        product.quantity,
+        imagePath,
+        product.category
+      );
+    });
+
+    // Create the Delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      deleteProduct(product.id);
+    });
+
+    menuDropdown.appendChild(editButton);
+    menuDropdown.appendChild(deleteButton);
+    header.appendChild(priceBadge);
+    header.appendChild(menuBtn);
+    header.appendChild(menuDropdown);
+    productItem.appendChild(header);
+
+    // Create and add the product image
+    const imageDiv = document.createElement("div");
+    imageDiv.className = "product-image";
+    const img = document.createElement("img");
+    img.src = imagePath;
+    img.alt = "Product Image";
+    img.onerror = function () {
+      this.onerror = null;
+      this.src = "default-product.jpg";
+    };
+    imageDiv.appendChild(img);
+    productItem.appendChild(imageDiv);
+
+    // Create and add the product details
+    const detailsDiv = document.createElement("div");
+    detailsDiv.className = "product-details";
+    const title = document.createElement("h3");
+    title.textContent = product.name;
+    const stock = document.createElement("p");
+    stock.textContent = `In Stock: ${product.quantity}`;
+    detailsDiv.appendChild(title);
+    detailsDiv.appendChild(stock);
+    productItem.appendChild(detailsDiv);
+
+    // Open product preview when the card (but not menu) is clicked
+    productItem.addEventListener("click", (event) => {
       if (
         event.target.closest(".menu-btn") ||
         event.target.closest(".menu-dropdown")
@@ -719,6 +785,8 @@ function displayProducts(products) {
   console.log("✅ Products displayed successfully.");
 }
 
+
+
 // Initialize custom modal dialogs for alert and confirm
 (function () {
   // Create modal overlay element if it doesn't exist
@@ -733,14 +801,14 @@ function displayProducts(products) {
   document.body.appendChild(modalOverlay);
 
   // Override window.alert to use custom modal
-  window.alert = function(message) {
-    return new Promise(resolve => {
+  window.alert = function (message) {
+    return new Promise((resolve) => {
       const modalMessage = document.getElementById("customModalMessage");
       const modalButtons = document.getElementById("customModalButtons");
       modalMessage.textContent = message;
       modalButtons.innerHTML = `<button id="customOkButton">OK</button>`;
       modalOverlay.style.display = "flex";
-      document.getElementById("customOkButton").onclick = function() {
+      document.getElementById("customOkButton").onclick = function () {
         modalOverlay.style.display = "none";
         resolve();
       };
@@ -748,8 +816,8 @@ function displayProducts(products) {
   };
 
   // Override window.confirm to use custom modal, returns true if OK, false if Cancel.
-  window.confirm = function(message) {
-    return new Promise(resolve => {
+  window.confirm = function (message) {
+    return new Promise((resolve) => {
       const modalMessage = document.getElementById("customModalMessage");
       const modalButtons = document.getElementById("customModalButtons");
       modalMessage.textContent = message;
@@ -758,14 +826,70 @@ function displayProducts(products) {
         <button id="customCancelButton">Cancel</button>
       `;
       modalOverlay.style.display = "flex";
-      document.getElementById("customOkButton").onclick = function() {
+      document.getElementById("customOkButton").onclick = function () {
         modalOverlay.style.display = "none";
         resolve(true);
       };
-      document.getElementById("customCancelButton").onclick = function() {
+      document.getElementById("customCancelButton").onclick = function () {
         modalOverlay.style.display = "none";
         resolve(false);
       };
     });
   };
 })();
+
+function downloadReceipt() {
+  // Retrieve receipt details from the modal fields
+  const customerName = document.getElementById("customerName").value;
+  const customerAddress = document.getElementById("customerAddress").value;
+  const customerContact = document.getElementById("customerContact").value;
+  const paymentMethod = document.getElementById("paymentMethod").value;
+  const orderAmount = document.getElementById("orderAmount").value;
+  const orderDate = document.getElementById("orderDate").value;
+  // Exclude orderStatus from the receipt
+
+  // Get the seller's name from localStorage
+  const sellerName = localStorage.getItem("shop_owner_username") || "Seller";
+
+  // Format the receipt text as a proper receipt layout
+  const receiptText = `
+========== Order Receipt ==========
+Seller: ${sellerName}
+
+--- Customer Information ---
+Name:    ${customerName}
+Address: ${customerAddress}
+Contact: ${customerContact}
+
+--- Order Information ---
+Payment Method: ${paymentMethod}
+Order Amount:   ${orderAmount}
+Order Date:     ${orderDate}
+
+Thank you for your purchase!
+===================================
+  `.trim();
+
+  // Create a Blob object from the receipt text
+  const blob = new Blob([receiptText], { type: "text/plain" });
+
+  // Create a temporary download link
+  const downloadLink = document.createElement("a");
+  downloadLink.href = window.URL.createObjectURL(blob);
+  downloadLink.download = "receipt.txt"; // File name
+
+  // Append link to the DOM, trigger click, and then remove the link
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+}
+
+function showSimplePopup(title, message) {
+  document.getElementById("simplePopupTitle").textContent = title;
+  document.getElementById("simplePopupMessage").textContent = message;
+  document.getElementById("simplePopup").classList.remove("hidden");
+}
+
+document.getElementById("simplePopupBtn").addEventListener("click", () => {
+  document.getElementById("simplePopup").classList.add("hidden");
+});

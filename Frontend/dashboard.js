@@ -96,32 +96,50 @@ function fetchSalesMetrics() {
       if (!data.success || !Array.isArray(data.orders)) {
         console.warn("No orders found for sales metrics.");
         // Fallback values for cards
-        document.querySelector(".metrics .metric-card:nth-child(1) .metric-value").textContent = "₱0";
-        document.querySelector(".metrics .metric-card:nth-child(1) .metric-label").textContent = "YTD";
-        document.querySelector(".metrics .metric-card:nth-child(2) .metric-value").textContent = "N/A";
-        document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = "0 units";
-        document.querySelector(".metrics .metric-card:nth-child(3) .metric-value").textContent = "N/A";
-        document.querySelector(".metrics .metric-card:nth-child(3) .metric-label").textContent = "0 units";
+        document.querySelector(
+          ".metrics .metric-card:nth-child(1) .metric-value"
+        ).textContent = "₱0";
+        document.querySelector(
+          ".metrics .metric-card:nth-child(1) .metric-label"
+        ).textContent = "YTD";
+        document.querySelector(
+          ".metrics .metric-card:nth-child(2) .metric-value"
+        ).textContent = "N/A";
+        document.querySelector(
+          ".metrics .metric-card:nth-child(2) .metric-label"
+        ).textContent = "0 units";
+        document.querySelector(
+          ".metrics .metric-card:nth-child(3) .metric-value"
+        ).textContent = "N/A";
+        document.querySelector(
+          ".metrics .metric-card:nth-child(3) .metric-label"
+        ).textContent = "0 units";
         return;
       }
 
       // Step 1: Filter for Delivered Orders
-      const deliveredOrders = data.orders.filter(order => order.status === "Delivered");
+      const deliveredOrders = data.orders.filter(
+        (order) => order.status === "Delivered"
+      );
       console.log("📦 Delivered Orders:", deliveredOrders); // Debug log: Filtered orders
 
       // Step 2: Calculate Total Sales for Delivered Orders
       let totalSales = 0;
-      deliveredOrders.forEach(order => {
+      deliveredOrders.forEach((order) => {
         const rawPrice = order.total_price || "0.00"; // Use raw string
-        const parsedPrice = parseFloat(rawPrice.replace(/[^0-9.-]+/g, '')) || 0; // Remove non-numeric characters and parse
+        const parsedPrice = parseFloat(rawPrice.replace(/[^0-9.-]+/g, "")) || 0; // Remove non-numeric characters and parse
         // Fallback: Calculate total from items if parsedPrice is suspiciously low
-        const itemsTotal = order.items ? order.items.reduce((sum, item) => {
-          const itemPrice = parseFloat(item.price) || 0;
-          const itemQuantity = parseInt(item.quantity) || 0;
-          return sum + (itemPrice * itemQuantity);
-        }, 0) : 0;
+        const itemsTotal = order.items
+          ? order.items.reduce((sum, item) => {
+              const itemPrice = parseFloat(item.price) || 0;
+              const itemQuantity = parseInt(item.quantity) || 0;
+              return sum + itemPrice * itemQuantity;
+            }, 0)
+          : 0;
         const finalPrice = parsedPrice > 10 ? parsedPrice : itemsTotal; // Use itemsTotal if parsedPrice is too low
-        console.log(`Order ID: ${order.id}, Raw Total Price: ${rawPrice}, Parsed Price: ${parsedPrice}, Items Total: ${itemsTotal}, Final Price: ${finalPrice}`); // Debug log
+        console.log(
+          `Order ID: ${order.id}, Raw Total Price: ${rawPrice}, Parsed Price: ${parsedPrice}, Items Total: ${itemsTotal}, Final Price: ${finalPrice}`
+        ); // Debug log
         totalSales += finalPrice;
       });
 
@@ -130,17 +148,25 @@ function fetchSalesMetrics() {
       console.log("💰 Total Sales (before display):", totalSales); // Debug log: Final total
 
       // Update the first card (Total Sales) with peso sign and proper formatting
-      document.querySelector(".metrics .metric-card:nth-child(1) .metric-value").textContent = `₱${parseFloat(totalSales).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-      document.querySelector(".metrics .metric-card:nth-child(1) .metric-label").textContent = "YTD";
+      document.querySelector(
+        ".metrics .metric-card:nth-child(1) .metric-value"
+      ).textContent = `₱${parseFloat(totalSales).toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`;
+      document.querySelector(
+        ".metrics .metric-card:nth-child(1) .metric-label"
+      ).textContent = "YTD";
 
       // Step 3: Calculate Top Selling Product (by quantity)
       const productQuantities = {};
-      data.orders.forEach(order => {
+      data.orders.forEach((order) => {
         if (order.status === "Delivered" && Array.isArray(order.items)) {
-          order.items.forEach(item => {
+          order.items.forEach((item) => {
             const productId = item.product_id;
             const quantity = parseInt(item.quantity || 0);
-            productQuantities[productId] = (productQuantities[productId] || 0) + quantity;
+            productQuantities[productId] =
+              (productQuantities[productId] || 0) + quantity;
           });
         }
       });
@@ -162,7 +188,9 @@ function fetchSalesMetrics() {
         for (const order of data.orders) {
           if (topProductFound) break;
           if (Array.isArray(order.items)) {
-            const topProductItem = order.items.find(item => item.product_id == topProductId);
+            const topProductItem = order.items.find(
+              (item) => item.product_id == topProductId
+            );
             if (topProductItem) {
               topProductName = topProductItem.product_name || "Unknown Product";
               topProductFound = true;
@@ -172,8 +200,12 @@ function fetchSalesMetrics() {
       }
 
       // Update the second card (Top Selling Product)
-      document.querySelector(".metrics .metric-card:nth-child(2) .metric-value").textContent = topProductName;
-      document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = `${maxQuantity} units`;
+      document.querySelector(
+        ".metrics .metric-card:nth-child(2) .metric-value"
+      ).textContent = topProductName;
+      document.querySelector(
+        ".metrics .metric-card:nth-child(2) .metric-label"
+      ).textContent = `${maxQuantity} units`;
 
       // Step 4: Calculate Least Sold Product (by quantity)
       let leastProductId = null;
@@ -191,9 +223,12 @@ function fetchSalesMetrics() {
         for (const order of data.orders) {
           if (leastProductFound) break;
           if (Array.isArray(order.items)) {
-            const leastProductItem = order.items.find(item => item.product_id == leastProductId);
+            const leastProductItem = order.items.find(
+              (item) => item.product_id == leastProductId
+            );
             if (leastProductItem) {
-              leastProductName = leastProductItem.product_name || "Unknown Product";
+              leastProductName =
+                leastProductItem.product_name || "Unknown Product";
               leastProductFound = true;
             }
           }
@@ -201,26 +236,50 @@ function fetchSalesMetrics() {
       }
 
       // Update the third card (Least Sold Product)
-      document.querySelector(".metrics .metric-card:nth-child(3) .metric-value").textContent = leastProductName;
-      document.querySelector(".metrics .metric-card:nth-child(3) .metric-label").textContent = `${minQuantity} units`;
+      document.querySelector(
+        ".metrics .metric-card:nth-child(3) .metric-value"
+      ).textContent = leastProductName;
+      document.querySelector(
+        ".metrics .metric-card:nth-child(3) .metric-label"
+      ).textContent = `${minQuantity} units`;
 
       // Fallback if no products are found
       if (!topProductName || !leastProductName) {
-        document.querySelector(".metrics .metric-card:nth-child(2) .metric-value").textContent = "N/A";
-        document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = "0 units";
-        document.querySelector(".metrics .metric-card:nth-child(3) .metric-value").textContent = "N/A";
-        document.querySelector(".metrics .metric-card:nth-child(3) .metric-label").textContent = "0 units";
+        document.querySelector(
+          ".metrics .metric-card:nth-child(2) .metric-value"
+        ).textContent = "N/A";
+        document.querySelector(
+          ".metrics .metric-card:nth-child(2) .metric-label"
+        ).textContent = "0 units";
+        document.querySelector(
+          ".metrics .metric-card:nth-child(3) .metric-value"
+        ).textContent = "N/A";
+        document.querySelector(
+          ".metrics .metric-card:nth-child(3) .metric-label"
+        ).textContent = "0 units";
       }
     })
     .catch((error) => {
       console.error("Error fetching sales metrics:", error);
       // Fallback values for cards on error
-      document.querySelector(".metrics .metric-card:nth-child(1) .metric-value").textContent = "₱0";
-      document.querySelector(".metrics .metric-card:nth-child(1) .metric-label").textContent = "YTD";
-      document.querySelector(".metrics .metric-card:nth-child(2) .metric-value").textContent = "N/A";
-      document.querySelector(".metrics .metric-card:nth-child(2) .metric-label").textContent = "0 units";
-      document.querySelector(".metrics .metric-card:nth-child(3) .metric-value").textContent = "N/A";
-      document.querySelector(".metrics .metric-card:nth-child(3) .metric-label").textContent = "0 units";
+      document.querySelector(
+        ".metrics .metric-card:nth-child(1) .metric-value"
+      ).textContent = "₱0";
+      document.querySelector(
+        ".metrics .metric-card:nth-child(1) .metric-label"
+      ).textContent = "YTD";
+      document.querySelector(
+        ".metrics .metric-card:nth-child(2) .metric-value"
+      ).textContent = "N/A";
+      document.querySelector(
+        ".metrics .metric-card:nth-child(2) .metric-label"
+      ).textContent = "0 units";
+      document.querySelector(
+        ".metrics .metric-card:nth-child(3) .metric-value"
+      ).textContent = "N/A";
+      document.querySelector(
+        ".metrics .metric-card:nth-child(3) .metric-label"
+      ).textContent = "0 units";
     });
 }
 
@@ -295,7 +354,7 @@ function renderSalesChart() {
       const monthlySales = {};
       const currentYear = new Date().getFullYear(); // Only consider the current year for YTD
 
-      data.orders.forEach(order => {
+      data.orders.forEach((order) => {
         if (order.status !== "Delivered") return; // Only count delivered orders
 
         const orderDate = new Date(order.created_at);
@@ -305,15 +364,19 @@ function renderSalesChart() {
 
         // Calculate total price with fallback
         const rawPrice = order.total_price || "0.00";
-        const parsedPrice = parseFloat(rawPrice.replace(/[^0-9.-]+/g, '')) || 0;
-        const itemsTotal = order.items ? order.items.reduce((sum, item) => {
-          const itemPrice = parseFloat(item.price) || 0;
-          const itemQuantity = parseInt(item.quantity) || 0;
-          return sum + (itemPrice * itemQuantity);
-        }, 0) : 0;
+        const parsedPrice = parseFloat(rawPrice.replace(/[^0-9.-]+/g, "")) || 0;
+        const itemsTotal = order.items
+          ? order.items.reduce((sum, item) => {
+              const itemPrice = parseFloat(item.price) || 0;
+              const itemQuantity = parseInt(item.quantity) || 0;
+              return sum + itemPrice * itemQuantity;
+            }, 0)
+          : 0;
         const finalPrice = parsedPrice > 10 ? parsedPrice : itemsTotal; // Use itemsTotal if parsedPrice is too low
 
-        console.log(`[Chart] Order ID: ${order.id}, Month: ${month}, Raw Total Price: ${rawPrice}, Parsed Price: ${parsedPrice}, Items Total: ${itemsTotal}, Final Price: ${finalPrice}`); // Debug log
+        console.log(
+          `[Chart] Order ID: ${order.id}, Month: ${month}, Raw Total Price: ${rawPrice}, Parsed Price: ${parsedPrice}, Items Total: ${itemsTotal}, Final Price: ${finalPrice}`
+        ); // Debug log
 
         monthlySales[month] = (monthlySales[month] || 0) + finalPrice;
       });
@@ -321,8 +384,21 @@ function renderSalesChart() {
       console.log("📅 Monthly Sales:", monthlySales); // Debug log: Monthly totals
 
       // Step 2: Prepare chart data
-      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      const salesData = months.map(month => monthlySales[month] || 0);
+      const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+      const salesData = months.map((month) => monthlySales[month] || 0);
 
       // Step 3: Render the chart
       const ctx = document.getElementById("salesChart").getContext("2d");
@@ -368,7 +444,9 @@ function renderSalesChart() {
         },
       });
     })
-    .catch((error) => console.error("Error fetching orders for sales chart:", error));
+    .catch((error) =>
+      console.error("Error fetching orders for sales chart:", error)
+    );
 }
 
 /* 
@@ -378,9 +456,13 @@ function fetchOrders() {
   fetch("http://192.168.1.65/backend/fetch_orders.php")
     .then((response) => response.json())
     .then((data) => {
-      const ordersContainer = document.getElementById("dashboardOrdersContainer");
+      const ordersContainer = document.getElementById(
+        "dashboardOrdersContainer"
+      );
       if (!ordersContainer) {
-        console.warn("dashboardOrdersContainer element not found. Skipping orders update.");
+        console.warn(
+          "dashboardOrdersContainer element not found. Skipping orders update."
+        );
         return;
       }
 
@@ -391,7 +473,10 @@ function fetchOrders() {
         data.orders.slice(0, 3).forEach((order) => {
           // Calculate total quantity based on order items if available
           const totalQuantity = order.items
-            ? order.items.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0)
+            ? order.items.reduce(
+                (sum, item) => sum + (parseInt(item.quantity) || 0),
+                0
+              )
             : 0;
 
           // Create a card element for each order
@@ -403,7 +488,9 @@ function fetchOrders() {
               <div class="order-image"></div>
               <div class="order-details">
                 <strong>Customer: ${order.username || "Unknown"}</strong>
-                <p><strong>Total Price:</strong> ₱${parseFloat(order.total_price).toFixed(2)}</p>
+                <p><strong>Total Price:</strong> ₱${parseFloat(
+                  order.total_price
+                ).toFixed(2)}</p>
                 <p><strong>Quantity:</strong> x${totalQuantity}</p>
               </div>
             </div>

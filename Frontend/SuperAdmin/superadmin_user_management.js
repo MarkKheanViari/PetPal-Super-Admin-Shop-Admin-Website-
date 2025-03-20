@@ -21,7 +21,8 @@ function setupModal() {
     openModalBtn.addEventListener("click", function () {
       addModal.style.display = "flex";
       addModal.setAttribute("aria-hidden", "false");
-      addModal.querySelector(".modal-content").style.animation = "slideIn 0.3s ease forwards";
+      addModal.querySelector(".modal-content").style.animation =
+        "slideIn 0.3s ease forwards";
     });
   }
 
@@ -29,12 +30,18 @@ function setupModal() {
     closeAddModalBtn.addEventListener("click", function () {
       const modalContent = addModal.querySelector(".modal-content");
       modalContent.style.animation = "slideOut 0.3s ease forwards";
-      modalContent.addEventListener("animationend", function () {
-        addModal.style.display = "none";
-        addModal.setAttribute("aria-hidden", "true");
-        document.getElementById("addShopOwnerForm").reset();
-        document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
-      }, { once: true });
+      modalContent.addEventListener(
+        "animationend",
+        function () {
+          addModal.style.display = "none";
+          addModal.setAttribute("aria-hidden", "true");
+          document.getElementById("addShopOwnerForm").reset();
+          document
+            .querySelectorAll(".error-message")
+            .forEach((span) => (span.textContent = ""));
+        },
+        { once: true }
+      );
     });
   }
 
@@ -42,12 +49,18 @@ function setupModal() {
     closeEditModalBtn.addEventListener("click", function () {
       const modalContent = editModal.querySelector(".modal-content");
       modalContent.style.animation = "slideOut 0.3s ease forwards";
-      modalContent.addEventListener("animationend", function () {
-        editModal.style.display = "none";
-        editModal.setAttribute("aria-hidden", "true");
-        document.getElementById("editUserForm").reset();
-        document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
-      }, { once: true });
+      modalContent.addEventListener(
+        "animationend",
+        function () {
+          editModal.style.display = "none";
+          editModal.setAttribute("aria-hidden", "true");
+          document.getElementById("editUserForm").reset();
+          document
+            .querySelectorAll(".error-message")
+            .forEach((span) => (span.textContent = ""));
+        },
+        { once: true }
+      );
     });
   }
 
@@ -63,9 +76,12 @@ function setupModal() {
 // 📌 Fetch Users and Apply Filters
 async function fetchUsers(filter = "all", searchQuery = "") {
   const userTable = document.getElementById("userTable");
-  userTable.innerHTML = "<tr><td colspan='5'><div class='spinner'></div></td></tr>";
+  userTable.innerHTML =
+    "<tr><td colspan='5'><div class='spinner'></div></td></tr>";
   try {
-    const response = await fetch("http://192.168.1.65/backend/frontend/superadmin/fetch_users.php");
+    const response = await fetch(
+      "http://192.168.1.65/backend/frontend/superadmin/fetch_users.php"
+    );
     const data = await response.json();
     allUsers = data.users || [];
 
@@ -92,7 +108,10 @@ async function fetchUsers(filter = "all", searchQuery = "") {
 function displayUsers(filterType = "all", searchQuery = "") {
   currentFilter = filterType; // ✅ Update the active filter
   const userTable = document.getElementById("userTable");
-  if (!userTable) return console.error("❌ ERROR: 'userTable' element is missing in the HTML.");
+  if (!userTable)
+    return console.error(
+      "❌ ERROR: 'userTable' element is missing in the HTML."
+    );
 
   userTable.innerHTML = "";
 
@@ -138,12 +157,17 @@ function setupEventListeners() {
   // ✅ Attach Filter Buttons and Make Them Work!
   document.querySelectorAll(".filter-btn").forEach((button) => {
     button.addEventListener("click", function () {
-      document.querySelectorAll(".filter-btn").forEach((btn) => btn.classList.remove("active"));
+      document
+        .querySelectorAll(".filter-btn")
+        .forEach((btn) => btn.classList.remove("active"));
       this.classList.add("active");
 
       let filterType = this.getAttribute("data-filter");
       console.log(`🔹 Applying Filter: ${filterType}`); // Debugging
-      displayUsers(filterType, document.getElementById("searchBar").value.trim().toLowerCase());
+      displayUsers(
+        filterType,
+        document.getElementById("searchBar").value.trim().toLowerCase()
+      );
     });
   });
 
@@ -160,24 +184,33 @@ function setupEventListeners() {
   if (addForm) {
     addForm.addEventListener("submit", async function (event) {
       event.preventDefault();
-      const username = document.getElementById("shopOwnerUsername").value.trim();
+      const username = document
+        .getElementById("shopOwnerUsername")
+        .value.trim();
       const email = document.getElementById("shopOwnerEmail").value.trim();
-      const password = document.getElementById("shopOwnerPassword").value.trim();
+      const password = document
+        .getElementById("shopOwnerPassword")
+        .value.trim();
       const btn = document.getElementById("createShopOwnerBtn");
 
       let hasError = false;
-      document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
+      document
+        .querySelectorAll(".error-message")
+        .forEach((span) => (span.textContent = ""));
 
       if (!username) {
-        document.getElementById("usernameError").textContent = "Username is required";
+        document.getElementById("usernameError").textContent =
+          "Username is required";
         hasError = true;
       }
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        document.getElementById("emailError").textContent = "Valid email is required";
+        document.getElementById("emailError").textContent =
+          "Valid email is required";
         hasError = true;
       }
       if (!password || password.length < 6) {
-        document.getElementById("passwordError").textContent = "Password must be at least 6 characters";
+        document.getElementById("passwordError").textContent =
+          "Password must be at least 6 characters";
         hasError = true;
       }
 
@@ -204,18 +237,23 @@ function setupEventListeners() {
       const btn = document.getElementById("saveUserBtn");
 
       let hasError = false;
-      document.querySelectorAll(".error-message").forEach(span => span.textContent = "");
+      document
+        .querySelectorAll(".error-message")
+        .forEach((span) => (span.textContent = ""));
 
       if (!username) {
-        document.getElementById("editUsernameError").textContent = "Username is required";
+        document.getElementById("editUsernameError").textContent =
+          "Username is required";
         hasError = true;
       }
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        document.getElementById("editEmailError").textContent = "Valid email is required";
+        document.getElementById("editEmailError").textContent =
+          "Valid email is required";
         hasError = true;
       }
       if (password && password.length < 6) {
-        document.getElementById("editPasswordError").textContent = "Password must be at least 6 characters";
+        document.getElementById("editPasswordError").textContent =
+          "Password must be at least 6 characters";
         hasError = true;
       }
 
@@ -248,11 +286,14 @@ function setupEventListeners() {
 // 📌 Function to Add Shop Owner
 async function addShopOwner(username, email, password) {
   try {
-    const response = await fetch("http://192.168.1.65/backend/Frontend/SuperAdmin/add_shop_owner.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, email, password }),
-    });
+    const response = await fetch(
+      "http://192.168.1.65/backend/Frontend/SuperAdmin/add_shop_owner.php",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
+      }
+    );
 
     const result = await response.json();
 
@@ -260,7 +301,7 @@ async function addShopOwner(username, email, password) {
       Toastify({
         text: "✅ Shop Owner Created Successfully!",
         duration: 3000,
-        style: { background: "var(--primary-orange)" }
+        style: { background: "var(--primary-orange)" },
       }).showToast();
       document.getElementById("addShopOwnerForm").reset();
       document.querySelector(".close-btn").click();
@@ -273,7 +314,7 @@ async function addShopOwner(username, email, password) {
     Toastify({
       text: "❌ Error: " + error.message,
       duration: 3000,
-      style: { background: "#ef4444" }
+      style: { background: "#ef4444" },
     }).showToast();
   }
 }
@@ -288,17 +329,21 @@ function openEditUserModal(user) {
   userModal.dataset.userId = user.id;
   userModal.style.display = "flex";
   userModal.setAttribute("aria-hidden", "false");
-  userModal.querySelector(".modal-content").style.animation = "slideIn 0.3s ease forwards";
+  userModal.querySelector(".modal-content").style.animation =
+    "slideIn 0.3s ease forwards";
 }
 
 // 📌 Function to Save User Changes
 async function saveUserChanges(payload) {
   try {
-    const response = await fetch("http://192.168.1.65/backend/update_user.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    const response = await fetch(
+      "http://192.168.1.65/backend/update_user.php",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }
+    );
 
     const result = await response.json();
 
@@ -306,7 +351,7 @@ async function saveUserChanges(payload) {
       Toastify({
         text: "✅ User Updated Successfully!",
         duration: 3000,
-        style: { background: "var(--primary-orange)" }
+        style: { background: "var(--primary-orange)" },
       }).showToast();
       document.querySelector(".close-user-btn").click();
       fetchUsers();
@@ -318,13 +363,15 @@ async function saveUserChanges(payload) {
     Toastify({
       text: "❌ Error: " + error.message,
       duration: 3000,
-      style: { background: "#ef4444" }
+      style: { background: "#ef4444" },
     }).showToast();
   }
 }
 
 // 📌 Function to Highlight Active Filter Button
 function setActiveFilter(activeBtn) {
-  document.querySelectorAll(".filter-btn").forEach((btn) => btn.classList.remove("active"));
+  document
+    .querySelectorAll(".filter-btn")
+    .forEach((btn) => btn.classList.remove("active"));
   activeBtn.classList.add("active");
 }

@@ -251,7 +251,8 @@
         <!-- Modal Buttons -->
         <div class="modal-buttons">
             <button class="cancel-btn" type="button" onclick="toggleModal('orderModal', false)">Cancel</button>
-            <button class="approve-btn" onclick="toggleModal('orderModal', false)">Approve</button>
+            <button class="approve-btn" onclick="toggleModal('orderModal', false)" style="display: none;">Approve</button>
+            <button onclick="downloadReceipt()">Download Receipt</button>
         </div>
     </div>
 </div>
@@ -277,6 +278,7 @@
         </div>
     </div>
 </div>
+
 
 
     <main class="content">

@@ -10,7 +10,9 @@ function fetchOrderNotifications() {
         return data.orders.map((order) => {
           return {
             type: "Order",
-            message: `Order from ${order.username} - ₱${parseFloat(order.total_price).toFixed(2)}`,
+            message: `Order from ${order.username} - ₱${parseFloat(
+              order.total_price
+            ).toFixed(2)}`,
             id: order.id,
           };
         });
@@ -26,7 +28,9 @@ function fetchOrderNotifications() {
 
 // Function to fetch appointment notifications (both grooming and veterinary)
 function fetchAppointmentNotifications() {
-  const groomingPromise = fetch("http://192.168.1.65/backend/fetch_grooming_appointments.php")
+  const groomingPromise = fetch(
+    "http://192.168.1.65/backend/fetch_grooming_appointments.php"
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data.success && Array.isArray(data.appointments)) {
@@ -46,7 +50,9 @@ function fetchAppointmentNotifications() {
       return [];
     });
 
-  const vetPromise = fetch("http://192.168.1.65/backend/fetch_veterinary_appointments.php")
+  const vetPromise = fetch(
+    "http://192.168.1.65/backend/fetch_veterinary_appointments.php"
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data.success && Array.isArray(data.appointments)) {
@@ -95,15 +101,17 @@ function updateNotifBadge(count) {
 function markNotificationAsRead(notif, redirect) {
   // Remove the clicked notification from the global list.
   allNotifications = allNotifications.filter((n) => n !== notif);
-  
+
   // Update badge count and dropdown.
   updateNotifBadge(allNotifications.length);
-  const activeFilter = document.querySelector(".notif-filter-btn.active").getAttribute("data-filter");
+  const activeFilter = document
+    .querySelector(".notif-filter-btn.active")
+    .getAttribute("data-filter");
   updateNotifDropdown(activeFilter);
-  
+
   // Hide the dropdown.
   document.getElementById("notifDropdown").classList.remove("active");
-  
+
   // If redirect is true, navigate to the related page after a short delay.
   if (redirect) {
     setTimeout(function () {
@@ -140,7 +148,7 @@ function updateNotifDropdown(filter) {
   filteredNotifications.forEach((notif) => {
     const item = document.createElement("div");
     item.className = "notif-item";
-    
+
     // Create the notification message element (clicking it will redirect)
     const messageSpan = document.createElement("span");
     messageSpan.textContent = `[${notif.type}] ${notif.message}`;
@@ -174,7 +182,9 @@ document.querySelectorAll(".notif-filter-btn").forEach((btn) => {
     event.preventDefault();
     event.stopPropagation();
     // Remove active class from all filter buttons, add it to the clicked one
-    document.querySelectorAll(".notif-filter-btn").forEach((b) => b.classList.remove("active"));
+    document
+      .querySelectorAll(".notif-filter-btn")
+      .forEach((b) => b.classList.remove("active"));
     this.classList.add("active");
 
     const filter = this.getAttribute("data-filter");
@@ -183,18 +193,22 @@ document.querySelectorAll(".notif-filter-btn").forEach((btn) => {
 });
 
 // Toggle notification dropdown visibility when clicking the bell
-document.querySelector(".notification-bell").addEventListener("click", function (event) {
-  const dropdown = document.getElementById("notifDropdown");
-  dropdown.classList.toggle("active");
-  event.stopPropagation();
-});
+document
+  .querySelector(".notification-bell")
+  .addEventListener("click", function (event) {
+    const dropdown = document.getElementById("notifDropdown");
+    dropdown.classList.toggle("active");
+    event.stopPropagation();
+  });
 
 // Set up exit button to close the dropdown
-document.getElementById("notifExitBtn").addEventListener("click", function (event) {
-  event.preventDefault();
-  event.stopPropagation();
-  document.getElementById("notifDropdown").classList.remove("active");
-});
+document
+  .getElementById("notifExitBtn")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    document.getElementById("notifDropdown").classList.remove("active");
+  });
 
 // Hide dropdown if clicking outside
 document.addEventListener("click", function () {

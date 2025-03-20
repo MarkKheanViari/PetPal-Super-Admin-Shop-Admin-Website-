@@ -49,10 +49,14 @@ function fetchOrders() {
               </span>
             </td>
             <td>
-              <button class="view-details-btn" onclick="viewOrderDetails(${order.id})">
+              <button class="view-details-btn" onclick="viewOrderDetails(${
+                order.id
+              })">
                 View Details
               </button>
-              <button class="update-status-btn" onclick="openUpdateStatus(${order.id}, '${order.status}')">
+              <button class="update-status-btn" onclick="openUpdateStatus(${
+                order.id
+              }, '${order.status}')">
                 Update Status
               </button>
             </td>
@@ -83,7 +87,7 @@ function getStatusColor(status) {
     case "Delivered":
       return "#27AE60"; // Green
     default:
-      return "#333";    // Fallback color (dark gray)
+      return "#333"; // Fallback color (dark gray)
   }
 }
 
@@ -99,23 +103,32 @@ function openUpdateStatus(orderId, currentStatus) {
 function viewOrderDetails(orderId) {
   console.log("🔍 Fetching Order Details for Order ID:", orderId); // ✅ Check if function runs
 
-  fetch(`http://192.168.1.65/backend/fetch_order_details.php?order_id=${orderId}`)
-    .then(response => response.json())
-    .then(data => {
+  fetch(
+    `http://192.168.1.65/backend/fetch_order_details.php?order_id=${orderId}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
       console.log("✅ Order Data Received:", data); // ✅ See API response
 
       if (data.success) {
-        document.getElementById("customerName").value = data.order.customer_name;
-        document.getElementById("customerAddress").value = data.order.location || "No Address Provided";
-        document.getElementById("customerContact").value = data.order.contact_number || "No Contact Info";
-        document.getElementById("paymentMethod").value = data.order.payment_method;
-        document.getElementById("orderAmount").value = `₱${parseFloat(data.order.total_price).toFixed(2)}`;
-        
+        document.getElementById("customerName").value =
+          data.order.customer_name;
+        document.getElementById("customerAddress").value =
+          data.order.location || "No Address Provided";
+        document.getElementById("customerContact").value =
+          data.order.contact_number || "No Contact Info";
+        document.getElementById("paymentMethod").value =
+          data.order.payment_method;
+        document.getElementById("orderAmount").value = `₱${parseFloat(
+          data.order.total_price
+        ).toFixed(2)}`;
+
         // ✅ Display Order Date
         document.getElementById("orderDate").value = data.order.created_at;
 
         // ✅ Display Order Status
-        document.getElementById("orderStatus").value = data.order.status || "Unknown";
+        document.getElementById("orderStatus").value =
+          data.order.status || "Unknown";
 
         toggleModal("orderModal", true);
       } else {
@@ -123,7 +136,7 @@ function viewOrderDetails(orderId) {
         alert("❌ Error fetching order details: " + data.message);
       }
     })
-    .catch(error => console.error("❌ ERROR Fetching Order Details:", error));
+    .catch((error) => console.error("❌ ERROR Fetching Order Details:", error));
 }
 
 function updateOrderStatus() {
@@ -154,3 +167,50 @@ function updateOrderStatus() {
     })
     .catch((error) => console.error("❌ ERROR Updating Order Status:", error));
 }
+
+function downloadReceipt() {
+  // Retrieve receipt details from the modal fields
+  const customerName = document.getElementById("customerName").value;
+  const customerAddress = document.getElementById("customerAddress").value;
+  const customerContact = document.getElementById("customerContact").value;
+  const paymentMethod = document.getElementById("paymentMethod").value;
+  const orderAmount = document.getElementById("orderAmount").value;
+  const orderDate = document.getElementById("orderDate").value;
+  // Exclude orderStatus from the receipt
+
+  // Get the seller's name from localStorage
+  const sellerName = localStorage.getItem("shop_owner_username") || "Seller";
+
+  // Format the receipt text as a proper receipt layout
+  const receiptText = `
+========== Order Receipt ==========
+Seller: ${sellerName}
+
+--- Customer Information ---
+Name:    ${customerName}
+Address: ${customerAddress}
+Contact: ${customerContact}
+
+--- Order Information ---
+Payment Method: ${paymentMethod}
+Order Amount:   ${orderAmount}
+Order Date:     ${orderDate}
+
+Thank you for your purchase!
+===================================
+  `.trim();
+
+  // Create a Blob object from the receipt text
+  const blob = new Blob([receiptText], { type: "text/plain" });
+
+  // Create a temporary download link
+  const downloadLink = document.createElement("a");
+  downloadLink.href = window.URL.createObjectURL(blob);
+  downloadLink.download = "receipt.txt"; // File name
+
+  // Append link to the DOM, trigger click, and then remove the link
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+}
+

@@ -6,37 +6,7 @@ body {
     display: flex;
   }
   
-  /* Sidebar (similar to your other pages) */
-  .sidebar {
-    width: 250px;
-    background-color: #ff6f00;
-    color: white;
-    padding: 20px;
-    min-height: 100vh;
-    position: fixed;
-  }
-  .sidebar h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  .sidebar ul li {
-    padding: 12px;
-  }
-  .sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    display: block;
-    border-radius: 5px;
-  }
-  .sidebar ul li a.active,
-  .sidebar ul li a:hover {
-    background-color: #e65100;
-  }
+ 
   
   /* Main Analytics Container */
   .analytics-container {

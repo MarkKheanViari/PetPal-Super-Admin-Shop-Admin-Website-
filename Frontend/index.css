@@ -1487,3 +1487,17 @@ body.modal-open {
 #customModal button:hover {
   background-color: #e37f00;
 }
+
+.simple-popup {
+  /* base styles for your custom popup, e.g.: */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  /* etc. */
+}
+
+.hidden {
+  display: none !important;
+}

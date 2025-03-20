@@ -59,21 +59,53 @@
         font-weight: bold;
       }
 
-      /* Action Buttons within Table */
-      .orders-table button {
-        background-color: #ff8c00;
-        color: #fff;
-        border: none;
-        padding: 0.4rem 0.75rem;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        cursor: pointer;
-        transition: background-color 0.2s;
-        margin-right: 5px;
-      }
-      .orders-table button:hover {
-        background-color: #e37f00;
-      }
+/* Approve Button - Green */
+.approve-btn {
+  background-color: #27AE60; /* Green */
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-right: 5px;
+}
+.approve-btn:hover {
+  background-color: #1e874b;
+}
+
+/* Decline Button - Red */
+.decline-btn {
+  background-color: #E74C3C; /* Red */
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-right: 5px;
+}
+.decline-btn:hover {
+  background-color: #c0392b;
+}
+
+/* View Details Button - Blue */
+.view-details-btn {
+  background-color: #ff8c00; /* Blue */
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.view-details-btn:hover {
+  background-color: #2980b9;
+}
+
 
       /* Filter Controls */
       .filter-controls {
@@ -351,7 +383,14 @@
         </div>
       </section>
     </main>
-
+    <footer class="footer">
+      <nav class="footer-nav">
+          <a href="about_us.html" class="footer-link">About Us</a>
+          <a href="contact.html" class="footer-link">Contact Us</a>
+          <a href="terms.html" class="footer-link">Terms and Conditions</a>
+          <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      </nav>
+  </footer>
     <!-- Details Modal -->
     <div id="detailsModalOverlay">
       <div id="detailsModal">
@@ -427,10 +466,11 @@
               <td><span class="${getStatusClass(appointment.status)}">${appointment.status}</span></td>
               <!-- ACTION buttons -->
               <td>
-                <button onclick="updateStatus(${appointment.id}, 'Approved')">Approve</button>
-                <button onclick="updateStatus(${appointment.id}, 'Declined')">Decline</button>
-                <button onclick="viewDetails(${appointment.id})">View Details</button>
+                <button class="approve-btn" onclick="updateStatus(${appointment.id}, 'Approved')">Approve</button>
+                <button class="decline-btn" onclick="updateStatus(${appointment.id}, 'Declined')">Decline</button>
+                <button class="view-details-btn" onclick="viewDetails(${appointment.id})">View Details</button>
               </td>
+
             </tr>
           `;
           tableBody.innerHTML += row;

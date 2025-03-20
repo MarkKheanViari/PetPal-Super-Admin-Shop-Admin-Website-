@@ -21,7 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const resetEmail = document.getElementById("resetEmail");
   const currentPasswordInput = document.getElementById("currentPassword");
   const newPasswordInput = document.getElementById("newPassword");
-  const toggleCurrentPasswordBtn = document.getElementById("toggleCurrentPassword");
+  const toggleCurrentPasswordBtn = document.getElementById(
+    "toggleCurrentPassword"
+  );
   const toggleNewPasswordBtn = document.getElementById("toggleNewPassword");
   const emailResetError = document.getElementById("emailResetError");
   const currentPasswordError = document.getElementById("currentPasswordError");
@@ -145,7 +147,8 @@ document.addEventListener("DOMContentLoaded", function () {
       hasError = true;
     }
     if (!currentPassword) {
-      currentPasswordError.textContent = "⚠️ Please enter your current password.";
+      currentPasswordError.textContent =
+        "⚠️ Please enter your current password.";
       hasError = true;
     }
     if (!newPassword) {
@@ -215,7 +218,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } catch (error) {
       console.error("❌ Password reset failed:", error);
-      newPasswordError.textContent = "❌ Error connecting to server. Please try again.";
+      newPasswordError.textContent =
+        "❌ Error connecting to server. Please try again.";
     }
   });
 
@@ -278,8 +282,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("🔹 Stored Values:");
         console.log("shop_owner_id:", localStorage.getItem("shop_owner_id"));
-        console.log("shop_owner_token:", localStorage.getItem("shop_owner_token"));
-        console.log("shop_owner_username:", localStorage.getItem("shop_owner_username"));
+        console.log(
+          "shop_owner_token:",
+          localStorage.getItem("shop_owner_token")
+        );
+        console.log(
+          "shop_owner_username:",
+          localStorage.getItem("shop_owner_username")
+        );
 
         const popupOverlay = document.getElementById("popupOverlay");
         popupOverlay.style.display = "flex";
@@ -299,7 +309,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } catch (error) {
       console.error("❌ Login failed:", error);
-      passwordError.textContent = "❌ Error connecting to server. Please try again.";
+      passwordError.textContent =
+        "❌ Error connecting to server. Please try again.";
     }
   });
 });
