@@ -31,29 +31,29 @@ $appointmentDate = $data['appointment_date'];
 $paymentMethod = $data['payment_method'];
 $notes = $data['notes'] ?? "";
 
-// ✅ Insert into `appointments`
+// Insert into `appointments`
 $query = "INSERT INTO appointments (mobile_user_id, service_type, service_name, name, address, phone_number, pet_name, pet_breed, appointment_date, payment_method, notes, status) 
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Pending')";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("issssssssss", $mobileUserId, $serviceType, $serviceName, $name, $address, $phoneNumber, $petName, $petBreed, $appointmentDate, $paymentMethod, $notes);
+$stmt->bind_param("isssssssssss", $mobileUserId, $serviceType, $serviceName, $name, $address, $phoneNumber, $petName, $petBreed, $appointmentDate, $paymentMethod, $notes);
 
 if (!$stmt->execute()) {
     echo json_encode(["success" => false, "message" => "Database error: Could not insert into appointments"]);
     exit();
 }
 
-// ✅ Insert into `mobile_appointments`
+// Insert into `mobile_appointments`
 $queryMobile = "INSERT INTO mobile_appointments (mobile_user_id, service_type, service_name, name, address, phone_number, pet_name, pet_breed, appointment_date, payment_method, notes, status) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Pending')";
 $stmtMobile = $conn->prepare($queryMobile);
-$stmtMobile->bind_param("issssssssss", $mobileUserId, $serviceType, $serviceName, $name, $address, $phoneNumber, $petName, $petBreed, $appointmentDate, $paymentMethod, $notes);
+$stmtMobile->bind_param("isssssssssss", $mobileUserId, $serviceType, $serviceName, $name, $address, $phoneNumber, $petName, $petBreed, $appointmentDate, $paymentMethod, $notes);
 
 if (!$stmtMobile->execute()) {
     echo json_encode(["success" => false, "message" => "Database error: Could not insert into mobile_appointments"]);
     exit();
 }
 
-// ✅ Success response
+// Success response
 echo json_encode(["success" => true, "message" => "Appointment scheduled successfully"]);
 
 // Close connections

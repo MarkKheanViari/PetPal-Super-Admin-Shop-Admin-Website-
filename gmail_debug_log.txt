@@ -48,3 +48,6 @@ Gmail Debug Output:
 2025-03-19 12:07:39 CLIENT -&gt; SERVER: QUIT<br>
 2025-03-19 12:07:40 SERVER -&gt; CLIENT: 221 2.0.0 closing connection d2e1a72fcca58-73711695b88sm11369510b3a.152 - gsmtp<br>
 
+Email: kheantastic@gmail.com, OTP: 731550, Expires At: 2025-03-21 14:24:13
+Gmail Debug Output:
+

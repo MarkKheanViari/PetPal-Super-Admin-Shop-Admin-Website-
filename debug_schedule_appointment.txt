@@ -264,3 +264,33 @@ Array
     [payment_method] => Cash
     [notes] => 
 )
+Array
+(
+    [mobile_user_id] => 4
+    [service_type] => Grooming
+    [service_name] => Brushing
+    [name] => Mark Khean Viari
+    [address] => kheantastic@gmail.com
+    [phone_number] => 9537010123
+    [pet_name] => Mark Khean Viari
+    [pet_breed] => Mark Khean Viari
+    [appointment_date] => 2025-3-21
+    [payment_method] => Gcash
+    [notes] => yua
+    [price] => 500.00
+)
+Array
+(
+    [mobile_user_id] => 4
+    [service_type] => Grooming
+    [service_name] => Brushing
+    [name] => Mark Khean Viari
+    [address] => ty
+    [phone_number] => 9084538768
+    [pet_name] => Mark Khean Viari
+    [pet_breed] => Mark Khean Viari
+    [appointment_date] => 2025-3-27
+    [payment_method] => COD
+    [notes] => yu
+    [price] => 700.00
+)
