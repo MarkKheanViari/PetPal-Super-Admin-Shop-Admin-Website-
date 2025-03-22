@@ -45,6 +45,36 @@
         background-color: #f0f0f0;
       }
 
+/* Existing styles remain unchanged ... */
+
+/* Actions buttons (inside table cell) */
+.orders-table td:last-child {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+/* Media Query for responsiveness on small screens */
+@media screen and (max-width: 600px) {
+  /* Adjust table padding and font sizes for better readability on small screens */
+  .orders-table th,
+  .orders-table td {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* Arrange action buttons to share equal width */
+  .orders-table td:last-child {
+    flex-direction: row; /* Arrange in a row if space permits */
+    justify-content: space-between;
+  }
+
+  .orders-table td:last-child button {
+    flex: 1;              /* All buttons take up equal space */
+    margin: 0.2rem;       /* Small margin for spacing */
+  }
+}
+
       /* Status Styles */
       .status-pending {
         color: orange;
@@ -59,53 +89,52 @@
         font-weight: bold;
       }
 
-/* Approve Button - Green */
-.approve-btn {
-  background-color: #27AE60; /* Green */
-  color: #fff;
-  border: none;
-  padding: 0.4rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  margin-right: 5px;
-}
-.approve-btn:hover {
-  background-color: #1e874b;
-}
+      /* Approve Button - Green */
+      .approve-btn {
+        background-color: #27ae60; /* Green */
+        color: #fff;
+        border: none;
+        padding: 0.4rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin-right: 5px;
+      }
+      .approve-btn:hover {
+        background-color: #1e874b;
+      }
 
-/* Decline Button - Red */
-.decline-btn {
-  background-color: #E74C3C; /* Red */
-  color: #fff;
-  border: none;
-  padding: 0.4rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  margin-right: 5px;
-}
-.decline-btn:hover {
-  background-color: #c0392b;
-}
+      /* Decline Button - Red */
+      .decline-btn {
+        background-color: #e74c3c; /* Red */
+        color: #fff;
+        border: none;
+        padding: 0.4rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin-right: 5px;
+      }
+      .decline-btn:hover {
+        background-color: #c0392b;
+      }
 
-/* View Details Button - Blue */
-.view-details-btn {
-  background-color: #ff8c00; /* Blue */
-  color: #fff;
-  border: none;
-  padding: 0.4rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.view-details-btn:hover {
-  background-color: #2980b9;
-}
-
+      /* View Details Button - Blue */
+      .view-details-btn {
+        background-color: #ff8c00; /* Blue */
+        color: #fff;
+        border: none;
+        padding: 0.4rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .view-details-btn:hover {
+        background-color: #2980b9;
+      }
 
       /* Filter Controls */
       .filter-controls {
@@ -122,46 +151,45 @@
         padding: 6px;
         font-size: 1rem;
       }
-       /* Widen the modal */
- /* Make the modal a bit wider to accommodate two columns nicely */
-#detailsModal {
-  background: #fff;
-  border: 2px solid #ff8c00;
-  border-radius: 8px;
-  padding: 20px;
-  width: 95%;
-  max-width: 700px; /* Increase or decrease as desired */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  text-align: left; /* left-align the text so it looks neat */
-}
+      /* Widen the modal */
+      /* Make the modal a bit wider to accommodate two columns nicely */
+      #detailsModal {
+        background: #fff;
+        border: 2px solid #ff8c00;
+        border-radius: 8px;
+        padding: 20px;
+        width: 95%;
+        max-width: 700px; /* Increase or decrease as desired */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: left; /* left-align the text so it looks neat */
+      }
 
-/* Definition list for "label : value" pairs */
-.details-list {
-  display: grid;
-  grid-template-columns: 130px 1fr;  /* left column fixed, right column auto */
-  column-gap: 1rem;                 /* space between columns */
-  row-gap: 0.6rem;                  /* vertical space between rows */
-  margin-top: 1rem;
-  font-family: Arial, sans-serif;   /* match your site’s font */
-}
+      /* Definition list for "label : value" pairs */
+      .details-list {
+        display: grid;
+        grid-template-columns: 130px 1fr; /* left column fixed, right column auto */
+        column-gap: 1rem; /* space between columns */
+        row-gap: 0.6rem; /* vertical space between rows */
+        margin-top: 1rem;
+        font-family: Arial, sans-serif; /* match your site’s font */
+      }
 
-.details-list dt {
-  font-weight: bold;
-  margin: 0;
-  text-align: left;   /* or right, if you prefer */
-}
+      .details-list dt {
+        font-weight: bold;
+        margin: 0;
+        text-align: left; /* or right, if you prefer */
+      }
 
-.details-list dd {
-  margin: 0;
-  text-align: left;
-}
+      .details-list dd {
+        margin: 0;
+        text-align: left;
+      }
 
-/* Optional: add a little spacing or line for each pair */
-.details-list dt::after {
-  content: ":";
-  padding-right: 0.25rem; /* small space after colon */
-}
-
+      /* Optional: add a little spacing or line for each pair */
+      .details-list dt::after {
+        content: ":";
+        padding-right: 0.25rem; /* small space after colon */
+      }
 
       /* Custom Modal Styles for Dialogs */
       #customModalOverlay,
@@ -207,6 +235,41 @@
       #detailsModal button:hover {
         background-color: #e37f00;
       }
+      .menu-btn {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .menu-btn {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+  }
+  .nav-right {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    top: 90px; /* Adjust based on your navbar height */
+    left: 0;
+    padding: 10px 0;
+    border-top: 1px solid var(--border-color);
+  }
+  .nav-right.active {
+    display: flex;
+  }
+  .nav-link {
+    text-align: left;
+    padding: 10px 20px;
+    min-width: auto;
+  }
+}
+
     </style>
     <script>
       // Custom dialog overrides: alert and confirm
@@ -270,50 +333,26 @@
       <div class="nav-left">
         <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo" />
       </div>
+      <!-- Hamburger menu button using the new function name -->
+      <button class="menu-btn" onclick="toggleNav()">☰</button>
       <ul class="nav-right">
         <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
         <li><a href="product_inventory.html" class="nav-link">Products</a></li>
         <li><a href="orders.html" class="nav-link">Orders</a></li>
-        <li>
-          <a href="appointments.html" class="nav-link">Services</a>
-        </li>
-        <li>
-          <a href="grooming_appointments.html" class="nav-link active"
-            >Appointments</a
-          >
-        </li>
+        <li><a href="appointments.html" class="nav-link">Services</a></li>
+        <li><a href="grooming_appointments.html" class="nav-link active">Appointments</a></li>
         <li class="notification-bell">
           <i class="bell-icon">🔔</i>
           <span id="notifCount" class="badge">0</span>
           <div id="notifDropdown" class="notif-dropdown">
             <div class="notif-header">
               <span class="notif-title">Notifications</span>
-              <button type="button" id="notifExitBtn" class="notif-exit-btn">
-                X
-              </button>
+              <button type="button" id="notifExitBtn" class="notif-exit-btn">X</button>
             </div>
             <div class="notif-filter">
-              <button
-                type="button"
-                class="notif-filter-btn active"
-                data-filter="all"
-              >
-                All
-              </button>
-              <button
-                type="button"
-                class="notif-filter-btn"
-                data-filter="order"
-              >
-                Orders
-              </button>
-              <button
-                type="button"
-                class="notif-filter-btn"
-                data-filter="appointment"
-              >
-                Appointments
-              </button>
+              <button type="button" class="notif-filter-btn active" data-filter="all">All</button>
+              <button type="button" class="notif-filter-btn" data-filter="order">Orders</button>
+              <button type="button" class="notif-filter-btn" data-filter="appointment">Appointments</button>
             </div>
             <div id="notifItemsContainer">
               <!-- Notifications will be populated here -->
@@ -322,6 +361,7 @@
         </li>
       </ul>
     </nav>
+    
 
     <!-- Header -->
     <header class="seller-header">
@@ -385,12 +425,12 @@
     </main>
     <footer class="footer">
       <nav class="footer-nav">
-          <a href="about_us.html" class="footer-link">About Us</a>
-          <a href="contact.html" class="footer-link">Contact Us</a>
-          <a href="terms.html" class="footer-link">Terms and Conditions</a>
-          <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="about_us.html" class="footer-link">About Us</a>
+        <a href="contact.html" class="footer-link">Contact Us</a>
+        <a href="terms.html" class="footer-link">Terms and Conditions</a>
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
       </nav>
-  </footer>
+    </footer>
     <!-- Details Modal -->
     <div id="detailsModalOverlay">
       <div id="detailsModal">
@@ -463,12 +503,20 @@
               <!-- PRICE column to match the <th> Price -->
               <td>₱${appointment.price}</td>
               <!-- STATUS column -->
-              <td><span class="${getStatusClass(appointment.status)}">${appointment.status}</span></td>
+              <td><span class="${getStatusClass(appointment.status)}">${
+            appointment.status
+          }</span></td>
               <!-- ACTION buttons -->
               <td>
-                <button class="approve-btn" onclick="updateStatus(${appointment.id}, 'Approved')">Approve</button>
-                <button class="decline-btn" onclick="updateStatus(${appointment.id}, 'Declined')">Decline</button>
-                <button class="view-details-btn" onclick="viewDetails(${appointment.id})">View Details</button>
+                <button class="approve-btn" onclick="updateStatus(${
+                  appointment.id
+                }, 'Approved')">Approve</button>
+                <button class="decline-btn" onclick="updateStatus(${
+                  appointment.id
+                }, 'Declined')">Decline</button>
+                <button class="view-details-btn" onclick="viewDetails(${
+                  appointment.id
+                })">View Details</button>
               </td>
 
             </tr>
@@ -523,14 +571,14 @@
 
       // Display additional details in a modal
       function viewDetails(appointmentId) {
-  const appointment = appointmentsData.find((a) => a.id == appointmentId);
-  if (!appointment) {
-    alert("Appointment details not found.");
-    return;
-  }
+        const appointment = appointmentsData.find((a) => a.id == appointmentId);
+        if (!appointment) {
+          alert("Appointment details not found.");
+          return;
+        }
 
-  const detailsContent = document.getElementById("detailsContent");
-  detailsContent.innerHTML = `
+        const detailsContent = document.getElementById("detailsContent");
+        detailsContent.innerHTML = `
     <h3>Appointment Details</h3>
     <dl class="details-list">
       <dt>Owner Name</dt>
@@ -567,15 +615,21 @@
       <dd>${appointment.status}</dd>
     </dl>
   `;
-  // Show the modal
-  document.getElementById("detailsModalOverlay").style.display = "flex";
-}
-
+        // Show the modal
+        document.getElementById("detailsModalOverlay").style.display = "flex";
+      }
 
       function closeDetailsModal() {
         document.getElementById("detailsModalOverlay").style.display = "none";
       }
     </script>
+    <script>
+      function toggleNav() {
+        const navRight = document.querySelector('.nav-right');
+        navRight.classList.toggle('active');
+      }
+    </script>
+    
     <script src="notification.js"></script>
     <script src="index.js"></script>
   </body>

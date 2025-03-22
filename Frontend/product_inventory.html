@@ -11,35 +11,38 @@
 </head>
 <body>
     <nav class="navbar">
-        <div     class="nav-left">
-            <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo">
+        <div class="nav-left">
+          <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo" />
         </div>
+        <!-- Hamburger menu button using the new function name -->
+        <button class="menu-btn" onclick="toggleNav()">☰</button>
         <ul class="nav-right">
-            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-            <li><a href="product_inventory.html" class="nav-link active">Products</a></li>
-            <li><a href="orders.html" class="nav-link">Orders</a></li>
-            <li><a href="appointments.html" class="nav-link">Services</a></li>
-            <li><a href="grooming_appointments.html" class="nav-link">Appointments</a></li>
-            <li class="notification-bell">
-                <i class="bell-icon">🔔</i>
-                <span id="notifCount" class="badge">0</span>
-                <div id="notifDropdown" class="notif-dropdown">
-                  <div class="notif-header">
-                    <span class="notif-title">Notifications</span>
-                    <button type="button" id="notifExitBtn" class="notif-exit-btn">X</button>
-                  </div>
-                  <div class="notif-filter">
-                    <button type="button" class="notif-filter-btn active" data-filter="all">All</button>
-                    <button type="button" class="notif-filter-btn" data-filter="order">Orders</button>
-                    <button type="button" class="notif-filter-btn" data-filter="appointment">Appointments</button>
-                  </div>
-                  <div id="notifItemsContainer">
-                    <!-- Notifications will be populated here -->
-                  </div>
-                </div>
-              </li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="product_inventory.html" class="nav-link active">Products</a></li>
+          <li><a href="orders.html" class="nav-link">Orders</a></li>
+          <li><a href="appointments.html" class="nav-link">Services</a></li>
+          <li><a href="grooming_appointments.html" class="nav-link">Appointments</a></li>
+          <li class="notification-bell">
+            <i class="bell-icon">🔔</i>
+            <span id="notifCount" class="badge">0</span>
+            <div id="notifDropdown" class="notif-dropdown">
+              <div class="notif-header">
+                <span class="notif-title">Notifications</span>
+                <button type="button" id="notifExitBtn" class="notif-exit-btn">X</button>
+              </div>
+              <div class="notif-filter">
+                <button type="button" class="notif-filter-btn active" data-filter="all">All</button>
+                <button type="button" class="notif-filter-btn" data-filter="order">Orders</button>
+                <button type="button" class="notif-filter-btn" data-filter="appointment">Appointments</button>
+              </div>
+              <div id="notifItemsContainer">
+                <!-- Notifications will be populated here -->
+              </div>
+            </div>
+          </li>
         </ul>
-    </nav>
+      </nav>
+      
     
     <header class="seller-header">
         <div class="seller-info">
@@ -248,6 +251,12 @@
       <button id="simplePopupBtn">OK</button>
     </div>
   </div>-->
+  <script>
+    function toggleNav() {
+      const navRight = document.querySelector('.nav-right');
+      navRight.classList.toggle('active');
+    }
+  </script>
   
     <script src="index.js"></script>
     <script src="notification.js"></script>   
