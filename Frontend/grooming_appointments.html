@@ -45,35 +45,29 @@
         background-color: #f0f0f0;
       }
 
-/* Existing styles remain unchanged ... */
+      /* Actions buttons (inside table cell) */
+      .orders-table td:last-child {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+      }
 
-/* Actions buttons (inside table cell) */
-.orders-table td:last-child {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-}
-
-/* Media Query for responsiveness on small screens */
-@media screen and (max-width: 600px) {
-  /* Adjust table padding and font sizes for better readability on small screens */
-  .orders-table th,
-  .orders-table td {
-    padding: 0.5rem;
-    font-size: 0.8rem;
-  }
-
-  /* Arrange action buttons to share equal width */
-  .orders-table td:last-child {
-    flex-direction: row; /* Arrange in a row if space permits */
-    justify-content: space-between;
-  }
-
-  .orders-table td:last-child button {
-    flex: 1;              /* All buttons take up equal space */
-    margin: 0.2rem;       /* Small margin for spacing */
-  }
-}
+      /* Media Query for responsiveness on small screens */
+      @media screen and (max-width: 600px) {
+        .orders-table th,
+        .orders-table td {
+          padding: 0.5rem;
+          font-size: 0.8rem;
+        }
+        .orders-table td:last-child {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .orders-table td:last-child button {
+          flex: 1;
+          margin: 0.2rem;
+        }
+      }
 
       /* Status Styles */
       .status-pending {
@@ -91,7 +85,7 @@
 
       /* Approve Button - Green */
       .approve-btn {
-        background-color: #27ae60; /* Green */
+        background-color: #27ae60;
         color: #fff;
         border: none;
         padding: 0.4rem 0.75rem;
@@ -107,7 +101,7 @@
 
       /* Decline Button - Red */
       .decline-btn {
-        background-color: #e74c3c; /* Red */
+        background-color: #e74c3c;
         color: #fff;
         border: none;
         padding: 0.4rem 0.75rem;
@@ -123,7 +117,7 @@
 
       /* View Details Button - Blue */
       .view-details-btn {
-        background-color: #ff8c00; /* Blue */
+        background-color: #ff8c00;
         color: #fff;
         border: none;
         padding: 0.4rem 0.75rem;
@@ -134,6 +128,22 @@
       }
       .view-details-btn:hover {
         background-color: #2980b9;
+      }
+
+      /* Remove Button - Dark Red */
+      .remove-btn {
+        background-color: #d9534f;
+        color: #fff;
+        border: none;
+        padding: 0.4rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin-right: 5px;
+      }
+      .remove-btn:hover {
+        background-color: #c9302c;
       }
 
       /* Filter Controls */
@@ -151,44 +161,40 @@
         padding: 6px;
         font-size: 1rem;
       }
-      /* Widen the modal */
-      /* Make the modal a bit wider to accommodate two columns nicely */
+
+      /* Modal and other styles remain unchanged ... */
+
       #detailsModal {
         background: #fff;
         border: 2px solid #ff8c00;
         border-radius: 8px;
         padding: 20px;
         width: 95%;
-        max-width: 700px; /* Increase or decrease as desired */
+        max-width: 700px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        text-align: left; /* left-align the text so it looks neat */
+        text-align: left;
       }
 
-      /* Definition list for "label : value" pairs */
       .details-list {
         display: grid;
-        grid-template-columns: 130px 1fr; /* left column fixed, right column auto */
-        column-gap: 1rem; /* space between columns */
-        row-gap: 0.6rem; /* vertical space between rows */
+        grid-template-columns: 130px 1fr;
+        column-gap: 1rem;
+        row-gap: 0.6rem;
         margin-top: 1rem;
-        font-family: Arial, sans-serif; /* match your site’s font */
+        font-family: Arial, sans-serif;
       }
-
       .details-list dt {
         font-weight: bold;
         margin: 0;
-        text-align: left; /* or right, if you prefer */
+        text-align: left;
       }
-
       .details-list dd {
         margin: 0;
         text-align: left;
       }
-
-      /* Optional: add a little spacing or line for each pair */
       .details-list dt::after {
         content: ":";
-        padding-right: 0.25rem; /* small space after colon */
+        padding-right: 0.25rem;
       }
 
       /* Custom Modal Styles for Dialogs */
@@ -235,39 +241,79 @@
       #detailsModal button:hover {
         background-color: #e37f00;
       }
+      
       .menu-btn {
-  display: none;
+        display: none;
+      }
+
+      @media (max-width: 600px) {
+        .menu-btn {
+          display: block;
+          font-size: 24px;
+          background: none;
+          border: none;
+          color: var(--text-color);
+          cursor: pointer;
+        }
+        .nav-right {
+          display: none;
+          flex-direction: column;
+          gap: 10px;
+          width: 100%;
+          background-color: white;
+          position: absolute;
+          top: 90px;
+          left: 0;
+          padding: 10px 0;
+          border-top: 1px solid var(--border-color);
+        }
+        .nav-right.active {
+          display: flex;
+        }
+        .nav-link {
+          text-align: left;
+          padding: 10px 20px;
+          min-width: auto;
+        }
+      }
+      /* Dropdown Styles for additional actions */
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-@media (max-width: 600px) {
-  .menu-btn {
-    display: block;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    cursor: pointer;
-  }
-  .nav-right {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    background-color: white;
-    position: absolute;
-    top: 90px; /* Adjust based on your navbar height */
-    left: 0;
-    padding: 10px 0;
-    border-top: 1px solid var(--border-color);
-  }
-  .nav-right.active {
-    display: flex;
-  }
-  .nav-link {
-    text-align: left;
-    padding: 10px 20px;
-    min-width: auto;
-  }
+.dropdown-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  min-width: 120px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown.show .dropdown-content {
+  display: block;
 }
 
     </style>
@@ -333,7 +379,6 @@
       <div class="nav-left">
         <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo" />
       </div>
-      <!-- Hamburger menu button using the new function name -->
       <button class="menu-btn" onclick="toggleNav()">☰</button>
       <ul class="nav-right">
         <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
@@ -362,7 +407,6 @@
       </ul>
     </nav>
     
-
     <!-- Header -->
     <header class="seller-header">
       <div class="seller-info">
@@ -371,8 +415,7 @@
           <h1 id="welcomeText"></h1>
           <p class="seller-type">PetPal</p>
           <p class="seller-description">
-            Manage your shop's orders, products, grooming, and veterinary
-            services
+            Manage your shop's orders, products, grooming, and veterinary services
           </p>
         </div>
       </div>
@@ -431,6 +474,7 @@
         <a href="privacy.html" class="footer-link">Privacy Policy</a>
       </nav>
     </footer>
+    
     <!-- Details Modal -->
     <div id="detailsModalOverlay">
       <div id="detailsModal">
@@ -445,12 +489,8 @@
 
       document.addEventListener("DOMContentLoaded", function () {
         fetchAppointments();
-        document
-          .getElementById("serviceFilter")
-          .addEventListener("change", applyFilters);
-        document
-          .getElementById("dateSort")
-          .addEventListener("change", applyFilters);
+        document.getElementById("serviceFilter").addEventListener("change", applyFilters);
+        document.getElementById("dateSort").addEventListener("change", applyFilters);
       });
 
       function fetchAppointments() {
@@ -471,15 +511,10 @@
         const serviceFilter = document.getElementById("serviceFilter").value;
         const dateSort = document.getElementById("dateSort").value;
 
-        // Filter appointments by service type
         let filteredAppointments = appointmentsData.filter((appointment) => {
-          return (
-            serviceFilter === "All" ||
-            appointment.service_type === serviceFilter
-          );
+          return serviceFilter === "All" || appointment.service_type === serviceFilter;
         });
 
-        // Sort appointments by date
         filteredAppointments.sort((a, b) => {
           const dateA = new Date(a.appointment_date);
           const dateB = new Date(b.appointment_date);
@@ -490,53 +525,46 @@
       }
 
       function displayAppointments(appointments) {
-        const tableBody = document.getElementById("appointmentsTableBody");
-        tableBody.innerHTML = "";
+  const tableBody = document.getElementById("appointmentsTableBody");
+  tableBody.innerHTML = "";
 
-        appointments.forEach((appointment) => {
-          const row = `
-            <tr>
-              <td>${appointment.name}</td>
-              <td>${appointment.pet_name} (${appointment.pet_breed})</td>
-              <td>${appointment.service_name}</td>
-              <td>${appointment.appointment_date}</td>
-              <!-- PRICE column to match the <th> Price -->
-              <td>₱${appointment.price}</td>
-              <!-- STATUS column -->
-              <td><span class="${getStatusClass(appointment.status)}">${
-            appointment.status
-          }</span></td>
-              <!-- ACTION buttons -->
-              <td>
-                <button class="approve-btn" onclick="updateStatus(${
-                  appointment.id
-                }, 'Approved')">Approve</button>
-                <button class="decline-btn" onclick="updateStatus(${
-                  appointment.id
-                }, 'Declined')">Decline</button>
-                <button class="view-details-btn" onclick="viewDetails(${
-                  appointment.id
-                })">View Details</button>
-              </td>
+  appointments.forEach((appointment) => {
+    const row = `
+      <tr>
+        <td>${appointment.name}</td>
+        <td>${appointment.pet_name} (${appointment.pet_breed})</td>
+        <td>${appointment.service_name}</td>
+        <td>${appointment.appointment_date}</td>
+        <td>₱${appointment.price}</td>
+        <td><span class="${getStatusClass(appointment.status)}">${(appointment.status === "Approved" || appointment.status === "Declined") ? appointment.status : "Pending"}</span></td>
+        <td>
+          <button class="approve-btn" onclick="updateStatus(${appointment.id}, 'Approved')">Approve</button>
+          <button class="decline-btn" onclick="updateStatus(${appointment.id}, 'Declined')">Decline</button>
+          <div class="dropdown">
+            <button class="dropdown-btn" onclick="toggleDropdown(event)">⋮</button>
+            <div class="dropdown-content">
+              <a href="#" onclick="viewDetails(${appointment.id})">View Details</a>
+              <a href="#" onclick="removeAppointment(${appointment.id})">Remove</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    `;
+    tableBody.innerHTML += row;
+  });
+}
 
-            </tr>
-          `;
-          tableBody.innerHTML += row;
-        });
-      }
 
-      function getStatusClass(status) {
-        switch (status) {
-          case "Pending":
-            return "status-pending";
-          case "Approved":
-            return "status-approved";
-          case "Declined":
-            return "status-declined";
-          default:
-            return "";
-        }
-      }
+function getStatusClass(status) {
+  if (status === "Approved") {
+    return "status-approved";
+  } else if (status === "Declined") {
+    return "status-declined";
+  } else {
+    return "status-pending";
+  }
+}
+
 
       function updateStatus(appointmentId, newStatus) {
         const requestBody = { id: appointmentId, status: newStatus };
@@ -548,9 +576,6 @@
         })
           .then((response) => response.text())
           .then((text) => {
-            // The backend might return text or JSON; adjust as needed
-            console.log("Update response:", text);
-            // If the response is JSON, parse it:
             let data;
             try {
               data = JSON.parse(text);
@@ -558,7 +583,6 @@
               console.error("Failed to parse JSON:", e);
               return;
             }
-
             if (data.success) {
               alert("Status updated successfully!");
               fetchAppointments();
@@ -569,53 +593,63 @@
           .catch((error) => console.error("Error updating status:", error));
       }
 
-      // Display additional details in a modal
+      async function removeAppointment(appointmentId) {
+  const confirmed = await confirm("Are you sure you want to remove this appointment?");
+  if (!confirmed) return; // User canceled the action
+
+  fetch("http://192.168.1.65/backend/delete_appointment.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: appointmentId })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert("Appointment removed successfully!");
+      fetchAppointments();
+    } else {
+      alert("Error removing appointment: " + data.message);
+    }
+  })
+  .catch(error => console.error("Error removing appointment:", error));
+}
+
+
+
       function viewDetails(appointmentId) {
         const appointment = appointmentsData.find((a) => a.id == appointmentId);
         if (!appointment) {
           alert("Appointment details not found.");
           return;
         }
-
         const detailsContent = document.getElementById("detailsContent");
         detailsContent.innerHTML = `
-    <h3>Appointment Details</h3>
-    <dl class="details-list">
-      <dt>Owner Name</dt>
-      <dd>${appointment.name}</dd>
-
-      <dt>Address</dt>
-      <dd>${appointment.address ?? ""}</dd>
-
-      <dt>Phone Number</dt>
-      <dd>${appointment.phone_number ?? ""}</dd>
-
-      <dt>Pet Name</dt>
-      <dd>${appointment.pet_name}</dd>
-
-      <dt>Pet Breed</dt>
-      <dd>${appointment.pet_breed}</dd>
-
-      <dt>Service Type</dt>
-      <dd>${appointment.service_type}</dd>
-
-      <dt>Service Name</dt>
-      <dd>${appointment.service_name}</dd>
-
-      <dt>Notes</dt>
-      <dd>${appointment.notes ?? ""}</dd>
-
-      <dt>Appointment Date</dt>
-      <dd>${appointment.appointment_date}</dd>
-
-      <dt>Payment Method</dt>
-      <dd>${appointment.payment_method ?? ""}</dd>
-
-      <dt>Status</dt>
-      <dd>${appointment.status}</dd>
-    </dl>
-  `;
-        // Show the modal
+          <h3>Appointment Details</h3>
+          <dl class="details-list">
+            <dt>Owner Name</dt>
+            <dd>${appointment.name}</dd>
+            <dt>Address</dt>
+            <dd>${appointment.address ?? ""}</dd>
+            <dt>Phone Number</dt>
+            <dd>${appointment.phone_number ?? ""}</dd>
+            <dt>Pet Name</dt>
+            <dd>${appointment.pet_name}</dd>
+            <dt>Pet Breed</dt>
+            <dd>${appointment.pet_breed}</dd>
+            <dt>Service Type</dt>
+            <dd>${appointment.service_type}</dd>
+            <dt>Service Name</dt>
+            <dd>${appointment.service_name}</dd>
+            <dt>Notes</dt>
+            <dd>${appointment.notes ?? ""}</dd>
+            <dt>Appointment Date</dt>
+            <dd>${appointment.appointment_date}</dd>
+            <dt>Payment Method</dt>
+            <dd>${appointment.payment_method ?? ""}</dd>
+            <dt>Status</dt>
+            <dd>${appointment.status}</dd>
+          </dl>
+        `;
         document.getElementById("detailsModalOverlay").style.display = "flex";
       }
 
@@ -628,8 +662,19 @@
         const navRight = document.querySelector('.nav-right');
         navRight.classList.toggle('active');
       }
+      function toggleDropdown(event) {
+  event.stopPropagation(); // Prevent the click from closing the dropdown immediately
+  const dropdown = event.currentTarget.parentElement;
+  dropdown.classList.toggle("show");
+}
+
+// Close any open dropdown if clicking outside of it
+document.addEventListener("click", function() {
+  const dropdowns = document.querySelectorAll(".dropdown");
+  dropdowns.forEach(dropdown => dropdown.classList.remove("show"));
+});
+
     </script>
-    
     <script src="notification.js"></script>
     <script src="index.js"></script>
   </body>
