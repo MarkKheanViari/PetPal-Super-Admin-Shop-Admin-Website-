@@ -534,7 +534,7 @@
         <td>${appointment.name}</td>
         <td>${appointment.pet_name} (${appointment.pet_breed})</td>
         <td>${appointment.service_name}</td>
-        <td>${appointment.appointment_date}</td>
+        <td>${formatDateTime(appointment.appointment_date, appointment.appointment_time)}</td>
         <td>₱${appointment.price}</td>
         <td><span class="${getStatusClass(appointment.status)}">${(appointment.status === "Approved" || appointment.status === "Declined") ? appointment.status : "Pending"}</span></td>
         <td>
@@ -564,6 +564,23 @@ function getStatusClass(status) {
     return "status-pending";
   }
 }
+
+function formatDateTime(dateString, timeString) {
+  const date = new Date(`${dateString}T${timeString || '00:00:00'}`);
+  if (isNaN(date.getTime())) {
+    return 'Invalid Date';
+  }
+  const options = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  };
+  return date.toLocaleString('en-US', options);
+}
+
 
 
       function updateStatus(appointmentId, newStatus) {
@@ -616,47 +633,48 @@ function getStatusClass(status) {
 
 
 
-      function viewDetails(appointmentId) {
-        const appointment = appointmentsData.find((a) => a.id == appointmentId);
-        if (!appointment) {
-          alert("Appointment details not found.");
-          return;
-        }
-        const detailsContent = document.getElementById("detailsContent");
-        detailsContent.innerHTML = `
-          <h3>Appointment Details</h3>
-          <dl class="details-list">
-            <dt>Owner Name</dt>
-            <dd>${appointment.name}</dd>
-            <dt>Address</dt>
-            <dd>${appointment.address ?? ""}</dd>
-            <dt>Phone Number</dt>
-            <dd>${appointment.phone_number ?? ""}</dd>
-            <dt>Pet Name</dt>
-            <dd>${appointment.pet_name}</dd>
-            <dt>Pet Breed</dt>
-            <dd>${appointment.pet_breed}</dd>
-            <dt>Service Type</dt>
-            <dd>${appointment.service_type}</dd>
-            <dt>Service Name</dt>
-            <dd>${appointment.service_name}</dd>
-            <dt>Notes</dt>
-            <dd>${appointment.notes ?? ""}</dd>
-            <dt>Appointment Date</dt>
-            <dd>${appointment.appointment_date}</dd>
-            <dt>Payment Method</dt>
-            <dd>${appointment.payment_method ?? ""}</dd>
-            <dt>Status</dt>
-            <dd>${appointment.status}</dd>
-          </dl>
-        `;
-        document.getElementById("detailsModalOverlay").style.display = "flex";
-      }
+function viewDetails(appointmentId) {
+  const appointment = appointmentsData.find((a) => a.id == appointmentId);
+  if (!appointment) {
+    alert("Appointment details not found.");
+    return;
+  }
+  const detailsContent = document.getElementById("detailsContent");
+  detailsContent.innerHTML = `
+    <h3>Appointment Details</h3>
+    <dl class="details-list">
+      <dt>Owner Name</dt>
+      <dd>${appointment.name}</dd>
+      <dt>Address</dt>
+      <dd>${appointment.address ?? ""}</dd>
+      <dt>Phone Number</dt>
+      <dd>${appointment.phone_number ?? ""}</dd>
+      <dt>Pet Name</dt>
+      <dd>${appointment.pet_name}</dd>
+      <dt>Pet Breed</dt>
+      <dd>${appointment.pet_breed}</dd>
+      <dt>Service Type</dt>
+      <dd>${appointment.service_type}</dd>
+      <dt>Service Name</dt>
+      <dd>${appointment.service_name}</dd>
+      <dt>Notes</dt>
+      <dd>${appointment.notes ?? ""}</dd>
+      <dt>Appointment Date</dt>
+      <dd>${formatDateTime(appointment.appointment_date, appointment.appointment_time)}</dd>
+      <dt>Payment Method</dt>
+      <dd>${appointment.payment_method ?? ""}</dd>
+      <dt>Status</dt>
+      <dd>${appointment.status}</dd>
+    </dl>
+  `;
+  document.getElementById("detailsModalOverlay").style.display = "flex";
+}
 
       function closeDetailsModal() {
         document.getElementById("detailsModalOverlay").style.display = "none";
       }
     </script>
+
     <script>
       function toggleNav() {
         const navRight = document.querySelector('.nav-right');

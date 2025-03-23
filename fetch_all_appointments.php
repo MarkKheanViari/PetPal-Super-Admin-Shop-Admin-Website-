@@ -8,27 +8,27 @@ $response = ["success" => false];
 
 // Include columns from `mobile_appointments` (alias `m`)
 $sql = "
-    SELECT 
-        a.id,
-        a.name,
-        a.pet_name,
-        a.pet_breed,
-        a.service_type,
-        a.service_name,
-        a.appointment_date,
-        s.price,
-        a.status,
-        -- Extra fields from mobile_appointments
-        m.address,
-        m.phone_number,
-        m.notes,
-        m.payment_method
-    FROM appointments AS a
-    JOIN services AS s 
-        ON a.service_name = s.service_name
-    LEFT JOIN mobile_appointments AS m
-        ON a.id = m.id
-    ORDER BY a.appointment_date DESC
+  SELECT 
+    a.id,
+    a.name,
+    a.pet_name,
+    a.pet_breed,
+    a.service_type,
+    a.service_name,
+    a.appointment_date,
+    a.appointment_time, -- Add this line if the field exists
+    s.price,
+    a.status,
+    m.address,
+    m.phone_number,
+    m.notes,
+    m.payment_method
+  FROM appointments AS a
+  JOIN services AS s 
+    ON a.service_name = s.service_name
+  LEFT JOIN mobile_appointments AS m
+    ON a.id = m.id
+  ORDER BY a.appointment_date DESC
 ";
 
 $result = $conn->query($sql);

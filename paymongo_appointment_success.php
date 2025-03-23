@@ -35,6 +35,7 @@ $phone_number = $appointment_data['phone_number'];
 $pet_name = $appointment_data['pet_name'];
 $pet_breed = $appointment_data['pet_breed'];
 $appointment_date = $appointment_data['appointment_date'];
+$appointment_time = $appointment_data['appointment_time'] ?? null; // Extract appointment_time
 $payment_method = $appointment_data['payment_method'];
 $notes = $appointment_data['notes'] ?? "";
 $status = "PAID"; // Set to PAID since payment is successful
@@ -44,19 +45,19 @@ $conn->begin_transaction();
 
 try {
     // Insert into `appointments`
-    $query = "INSERT INTO appointments (mobile_user_id, service_type, service_name, name, address, phone_number, pet_name, pet_breed, appointment_date, payment_method, notes, status) 
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO appointments (mobile_user_id, service_type, service_name, name, address, phone_number, pet_name, pet_breed, appointment_date, appointment_time, payment_method, notes, status) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("isssssssssss", $mobile_user_id, $service_type, $service_name, $name, $address, $phone_number, $pet_name, $pet_breed, $appointment_date, $payment_method, $notes, $status);
+    $stmt->bind_param("issssssssssss", $mobile_user_id, $service_type, $service_name, $name, $address, $phone_number, $pet_name, $pet_breed, $appointment_date, $appointment_time, $payment_method, $notes, $status);
     $stmt->execute();
     $appointment_id = $stmt->insert_id;
     $stmt->close();
 
     // Insert into `mobile_appointments`
-    $queryMobile = "INSERT INTO mobile_appointments (mobile_user_id, service_type, service_name, name, address, phone_number, pet_name, pet_breed, appointment_date, payment_method, notes, status) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $queryMobile = "INSERT INTO mobile_appointments (mobile_user_id, service_type, service_name, name, address, phone_number, pet_name, pet_breed, appointment_date, appointment_time, payment_method, notes, status) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmtMobile = $conn->prepare($queryMobile);
-    $stmtMobile->bind_param("isssssssssss", $mobile_user_id, $service_type, $service_name, $name, $address, $phone_number, $pet_name, $pet_breed, $appointment_date, $payment_method, $notes, $status);
+    $stmtMobile->bind_param("issssssssssss", $mobile_user_id, $service_type, $service_name, $name, $address, $phone_number, $pet_name, $pet_breed, $appointment_date, $appointment_time, $payment_method, $notes, $status);
     $stmtMobile->execute();
     $stmtMobile->close();
 

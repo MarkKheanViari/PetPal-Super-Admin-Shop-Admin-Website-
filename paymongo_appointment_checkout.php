@@ -32,12 +32,13 @@ $phone_number = $data['phone_number'];
 $pet_name = $data['pet_name'];
 $pet_breed = $data['pet_breed'];
 $appointment_date = $data['appointment_date'];
+$appointment_time = $data['appointment_time'] ?? null; // Extract appointment_time
 $payment_method = $data['payment_method'];
 $notes = $data['notes'] ?? "";
 $price = number_format($data['price'], 2, '.', '');
 
-// Log the price
-error_log("🔍 paymongo_appointment_checkout.php: Price: $price");
+// Log the price and time
+error_log("🔍 paymongo_appointment_checkout.php: Price: $price, Appointment Time: $appointment_time");
 
 // Prepare appointment data to pass to success URL
 $appointment_data = [
@@ -50,6 +51,7 @@ $appointment_data = [
     "pet_name" => $pet_name,
     "pet_breed" => $pet_breed,
     "appointment_date" => $appointment_date,
+    "appointment_time" => $appointment_time, // Include appointment_time
     "payment_method" => $payment_method,
     "notes" => $notes,
     "price" => $price
