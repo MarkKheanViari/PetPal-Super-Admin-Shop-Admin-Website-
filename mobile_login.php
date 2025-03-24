@@ -20,8 +20,8 @@ try {
     $username = $data->username;
     $password = $data->password;
 
-    // Get user from database
-    $stmt = $conn->prepare("SELECT id, username, password FROM mobile_users WHERE username = ?");
+    // Get user from database, including email
+    $stmt = $conn->prepare("SELECT id, username, email, password FROM mobile_users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -40,11 +40,13 @@ try {
         throw new Exception('Invalid username or password');
     }
 
+    // Include email in the response
     echo json_encode([
         'success' => true,
         'message' => 'Login successful',
         'user_id' => $user['id'],
-        'username' => $user['username']
+        'username' => $user['username'],
+        'email' => $user['email'] // Add email to the response
     ]);
 
 } catch (Exception $e) {
