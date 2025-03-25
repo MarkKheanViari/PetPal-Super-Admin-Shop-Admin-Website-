@@ -36,7 +36,7 @@ function setupEventListeners() {
 async function fetchUserCounts() {
   try {
     const response = await fetch(
-      "http://192.168.1.65/backend/Frontend/Superadmin/superadmin_stats.php"
+      "http://10.40.70.46/backend/Frontend/Superadmin/superadmin_stats.php"
     );
     const data = await response.json();
 
@@ -66,7 +66,7 @@ async function fetchUserCounts() {
 async function fetchUserStatistics() {
   try {
     const response = await fetch(
-      "http://192.168.1.65/backend/Frontend/Superadmin/fetch_user_counts.php"
+      "http://10.40.70.46/backend/Frontend/Superadmin/fetch_user_counts.php"
     );
     const data = await response.json();
     renderUserChart(data.months, data.mobile_users, data.shop_owners);
@@ -92,7 +92,7 @@ function openTab(event, tabName) {
 async function fetchUsers() {
   try {
     const response = await fetch(
-      "http://192.168.1.65/backend/frontend/superadmin/fetch_users.php"
+      "http://10.40.70.46/backend/frontend/superadmin/fetch_users.php"
     );
     const data = await response.json();
 
@@ -125,7 +125,7 @@ async function fetchUsers() {
 async function fetchProducts() {
   try {
     const response = await fetch(
-      "http://192.168.1.65/backend/Frontend/SuperAdmin/fetch_products.php?page=dashboard"
+      "http://10.40.70.46/backend/Frontend/SuperAdmin/fetch_products.php?page=dashboard"
     );
     const data = await response.json();
 
@@ -155,7 +155,7 @@ async function fetchProducts() {
 async function fetchRecentActivities() {
   try {
     const response = await fetch(
-      "http://192.168.1.65/backend/Frontend/Superadmin/fetch_recent_activities.php"
+      "http://10.40.70.46/backend/Frontend/Superadmin/fetch_recent_activities.php"
     );
     const data = await response.json();
 

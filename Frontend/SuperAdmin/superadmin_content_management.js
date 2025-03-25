@@ -15,7 +15,7 @@ async function fetchProducts(filter = "all", searchQuery = "") {
     "<tr><td colspan='7'><div class='spinner'></div></td></tr>";
   try {
     const response = await fetch(
-      "http://192.168.1.65/backend/Frontend/SuperAdmin/fetch_products.php"
+      "http://10.40.70.46/backend/Frontend/SuperAdmin/fetch_products.php"
     );
     const data = await response.json();
     allProducts = data.products || [];
@@ -141,7 +141,7 @@ function setupEventListeners() {
 async function updateProductStatus(productId, status) {
   try {
     const response = await fetch(
-      "http://192.168.1.65/backend/Frontend/SuperAdmin/update_product_status.php",
+      "http://10.40.70.46/backend/Frontend/SuperAdmin/update_product_status.php",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

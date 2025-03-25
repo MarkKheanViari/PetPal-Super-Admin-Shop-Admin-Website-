@@ -494,7 +494,7 @@
       });
 
       function fetchAppointments() {
-        fetch("http://192.168.1.65/backend/fetch_all_appointments.php")
+        fetch("http://10.40.70.46/backend/fetch_all_appointments.php")
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
@@ -586,7 +586,7 @@ function formatDateTime(dateString, timeString) {
       function updateStatus(appointmentId, newStatus) {
         const requestBody = { id: appointmentId, status: newStatus };
 
-        fetch("http://192.168.1.65/backend/update_appointment_status.php", {
+        fetch("http://10.40.70.46/backend/update_appointment_status.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(requestBody),
@@ -614,7 +614,7 @@ function formatDateTime(dateString, timeString) {
   const confirmed = await confirm("Are you sure you want to remove this appointment?");
   if (!confirmed) return; // User canceled the action
 
-  fetch("http://192.168.1.65/backend/delete_appointment.php", {
+  fetch("http://10.40.70.46/backend/delete_appointment.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ id: appointmentId })

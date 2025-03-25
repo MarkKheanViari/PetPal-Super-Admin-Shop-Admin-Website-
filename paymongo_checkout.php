@@ -70,8 +70,8 @@ $checkout_data = [
             "line_items" => $cart_items,
             "payment_method_types" => ["gcash"],
             "description" => "Order from PetPal",
-            "success_url" => "http://192.168.1.65/backend/paymongo_success.php?order_data=$encoded_order_data",
-            "cancel_url" => "http://192.168.1.65/backend/paymongo_cancel.php?order_data=$encoded_order_data"
+            "success_url" => "http://10.40.70.46/backend/paymongo_success.php?order_data=$encoded_order_data",
+            "cancel_url" => "http://10.40.70.46/backend/paymongo_cancel.php?order_data=$encoded_order_data"
         ]
     ]
 ];

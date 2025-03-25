@@ -6,16 +6,15 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 include "db.php";
 
-$paymongo_secret_key = "sk_test_B8LiLXJfYa8wRc3mtX8MyPcP"; // Replace with your PayMongo secret key
+$paymongo_secret_key = "sk_test_B8LiLXJfYa8wRc3mtX8MyPcP";
 $encoded_key = base64_encode($paymongo_secret_key);
 
 $rawData = file_get_contents("php://input");
 $data = json_decode($rawData, true);
 
-// Log the incoming request data
+
 error_log("🔍 paymongo_appointment_checkout.php: Incoming request data: " . print_r($data, true));
 
-// Check required fields
 if (!isset($data['mobile_user_id'], $data['service_type'], $data['service_name'], $data['name'], $data['address'], 
            $data['phone_number'], $data['pet_name'], $data['pet_breed'], $data['appointment_date'], $data['payment_method'], $data['price'])) {
     error_log("❌ paymongo_appointment_checkout.php: Missing required fields");
@@ -32,13 +31,11 @@ $phone_number = $data['phone_number'];
 $pet_name = $data['pet_name'];
 $pet_breed = $data['pet_breed'];
 $appointment_date = $data['appointment_date'];
-$appointment_time = $data['appointment_time'] ?? null; // Extract appointment_time
+$appointment_time = $data['appointment_time'] ?? null;
 $payment_method = $data['payment_method'];
 $notes = $data['notes'] ?? "";
 $price = number_format($data['price'], 2, '.', '');
 
-// Log the price and time
-error_log("🔍 paymongo_appointment_checkout.php: Price: $price, Appointment Time: $appointment_time");
 
 // Prepare appointment data to pass to success URL
 $appointment_data = [
@@ -74,8 +71,8 @@ $checkout_data = [
             ],
             "payment_method_types" => ["gcash"],
             "description" => "PetPal Appointment",
-            "success_url" => "http://192.168.1.65/backend/paymongo_appointment_success.php?appointment_data=$encoded_appointment_data",
-            "cancel_url" => "http://192.168.1.65/backend/paymongo_appointment_cancel.php?appointment_data=$encoded_appointment_data"
+            "success_url" => "http://10.40.70.46/backend/paymongo_appointment_success.php?appointment_data=$encoded_appointment_data",
+            "cancel_url" => "http://10.40.70.46/backend/paymongo_appointment_cancel.php?appointment_data=$encoded_appointment_data"
         ]
     ]
 ];
