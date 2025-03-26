@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       const verifyResponse = await fetch(
-        "http://10.40.70.46/backend/authenticate.php",
+        "http://192.168.1.65/backend/authenticate.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       const updateResponse = await fetch(
-        "http://10.40.70.46/backend/reset_password.php",
+        "http://192.168.1.65/backend/reset_password.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        "http://10.40.70.46/backend/authenticate.php",
+        "http://192.168.1.65/backend/authenticate.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

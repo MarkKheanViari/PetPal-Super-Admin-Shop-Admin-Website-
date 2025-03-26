@@ -55,7 +55,7 @@ if ($result->num_rows > 0) {
         $items = array();
         
         // ✅ Define the base URL for images
-        $base_url = "http://10.40.70.46/uploads/";
+        $base_url = "http://192.168.1.65/uploads/";
 
         while ($item = $items_result->fetch_assoc()) {
             // ✅ Fix Image URL: Remove spaces, encode properly

@@ -71,8 +71,8 @@ $checkout_data = [
             ],
             "payment_method_types" => ["gcash"],
             "description" => "PetPal Appointment",
-            "success_url" => "http://10.40.70.46/backend/paymongo_appointment_success.php?appointment_data=$encoded_appointment_data",
-            "cancel_url" => "http://10.40.70.46/backend/paymongo_appointment_cancel.php?appointment_data=$encoded_appointment_data"
+            "success_url" => "http://192.168.1.65/backend/paymongo_appointment_success.php?appointment_data=$encoded_appointment_data",
+            "cancel_url" => "http://192.168.1.65/backend/paymongo_appointment_cancel.php?appointment_data=$encoded_appointment_data"
         ]
     ]
 ];

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchOrders() {
-    fetch("http://10.40.70.46/backend/fetch_orders.php")
+    fetch("http://192.168.1.65/backend/fetch_orders.php")
         .then((response) => response.json())
         .then((data) => {
             console.log("Fetched Orders Data:", data); // Debug log to check the full JSON response
@@ -103,7 +103,7 @@ function viewOrderDetails(orderId) {
     console.log("🔍 Fetching Order Details for Order ID:", orderId);
 
     fetch(
-        `http://10.40.70.46/backend/fetch_order_details.php?order_id=${orderId}`
+        `http://192.168.1.65/backend/fetch_order_details.php?order_id=${orderId}`
     )
         .then((response) => response.json())
         .then((data) => {
@@ -167,7 +167,7 @@ function updateOrderStatus() {
 
     console.log(`🚀 Updating Order ${orderId} to Status: ${newStatus}`);
 
-    fetch("http://10.40.70.46/backend/update_order_status.php", {
+    fetch("http://192.168.1.65/backend/update_order_status.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

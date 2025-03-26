@@ -23,7 +23,7 @@ $deep_link = "intent://payment_success?order_id=$order_id#Intent;scheme=myapplic
 
             // Fallback if deep link doesn't work
             setTimeout(function() {
-                window.location.href = "https://10.40.70.46/thankyou";
+                window.location.href = "https://192.168.1.65/thankyou";
             }, 5000);
         };
     </script>

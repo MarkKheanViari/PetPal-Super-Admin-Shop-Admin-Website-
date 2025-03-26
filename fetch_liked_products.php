@@ -45,7 +45,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 $likedProducts = [];
-$baseImageUrl = "http://10.40.70.46/backend/uploads/";
+$baseImageUrl = "http://192.168.1.65/backend/uploads/";
 
 while ($row = $result->fetch_assoc()) {
     $rawImage = $row['image'] ?? '';
