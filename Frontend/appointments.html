@@ -134,8 +134,6 @@
         </li>
       </ul>
     </nav>
-    
-    
 
     <!-- Header -->
     <header class="seller-header">
@@ -155,8 +153,6 @@
         <button onclick="logout()" class="logout-btn">Logout</button>
       </div>
     </header>
-
-    <!-- Main Content -->
 
     <!-- Main Content -->
     <main class="content">
@@ -237,7 +233,7 @@
         <div class="service-head">
           <h2 id="addServiceModalTitle">Add New Service</h2>
           <button class="cancel-btn" onclick="closeModal('addServiceModal')">
-            &times;
+            ×
           </button>
         </div>
 
@@ -274,7 +270,6 @@
             <label><strong>Service Image:</strong></label>
             <input type="file" id="serviceImage" accept="image/*" required />
           </div>
-          
 
           <button class="approve-btn" type="submit">Add Service</button>
         </form>
@@ -287,7 +282,7 @@
         <div class="service-head">
           <h2>Edit Service</h2>
           <button class="cancel-btn" onclick="closeModal('editServiceModal')">
-            &times;
+            ×
           </button>
         </div>
         <form id="editServiceForm">
@@ -306,6 +301,12 @@
           <div class="modal-section">
             <label><strong>Description:</strong></label>
             <textarea id="editServiceDescription" required></textarea>
+          </div>
+
+          <div class="modal-section">
+            <label><strong>Service Image:</strong></label>
+            <input type="file" id="editServiceImage" accept="image/*" />
+            <img id="editPreviewImage" src="" alt="Current Image" style="width: 100%; max-height: 150px; object-fit: cover; margin-top: 10px;" />
           </div>
 
           <!-- Buttons Container -->
@@ -394,10 +395,18 @@
               : "fetch_veterinary_services.php";
 
           fetch(apiBaseUrl + endpoint)
-            .then((res) => res.json())
-            .then((data) => populateServicesTable(data, tableId))
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then((data) => {
+                console.log(`Fetched ${serviceType} services:`, data);
+                populateServicesTable(data, tableId);
+            })
             .catch((err) =>
-              console.error(`Error fetching ${serviceType} services:`, err)
+                console.error(`Error fetching ${serviceType} services:`, err)
             );
         }
 
@@ -416,12 +425,11 @@
           // Check if we have any active services
           if (activeServices.length === 0) {
             const tr = document.createElement("tr");
-            // Adjust colspan to match your total number of columns (e.g., 4)
             tr.innerHTML = `
-      <td colspan="4" style="text-align: center; color: #666;">
-        No service added yet
-      </td>
-    `;
+              <td colspan="4" style="text-align: center; color: #666;">
+                No service added yet
+              </td>
+            `;
             tableBody.appendChild(tr);
             return;
           }
@@ -430,17 +438,17 @@
           activeServices.forEach((service) => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
-      <td>${service.service_name}</td>
-      <td>₱${service.price}</td>
-      <td>${service.description || "No description provided."}</td>
-      <td>
-        <button class="edit-btn" onclick='openEditModal(${JSON.stringify(
-          service
-        )})'>
-          Edit
-        </button>
-      </td>
-    `;
+              <td>${service.service_name}</td>
+              <td>₱${service.price}</td>
+              <td>${service.description || "No description provided."}</td>
+              <td>
+                <button class="edit-btn" onclick='openEditModal(${JSON.stringify(
+                  service
+                )})'>
+                  Edit
+                </button>
+              </td>
+            `;
             tableBody.appendChild(tr);
           });
         }
@@ -477,6 +485,11 @@
         // Modal & Form Handling
         // ------------------------
 
+        // Open a modal by ID
+        function openModal(modalId) {
+          document.getElementById(modalId).style.display = "flex";
+        }
+
         // Open the Add Service modal and populate dropdown options
         function openAddServiceModal(serviceType) {
           currentServiceType = serviceType;
@@ -490,37 +503,42 @@
 
           // Fetch existing services to determine which ones are available
           fetch(apiBaseUrl + `fetch_${serviceType.toLowerCase()}_services.php`)
-            .then((res) => res.json())
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+                return res.json();
+            })
             .then((data) => {
-              const activeServices = data.services
-                .filter((s) => s.removed == 0)
-                .map((s) => s.service_name);
-              const removedServices = data.services
-                .filter((s) => s.removed == 1)
-                .map((s) => s.service_name);
+                const activeServices = data.services
+                    .filter((s) => s.removed == 0)
+                    .map((s) => s.service_name);
+                const removedServices = data.services
+                    .filter((s) => s.removed == 1)
+                    .map((s) => s.service_name);
 
-              const availableServices = (
-                serviceType === "Grooming"
-                  ? groomingServicesList
-                  : veterinaryServicesList
-              ).filter(
-                (service) =>
-                  !activeServices.includes(service) ||
-                  removedServices.includes(service)
-              );
+                const availableServices = (
+                    serviceType === "Grooming"
+                    ? groomingServicesList
+                    : veterinaryServicesList
+                ).filter(
+                    (service) =>
+                        !activeServices.includes(service) ||
+                        removedServices.includes(service)
+                );
 
-              availableServices.forEach((service) => {
-                const option = document.createElement("option");
-                option.value = service;
-                option.textContent = service;
-                serviceOption.appendChild(option);
-              });
+                availableServices.forEach((service) => {
+                    const option = document.createElement("option");
+                    option.value = service;
+                    option.textContent = service;
+                    serviceOption.appendChild(option);
+                });
 
-              document.getElementById("addServiceForm").reset();
-              document.getElementById("addServiceModal").style.display = "flex";
+                document.getElementById("addServiceForm").reset();
+                openModal("addServiceModal");
             })
             .catch((error) =>
-              console.error("Error fetching services for modal:", error)
+                console.error("Error fetching services for modal:", error)
             );
         }
 
@@ -531,14 +549,17 @@
 
         // Open the Edit Service modal and populate with service details
         function openEditModal(service) {
-          document.getElementById("editServiceId").value = service.service_id;
-          document.getElementById("editServiceName").value =
-            service.service_name;
-          document.getElementById("editServicePrice").value = service.price;
-          document.getElementById("editServiceDescription").value =
-            service.description || "";
-          document.getElementById("editServiceModal").style.display = "flex";
-        }
+    console.log("Opening edit modal with service:", service); // Debug log
+    document.getElementById("editServiceId").value = service.id || service.service_id || ''; // Fallback to service_id if id is undefined
+    document.getElementById("editServiceName").value = service.service_name;
+    document.getElementById("editServicePrice").value = service.price;
+    document.getElementById("editServiceDescription").value = service.description;
+
+    // Load image preview
+    document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${service.image}`;
+    
+    openModal("editServiceModal");
+}
 
         // Remove a service from within the edit modal
         function removeServiceFromModal() {
@@ -606,44 +627,60 @@
         // ------------------------
 
         // Handle edit service form submission
-        document
-          .getElementById("editServiceForm")
-          .addEventListener("submit", function (e) {
-            e.preventDefault();
-            const serviceId = document.getElementById("editServiceId").value;
-            const servicePrice =
-              document.getElementById("editServicePrice").value;
-            const serviceDescription = document.getElementById(
-              "editServiceDescription"
-            ).value;
+        document.getElementById("editServiceForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-            fetch(apiBaseUrl + "update_service.php", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                service_id: serviceId,
-                price: parseFloat(servicePrice),
-                description: serviceDescription.trim(),
-              }),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                if (data.success) {
-                  alert("✅ Service updated successfully!");
-                  closeModal("editServiceModal");
-                  refreshServices();
-                } else {
-                  alert(
-                    "❌ Failed to update service: " +
-                      (data.error || "Unknown error")
-                  );
+    const id = document.getElementById("editServiceId").value;
+    const name = document.getElementById("editServiceName").value;
+    const price = document.getElementById("editServicePrice").value;
+    const description = document.getElementById("editServiceDescription").value;
+    const imageFile = document.getElementById("editServiceImage").files[0];
+
+    // Validate price
+    if (isNaN(price) || price < 0) {
+        alert("❌ Please enter a valid price (non-negative number).");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("service_name", name); // Use service_name instead of id
+    formData.append("price", price);
+    formData.append("description", description);
+    if (imageFile) {
+        formData.append("image", imageFile);
+    }
+
+    console.log("Sending update request with data:", { name, price, description, imageFile });
+
+    fetch("http://192.168.1.65/backend/update_service.php", {
+        method: "POST",
+        body: formData,
+    })
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log("Update response:", data);
+            if (data.success) {
+                alert("✅ Service updated successfully!");
+                // Update the image preview immediately
+                if (data.image) {
+                    document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${data.image}`;
                 }
-              })
-              .catch((err) => {
-                console.error("Error updating service:", err);
-                alert("❌ Server error! Check console for details.");
-              });
-          });
+                closeModal("editServiceModal");
+                refreshServices(); // Refresh the table
+            } else {
+                alert("❌ Update failed: " + (data.error || "Unknown error"));
+            }
+        })
+        .catch((error) => {
+            console.error("Fetch error:", error);
+            alert("❌ Something went wrong: " + error.message);
+        });
+});
 
         // Handle add service form submission
         document
@@ -655,36 +692,44 @@
             const serviceDescription =
               document.getElementById("serviceDescription").value;
 
-              const imageFile = document.getElementById("serviceImage").files[0];
-if (!imageFile) {
-  alert("❌ Please select an image.");
-  return;
-}
+            const imageFile = document.getElementById("serviceImage").files[0];
+            if (!imageFile) {
+              alert("❌ Please select an image.");
+              return;
+            }
 
-const formData = new FormData();
-formData.append("type", currentServiceType);
-formData.append("service_name", serviceName);
-formData.append("price", servicePrice);
-formData.append("description", serviceDescription);
-formData.append("image", imageFile); // 👈 add image file
+            const formData = new FormData();
+            formData.append("type", currentServiceType);
+            formData.append("service_name", serviceName);
+            formData.append("price", servicePrice);
+            formData.append("description", serviceDescription);
+            formData.append("image", imageFile);
 
-fetch(apiBaseUrl + "create_service.php", {
-  method: "POST",
-  body: formData,
-})
-
-              .then((res) => res.json())
-              .then((response) => {
-                if (response.success) {
-                  alert("✅ Service added successfully!");
-                  closeModal("addServiceModal");
-                  refreshServices();
-                  removeFromDropdown(serviceName);
-                } else {
-                  alert("❌ Failed to add service.");
-                }
+            fetch(apiBaseUrl + "create_service.php", {
+              method: "POST",
+              body: formData,
+            })
+              .then((res) => {
+                  if (!res.ok) {
+                      throw new Error(`HTTP error! Status: ${res.status}`);
+                  }
+                  return res.json();
               })
-              .catch((error) => console.error("Error adding service:", error));
+              .then((response) => {
+                  console.log("Add service response:", response);
+                  if (response.success) {
+                      alert("✅ Service added successfully!");
+                      closeModal("addServiceModal");
+                      refreshServices();
+                      removeFromDropdown(serviceName);
+                  } else {
+                      alert("❌ Failed to add service: " + (response.error || "Unknown error"));
+                  }
+              })
+              .catch((error) => {
+                  console.error("Error adding service:", error);
+                  alert("❌ Something went wrong: " + error.message);
+              });
           });
 
         // ------------------------
@@ -701,6 +746,7 @@ fetch(apiBaseUrl + "create_service.php", {
         window.openEditModal = openEditModal;
         window.removeServiceFromModal = removeServiceFromModal;
         window.closeModal = closeModal;
+        window.openModal = openModal;
       })();
     </script>
     <script>

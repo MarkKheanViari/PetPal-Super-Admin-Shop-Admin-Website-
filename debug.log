@@ -40,3 +40,286 @@ Array
 🔍 Incoming Request: {"service_name":"Sanitary Trim"}
 [26-Mar-2025 14:19:02 Europe/Berlin] ✅ Service 'Sanitary Trim' removed successfully.
 🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+Array
+(
+    [id] => undefined
+    [service_name] => Brushing
+    [price] => 250.00
+    [description] => Brushing your teeth 3x a day
+)
+
+Array
+(
+    [image] => Array
+        (
+            [name] => Litter1.jpg
+            [full_path] => Litter1.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php6ABF.tmp
+            [error] => 0
+            [size] => 91614
+        )
+
+)
+Array
+(
+    [id] => undefined
+    [service_name] => Brushing
+    [price] => 250.00
+    [description] => Brushing your teeth 3x a day
+)
+
+Array
+(
+    [image] => Array
+        (
+            [name] => 2.jpeg
+            [full_path] => 2.jpeg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php1A1.tmp
+            [error] => 0
+            [size] => 318341
+        )
+
+)
+Array
+(
+    [id] => undefined
+    [service_name] => Brushing
+    [price] => 250.00
+    [description] => Brushing your teeth 3x a day
+)
+
+Array
+(
+    [image] => Array
+        (
+            [name] => SERVICES.png
+            [full_path] => SERVICES.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php4C05.tmp
+            [error] => 0
+            [size] => 62577
+        )
+
+)
+🔍 Incoming Request: {"service_name":"Brushing"}
+[27-Mar-2025 03:45:53 Europe/Berlin] ✅ Service 'Brushing' removed successfully.
+Array
+(
+    [id] => undefined
+    [service_name] => Bathing
+    [price] => 300.00
+    [description] => Bathing your Pet 3x a day
+)
+
+Array
+(
+    [image] => Array
+        (
+            [name] => Litter1.jpg
+            [full_path] => Litter1.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\phpFAA1.tmp
+            [error] => 0
+            [size] => 91614
+        )
+
+)
+Array
+(
+    [id] => undefined
+    [service_name] => Bathing
+    [price] => 300.00
+    [description] => Bathing your Pet 4x a day
+)
+
+Array
+(
+    [image] => Array
+        (
+            [name] => Litter1.jpg
+            [full_path] => Litter1.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php18A1.tmp
+            [error] => 0
+            [size] => 91614
+        )
+
+)
+Array
+(
+    [id] => undefined
+    [service_name] => Bathing
+    [price] => 300.00
+    [description] => Bathing your Pet 5x a day
+)
+
+Array
+(
+    [image] => Array
+        (
+            [name] => Litter1.jpg
+            [full_path] => Litter1.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php2BAD.tmp
+            [error] => 0
+            [size] => 91614
+        )
+
+)
+POST: Array
+(
+    [id] => undefined
+    [service_name] => Bathing
+    [price] => 300.00
+    [description] => Bathing your Pet 3x a day
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => 2.jpeg
+            [full_path] => 2.jpeg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php3148.tmp
+            [error] => 0
+            [size] => 318341
+        )
+
+)
+
+POST: Array
+(
+    [id] => undefined
+    [service_name] => Bathing
+    [price] => 300.00
+    [description] => Bathing your Pet 3x a day
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => 2.jpeg
+            [full_path] => 2.jpeg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php38AC.tmp
+            [error] => 0
+            [size] => 318341
+        )
+
+)
+
+POST: Array
+(
+    [id] => undefined
+    [service_name] => Bathing
+    [price] => 300.00
+    [description] => Bathing your Pet 3x a day
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => 2.jpeg
+            [full_path] => 2.jpeg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php46B7.tmp
+            [error] => 0
+            [size] => 318341
+        )
+
+)
+
+POST: Array
+(
+    [id] => undefined
+    [service_name] => Bathing
+    [price] => 300.00
+    [description] => Bathing your Pet 3x a dday
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => 2.jpeg
+            [full_path] => 2.jpeg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\phpA0EE.tmp
+            [error] => 0
+            [size] => 318341
+        )
+
+)
+
+POST: Array
+(
+    [service_name] => Bathing
+    [price] => 300.00
+    [description] => Bathing your Pet 3x a day
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => Litter1.jpg
+            [full_path] => Litter1.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php8627.tmp
+            [error] => 0
+            [size] => 91614
+        )
+
+)
+
+🔍 Incoming Request: 
+[27-Mar-2025 04:05:50 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Bathing"}
+[27-Mar-2025 04:05:50 Europe/Berlin] ✅ Service 'Bathing' removed successfully.
+POST: Array
+(
+    [service_name] => Brushing
+    [price] => 123.00
+    [description] => 123
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => Litter1.jpg
+            [full_path] => Litter1.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php95E0.tmp
+            [error] => 0
+            [size] => 91614
+        )
+
+)
+
+POST: Array
+(
+    [service_name] => Brushing
+    [price] => 140
+    [description] => 123
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => Teetj.webp
+            [full_path] => Teetj.webp
+            [type] => image/webp
+            [tmp_name] => C:\xampp\tmp\phpD34.tmp
+            [error] => 0
+            [size] => 33848
+        )
+
+)
+

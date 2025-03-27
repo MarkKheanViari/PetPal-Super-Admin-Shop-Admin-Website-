@@ -4,3 +4,35 @@
 [26-Mar-2025 14:18:17 Europe/Berlin] ✅ Service updated successfully!
 [26-Mar-2025 14:18:32 Europe/Berlin] ✅ Running SQL Update: service_id=11, price=600, description=AAAAA
 [26-Mar-2025 14:18:32 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 03:36:32 Europe/Berlin] ❌ Missing input data in update_service.php
+[27-Mar-2025 03:40:18 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'id' in 'where clause' in C:\xampp\htdocs\backend\update_service.php:52
+Stack trace:
+#0 C:\xampp\htdocs\backend\update_service.php(52): mysqli->query('UPDATE services...')
+#1 {main}
+  thrown in C:\xampp\htdocs\backend\update_service.php on line 52
+[27-Mar-2025 03:41:39 Europe/Berlin] ✅ Running SQL Update: service_id=undefined, price=250.00, description=Brushing your teeth 3x a day, image=uploads/67e4bae341882_Litter1.jpg
+[27-Mar-2025 03:41:39 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 03:42:17 Europe/Berlin] ✅ Running SQL Update: service_id=undefined, price=250.00, description=Brushing your teeth 3x a day, image=uploads/67e4bb09cd990_2.jpeg
+[27-Mar-2025 03:42:17 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 03:43:42 Europe/Berlin] ✅ Running SQL Update: service_id=undefined, price=250.00, description=Brushing your teeth 3x a day, image=uploads/67e4bb5e69bc6_SERVICES.png
+[27-Mar-2025 03:43:42 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 03:48:49 Europe/Berlin] ✅ Running SQL Update: service_id=undefined, price=300.00, description=Bathing your Pet 3x a day, image=uploads/service_67e4bc91426fe5.89228745_Litter1.jpg
+[27-Mar-2025 03:48:49 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 03:51:08 Europe/Berlin] ✅ Running SQL Update: service_id=undefined, price=300.00, description=Bathing your Pet 4x a day, image=uploads/service_67e4bd1c0239f7.27870556_Litter1.jpg
+[27-Mar-2025 03:51:08 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 03:51:12 Europe/Berlin] ✅ Running SQL Update: service_id=undefined, price=300.00, description=Bathing your Pet 5x a day, image=uploads/service_67e4bd20d89d95.34879895_Litter1.jpg
+[27-Mar-2025 03:51:12 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 03:52:05 Europe/Berlin] ❌ Missing input data in update_service.php
+[27-Mar-2025 03:55:36 Europe/Berlin] ❌ No service found with ID: undefined
+[27-Mar-2025 03:55:38 Europe/Berlin] ❌ No service found with ID: undefined
+[27-Mar-2025 03:55:41 Europe/Berlin] ❌ No service found with ID: undefined
+[27-Mar-2025 03:56:05 Europe/Berlin] ❌ No service found with ID: undefined
+[27-Mar-2025 04:05:48 Europe/Berlin] ✅ Deleted old image: uploads/service_67e4b35174ed49.55240486.jpg
+[27-Mar-2025 04:05:48 Europe/Berlin] ✅ Running SQL Update: service_name=Bathing, price=300.00, description=Bathing your Pet 3x a day, image=uploads/service_67e4c08c0d2c26.42076486_Litter1.jpg
+[27-Mar-2025 04:05:48 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 04:09:08 Europe/Berlin] ✅ Deleted old image: uploads/service_67e4c0f9da8b45.44495307.webp
+[27-Mar-2025 04:09:08 Europe/Berlin] ✅ Running SQL Update: service_name=Brushing, price=123.00, description=123, image=uploads/service_67e4c1549d0db9.66572178_Litter1.jpg
+[27-Mar-2025 04:09:08 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 04:09:39 Europe/Berlin] ✅ Deleted old image: uploads/service_67e4c1549d0db9.66572178_Litter1.jpg
+[27-Mar-2025 04:09:39 Europe/Berlin] ✅ Running SQL Update: service_name=Brushing, price=140, description=123, image=uploads/service_67e4c1732b9423.10666295_Teetj.webp
+[27-Mar-2025 04:09:39 Europe/Berlin] ✅ Service updated successfully!
