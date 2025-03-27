@@ -270,6 +270,12 @@
             ></textarea>
           </div>
 
+          <div class="modal-section">
+            <label><strong>Service Image:</strong></label>
+            <input type="file" id="serviceImage" accept="image/*" required />
+          </div>
+          
+
           <button class="approve-btn" type="submit">Add Service</button>
         </form>
       </div>
@@ -649,16 +655,24 @@
             const serviceDescription =
               document.getElementById("serviceDescription").value;
 
-            fetch(apiBaseUrl + "create_service.php", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                type: currentServiceType,
-                service_name: serviceName,
-                price: servicePrice,
-                description: serviceDescription,
-              }),
-            })
+              const imageFile = document.getElementById("serviceImage").files[0];
+if (!imageFile) {
+  alert("❌ Please select an image.");
+  return;
+}
+
+const formData = new FormData();
+formData.append("type", currentServiceType);
+formData.append("service_name", serviceName);
+formData.append("price", servicePrice);
+formData.append("description", serviceDescription);
+formData.append("image", imageFile); // 👈 add image file
+
+fetch(apiBaseUrl + "create_service.php", {
+  method: "POST",
+  body: formData,
+})
+
               .then((res) => res.json())
               .then((response) => {
                 if (response.success) {

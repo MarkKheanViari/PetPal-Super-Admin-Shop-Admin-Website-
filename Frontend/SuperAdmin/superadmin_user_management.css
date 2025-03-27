@@ -290,6 +290,24 @@ body {
     color: var(--primary-orange);
 }
 
+/* 📌 Delete Button */
+.delete-btn {
+    background: #ef4444; /* Red color for delete action */
+    color: var(--white);
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    margin-left: 10px; /* Space between Edit and Delete buttons */
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+    background: #dc2626; /* Darker red on hover */
+    box-shadow: 0 3px 10px rgba(239, 68, 68, 0.2);
+}
+
 /* Modal Title and Description */
 .modal-content h2 {
     font-size: 1.75rem;

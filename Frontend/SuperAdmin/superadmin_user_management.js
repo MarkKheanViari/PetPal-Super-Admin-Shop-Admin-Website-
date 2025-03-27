@@ -105,6 +105,7 @@ async function fetchUsers(filter = "all", searchQuery = "") {
 }
 
 // 📌 Display Users Based on Filter and Search
+// 📌 Display Users Based on Filter and Search
 function displayUsers(filterType = "all", searchQuery = "") {
   currentFilter = filterType; // ✅ Update the active filter
   const userTable = document.getElementById("userTable");
@@ -137,13 +138,22 @@ function displayUsers(filterType = "all", searchQuery = "") {
   // ✅ Display Filtered Users in the Table
   if (filteredUsers.length > 0) {
     filteredUsers.forEach((user) => {
+      // Conditionally include the Delete button only for Shop Owners
+      const deleteButton =
+        user.type === "Shop Owner"
+          ? `<button class="delete-btn" data-id="${user.id}">Delete</button>`
+          : "";
+      
       userTable.innerHTML += `
         <tr>
           <td>#${user.id}</td>
           <td>${user.username || "Unknown"}</td>
           <td>${user.type}</td>
           <td>${user.email}</td>
-          <td><button class="edit-btn">Edit</button></td>
+          <td>
+            <button class="edit-btn">Edit</button>
+            ${deleteButton}
+          </td>
         </tr>
       `;
     });
@@ -152,6 +162,7 @@ function displayUsers(filterType = "all", searchQuery = "") {
   }
 }
 
+// 📌 Setup Event Listeners
 // 📌 Setup Event Listeners
 function setupEventListeners() {
   // ✅ Attach Filter Buttons and Make Them Work!
@@ -269,7 +280,7 @@ function setupEventListeners() {
     });
   }
 
-  // ✅ Edit Button Event Delegation
+  // ✅ Edit and Delete Button Event Delegation
   document.getElementById("userTable").addEventListener("click", function (e) {
     if (e.target.classList.contains("edit-btn")) {
       const row = e.target.closest("tr");
@@ -279,8 +290,60 @@ function setupEventListeners() {
       if (user) {
         openEditUserModal(user);
       }
+    } else if (e.target.classList.contains("delete-btn")) {
+      const userId = e.target.getAttribute("data-id");
+      const user = allUsers.find((u) => u.id == userId);
+      if (user && user.type === "Shop Owner") {
+        // Confirm deletion
+        const confirmDelete = confirm(
+          `Are you sure you want to delete the shop owner "${user.username}"? This action cannot be undone.`
+        );
+        if (confirmDelete) {
+          deleteShopOwner(userId);
+        }
+      } else {
+        Toastify({
+          text: "❌ Only Shop Owners can be deleted.",
+          duration: 3000,
+          style: { background: "#ef4444" },
+        }).showToast();
+      }
     }
   });
+}
+
+// 📌 Function to Delete Shop Owner
+async function deleteShopOwner(userId) {
+  try {
+    const response = await fetch(
+      "http://192.168.1.65/backend/Frontend/SuperAdmin/delete_shop_owner.php",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: userId }),
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
+      Toastify({
+        text: "✅ Shop Owner Deleted Successfully!",
+        duration: 3000,
+        style: { background: "var(--primary-orange)" },
+      }).showToast();
+      fetchUsers(); // Refresh the user list
+    } else {
+      throw new Error(result.message || "Failed to delete shop owner");
+    }
+  } catch (error) {
+    console.error("❌ Error deleting shop owner:", error);
+    Toastify({
+      text: "❌ Error: " + error.message,
+      duration: 3000,
+      style: { background: "#ef4444" },
+    }).showToast();
+  }
 }
 
 // 📌 Function to Add Shop Owner
