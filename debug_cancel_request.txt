@@ -1,0 +1,24 @@
+Array
+(
+    [mobile_user_id] => 1013
+    [service_name] => Brushing
+    [service_type] => Grooming
+    [appointment_date] => 2025-03-27
+)
+Received: UserID=1013, Service=Brushing, Type=Grooming, Date=2025-03-27
+Array
+(
+    [mobile_user_id] => 1013
+    [service_name] => Brushing
+    [service_type] => Grooming
+    [appointment_date] => 2025-03-28
+)
+Received: UserID=1013, Service=Brushing, Type=Grooming, Date=2025-03-28
+Array
+(
+    [mobile_user_id] => 1013
+    [service_name] => Brushing
+    [service_type] => Grooming
+    [appointment_date] => 2025-03-28
+)
+Received: UserID=1013, Service=Brushing, Type=Grooming, Date=2025-03-28

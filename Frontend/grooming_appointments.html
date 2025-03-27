@@ -41,6 +41,11 @@
         text-transform: uppercase;
       }
 
+      .status-cancelled {
+    color: #FF4500; /* OrangeRed, matching the mobile app */
+    font-weight: bold;
+}
+
       /* Additional styling for alternating row colors and hover effect */
       .orders-table tbody tr:nth-child(even) {
         background-color: #f8f8f8;
@@ -547,44 +552,53 @@ html.modal-open, body.modal-open {
       }
 
       function displayAppointments(appointments) {
-  const tableBody = document.getElementById("appointmentsTableBody");
-  tableBody.innerHTML = "";
+    const tableBody = document.getElementById("appointmentsTableBody");
+    tableBody.innerHTML = "";
 
-  appointments.forEach((appointment) => {
-    const row = `
-      <tr>
-        <td>${appointment.name}</td>
-        <td>${appointment.pet_name} (${appointment.pet_breed})</td>
-        <td>${appointment.service_name}</td>
-        <td>${formatDateTime(appointment.appointment_date, appointment.appointment_time)}</td>
-        <td>₱${appointment.price}</td>
-        <td><span class="${getStatusClass(appointment.status)}">${(appointment.status === "Approved" || appointment.status === "Declined") ? appointment.status : "Pending"}</span></td>
-        <td>
-          <button class="approve-btn" onclick="updateStatus(${appointment.id}, 'Approved')">Approve</button>
-          <button class="decline-btn" onclick="updateStatus(${appointment.id}, 'Declined')">Decline</button>
-          <div class="dropdown">
-            <button class="dropdown-btn" onclick="toggleDropdown(event)">⋮</button>
-            <div class="dropdown-content">
-              <a href="#" onclick="viewDetails(${appointment.id})">View Details</a>
-              <a href="#" onclick="removeAppointment(${appointment.id})">Remove</a>
-            </div>
-          </div>
-        </td>
-      </tr>
-    `;
-    tableBody.innerHTML += row;
-  });
+    appointments.forEach((appointment) => {
+        const isEditable = appointment.status === "Pending"; // Only "Pending" appointments can be approved/declined
+        const row = `
+            <tr>
+                <td>${appointment.name}</td>
+                <td>${appointment.pet_name} (${appointment.pet_breed})</td>
+                <td>${appointment.service_name}</td>
+                <td>${formatDateTime(appointment.appointment_date, appointment.appointment_time)}</td>
+                <td>₱${appointment.price}</td>
+                <td><span class="${getStatusClass(appointment.status)}">${appointment.status}</span></td>
+                <td>
+                    ${
+                        isEditable
+                            ? `
+                            <button class="approve-btn" onclick="updateStatus(${appointment.id}, 'Approved')">Approve</button>
+                            <button class="decline-btn" onclick="updateStatus(${appointment.id}, 'Declined')">Decline</button>
+                            `
+                            : ""
+                    }
+                    <div class="dropdown">
+                        <button class="dropdown-btn" onclick="toggleDropdown(event)">⋮</button>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="viewDetails(${appointment.id})">View Details</a>
+                            <a href="#" onclick="removeAppointment(${appointment.id})">Remove</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
 }
 
 
 function getStatusClass(status) {
-  if (status === "Approved") {
-    return "status-approved";
-  } else if (status === "Declined") {
-    return "status-declined";
-  } else {
-    return "status-pending";
-  }
+    if (status === "Approved") {
+        return "status-approved";
+    } else if (status === "Declined") {
+        return "status-declined";
+    } else if (status === "Cancelled") {
+        return "status-cancelled";
+    } else {
+        return "status-pending";
+    }
 }
 
 function formatDateTime(dateString, timeString) {

@@ -418,3 +418,4 @@ FILES: Array
 [27-Mar-2025 10:37:06 Europe/Berlin] ❌ Error: Invalid service name received.
 🔍 Incoming Request: {"service_name":"Vaccination Check"}
 [27-Mar-2025 10:37:06 Europe/Berlin] ✅ Service 'Vaccination Check' removed successfully.
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
