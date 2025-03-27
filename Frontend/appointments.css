@@ -28,8 +28,10 @@
     line-height: 1.6;
     background-color: #f8fafc;
     padding-top: 90px;
+    
   }
-  
+  /* Define the base state and the fade-out state *
+
   /* Navbar */
   .navbar {
     display: flex;
@@ -613,32 +615,47 @@ thead{
   }
   
 
-
   .services-table {
     width: 100%;
+    table-layout: fixed; /* Enforces fixed layout */
     border-collapse: collapse;
-    margin-bottom: 1rem;
   }
   
+  /* Style all cells */
   .services-table th,
   .services-table td {
-    border: 1px solid var(--border-color);
-    padding: 0.75rem;
+    border: 1px solid #ccc;
+    padding: 8px;
     text-align: left;
+    /* Optional: control wrapping or truncation */
+    word-wrap: break-word; 
+    /* or:
+       white-space: nowrap;
+       overflow: hidden;
+       text-overflow: ellipsis;
+    */
   }
   
-  .services-table th {
-    color: var(--primary-color);
-    background-color: #fff;
-    cursor: pointer;
+  /* Assign fixed widths for each column (must add up to 100% if using percentages) */
+  .services-table th:nth-child(1),
+  .services-table td:nth-child(1) {
+    width: 20%;
   }
   
-  .services-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+  .services-table th:nth-child(2),
+  .services-table td:nth-child(2) {
+    width: 15%;
   }
   
-  .services-table tr:hover {
-    background-color: #f1f1f1;
+  .services-table th:nth-child(3),
+  .services-table td:nth-child(3) {
+    width: 45%;
+  }
+  
+  .services-table th:nth-child(4),
+  .services-table td:nth-child(4) {
+    width: 20%;
+    text-align: center; /* Example alignment */
   }
   
 
@@ -648,6 +665,7 @@ thead{
   justify-content: space-between;/* Push h2 to left, button to right */
   align-items: center;           /* Vertically center both items */
   margin-bottom: 1rem;           /* Optional spacing below */
+  margin-top: 1rem;           
 }
 
 .head-service h2 {
@@ -669,7 +687,7 @@ thead{
   background-color: #fff;
   color: #e67e22;
   padding: 0.5rem 1rem;
-  border: none;
+  border: solid 1px #e67e22;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -717,3 +735,100 @@ thead{
     min-width: auto;
   }
 }
+
+.menu-btn {
+  display: none;
+}
+
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px; /* Fixed padding */
+  background-color: white;
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  position: fixed;  /* Keeps the navbar at the top */
+  top: 0;  /* Sticks it to the very top */
+  left: 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Adds slight shadow */
+    z-index: 1000;
+    height: 90px;
+  }
+  
+  /* Ensure logo remains correctly aligned */
+  .logo {
+  height: 40px;
+  }
+  
+  /* Navbar List (ul) */
+  .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Fixed spacing */
+  list-style: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+  }
+  
+  /* Navbar List Items (li) */
+  .nav-right li {
+  display: flex;
+  align-items: center;
+  }
+  
+  /* Navbar Links */
+  .nav-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  min-width: 160px;
+  text-align: center;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  
+  /* 🔹 Adjust for tablets (max-width: 900px) */
+  @media (max-width: 900px) {
+  .nav-link {
+    font-size: 14px; /* Smaller font */
+    padding: 8px 15px; /* Reduce padding */
+    min-width: 140px; /* Slightly reduce width */
+  }
+  }
+  
+  /* 🔹 Adjust for mobile screens (max-width: 600px) */
+  @media (max-width: 600px) {
+  .nav-link {
+    font-size: 12px; /* Even smaller font */
+    padding: 6px 10px; /* Smaller padding */
+    min-width: auto; /* Allow flexible width */
+    display: block; /* Stack links in a column */
+    text-align: left; /* Align text left for better readability */
+  }
+  
+  /* Adjust navbar layout for smaller screens */
+  .nav-right {
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Reduce space between items */
+  }
+  }
+  
+  
+  /* Active Navbar Item */s
+  .nav-link.active {
+  color: white;
+  background-color: var(--primary-color);
+  }
+
+  html.modal-open, body.modal-open {
+    overflow: hidden !important;
+  }
+  
+  
+  

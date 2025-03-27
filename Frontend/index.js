@@ -623,13 +623,13 @@ function toggleEditForm(show) {
   editSection.style.display = show ? "block" : "none";
   document.body.classList.toggle("modal-open", show);
 }
-
 function showProductPreview(product) {
   let imagePath = product.image;
   if (!imagePath.startsWith("http")) {
     imagePath = `http://192.168.1.65/backend/uploads/${imagePath}`;
   }
-  document.querySelector("img").src = imagePath;
+  // Removed the line that changes the website logo:
+  // document.querySelector("img").src = imagePath;
 
   const previewModal = document.getElementById("previewModal");
   const previewName = document.getElementById("previewName");
@@ -657,11 +657,10 @@ function showProductPreview(product) {
 
     previewModal.style.display = "flex";
   } else {
-    console.error(
-      "One or more preview modal elements are missing from the DOM."
-    );
+    console.error("One or more preview modal elements are missing from the DOM.");
   }
 }
+
 
 window.showProductPreview = showProductPreview;
 
@@ -785,8 +784,6 @@ function displayProducts(products) {
   console.log("✅ Products displayed successfully.");
 }
 
-
-
 // Initialize custom modal dialogs for alert and confirm
 (function () {
   // Create modal overlay element if it doesn't exist
@@ -893,3 +890,23 @@ function showSimplePopup(title, message) {
 document.getElementById("simplePopupBtn").addEventListener("click", () => {
   document.getElementById("simplePopup").classList.add("hidden");
 });
+
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = "flex";
+    document.body.classList.add("modal-open");  // Disable scrolling
+  }
+}
+
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = "none";
+    // Remove the class only if no other modal is open
+    const openModals = document.querySelectorAll('.modal[style*="display: flex"]');
+    if (openModals.length === 0) {
+      document.body.classList.remove("modal-open");  // Restore scrolling
+    }
+  }
+}

@@ -143,7 +143,7 @@ function displayUsers(filterType = "all", searchQuery = "") {
         user.type === "Shop Owner"
           ? `<button class="delete-btn" data-id="${user.id}">Delete</button>`
           : "";
-      
+
       userTable.innerHTML += `
         <tr>
           <td>#${user.id}</td>
@@ -399,14 +399,11 @@ function openEditUserModal(user) {
 // 📌 Function to Save User Changes
 async function saveUserChanges(payload) {
   try {
-    const response = await fetch(
-      "http://192.168.1.65/backend/update_user.php",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      }
-    );
+    const response = await fetch("http://192.168.1.65/backend/update_user.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
     const result = await response.json();
 

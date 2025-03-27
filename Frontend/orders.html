@@ -64,7 +64,7 @@
         }
 
         .update-status-btn {
-            background-color: #ccc; /* Gray */
+            background-color: #f0f0f0; /* Gray */
             color: #333;
         }
 
@@ -155,7 +155,7 @@
         /* Button container */
         #updateStatusModal .modal-buttons {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-around;
             gap: 0.5rem;
         }
 
@@ -170,13 +170,20 @@
         }
 
         #updateStatusModal .cancel-btn {
-            background-color: #ccc;
-            color: #333;
+            padding: 10px 20px;
+        background: white;
+        border: 2px solid #d2691e;
+        color: #d2691e;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 159px;
         }
 
         #updateStatusModal .confirm-btn {
             background-color: #ff8c00; /* Example color (orange) */
             color: #fff;
+            width: 160px;
         }
 
         #updateStatusModal .cancel-btn:hover {
@@ -290,7 +297,7 @@
             <div class="modal-buttons">
                 <button class="cancel-btn" type="button" onclick="toggleModal('orderModal', false)">Cancel</button>
                 <button class="approve-btn" onclick="toggleModal('orderModal', false)" style="display: none;">Approve</button>
-                <button onclick="downloadReceipt()">Download Receipt</button>
+                <button class="download" onclick="downloadReceipt()">&#x2B07; Download Receipt</button>
             </div>
         </div>
     </div>

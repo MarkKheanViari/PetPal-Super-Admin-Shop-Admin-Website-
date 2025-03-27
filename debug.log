@@ -323,3 +323,98 @@ FILES: Array
 
 )
 
+🔍 Login Attempt: Email: ken@gmail.com | Retrieved ID: 3
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+POST: Array
+(
+    [service_name] => Brushing
+    [price] => 140.00
+    [description] => wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_name] => Brushing
+    [price] => 140.00
+    [description] => wwww
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_name] => Brushing
+    [price] => 140.00
+    [description] => wfovbiwegviyevfoieruguyruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuwfovbiwegviyevfoieruguyruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuwfovbiwegviyevfoierugu
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_name] => Brushing
+    [price] => 140.00
+    [description] => This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the tee
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_name] => Vaccination Check
+    [price] => 123.00
+    [description] => This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the tee
+)
+
+FILES: Array
+(
+)
+
+🔍 Incoming Request: 
+[27-Mar-2025 08:59:07 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Brushing"}
+[27-Mar-2025 08:59:07 Europe/Berlin] ✅ Service 'Brushing' removed successfully.
+🔍 Incoming Request: 
+[27-Mar-2025 08:59:39 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Bathing"}
+[27-Mar-2025 08:59:39 Europe/Berlin] ✅ Service 'Bathing' removed successfully.
+🔍 Incoming Request: 
+[27-Mar-2025 09:59:02 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Nail Trimming"}
+[27-Mar-2025 09:59:02 Europe/Berlin] ✅ Service 'Nail Trimming' removed successfully.
+POST: Array
+(
+    [service_name] => Vaccination Check
+    [price] => 123.00
+    [description] => This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the tee
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_name] => Vaccination Check
+    [price] => 123.00
+    [description] => This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the tee
+)
+
+FILES: Array
+(
+)
+
+🔍 Incoming Request: 
+[27-Mar-2025 10:37:06 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Vaccination Check"}
+[27-Mar-2025 10:37:06 Europe/Berlin] ✅ Service 'Vaccination Check' removed successfully.

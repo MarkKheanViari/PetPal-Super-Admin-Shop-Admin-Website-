@@ -36,3 +36,17 @@ Stack trace:
 [27-Mar-2025 04:09:39 Europe/Berlin] ✅ Deleted old image: uploads/service_67e4c1549d0db9.66572178_Litter1.jpg
 [27-Mar-2025 04:09:39 Europe/Berlin] ✅ Running SQL Update: service_name=Brushing, price=140, description=123, image=uploads/service_67e4c1732b9423.10666295_Teetj.webp
 [27-Mar-2025 04:09:39 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 07:55:53 Europe/Berlin] ✅ Running SQL Update: service_name=Brushing, price=140.00, description=wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+[27-Mar-2025 07:55:53 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 07:56:14 Europe/Berlin] ✅ Running SQL Update: service_name=Brushing, price=140.00, description=wwww
+[27-Mar-2025 07:56:14 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 08:01:09 Europe/Berlin] ✅ Running SQL Update: service_name=Brushing, price=140.00, description=wfovbiwegviyevfoieruguyruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuwfovbiwegviyevfoieruguyruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuwfovbiwegviyevfoierugu
+[27-Mar-2025 08:01:09 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 08:07:48 Europe/Berlin] ✅ Running SQL Update: service_name=Brushing, price=140.00, description=This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the tee
+[27-Mar-2025 08:07:48 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 08:10:00 Europe/Berlin] ✅ Running SQL Update: service_name=Vaccination Check, price=123.00, description=This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the tee
+[27-Mar-2025 08:10:00 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 10:36:56 Europe/Berlin] ✅ Running SQL Update: service_name=Vaccination Check, price=123.00, description=This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the tee
+[27-Mar-2025 10:36:56 Europe/Berlin] ✅ Service updated successfully!
+[27-Mar-2025 10:37:02 Europe/Berlin] ✅ Running SQL Update: service_name=Vaccination Check, price=123.00, description=This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the tee
+[27-Mar-2025 10:37:02 Europe/Berlin] ✅ Service updated successfully!

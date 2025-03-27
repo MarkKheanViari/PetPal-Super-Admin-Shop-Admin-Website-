@@ -31,8 +31,8 @@ body {
   background-color: #f8fafc;
   padding-top: 90px;
   height: 100%;
-
 }
+
 
 /* Navbar Styling */
 .navbar {
@@ -676,20 +676,22 @@ padding: 3px;
 /* Form action buttons container */
 #addProductModal .form-action {
 display: flex;
-justify-content: flex-end;
+justify-content: space-around;
 gap: 1rem;
 margin-top: 20px;
 }
 
 /* Cancel button style */
 #addProductModal .cancel {
-background-color: #ccc;
-color: #333;
-border: none;
-padding: 10px 20px;
-border-radius: 4px;
-cursor: pointer;
-transition: background-color 0.2s ease;
+  padding: 10px 20px;
+  background: white;
+  border: 2px solid #d2691e;
+  color: #d2691e;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 150px;
+  transition: background-color 0.2s ease;
 }
 
 #addProductModal .cancel:hover {
@@ -946,6 +948,7 @@ color: #d2691e;
 border-radius: 5px;
 font-weight: bold;
 cursor: pointer;
+width: 159px;
 }
 
 .approve-btn {
@@ -993,7 +996,7 @@ transform: translate(-50%, -50%);
 
 background: #fff;
 width: 90%;
-max-width: 800px;
+max-width: 500px;
 padding: 30px 40px;
 border-radius: 8px;
 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -1071,18 +1074,20 @@ margin-top: 10px;
 #editProductSection .form-action {
 margin-top: 20px;
 display: flex;
-justify-content: flex-end;
+justify-content: space-around;
 gap: 1rem;
 }
 
 /* Cancel button styling */
 #editProductSection .cancel {
-background-color: #ccc;
-color: #333;
-border: none;
-padding: 10px 20px;
-border-radius: 4px;
-cursor: pointer;
+  padding: 10px 20px;
+  background: white;
+  border: 2px solid #d2691e;
+  color: #d2691e;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 150px;
 transition: background-color 0.2s ease;
 }
 
@@ -1500,4 +1505,55 @@ background: #fff;
 
 .hidden {
 display: none !important;
+}
+
+.download{
+  background-color: #e67e22;
+  color: white;
+}
+
+.modal-content {
+  max-height: 80vh; /* or whatever height suits you */
+  overflow-y: auto;
+  /* If you want the modal background to remain white, no additional background needed here. */
+}
+
+/* For Chrome, Safari, and Opera */
+.modal-content::-webkit-scrollbar {
+  width: 10px;              /* Scrollbar width */
+  background-color: #f1f1f1; /* Track background color */
+}
+
+.modal-content::-webkit-scrollbar-track {
+  border-radius: 8px;       /* Rounded corners for the track */
+  background-color: #f1f1f1;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ff8c00, #ffcc66); /* Gradient from orange to light orange */
+  border-radius: 8px;       /* Rounded corners for the thumb */
+  border: 2px solid #fff;   /* White border around thumb (optional) */
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #e37f00, #ffb84d); /* Darker gradient on hover */
+}
+
+/* For Firefox */
+.modal-content {
+  scrollbar-width: thin;                      /* "auto" or "thin" */
+  scrollbar-color: #ff8c00 #f1f1f1;           /* thumb color and track color */
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px; /* Adjust spacing between fields as needed */
+}
+
+.form-row .form-group {
+  flex: 1;
 }

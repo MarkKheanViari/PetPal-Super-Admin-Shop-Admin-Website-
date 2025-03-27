@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <div     class="nav-left">
+        <div class="nav-left">
             <img src="PETPAL LOGO.png" alt="PetPal Logo" class="logo">
         </div>
         <ul class="nav-right">
@@ -104,7 +104,7 @@
                     </div>
                     <div class="form-group">
                         <label for="product_description">Description</label>
-                        <textarea name="product_description" placeholder="Product Description" required></textarea>
+                        <textarea name="product_description" placeholder="Product Description" required maxlength="300"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
@@ -165,67 +165,73 @@
     <div class="floating-overlay" id="editOverlay" onclick="toggleEditForm(false)"></div>
 
     <!-- Floating Edit Product Form -->
+    <!-- Updated Edit Product Modal with a single vertical layout -->
     <div id="editProductSection" class="popup" style="display: none;">
         <div class="popup-content">
-            <span class="close-btn" onclick="toggleEditForm(false)">&times;</span>
-            <div class="form-header">
-                <h2>Edit Product</h2>
+          <span class="close-btn" onclick="toggleEditForm(false)">&times;</span>
+          <div class="form-header">
+            <h2>Edit Product</h2>
+          </div>
+          <form id="editProductForm" enctype="multipart/form-data">
+            <input type="hidden" name="product_id" id="editProductId">
+            <input type="hidden" name="existing_image" id="existingImage">
+            
+            <div class="form-group">
+              <label for="editProductName">Product Name</label>
+              <input type="text" name="product_name" id="editProductName" placeholder="Product Name" required>
             </div>
-            <form id="editProductForm" enctype="multipart/form-data">
-                <div class="form-container">
-                    <div class="form-left">
-                        <input type="hidden" name="product_id" id="editProductId">
-                        <input type="hidden" name="existing_image" id="existingImage">
-                        <div class="form-group">
-                            <label for="editProductName">Product Name</label>
-                            <input type="text" name="product_name" id="editProductName" placeholder="Product Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="editProductPrice">Price</label>
-                            <input type="number" name="product_price" id="editProductPrice" placeholder="Product Price" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="editProductDescription">Description</label>
-                            <textarea name="product_description" id="editProductDescription" placeholder="Product Description" required></textarea>
-                        </div>
-                    </div>
-                    <div class="form-right">
-                        <div class="form-group">
-                            <label for="editProductQuantity">Quantity</label>
-                            <input type="number" name="product_quantity" id="editProductQuantity" placeholder="Quantity" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="editProductCategory">Category</label>
-                            <select name="category" id="editProductCategory" required>
-                                <option value="">Select Category</option>
-                                <option value="Food">Food</option>
-                                <option value="Treats">Treats</option>
-                                <option value="Essentials">Essentials</option>
-                                <option value="Supplies">Supplies</option>
-                                <option value="Accessories">Accessories</option>
-                                <option value="Grooming">Grooming</option>
-                                <option value="Hygiene">Hygiene</option>
-                                <option value="Toys">Toys</option>
-                                <option value="Enrichment">Enrichment</option>
-                                <option value="Healthcare">Healthcare</option>
-                                <option value="Training">Training</option>
-                            </select>
-                        </div>                                          
-                        <div class="form-group">
-                            <label for="editProductImage">Image</label>
-                            <input type="file" name="product_image" id="editProductImage" accept="image/*">
-                        </div>
-                        <!-- Image Preview -->
-                        <img id="editProductImagePreview" src="" alt="Product Image" style="width: 100px; height: 100px; object-fit: cover; display: none;">
-                    </div>
-                </div>
-                <div class="form-action">
-                    <button class="cancel" type="button" onclick="toggleEditForm(false)">Cancel</button>
-                    <button class="add" type="submit">Update Product</button>
-                </div>
-            </form>
+            
+            <!-- Group Price and Quantity side by side -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="editProductPrice">Price</label>
+                <input type="number" name="product_price" id="editProductPrice" placeholder="Product Price" required>
+              </div>
+              <div class="form-group">
+                <label for="editProductQuantity">Quantity</label>
+                <input type="number" name="product_quantity" id="editProductQuantity" placeholder="Quantity" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="editProductDescription">Description</label>
+              <textarea name="product_description" id="editProductDescription" placeholder="Product Description" required maxlength="250"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="editProductCategory">Category</label>
+              <select name="category" id="editProductCategory" required>
+                <option value="">Select Category</option>
+                <option value="Food">Food</option>
+                <option value="Treats">Treats</option>
+                <option value="Essentials">Essentials</option>
+                <option value="Supplies">Supplies</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Grooming">Grooming</option>
+                <option value="Hygiene">Hygiene</option>
+                <option value="Toys">Toys</option>
+                <option value="Enrichment">Enrichment</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Training">Training</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="editProductImage">Image</label>
+              <input type="file" name="product_image" id="editProductImage" accept="image/*">
+            </div>
+            <!-- Image Preview -->
+            <img id="editProductImagePreview" src="" alt="Product Image" style="width: 100px; height: 100px; object-fit: cover; display: none;">
+            
+            <div class="form-action">
+              <button class="cancel" type="button" onclick="toggleEditForm(false)">Cancel</button>
+              <button class="add" type="submit">Update Product</button>
+            </div>
+          </form>
         </div>
-    </div>
+      </div>
+      
+  
     
     <!-- Confirmation Modal -->
 <!-- PetPal Confirmation Modal -->

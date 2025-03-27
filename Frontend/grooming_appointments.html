@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="appointments.css" />
     <title>Appointments</title>
     <style>
+      html.modal-open, body.modal-open {
+  overflow: hidden;
+}
+
       /* Container holding the table */
       .orders-table-container {
         width: 100%;
@@ -162,86 +166,101 @@
         font-size: 1rem;
       }
 
-      /* Modal and other styles remain unchanged ... */
+     /* Overlay: covers entire screen when active */
+#detailsModalOverlay {
+  display: none;               /* Hidden by default */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); /* Semi-transparent overlay */
+  align-items: center;         /* Centers modal vertically */
+  justify-content: center;     /* Centers modal horizontally */
+  z-index: 9999;
+}
 
-      #detailsModal {
-        background: #fff;
-        border: 2px solid #ff8c00;
-        border-radius: 8px;
-        padding: 20px;
-        width: 95%;
-        max-width: 700px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        text-align: left;
-      }
+/* Modal Container */
+/* Make sure the modal container is still the same as before */
+#detailsModal {
+  background: #fff;
+  width: 90%;
+  max-width: 450px; /* or 500px, adjust as needed */
+  padding: 15px 20px; /* Reduced padding for a more compact look */
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  font-family: Arial, sans-serif;
+  color: #333;
+  position: relative;
+}
 
-      .details-list {
-        display: grid;
-        grid-template-columns: 130px 1fr;
-        column-gap: 1rem;
-        row-gap: 0.6rem;
-        margin-top: 1rem;
-        font-family: Arial, sans-serif;
-      }
-      .details-list dt {
-        font-weight: bold;
-        margin: 0;
-        text-align: left;
-      }
-      .details-list dd {
-        margin: 0;
-        text-align: left;
-      }
-      .details-list dt::after {
-        content: ":";
-        padding-right: 0.25rem;
-      }
+/* Title styling (already in your code) */
+.modal-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px; /* Slightly tighter spacing */
+  color: #ff8c00; /* Brand color */
+}
 
-      /* Custom Modal Styles for Dialogs */
-      #customModalOverlay,
-      #detailsModalOverlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 10000;
-      }
-      #customModal,
-      #detailsModal {
-        background: #fff;
-        border: 2px solid #ff8c00;
-        border-radius: 8px;
-        padding: 20px;
-        width: 90%;
-        max-width: 400px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-      #customModal p,
-      #detailsModal p {
-        margin: 20px 0;
-      }
-      #customModal button,
-      #detailsModal button {
-        background-color: #ff8c00;
-        border: none;
-        color: #fff;
-        padding: 10px 20px;
-        margin: 10px 10px 0px 10px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 1rem;
-      }
-      #customModal button:hover,
-      #detailsModal button:hover {
-        background-color: #e37f00;
-      }
-      
+/* Form container remains flex-column for outer spacing */
+.details-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* space between rows */
+}
+
+/* Each row is a flex container that holds two form-groups side by side */
+.form-row {
+  display: flex;
+  gap: 10px; /* space between the two fields */
+}
+
+/* Each form-group is 50% width within the row */
+.form-row .form-group {
+  flex: 1; /* each group gets half of the row */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label & input styles remain the same as your read-only form */
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 3px;
+  color: #555;
+}
+
+.form-group input[readonly],
+.form-group textarea[readonly] {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  color: #333;
+  resize: none; /* for textareas */
+}
+
+/* For smaller screens, stack the two columns */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+.close-btn {
+  display: block;        /* Makes the button take the full width (so margin: auto works) */
+  margin: 15px auto 0;   /* Adds 15px top margin, auto left/right, 0 bottom margin */
+  background-color: #ff8c00;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;     /* Center text inside the button itself */
+}
+
+
       .menu-btn {
         display: none;
       }
@@ -315,6 +334,10 @@
 .dropdown.show .dropdown-content {
   display: block;
 }
+html.modal-open, body.modal-open {
+  overflow: hidden !important;
+}
+
 
     </style>
     <script>
@@ -479,7 +502,6 @@
     <div id="detailsModalOverlay">
       <div id="detailsModal">
         <div id="detailsContent"></div>
-        <button onclick="closeDetailsModal()">Close</button>
       </div>
     </div>
 
@@ -632,47 +654,97 @@ function formatDateTime(dateString, timeString) {
 }
 
 
-
 function viewDetails(appointmentId) {
   const appointment = appointmentsData.find((a) => a.id == appointmentId);
   if (!appointment) {
     alert("Appointment details not found.");
     return;
   }
+
   const detailsContent = document.getElementById("detailsContent");
   detailsContent.innerHTML = `
-    <h3>Appointment Details</h3>
-    <dl class="details-list">
-      <dt>Owner Name</dt>
-      <dd>${appointment.name}</dd>
-      <dt>Address</dt>
-      <dd>${appointment.address ?? ""}</dd>
-      <dt>Phone Number</dt>
-      <dd>${appointment.phone_number ?? ""}</dd>
-      <dt>Pet Name</dt>
-      <dd>${appointment.pet_name}</dd>
-      <dt>Pet Breed</dt>
-      <dd>${appointment.pet_breed}</dd>
-      <dt>Service Type</dt>
-      <dd>${appointment.service_type}</dd>
-      <dt>Service Name</dt>
-      <dd>${appointment.service_name}</dd>
-      <dt>Notes</dt>
-      <dd>${appointment.notes ?? ""}</dd>
-      <dt>Appointment Date</dt>
-      <dd>${formatDateTime(appointment.appointment_date, appointment.appointment_time)}</dd>
-      <dt>Payment Method</dt>
-      <dd>${appointment.payment_method ?? ""}</dd>
-      <dt>Status</dt>
-      <dd>${appointment.status}</dd>
-    </dl>
+    <h2 class="modal-title">Appointment Details</h2>
+    <form class="details-form">
+      <!-- Row 1: Owner Name & Address -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ownerName">Owner Name</label>
+          <input type="text" id="ownerName" value="${appointment.name ?? ""}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" value="${appointment.address ?? ""}" readonly>
+        </div>
+      </div>
+
+      <!-- Row 2: Phone Number & Pet Name -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="text" id="phoneNumber" value="${appointment.phone_number ?? ""}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="petName">Pet Name</label>
+          <input type="text" id="petName" value="${appointment.pet_name ?? ""}" readonly>
+        </div>
+      </div>
+
+      <!-- Row 3: Pet Breed & Service Type -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="petBreed">Pet Breed</label>
+          <input type="text" id="petBreed" value="${appointment.pet_breed ?? ""}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="serviceType">Service Type</label>
+          <input type="text" id="serviceType" value="${appointment.service_type ?? ""}" readonly>
+        </div>
+      </div>
+
+      <!-- Row 4: Service Name & Payment Method -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="serviceName">Service Name</label>
+          <input type="text" id="serviceName" value="${appointment.service_name ?? ""}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="paymentMethod">Payment Method</label>
+          <input type="text" id="paymentMethod" value="${appointment.payment_method ?? ""}" readonly>
+        </div>
+      </div>
+
+      <!-- Row 5: Appointment Date & Status -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="appointmentDate">Appointment Date</label>
+          <input type="text" id="appointmentDate" value="${formatDateTime(appointment.appointment_date, appointment.appointment_time)}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <input type="text" id="status" value="${appointment.status ?? ""}" readonly>
+        </div>
+      </div>
+
+      <!-- Row 6: Notes (full-width) -->
+      <div class="form-row">
+        <div class="form-group" style="flex: 1;">
+          <label for="notes">Notes</label>
+          <textarea id="notes" rows="3" readonly>${appointment.notes ?? "N/A"}</textarea>
+        </div>
+      </div>
+    </form>
+
+    <button class="close-btn" onclick="closeDetailsModal()">Close</button>
   `;
-  document.getElementById("detailsModalOverlay").style.display = "flex";
+
+  openModal("detailsModalOverlay");
 }
 
-      function closeDetailsModal() {
-        document.getElementById("detailsModalOverlay").style.display = "none";
-      }
+
+function closeDetailsModal() {
+  closeModal("detailsModalOverlay");
+}
+
     </script>
 
     <script>
@@ -691,6 +763,30 @@ document.addEventListener("click", function() {
   const dropdowns = document.querySelectorAll(".dropdown");
   dropdowns.forEach(dropdown => dropdown.classList.remove("show"));
 });
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = "flex";
+    // Add classes
+    document.body.classList.add("modal-open");
+    document.documentElement.classList.add("modal-open");
+    // Also explicitly set inline styles as a backup
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+  }
+}
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = "none";
+    // Remove classes
+    document.body.classList.remove("modal-open");
+    document.documentElement.classList.remove("modal-open");
+    // Reset inline styles
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+}
 
     </script>
     <script src="notification.js"></script>
