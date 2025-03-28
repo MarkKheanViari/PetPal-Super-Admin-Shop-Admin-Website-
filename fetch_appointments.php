@@ -20,8 +20,9 @@ $mobile_user_id = intval($_GET["mobile_user_id"]);
 
 error_log("Fetching mobile appointments for user_id: $mobile_user_id");
 
-// ✅ Add s.image to the SELECT
-$sql = "SELECT a.service_name, a.service_type, a.appointment_date, s.price, a.status, s.image 
+// ✅ Add additional fields to the SELECT
+$sql = "SELECT a.service_name, a.service_type, a.appointment_date, s.price, a.status, s.image, 
+               a.pet_name, a.pet_breed, a.notes, a.payment_method 
         FROM mobile_appointments a 
         JOIN services s 
           ON a.service_name = s.service_name 
