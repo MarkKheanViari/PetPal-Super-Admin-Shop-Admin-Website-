@@ -727,4 +727,3 @@ function logout() {
   alert("Logging out...");
   // Add your logout logic here.
 }
-

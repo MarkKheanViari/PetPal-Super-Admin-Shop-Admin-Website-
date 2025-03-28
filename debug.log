@@ -422,3 +422,78 @@ FILES: Array
 🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
 🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
 🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+POST: Array
+(
+    [service_name] => Brushing
+    [price] => 140.00
+    [description] => For your dog's brushing appointment, expect a groomer to thoroughly brush the coat to remove loose hair, mats, and tangles, potentially including a blow-dry and a final brush-out, depending on your dog's breed and coat type. For your dog's brushing a
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_name] => Bathing
+    [price] => 123.00
+    [description] => For your dog's brushing appointment, expect a groomer to thoroughly brush the coat to remove loose hair, mats, and tangles, potentially including a blow-dry and a final brush-out, depending on your dog's breed and coat type. 
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_name] => Vaccination Check
+    [price] => 123.00
+    [description] => For your dog's brushing appointment, expect a groomer to thoroughly brush the coat to remove loose hair, mats, and tangles, potentially including a blow-dry and a final brush-out, depending on your dog's breed and coat type. 
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_name] => Wellness Exam
+    [price] => 123.00
+    [description] => For your dog's brushing appointment, expect a groomer to thoroughly brush the coat to remove loose hair, mats, and tangles, potentially including a blow-dry and a final brush-out, depending on your dog's breed and coat type. 
+)
+
+FILES: Array
+(
+)
+
+🔍 Incoming Request: 
+[28-Mar-2025 13:23:42 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Nail Trimming"}
+[28-Mar-2025 13:23:42 Europe/Berlin] ✅ Service 'Nail Trimming' removed successfully.
+POST: Array
+(
+    [id] => 26
+    [service_name] => Nail Trimming
+    [price] => 12.00
+    [description] => 12121212e
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 26
+    [service_name] => Nail Trimming
+    [price] => 12.00
+    [description] => 12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e1212121
+)
+
+FILES: Array
+(
+)
+

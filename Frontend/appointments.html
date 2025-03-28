@@ -634,59 +634,59 @@
 
         // Handle edit service form submission
         document.getElementById("editServiceForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const id = document.getElementById("editServiceId").value;
-    const name = document.getElementById("editServiceName").value;
-    const price = document.getElementById("editServicePrice").value;
-    const description = document.getElementById("editServiceDescription").value;
-    const imageFile = document.getElementById("editServiceImage").files[0];
+  const id = document.getElementById("editServiceId").value;
+  const name = document.getElementById("editServiceName").value;
+  const price = document.getElementById("editServicePrice").value;
+  const description = document.getElementById("editServiceDescription").value;
+  const imageFile = document.getElementById("editServiceImage").files[0];
 
-    // Validate price
-    if (isNaN(price) || price < 0) {
-        alert("❌ Please enter a valid price (non-negative number).");
-        return;
-    }
+  // Validate price
+  if (isNaN(price) || price < 0) {
+    alert("❌ Please enter a valid price (non-negative number).");
+    return;
+  }
 
-    const formData = new FormData();
-    formData.append("service_name", name); // Use service_name instead of id
-    formData.append("price", price);
-    formData.append("description", description);
-    if (imageFile) {
-        formData.append("image", imageFile);
-    }
+  const formData = new FormData();
+  // Include the service id in the update request:
+  formData.append("id", id);
+  formData.append("service_name", name);
+  formData.append("price", price);
+  formData.append("description", description);
+  if (imageFile) {
+    formData.append("image", imageFile);
+  }
 
-    console.log("Sending update request with data:", { name, price, description, imageFile });
-
-    fetch("http://192.168.1.65/backend/update_service.php", {
-        method: "POST",
-        body: formData,
+  fetch("http://192.168.1.65/backend/update_service.php", {
+    method: "POST",
+    body: formData,
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
     })
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
-            }
-            return res.json();
-        })
-        .then((data) => {
-            console.log("Update response:", data);
-            if (data.success) {
-                alert("✅ Service updated successfully!");
-                // Update the image preview immediately
-                if (data.image) {
-                    document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${data.image}`;
-                }
-                closeModal("editServiceModal");
-                refreshServices(); // Refresh the table
-            } else {
-                alert("❌ Update failed: " + (data.error || "Unknown error"));
-            }
-        })
-        .catch((error) => {
-            console.error("Fetch error:", error);
-            alert("❌ Something went wrong: " + error.message);
-        });
+    .then((data) => {
+      if (data.success) {
+        alert("✅ Service updated successfully!");
+        // Update image preview if new image data is provided
+        if (data.image) {
+          document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${data.image}`;
+        }
+        closeModal("editServiceModal");
+        refreshServices(); // Refresh the services table
+      } else {
+        alert("❌ Update failed: " + (data.error || "Unknown error"));
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+      alert("❌ Something went wrong: " + error.message);
+    });
 });
+
 
         // Handle add service form submission
         document

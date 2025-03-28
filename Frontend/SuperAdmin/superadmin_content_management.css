@@ -350,3 +350,10 @@ body {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* Add this CSS rule when modal is open */
+.modal-open {
+    overflow: hidden;
+  }
+  
+  

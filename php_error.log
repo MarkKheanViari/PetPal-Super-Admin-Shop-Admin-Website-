@@ -50,3 +50,15 @@ Stack trace:
 [27-Mar-2025 10:36:56 Europe/Berlin] ✅ Service updated successfully!
 [27-Mar-2025 10:37:02 Europe/Berlin] ✅ Running SQL Update: service_name=Vaccination Check, price=123.00, description=This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the teeth of you pet This service is servicing a brushing to bruh the tee
 [27-Mar-2025 10:37:02 Europe/Berlin] ✅ Service updated successfully!
+[28-Mar-2025 12:59:03 Europe/Berlin] ✅ Running SQL Update: service_name=Brushing, price=140.00, description=For your dog's brushing appointment, expect a groomer to thoroughly brush the coat to remove loose hair, mats, and tangles, potentially including a blow-dry and a final brush-out, depending on your dog's breed and coat type. For your dog's brushing a
+[28-Mar-2025 12:59:03 Europe/Berlin] ✅ Service updated successfully!
+[28-Mar-2025 12:59:07 Europe/Berlin] ✅ Running SQL Update: service_name=Bathing, price=123.00, description=For your dog's brushing appointment, expect a groomer to thoroughly brush the coat to remove loose hair, mats, and tangles, potentially including a blow-dry and a final brush-out, depending on your dog's breed and coat type. 
+[28-Mar-2025 12:59:07 Europe/Berlin] ✅ Service updated successfully!
+[28-Mar-2025 12:59:12 Europe/Berlin] ✅ Running SQL Update: service_name=Vaccination Check, price=123.00, description=For your dog's brushing appointment, expect a groomer to thoroughly brush the coat to remove loose hair, mats, and tangles, potentially including a blow-dry and a final brush-out, depending on your dog's breed and coat type. 
+[28-Mar-2025 12:59:12 Europe/Berlin] ✅ Service updated successfully!
+[28-Mar-2025 12:59:17 Europe/Berlin] ✅ Running SQL Update: service_name=Wellness Exam, price=123.00, description=For your dog's brushing appointment, expect a groomer to thoroughly brush the coat to remove loose hair, mats, and tangles, potentially including a blow-dry and a final brush-out, depending on your dog's breed and coat type. 
+[28-Mar-2025 12:59:17 Europe/Berlin] ✅ Service updated successfully!
+[28-Mar-2025 13:28:24 Europe/Berlin] ✅ Running SQL Update: service_name=Nail Trimming, price=12.00, description=12121212e
+[28-Mar-2025 13:28:24 Europe/Berlin] ✅ Service updated successfully!
+[28-Mar-2025 13:28:34 Europe/Berlin] ✅ Running SQL Update: service_name=Nail Trimming, price=12.00, description=12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e1212121
+[28-Mar-2025 13:28:34 Europe/Berlin] ✅ Service updated successfully!

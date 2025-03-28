@@ -657,10 +657,11 @@ function showProductPreview(product) {
 
     previewModal.style.display = "flex";
   } else {
-    console.error("One or more preview modal elements are missing from the DOM.");
+    console.error(
+      "One or more preview modal elements are missing from the DOM."
+    );
   }
 }
-
 
 window.showProductPreview = showProductPreview;
 
@@ -895,7 +896,7 @@ function openModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) {
     modal.style.display = "flex";
-    document.body.classList.add("modal-open");  // Disable scrolling
+    document.body.classList.add("modal-open"); // Disable scrolling
   }
 }
 
@@ -904,9 +905,11 @@ function closeModal(modalId) {
   if (modal) {
     modal.style.display = "none";
     // Remove the class only if no other modal is open
-    const openModals = document.querySelectorAll('.modal[style*="display: flex"]');
+    const openModals = document.querySelectorAll(
+      '.modal[style*="display: flex"]'
+    );
     if (openModals.length === 0) {
-      document.body.classList.remove("modal-open");  // Restore scrolling
+      document.body.classList.remove("modal-open"); // Restore scrolling
     }
   }
 }

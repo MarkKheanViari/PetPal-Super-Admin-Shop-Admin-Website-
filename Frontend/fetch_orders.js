@@ -334,4 +334,3 @@ function downloadReceipt() {
   // Save the PDF
   doc.save("receipt.pdf");
 }
-

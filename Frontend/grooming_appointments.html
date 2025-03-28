@@ -14,7 +14,7 @@
       .orders-table-container {
         width: 100%;
         margin: 0 auto;
-        overflow-x: auto;
+        overflow-x: visible;
         background-color: #fff;
         padding: 1rem;
         border-radius: 8px;
@@ -330,6 +330,7 @@
   padding: 8px 12px;
   text-decoration: none;
   display: block;
+  
 }
 
 .dropdown-content a:hover {
@@ -343,6 +344,45 @@ html.modal-open, body.modal-open {
   overflow: hidden !important;
 }
 
+/* Custom Modal Styles for Dialogs */
+#customModalOverlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.5);
+display: none;
+align-items: center;
+justify-content: center;
+z-index: 10000;
+}
+#customModal {
+background: #fff;
+border: 2px solid #ff8c00;
+border-radius: 8px;
+padding: 20px;
+width: 90%;
+max-width: 400px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+text-align: center;
+}
+#customModal p {
+margin: 20px 0;
+}
+#customModal button {
+background-color: #ff8c00;
+border: none;
+color: #fff;
+padding: 10px 20px;
+margin: 0 10px;
+border-radius: 4px;
+cursor: pointer;
+font-size: 1rem;
+}
+#customModal button:hover {
+background-color: #e37f00;
+}
 
     </style>
     <script>

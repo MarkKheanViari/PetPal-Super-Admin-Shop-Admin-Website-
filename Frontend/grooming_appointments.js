@@ -19,31 +19,37 @@ function displayAppointments(appointments) {
   const tableBody = document.getElementById("appointmentsTableBody");
   tableBody.innerHTML = ""; // Clear existing data
 
+  if (appointments.length === 0) {
+    tableBody.innerHTML = `<tr><td colspan="7" style="text-align: center;">No appointments</td></tr>`;
+    return;
+  }
+
   appointments.forEach((appointment) => {
-    if (appointment.service_type === "Grooming") {
-      // For Grooming Page
-      const row = `
-                <tr>
-                    <td>${appointment.name}</td>
-                    <td>${appointment.pet_name} (${appointment.pet_breed})</td>
-                    <td>${appointment.service_name}</td>
-                    <td>${appointment.appointment_date}</td>
-                    <td>₱${appointment.price}</td>
-                    <td><span class="${getStatusClass(appointment.status)}">${
-        appointment.status
-      }</span></td>
-                    <td>
-                        <button onclick="updateStatus(${
-                          appointment.id
-                        }, 'Approved')">Approve</button>
-                        <button onclick="updateStatus(${
-                          appointment.id
-                        }, 'Declined')">Decline</button>
-                    </td>
-                </tr>
-            `;
-      tableBody.innerHTML += row;
-    }
+    const isEditable = appointment.status === "Pending"; // Only "Pending" appointments can be approved/declined
+    const row = `
+      <tr>
+          <td>${appointment.name}</td>
+          <td>${appointment.pet_name} (${appointment.pet_breed})</td>
+          <td>${appointment.service_name}</td>
+          <td>${formatDateTime(appointment.appointment_date, appointment.appointment_time)}</td>
+          <td>₱${appointment.price}</td>
+          <td><span class="${getStatusClass(appointment.status)}">${appointment.status}</span></td>
+          <td>
+              ${isEditable ? `
+                <button class="approve-btn" onclick="updateStatus(${appointment.id}, 'Approved')">Approve</button>
+                <button class="decline-btn" onclick="updateStatus(${appointment.id}, 'Declined')">Decline</button>
+              ` : ""}
+              <div class="dropdown">
+                  <button class="dropdown-btn" onclick="toggleDropdown(event)">⋮</button>
+                  <div class="dropdown-content">
+                      <a href="#" onclick="viewDetails(${appointment.id})">View Details</a>
+                      <a href="#" onclick="removeAppointment(${appointment.id})">Remove</a>
+                  </div>
+              </div>
+          </td>
+      </tr>
+    `;
+    tableBody.innerHTML += row;
   });
 }
 
