@@ -419,3 +419,6 @@ FILES: Array
 🔍 Incoming Request: {"service_name":"Vaccination Check"}
 [27-Mar-2025 10:37:06 Europe/Berlin] ✅ Service 'Vaccination Check' removed successfully.
 🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1

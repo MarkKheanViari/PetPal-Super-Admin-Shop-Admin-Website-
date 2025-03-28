@@ -36,15 +36,7 @@
                 <div class="content-header">
                     <h2>Product Listings</h2>
                 </div>
-                <p>Review, approve, or reject product listings from shop owners.</p>
-
-                <!-- Product Filters -->
-                <div class="filter-buttons">
-                    <button id="allProductsBtn" class="filter-btn active" data-filter="all" aria-label="Show all products">All</button>
-                    <button id="pendingProductsBtn" class="filter-btn" data-filter="pending" aria-label="Show pending products">Pending</button>
-                    <button id="approvedProductsBtn" class="filter-btn" data-filter="approved" aria-label="Show approved products">Approved</button>
-                    <button id="rejectedProductsBtn" class="filter-btn" data-filter="rejected" aria-label="Show rejected products">Rejected</button>
-                </div>
+                <p>Review product listings and reports from shop owners.</p>
 
                 <!-- Product Table -->
                 <div class="table-container">
@@ -56,7 +48,7 @@
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Category</th>
-                                <th>Status</th>
+                                <th>Reports</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -67,6 +59,17 @@
                 </div>
             </div>
         </main>
+    </div>
+
+    <!-- Modal for Product Details -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Product Details</h2>
+            <div id="modalContent">
+                <!-- Product details will be dynamically inserted here -->
+            </div>
+        </div>
     </div>
 
     <script src="superadmin_content_management.js"></script>
