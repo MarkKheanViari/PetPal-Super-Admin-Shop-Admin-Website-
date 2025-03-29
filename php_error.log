@@ -62,3 +62,51 @@ Stack trace:
 [28-Mar-2025 13:28:24 Europe/Berlin] ✅ Service updated successfully!
 [28-Mar-2025 13:28:34 Europe/Berlin] ✅ Running SQL Update: service_name=Nail Trimming, price=12.00, description=12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e12121212e1212121
 [28-Mar-2025 13:28:34 Europe/Berlin] ✅ Service updated successfully!
+[29-Mar-2025 00:54:03 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 00:54:03 Europe/Berlin] ✅ Successfully fetched 1 grooming services
+[29-Mar-2025 00:54:03 Europe/Berlin] ✅ Successfully fetched 0 veterinary services
+[29-Mar-2025 00:54:10 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 00:54:10 Europe/Berlin] ✅ Successfully fetched 1 grooming services
+[29-Mar-2025 00:57:35 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 00:57:35 Europe/Berlin] ✅ Successfully fetched 1 grooming services
+[29-Mar-2025 00:58:08 Europe/Berlin] ✅ Successfully fetched 0 veterinary services
+[29-Mar-2025 00:58:08 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 00:58:08 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 00:58:08 Europe/Berlin] ✅ Successfully fetched 2 grooming services
+[29-Mar-2025 00:58:16 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 00:58:16 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 00:58:16 Europe/Berlin] ✅ Successfully fetched 2 grooming services
+[29-Mar-2025 01:04:36 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:04:36 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:04:36 Europe/Berlin] ✅ Successfully fetched 2 grooming services
+[29-Mar-2025 01:11:59 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:11:59 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:11:59 Europe/Berlin] ✅ Successfully fetched 2 grooming services
+[29-Mar-2025 01:12:15 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:12:15 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:12:15 Europe/Berlin] ✅ Successfully fetched 2 grooming services
+[29-Mar-2025 01:13:20 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'id' in 'where clause' in C:\xampp\htdocs\backend\update_service.php:86
+Stack trace:
+#0 C:\xampp\htdocs\backend\update_service.php(86): mysqli->prepare('SELECT image FR...')
+#1 {main}
+  thrown in C:\xampp\htdocs\backend\update_service.php on line 86
+[29-Mar-2025 01:13:23 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'id' in 'where clause' in C:\xampp\htdocs\backend\update_service.php:86
+Stack trace:
+#0 C:\xampp\htdocs\backend\update_service.php(86): mysqli->prepare('SELECT image FR...')
+#1 {main}
+  thrown in C:\xampp\htdocs\backend\update_service.php on line 86
+[29-Mar-2025 01:15:35 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:15:35 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:15:35 Europe/Berlin] ✅ Successfully fetched 2 grooming services
+[29-Mar-2025 01:20:13 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:20:13 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:20:13 Europe/Berlin] ✅ Successfully fetched 2 grooming services
+[29-Mar-2025 01:20:14 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:20:14 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:20:14 Europe/Berlin] ✅ Successfully fetched 2 grooming services
+[29-Mar-2025 01:20:17 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:20:17 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:20:17 Europe/Berlin] ✅ Successfully fetched 2 grooming services
+[29-Mar-2025 01:20:25 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:20:25 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\backend\fetch_grooming_services.php on line 41
+[29-Mar-2025 01:20:25 Europe/Berlin] ✅ Successfully fetched 2 grooming services

@@ -14,13 +14,17 @@ if (!isset($_GET["mobile_user_id"])) {
 
 $mobile_user_id = intval($_GET["mobile_user_id"]);
 
-// Fetch orders only for the logged-in user
+// Fetch orders and user details for the logged-in user
 $query = "SELECT o.id, 
                  o.total_price, 
                  o.payment_method, 
                  o.status, 
-                 o.created_at
+                 o.created_at,
+                 u.username AS user_name,
+                 u.location AS address,
+                 u.contact_number AS phone_number
           FROM orders o
+          LEFT JOIN mobile_users u ON o.mobile_user_id = u.id
           WHERE o.mobile_user_id = ?  
           ORDER BY o.created_at DESC";
 
@@ -71,13 +75,16 @@ if ($result->num_rows > 0) {
         }
         $stmt_items->close();
 
-        // Build the order response
+        // Build the order response with user details
         $orders[] = array(
             "id" => $row["id"],
             "total_price" => number_format((float)$row["total_price"], 2), 
             "payment_method" => $row["payment_method"],
             "status" => $row["status"],
             "created_at" => $formatted_date, 
+            "user_name" => $row["user_name"] ?? "No Username Provided", // Fallback if null
+            "address" => $row["address"] ?? "No Address Provided", // Fallback if null
+            "phone_number" => $row["phone_number"] ?? "No Phone Number Provided", // Fallback if null
             "items" => $items 
         );
     }

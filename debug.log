@@ -497,3 +497,51 @@ FILES: Array
 (
 )
 
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Incoming Request: 
+[28-Mar-2025 14:58:11 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Brushing"}
+[28-Mar-2025 14:58:11 Europe/Berlin] ✅ Service 'Brushing' removed successfully.
+🔍 Incoming Request: {"service_name":"Bathing"}
+[28-Mar-2025 14:58:13 Europe/Berlin] ✅ Service 'Bathing' removed successfully.
+🔍 Incoming Request: {"service_name":"Vaccination Check"}
+[28-Mar-2025 14:58:15 Europe/Berlin] ✅ Service 'Vaccination Check' removed successfully.
+🔍 Incoming Request: 
+[28-Mar-2025 14:58:17 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Wellness Exam"}
+[28-Mar-2025 14:58:17 Europe/Berlin] ✅ Service 'Wellness Exam' removed successfully.
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+POST: Array
+(
+    [id] => 
+    [service_name] => Brushing
+    [price] => 500.00
+    [description] => Potangina mo
+    [start_time] => 08:00:00
+    [end_time] => 17:00:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Brushing
+    [price] => 500.00
+    [description] => Potangina mo
+    [start_time] => 08:00:00
+    [end_time] => 17:00:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+

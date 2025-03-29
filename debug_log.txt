@@ -59795,3 +59795,1388 @@ Final Response: Array
     [success] => 
     [message] => No grooming appointments found.
 )
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Login Request: {
+    "username": "RandellPogi",
+    "password": "HatdogNiGerald"
+}
+Username: RandellPogi, Password Sent: HatdogNiGerald, Hashed Password: $2y$10$TSLo5c6w2.G0a.JgI2a6zuPglDba5EzMZIWGT.CwNheWHDLIXh3RO
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Login Request: {
+    "username": "RandellPogi",
+    "password": "HatdogNiGerald"
+}
+Username: RandellPogi, Password Sent: HatdogNiGerald, Hashed Password: $2y$10$TSLo5c6w2.G0a.JgI2a6zuPglDba5EzMZIWGT.CwNheWHDLIXh3RO
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
+Final Response: Array
+(
+    [success] => 
+    [message] => No grooming appointments found.
+)
