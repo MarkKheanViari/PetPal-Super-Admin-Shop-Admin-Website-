@@ -297,20 +297,20 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
           window.location.href = result.redirect;
         }, 1500);
+      } else {
+        const message = result.message.toLowerCase();
+        // When logging in as superadmin, if not found, display error below the username/email field.
+        if (isSuperAdmin && message.includes("not found")) {
+          emailError.textContent = " " + result.message;
+        } else if (message.includes("email") || message.includes("user")) {
+          emailError.textContent = " " + result.message;
+        } else if (message.includes("password")) {
+          passwordError.textContent = " " + result.message;
         } else {
-          const message = result.message.toLowerCase();
-          // When logging in as superadmin, if not found, display error below the username/email field.
-          if (isSuperAdmin && message.includes("not found")) {
-            emailError.textContent = " " + result.message;
-          } else if (message.includes("email") || message.includes("user")) {
-            emailError.textContent = " " + result.message;
-          } else if (message.includes("password")) {
-            passwordError.textContent = " " + result.message;
-          } else {
-            // Default to showing below password field if no other criteria match.
-            passwordError.textContent = " " + result.message;
-          }
+          // Default to showing below password field if no other criteria match.
+          passwordError.textContent = " " + result.message;
         }
+      }
     } catch (error) {
       console.error("❌ Login failed:", error);
       passwordError.textContent =

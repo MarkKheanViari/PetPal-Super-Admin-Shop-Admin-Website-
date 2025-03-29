@@ -48,6 +48,77 @@
       html.modal-open, body.modal-open {
         overflow: hidden !important;
       }
+      /* Constrain the modal’s maximum height and allow internal scrolling */
+#editServiceModal .modal-content {
+  max-height: 90vh;      /* 90% of the viewport height */
+  overflow-y: auto;      /* Enables vertical scrolling if content is too long */
+  margin: 0 1rem;        /* Adds a bit of spacing on smaller screens */
+}
+
+/* Optionally reduce the default width on smaller screens */
+@media (max-width: 768px) {
+  #editServiceModal .modal-content {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+/* Adjust modal layout */
+.compact-modal {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Rows for grouped inputs */
+.modal-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.modal-row.single {
+  flex-direction: column;
+}
+
+/* Each input container */
+.modal-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make sure selects, inputs, and textarea fill container */
+.modal-field input,
+.modal-field select,
+.modal-row textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+/* Fields inside modal */
+.modal-field input,
+.modal-field select,
+.modal-row textarea {
+  width: 100%;        /* Fixed width */
+  height: 40px;            /* Fixed height for input/select */
+  padding: 6px 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Fix height for textarea separately */
+.modal-row textarea {
+  height: 100px;           /* Fixed height for textarea */
+  resize: none;            /* Optional: disable manual resize */
+}
+
+
     </style>
     <script>
       (function () {
@@ -101,6 +172,7 @@
           });
         };
       })();
+      
     </script>
   </head>
   <body>
@@ -236,35 +308,34 @@
 
     <!-- Add Service Modal -->
     <div id="addServiceModal" class="modal">
-      <div class="modal-content">
+      <div class="modal-content compact-modal">
         <div class="service-head">
           <h2 id="addServiceModalTitle">Add New Service</h2>
-          <button class="cancel-btn" onclick="closeModal('addServiceModal')">
-            ×
-          </button>
+          <button class="cancel-btn" onclick="closeModal('addServiceModal')">×</button>
         </div>
-
+    
         <form id="addServiceForm">
-          <div class="modal-section">
-            <label><strong>Service Name:</strong></label>
-            <select id="serviceOption" required>
-              <option value="" disabled selected>Select Service</option>
-            </select>
+          <div class="modal-row">
+            <div class="modal-field">
+              <label><strong>Service Name:</strong></label>
+              <select id="serviceOption" required>
+                <option value="" disabled selected>Select Service</option>
+              </select>
+            </div>
+            <div class="modal-field">
+              <label><strong>Price:</strong></label>
+              <input
+                type="number"
+                id="servicePrice"
+                placeholder="Enter price"
+                required
+                step="0.01"
+                min="0"
+              />
+            </div>
           </div>
-
-          <div class="modal-section">
-            <label><strong>Price:</strong></label>
-            <input
-              type="number"
-              id="servicePrice"
-              placeholder="Enter price"
-              required
-              step="0.01"
-              min="0"
-            />
-          </div>
-
-          <div class="modal-section">
+    
+          <div class="modal-row single">
             <label><strong>Description:</strong></label>
             <textarea
               id="serviceDescription"
@@ -273,140 +344,129 @@
               maxlength="250"
             ></textarea>
           </div>
-
-          <div class="modal-section">
-            <label><strong>Availability Start Time:</strong></label>
-            <input type="time" id="startTime" name="start_time" />
+    
+          <div class="modal-row">
+            <div class="modal-field">
+              <label><strong>Start Time:</strong></label>
+              <input type="time" id="startTime" name="start_time" />
+            </div>
+            <div class="modal-field">
+              <label><strong>End Time:</strong></label>
+              <input type="time" id="endTime" name="end_time" />
+            </div>
           </div>
-
-          <div class="modal-section">
-            <label><strong>Availability End Time:</strong></label>
-            <input type="time" id="endTime" name="end_time" />
+    
+          <div class="modal-row">
+            <div class="modal-field">
+              <label><strong>Start Day:</strong></label>
+              <select id="startDay" name="start_day">
+                <option value="" disabled selected>Select Start Day</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+              </select>
+            </div>
+            <div class="modal-field">
+              <label><strong>End Day:</strong></label>
+              <select id="endDay" name="end_day">
+                <option value="" disabled selected>Select End Day</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+              </select>
+            </div>
           </div>
-
-          <div class="modal-section">
-            <label><strong>Availability Start Day:</strong></label>
-            <select id="startDay" name="start_day">
-              <option value="" disabled selected>Select Start Day</option>
-              <option value="Monday">Monday</option>
-              <option value="Tuesday">Tuesday</option>
-              <option value="Wednesday">Wednesday</option>
-              <option value="Thursday">Thursday</option>
-              <option value="Friday">Friday</option>
-              <option value="Saturday">Saturday</option>
-              <option value="Sunday">Sunday</option>
-            </select>
-          </div>
-
-          <div class="modal-section">
-            <label><strong>Availability End Day:</strong></label>
-            <select id="endDay" name="end_day">
-              <option value="" disabled selected>Select End Day</option>
-              <option value="Monday">Monday</option>
-              <option value="Tuesday">Tuesday</option>
-              <option value="Wednesday">Wednesday</option>
-              <option value="Thursday">Thursday</option>
-              <option value="Friday">Friday</option>
-              <option value="Saturday">Saturday</option>
-              <option value="Sunday">Sunday</option>
-            </select>
-          </div>
-
-          <div class="modal-section">
+    
+          <div class="modal-row single">
             <label><strong>Service Image:</strong></label>
             <input type="file" id="serviceImage" accept="image/*" required />
           </div>
-
+    
           <button class="approve-btn" type="submit">Add Service</button>
         </form>
       </div>
     </div>
+    
 
-    <!-- Edit Service Modal -->
     <div id="editServiceModal" class="modal">
-      <div class="modal-content">
+      <div class="modal-content compact-modal">
         <div class="service-head">
           <h2>Edit Service</h2>
-          <button class="cancel-btn" onclick="closeModal('editServiceModal')">
-            ×
-          </button>
+          <button class="cancel-btn" onclick="closeModal('editServiceModal')">×</button>
         </div>
         <form id="editServiceForm">
-          <input type="hidden" id="editServiceId" />
-
-          <div class="modal-section">
-            <label><strong>Service Name:</strong></label>
-            <input type="text" id="editServiceName" readonly />
+          <input type="hidden" id="editServiceId" name="service_id" />
+    
+          <div class="modal-row">
+            <div class="modal-field">
+              <label><strong>Service Name:</strong></label>
+              <input type="text" id="editServiceName" readonly />
+            </div>
+            <div class="modal-field">
+              <label><strong>Price:</strong></label>
+              <input type="number" id="editServicePrice" required />
+            </div>
           </div>
-
-          <div class="modal-section">
-            <label><strong>Price:</strong></label>
-            <input type="number" id="editServicePrice" required />
-          </div>
-
-          <div class="modal-section">
+    
+          <div class="modal-row single">
             <label><strong>Description:</strong></label>
-            <textarea placeholder="Enter description" id="editServiceDescription" required maxlength="250"></textarea>
+            <textarea id="editServiceDescription" required maxlength="250" placeholder="Enter description"></textarea>
           </div>
-
-          <div class="modal-section">
-            <label><strong>Availability Start Time:</strong></label>
-            <input type="time" id="editStartTime" name="start_time" />
+    
+          <div class="modal-row">
+            <div class="modal-field">
+              <label><strong>Start Time:</strong></label>
+              <input type="time" id="editStartTime" />
+            </div>
+            <div class="modal-field">
+              <label><strong>End Time:</strong></label>
+              <input type="time" id="editEndTime" />
+            </div>
           </div>
-
-          <div class="modal-section">
-            <label><strong>Availability End Time:</strong></label>
-            <input type="time" id="editEndTime" name="end_time" />
+    
+          <div class="modal-row">
+            <div class="modal-field">
+              <label><strong>Start Day:</strong></label>
+              <select id="editStartDay">
+                <option value="" disabled>Select Start Day</option>
+                <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+                <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+              </select>
+            </div>
+            <div class="modal-field">
+              <label><strong>End Day:</strong></label>
+              <select id="editEndDay">
+                <option value="" disabled>Select End Day</option>
+                <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+                <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+              </select>
+            </div>
           </div>
-
-          <div class="modal-section">
-            <label><strong>Availability Start Day:</strong></label>
-            <select id="editStartDay" name="start_day">
-              <option value="" disabled>Select Start Day</option>
-              <option value="Monday">Monday</option>
-              <option value="Tuesday">Tuesday</option>
-              <option value="Wednesday">Wednesday</option>
-              <option value="Thursday">Thursday</option>
-              <option value="Friday">Friday</option>
-              <option value="Saturday">Saturday</option>
-              <option value="Sunday">Sunday</option>
-            </select>
-          </div>
-
-          <div class="modal-section">
-            <label><strong>Availability End Day:</strong></label>
-            <select id="editEndDay" name="end_day">
-              <option value="" disabled>Select End Day</option>
-              <option value="Monday">Monday</option>
-              <option value="Tuesday">Tuesday</option>
-              <option value="Wednesday">Wednesday</option>
-              <option value="Thursday">Thursday</option>
-              <option value="Friday">Friday</option>
-              <option value="Saturday">Saturday</option>
-              <option value="Sunday">Sunday</option>
-            </select>
-          </div>
-
-          <div class="modal-section">
+    
+          <div class="modal-row single">
             <label><strong>Service Image:</strong></label>
             <input type="file" id="editServiceImage" accept="image/*" />
             <img id="editPreviewImage" src="" alt="Current Image" style="width: 100%; max-height: 150px; object-fit: cover; margin-top: 10px;" />
           </div>
-
-          <!-- Buttons Container -->
+    
           <div class="modal-button">
-            <button
-              class="remove-btn"
-              type="button"
-              onclick="removeServiceFromModal()"
-            >
-              Remove Service
-            </button>
+            <button class="remove-btn" type="button" onclick="removeServiceFromModal()">Remove Service</button>
             <button class="save-btn" type="submit">Save Changes</button>
           </div>
         </form>
       </div>
     </div>
+    
+    
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -637,18 +697,20 @@
 
         // Open the Edit Service modal and populate with service details
         function openEditModal(service) {
-          console.log("Opening edit modal with service:", service);
-          document.getElementById("editServiceId").value = service.id || service.service_id || '';
-          document.getElementById("editServiceName").value = service.service_name;
-          document.getElementById("editServicePrice").value = service.price;
-          document.getElementById("editServiceDescription").value = service.description;
-          document.getElementById("editStartTime").value = service.start_time || '';
-          document.getElementById("editEndTime").value = service.end_time || '';
-          document.getElementById("editStartDay").value = service.start_day || '';
-          document.getElementById("editEndDay").value = service.end_day || '';
-          document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${service.image}`;
-          openModal("editServiceModal");
-        }
+  console.log("Opening edit modal with service:", service);
+  // Use service_id directly (assuming your backend now returns it)
+  document.getElementById("editServiceId").value = service.service_id || '';
+  document.getElementById("editServiceName").value = service.service_name;
+  document.getElementById("editServicePrice").value = service.price;
+  document.getElementById("editServiceDescription").value = service.description;
+  document.getElementById("editStartTime").value = service.start_time || '';
+  document.getElementById("editEndTime").value = service.end_time || '';
+  document.getElementById("editStartDay").value = service.start_day || '';
+  document.getElementById("editEndDay").value = service.end_day || '';
+  document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${service.image}`;
+  openModal("editServiceModal");
+}
+
 
         // Remove a service from within the edit modal
         function removeServiceFromModal() {
@@ -743,143 +805,155 @@
         // ------------------------
 
         // Handle edit service form submission
-        document.getElementById("editServiceForm").addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const id = document.getElementById("editServiceId").value;
-          const name = document.getElementById("editServiceName").value;
-          const price = document.getElementById("editServicePrice").value;
-          const description = document.getElementById("editServiceDescription").value;
-          const startTime = document.getElementById("editStartTime").value;
-          const endTime = document.getElementById("editEndTime").value;
-          const startDay = document.getElementById("editStartDay").value;
-          const endDay = document.getElementById("editEndDay").value;
-          const imageFile = document.getElementById("editServiceImage").files[0];
-
-          // Validate price
-          if (isNaN(price) || price < 0) {
-            alert("❌ Please enter a valid price (non-negative number).");
-            return;
-          }
-
-          // Validate time range
-          if (!validateTimeRange(startTime, endTime)) {
-            alert("❌ End time must be after start time.");
-            return;
-          }
-
-          // Validate day range
-          if (!validateDayRange(startDay, endDay)) {
-            alert("❌ End day must be on or after start day in the week.");
-            return;
-          }
-
-          const formData = new FormData();
-          formData.append("id", id);
-          formData.append("service_name", name);
-          formData.append("price", price);
-          formData.append("description", description);
-          formData.append("start_time", startTime || "");
-          formData.append("end_time", endTime || "");
-          formData.append("start_day", startDay || "");
-          formData.append("end_day", endDay || "");
-          if (imageFile) {
-            formData.append("image", imageFile);
-          }
-
-          fetch("http://192.168.1.65/backend/update_service.php", {
-            method: "POST",
-            body: formData,
-          })
-            .then((res) => {
-              if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
-              }
-              return res.json();
-            })
-            .then((data) => {
-              if (data.success) {
-                alert("✅ Service updated successfully!");
-                if (data.image) {
-                  document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${data.image}`;
-                }
-                closeModal("editServiceModal");
-                refreshServices();
-              } else {
-                alert("❌ Update failed: " + (data.error || "Unknown error"));
-              }
-            })
-            .catch((error) => {
-              console.error("Fetch error:", error);
-              alert("❌ Something went wrong: " + error.message);
-            });
-        });
+        
 
         // Handle add service form submission
-        document.getElementById("addServiceForm").addEventListener("submit", function (e) {
-          e.preventDefault();
-          const serviceName = document.getElementById("serviceOption").value;
-          const servicePrice = document.getElementById("servicePrice").value;
-          const serviceDescription = document.getElementById("serviceDescription").value;
-          const startTime = document.getElementById("startTime").value;
-          const endTime = document.getElementById("endTime").value;
-          const startDay = document.getElementById("startDay").value;
-          const endDay = document.getElementById("endDay").value;
-          const imageFile = document.getElementById("serviceImage").files[0];
+        document.addEventListener("DOMContentLoaded", function () {
+    // Refresh services on page load
+        refreshServices();
 
-          if (!imageFile) {
-            alert("❌ Please select an image.");
-            return;
-          }
+  // Handle edit service form submission
+  // Single event listener for editServiceForm
+  document.getElementById("editServiceForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  // Use service_id instead of id
+  const service_id = document.getElementById("editServiceId").value;
+  const name = document.getElementById("editServiceName").value;
+  const price = document.getElementById("editServicePrice").value;
+  const description = document.getElementById("editServiceDescription").value;
+  const startTime = document.getElementById("editStartTime").value;
+  const endTime = document.getElementById("editEndTime").value;
+  const startDay = document.getElementById("editStartDay").value;
+  const endDay = document.getElementById("editEndDay").value;
+  const imageFile = document.getElementById("editServiceImage").files[0];
 
-          // Validate time range
-          if (!validateTimeRange(startTime, endTime)) {
-            alert("❌ End time must be after start time.");
-            return;
-          }
+  // Validate price
+  if (isNaN(price) || price < 0) {
+    alert("❌ Please enter a valid price (non-negative number).");
+    return;
+  }
 
-          // Validate day range
-          if (!validateDayRange(startDay, endDay)) {
-            alert("❌ End day must be on or after start day in the week.");
-            return;
-          }
+  // Validate time range
+  if (!validateTimeRange(startTime, endTime)) {
+    alert("❌ End time must be after start time.");
+    return;
+  }
 
-          const formData = new FormData();
-          formData.append("type", currentServiceType);
-          formData.append("service_name", serviceName);
-          formData.append("price", servicePrice);
-          formData.append("description", serviceDescription);
-          formData.append("start_time", startTime || "");
-          formData.append("end_time", endTime || "");
-          formData.append("start_day", startDay || "");
-          formData.append("end_day", endDay || "");
-          formData.append("image", imageFile);
+  // Validate day range
+  if (!validateDayRange(startDay, endDay)) {
+    alert("❌ End day must be on or after start day in the week.");
+    return;
+  }
 
-          fetch(apiBaseUrl + "create_service.php", {
-            method: "POST",
-            body: formData,
-          })
-            .then((res) => {
-              if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
-              }
-              return res.json();
-            })
-            .then((response) => {
-              if (response.success) {
-                alert("✅ Service added successfully!");
-                closeModal("addServiceModal");
-                refreshServices();
-                removeFromDropdown(serviceName);
-              } else {
-                alert("❌ Failed to add service: " + (response.error || "Unknown error"));
-              }
-            })
-            .catch((error) => {
-              console.error("Error adding service:", error);
-              alert("❌ Something went wrong: " + error.message);
-            });
-        });
+  const formData = new FormData();
+  // Append using service_id key
+  formData.append("service_id", service_id);
+  formData.append("service_name", name);
+  formData.append("price", price);
+  formData.append("description", description);
+  formData.append("start_time", startTime || "");
+  formData.append("end_time", endTime || "");
+  formData.append("start_day", startDay || "");
+  formData.append("end_day", endDay || "");
+  if (imageFile) {
+    formData.append("image", imageFile);
+  }
+
+  fetch("http://192.168.1.65/backend/update_service.php", {
+    method: "POST",
+    body: formData,
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      if (data.success) {
+        alert("✅ Service updated successfully!");
+        if (data.image) {
+          document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${data.image}`;
+        }
+        closeModal("editServiceModal");
+        refreshServices();
+      } else {
+        alert("❌ Update failed: " + (data.error || "Unknown error"));
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+      alert("❌ Something went wrong: " + error.message);
+    });
+});
+
+
+  // Handle add service form submission
+  // Single event listener for addServiceForm
+  document.getElementById("addServiceForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+    const serviceName = document.getElementById("serviceOption").value;
+    const servicePrice = document.getElementById("servicePrice").value;
+    const serviceDescription = document.getElementById("serviceDescription").value;
+    const startTime = document.getElementById("startTime").value;
+    const endTime = document.getElementById("endTime").value;
+    const startDay = document.getElementById("startDay").value;
+    const endDay = document.getElementById("endDay").value;
+    const imageFile = document.getElementById("serviceImage").files[0];
+
+    if (!imageFile) {
+      alert("❌ Please select an image.");
+      return;
+    }
+
+    if (!validateTimeRange(startTime, endTime)) {
+      alert("❌ End time must be after start time.");
+      return;
+    }
+
+    if (!validateDayRange(startDay, endDay)) {
+      alert("❌ End day must be on or after start day in the week.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("type", currentServiceType);
+    formData.append("service_name", serviceName);
+    formData.append("price", servicePrice);
+    formData.append("description", serviceDescription);
+    formData.append("start_time", startTime || "");
+    formData.append("end_time", endTime || "");
+    formData.append("start_day", startDay || "");
+    formData.append("end_day", endDay || "");
+    formData.append("image", imageFile);
+
+    fetch(apiBaseUrl + "create_service.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((response) => {
+        if (response.success) {
+          alert("✅ Service added successfully!");
+          closeModal("addServiceModal");
+          refreshServices();
+          removeFromDropdown(serviceName);
+        } else {
+          alert("❌ Failed to add service: " + (response.error || "Unknown error"));
+        }
+      })
+      .catch((error) => {
+        console.error("Error adding service:", error);
+        alert("❌ Something went wrong: " + error.message);
+      });
+  });
+});
+
 
         // ------------------------
         // Initialization
@@ -914,33 +988,33 @@
       });
       let scrollPosition = 0;
 
-      function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-          scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-          document.body.style.position = "fixed";
-          document.body.style.top = `-${scrollPosition}px`;
-          document.body.style.width = "100%";
-          document.body.classList.add("modal-open");
-          document.documentElement.classList.add("modal-open");
-          modal.style.display = "flex";
-        }
-      }
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    scrollPosition = window.scrollY || window.pageYOffset; // Save scroll position
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = "100%";
+    document.body.classList.add("modal-open");
+    document.documentElement.classList.add("modal-open");
+    modal.style.display = "flex";
+  }
+}
 
-      function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-          modal.style.display = "none";
-          document.body.style.position = "";
-          document.body.style.top = "";
-          document.body.style.width = "";
-          window.scrollTo(0, scrollPosition);
-          document.body.classList.remove("modal-open");
-          document.documentElement.classList.remove("modal-open");
-        }
-      }
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = "none";
+    document.body.classList.remove("modal-open");
+    document.documentElement.classList.remove("modal-open");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+    window.scrollTo(0, scrollPosition); // Restore scroll position
+  }
+}
+
     </script>
-    
     <script src="index.js"></script>
     <script src="notification.js"></script>
   </body>

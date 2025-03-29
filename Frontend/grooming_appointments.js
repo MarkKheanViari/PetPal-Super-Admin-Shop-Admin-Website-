@@ -31,19 +31,32 @@ function displayAppointments(appointments) {
           <td>${appointment.name}</td>
           <td>${appointment.pet_name} (${appointment.pet_breed})</td>
           <td>${appointment.service_name}</td>
-          <td>${formatDateTime(appointment.appointment_date, appointment.appointment_time)}</td>
+          <td>${formatDateTime(
+            appointment.appointment_date,
+            appointment.appointment_time
+          )}</td>
           <td>₱${appointment.price}</td>
-          <td><span class="${getStatusClass(appointment.status)}">${appointment.status}</span></td>
+          <td><span class="${getStatusClass(appointment.status)}">${
+      appointment.status
+    }</span></td>
           <td>
-              ${isEditable ? `
+              ${
+                isEditable
+                  ? `
                 <button class="approve-btn" onclick="updateStatus(${appointment.id}, 'Approved')">Approve</button>
                 <button class="decline-btn" onclick="updateStatus(${appointment.id}, 'Declined')">Decline</button>
-              ` : ""}
+              `
+                  : ""
+              }
               <div class="dropdown">
                   <button class="dropdown-btn" onclick="toggleDropdown(event)">⋮</button>
                   <div class="dropdown-content">
-                      <a href="#" onclick="viewDetails(${appointment.id})">View Details</a>
-                      <a href="#" onclick="removeAppointment(${appointment.id})">Remove</a>
+                      <a href="#" onclick="viewDetails(${
+                        appointment.id
+                      })">View Details</a>
+                      <a href="#" onclick="removeAppointment(${
+                        appointment.id
+                      })">Remove</a>
                   </div>
               </div>
           </td>

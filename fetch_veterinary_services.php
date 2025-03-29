@@ -25,48 +25,47 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     exit;
 }
 
-try {
-    // Prepare and execute the query to fetch veterinary services
-    $sql = "SELECT * FROM services WHERE type = 'Veterinary'";
-    $result = $conn->query($sql);
+$type = '';
 
-    if ($result === false) {
-        throw new Exception("Database query failed: " . $conn->error);
-    }
+if (strpos($_SERVER['SCRIPT_NAME'], 'grooming') !== false) {
+    $type = 'Grooming';
+} elseif (strpos($_SERVER['SCRIPT_NAME'], 'veterinary') !== false) {
+    $type = 'Veterinary';
+} else {
+    echo json_encode(['success' => false, 'error' => 'Unknown service type']);
+    exit;
+}
+
+try {
+    $stmt = $conn->prepare("SELECT service_id, type, service_name, price, description, image, start_time, end_time, start_day, end_day, removed FROM services WHERE type = ?");
+    $stmt->bind_param("s", $type);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     $services = [];
     while ($row = $result->fetch_assoc()) {
-        // Ensure all fields are included, including start_time, end_time, start_day, end_day
         $services[] = [
-            'id' => $row['id'],
+            'service_id' => (int)$row['service_id'],
             'type' => $row['type'],
             'service_name' => $row['service_name'],
-            'price' => $row['price'],
+            'price' => (float)$row['price'],
             'description' => $row['description'],
             'image' => $row['image'],
             'start_time' => $row['start_time'],
             'end_time' => $row['end_time'],
             'start_day' => $row['start_day'],
             'end_day' => $row['end_day'],
-            'removed' => $row['removed']
+            'removed' => (int)$row['removed']
         ];
     }
 
-    // Log success
-    error_log("✅ Successfully fetched " . count($services) . " veterinary services");
-
-    // Return the response
-    echo json_encode([
-        'success' => true,
-        'services' => $services
-    ]);
+    echo json_encode(['success' => true, 'services' => $services]);
 
 } catch (Exception $e) {
-    // Log the error
-    error_log("❌ Error fetching veterinary services: " . $e->getMessage());
+    error_log("❌ Error fetching $type services: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'error' => 'Failed to fetch veterinary services: ' . $e->getMessage(),
+        'error' => 'Failed to fetch services: ' . $e->getMessage(),
         'services' => []
     ]);
 } finally {

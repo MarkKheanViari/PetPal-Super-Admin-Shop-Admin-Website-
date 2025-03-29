@@ -545,3 +545,958 @@ FILES: Array
 (
 )
 
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1
+POST: Array
+(
+    [id] => 
+    [service_name] => Brushing
+    [price] => 500.00
+    [description] => Potangina mo
+    [start_time] => 08:00:00
+    [end_time] => 17:00:00
+    [start_day] => Monday
+    [end_day] => Tuesday
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => download.jpg
+            [full_path] => download.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php33C.tmp
+            [error] => 0
+            [size] => 2565
+        )
+
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Brushing
+    [price] => 500.00
+    [description] => Potangina mo wihh
+    [start_time] => 08:00:00
+    [end_time] => 17:00:00
+    [start_day] => Monday
+    [end_day] => Tuesday
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => download.jpg
+            [full_path] => download.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php29D0.tmp
+            [error] => 0
+            [size] => 2565
+        )
+
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => download.jpg
+            [full_path] => download.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\php4BCC.tmp
+            [error] => 0
+            [size] => 2565
+        )
+
+)
+
+=== update_service.php ===
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 233
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+FILES: Array
+(
+)
+
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Ear Cleaning
+    [price] => 1.00
+    [description] => 122
+    [start_time] => 07:10:00
+    [end_time] => 19:10:00
+    [start_day] => Tuesday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Ear Cleaning
+    [price] => 1.00
+    [description] => 122
+    [start_time] => 07:10:00
+    [end_time] => 19:10:00
+    [start_day] => Tuesday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Ear Cleaning
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 07:10:00
+    [end_time] => 19:10:00
+    [start_day] => Tuesday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Ear Cleaning
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 07:10:00
+    [end_time] => 19:10:00
+    [start_day] => Tuesday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+🔍 Incoming Request: 
+[29-Mar-2025 12:23:44 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Ear Cleaning"}
+[29-Mar-2025 12:23:44 Europe/Berlin] ✅ Service 'Ear Cleaning' removed successfully.
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Wellness Exam
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 07:33:00
+    [end_time] => 19:33:00
+    [start_day] => Monday
+    [end_day] => Wednesday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Wellness Exam
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 07:33:00
+    [end_time] => 19:33:00
+    [start_day] => Monday
+    [end_day] => Wednesday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Brushing
+    [price] => 500.00
+    [description] => Potangina mo
+    [start_time] => 08:00:00
+    [end_time] => 17:00:00
+    [start_day] => 
+    [end_day] => 
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Brushing
+    [price] => 500.00
+    [description] => Potangina mo
+    [start_time] => 08:00:00
+    [end_time] => 17:00:00
+    [start_day] => 
+    [end_day] => 
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Brushing
+    [price] => 500.00
+    [description] => Potangina mo
+    [start_time] => 08:00:00
+    [end_time] => 17:00:00
+    [start_day] => 
+    [end_day] => 
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Brushing
+    [price] => 500.00
+    [description] => Potangina mo
+    [start_time] => 08:00:00
+    [end_time] => 17:00:00
+    [start_day] => 
+    [end_day] => 
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Ear Cleaning
+    [price] => 12.00
+    [description] => 1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efse
+    [start_time] => 07:56:00
+    [end_time] => 19:56:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Ear Cleaning
+    [price] => 12.00
+    [description] => 1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efse
+    [start_time] => 07:56:00
+    [end_time] => 19:56:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Ear Cleaning
+    [price] => 12.00
+    [description] => 1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsd
+    [start_time] => 07:56:00
+    [end_time] => 19:56:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Ear Cleaning
+    [price] => 12.00
+    [description] => 1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsd
+    [start_time] => 07:56:00
+    [end_time] => 19:56:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [id] => 
+    [service_name] => Ear Cleaning
+    [price] => 12.00
+    [description] => 1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsd
+    [start_time] => 07:56:00
+    [end_time] => 19:56:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Ear Cleaning
+    [price] => 12.00
+    [description] => 1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsdfwe1efsefsd
+    [start_time] => 07:56:00
+    [end_time] => 19:56:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+🔍 Incoming Request: 
+[29-Mar-2025 13:14:59 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Ear Cleaning"}
+[29-Mar-2025 13:14:59 Europe/Berlin] ✅ Service 'Ear Cleaning' removed successfully.
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:17:00
+    [end_time] => 20:17:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:17:00
+    [end_time] => 20:17:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => undefined
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:17:00
+    [end_time] => 20:17:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => undefined
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:17:00
+    [end_time] => 20:17:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:17:00
+    [end_time] => 20:17:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+🔍 Incoming Request: 
+[29-Mar-2025 13:28:26 Europe/Berlin] ❌ Error: Invalid service name received.
+🔍 Incoming Request: {"service_name":"Teeth Brushing"}
+[29-Mar-2025 13:28:26 Europe/Berlin] ✅ Service 'Teeth Brushing' removed successfully.
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 231
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Nail Trimming
+    [price] => 23.00
+    [description] => 23
+    [start_time] => 06:54:00
+    [end_time] => 18:53:00
+    [start_day] => Monday
+    [end_day] => Sunday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => 6027331_mmQ0-5yD5_WkA_AfpEL8Rukz1vl1DFOl3Jj-RCMJdWk.jpg
+            [full_path] => 6027331_mmQ0-5yD5_WkA_AfpEL8Rukz1vl1DFOl3Jj-RCMJdWk.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\phpE4A3.tmp
+            [error] => 0
+            [size] => 71174
+        )
+
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 
+    [service_name] => Teeth Brushing
+    [price] => 1.00
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 32
+    [service_name] => Teeth Brushing
+    [price] => 1
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 32
+    [service_name] => Teeth Brushing
+    [price] => 16
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+)
+
+POST: Array
+(
+    [service_id] => 32
+    [service_name] => Teeth Brushing
+    [price] => 16
+    [description] => 1
+    [start_time] => 08:34:00
+    [end_time] => 20:34:00
+    [start_day] => Monday
+    [end_day] => Saturday
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => download.jpg
+            [full_path] => download.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\phpA963.tmp
+            [error] => 0
+            [size] => 2565
+        )
+
+)
+
+POST: Array
+(
+    [service_id] => 25
+    [service_name] => Brushing
+    [price] => 500
+    [description] => 12
+    [start_time] => 08:00:00
+    [end_time] => 17:00:00
+    [start_day] => 
+    [end_day] => 
+)
+
+FILES: Array
+(
+    [image] => Array
+        (
+            [name] => download.jpg
+            [full_path] => download.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\phpD21A.tmp
+            [error] => 0
+            [size] => 2565
+        )
+
+)
+
+🔍 Login Attempt: Email: kheantastic@gmail.com | Retrieved ID: 1

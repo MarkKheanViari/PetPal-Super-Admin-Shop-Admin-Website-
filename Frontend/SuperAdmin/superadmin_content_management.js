@@ -79,8 +79,7 @@ function displayProducts(searchQuery = "") {
       productTable.innerHTML += row;
     });
   } else {
-    productTable.innerHTML =
-      "<tr><td colspan='7'>No Products Found</td></tr>";
+    productTable.innerHTML = "<tr><td colspan='7'>No Products Found</td></tr>";
   }
 }
 
@@ -246,15 +245,25 @@ async function showProductDetails(productId) {
           ${imageDisplay}
           <p><strong>ID:</strong> #P${product.id}</p>
           <p><strong>Name:</strong> ${product.name || "Unknown"}</p>
-          <p><strong>Price:</strong> $${parseFloat(product.price || 0).toFixed(2)}</p>
+          <p><strong>Price:</strong> $${parseFloat(product.price || 0).toFixed(
+            2
+          )}</p>
           <p><strong>Shop Owner:</strong> ${product.shop || "Unknown"}</p>
-          <p><strong>Description:</strong> ${product.description || "No description available"}</p>
+          <p><strong>Description:</strong> ${
+            product.description || "No description available"
+          }</p>
           <p><strong>Quantity:</strong> ${product.quantity || "0"}</p>
           <p><strong>Category:</strong> ${product.category || "Unknown"}</p>
-          <p><strong>Image URL:</strong> ${product.image_url || "No image URL available"}</p>
-          <p><strong>Image File:</strong> ${product.image || "No image file available"}</p>
+          <p><strong>Image URL:</strong> ${
+            product.image_url || "No image URL available"
+          }</p>
+          <p><strong>Image File:</strong> ${
+            product.image || "No image file available"
+          }</p>
           ${reportsDisplay}
-          <button class="delete-btn" data-id="${product.id}">Delete Product</button>
+          <button class="delete-btn" data-id="${
+            product.id
+          }">Delete Product</button>
       `;
 
     const modal = document.getElementById("productModal");

@@ -831,4 +831,63 @@ thead{
   }
   
   
+  .services-table {
+    width: 100%;
+    table-layout: fixed; /* Enforces fixed layout */
+    border-collapse: collapse;
+  }
   
+  /* Style all cells */
+  .services-table th,
+  .services-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word; /* Ensure text wraps as needed */
+  }
+  
+  /* Define widths for 6 columns */
+  .services-table th:nth-child(1),
+  .services-table td:nth-child(1) {
+    width: 20%; /* Service Name */
+  }
+  
+  .services-table th:nth-child(2),
+  .services-table td:nth-child(2) {
+    width: 10%; /* Price */
+  }
+  
+  .services-table th:nth-child(3),
+  .services-table td:nth-child(3) {
+    width: 35%; /* Description */
+  }
+  
+  .services-table th:nth-child(4),
+  .services-table td:nth-child(4) {
+    width: 15%; /* Availability */
+  }
+  
+  .services-table th:nth-child(5),
+  .services-table td:nth-child(5) {
+    width: 10%; /* Days Available */
+  }
+  
+  .services-table th:nth-child(6),
+  .services-table td:nth-child(6) {
+    width: 10%; /* Actions */
+  }
+  /* Prevent background scrolling when modal is open */
+/* Lock background when modal is open */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Also lock html element to ensure no background scroll */
+html.modal-open {
+  overflow: hidden;
+  height: 100%;
+}
