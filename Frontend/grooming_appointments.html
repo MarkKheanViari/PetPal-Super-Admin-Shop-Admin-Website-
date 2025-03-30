@@ -7,8 +7,8 @@
     <title>Appointments</title>
     <style>
       html.modal-open, body.modal-open {
-  overflow: hidden;
-}
+      overflow: hidden;
+      }
 
       /* Container holding the table */
       .orders-table-container {
@@ -42,9 +42,9 @@
       }
 
       .status-cancelled {
-    color: #FF4500; /* OrangeRed, matching the mobile app */
-    font-weight: bold;
-}
+        color: #FF4500; /* OrangeRed, matching the mobile app */
+        font-weight: bold;
+      }
 
       /* Additional styling for alternating row colors and hover effect */
       .orders-table tbody tr:nth-child(even) {
@@ -172,100 +172,98 @@
       }
 
      /* Overlay: covers entire screen when active */
-#detailsModalOverlay {
-  display: none;               /* Hidden by default */
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5); /* Semi-transparent overlay */
-  align-items: center;         /* Centers modal vertically */
-  justify-content: center;     /* Centers modal horizontally */
-  z-index: 9999;
-}
+      #detailsModalOverlay {
+        display: none;               /* Hidden by default */
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5); /* Semi-transparent overlay */
+        align-items: center;         /* Centers modal vertically */
+        justify-content: center;     /* Centers modal horizontally */
+        z-index: 9999;
+      }
 
-/* Modal Container */
-/* Make sure the modal container is still the same as before */
-#detailsModal {
-  background: #fff;
-  width: 90%;
-  max-width: 450px; /* or 500px, adjust as needed */
-  padding: 15px 20px; /* Reduced padding for a more compact look */
-  border-radius: 8px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  font-family: Arial, sans-serif;
-  color: #333;
-  position: relative;
-}
+      /* Modal Container */
+      /* Make sure the modal container is still the same as before */
+      #detailsModal {
+        background: #fff;
+        width: 90%;
+        max-width: 450px; /* or 500px, adjust as needed */
+        padding: 15px 20px; /* Reduced padding for a more compact look */
+        border-radius: 8px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        font-family: Arial, sans-serif;
+        color: #333;
+        position: relative;
+      }
 
-/* Title styling (already in your code) */
-.modal-title {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-bottom: 2px solid #f0f0f0;
-  padding-bottom: 5px; /* Slightly tighter spacing */
-  color: #ff8c00; /* Brand color */
-}
+      /* Title styling (already in your code) */
+      .modal-title {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 5px; /* Slightly tighter spacing */
+        color: #ff8c00; /* Brand color */
+      }
 
-/* Form container remains flex-column for outer spacing */
-.details-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px; /* space between rows */
-}
+      /* Form container remains flex-column for outer spacing */
+      .details-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* space between rows */
+      }
 
-/* Each row is a flex container that holds two form-groups side by side */
-.form-row {
-  display: flex;
-  gap: 10px; /* space between the two fields */
-}
+      /* Each row is a flex container that holds two form-groups side by side */
+      .form-row {
+        display: flex;
+        gap: 10px; /* space between the two fields */
+      }
 
-/* Each form-group is 50% width within the row */
-.form-row .form-group {
-  flex: 1; /* each group gets half of the row */
-  display: flex;
-  flex-direction: column;
-}
+      /* Each form-group is 50% width within the row */
+      .form-row .form-group {
+        flex: 1; /* each group gets half of the row */
+        display: flex;
+        flex-direction: column;
+      }
 
-/* Label & input styles remain the same as your read-only form */
-.form-group label {
-  font-weight: bold;
-  margin-bottom: 3px;
-  color: #555;
-}
+      /* Label & input styles remain the same as your read-only form */
+      .form-group label {
+        font-weight: bold;
+        margin-bottom: 3px;
+        color: #555;
+      }
 
-.form-group input[readonly],
-.form-group textarea[readonly] {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 6px 8px;
-  font-size: 0.9rem;
-  color: #333;
-  resize: none; /* for textareas */
-}
+      .form-group input[readonly],
+      .form-group textarea[readonly] {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 6px 8px;
+        font-size: 0.9rem;
+        color: #333;
+        resize: none; /* for textareas */
+      }
 
-/* For smaller screens, stack the two columns */
-@media (max-width: 600px) {
-  .form-row {
-    flex-direction: column;
-  }
-}
-.close-btn {
-  display: block;        /* Makes the button take the full width (so margin: auto works) */
-  margin: 15px auto 0;   /* Adds 15px top margin, auto left/right, 0 bottom margin */
-  background-color: #ff8c00;
-  color: #fff;
-  border: none;
-  padding: 10px 25px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  text-align: center;     /* Center text inside the button itself */
-}
-
-
+      /* For smaller screens, stack the two columns */
+      @media (max-width: 600px) {
+        .form-row {
+          flex-direction: column;
+        }
+      }
+      .close-btn {
+        display: block;        /* Makes the button take the full width (so margin: auto works) */
+        margin: 15px auto 0;   /* Adds 15px top margin, auto left/right, 0 bottom margin */
+        background-color: #ff8c00;
+        color: #fff;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        text-align: center;     /* Center text inside the button itself */
+      }
       .menu-btn {
         display: none;
       }
@@ -301,88 +299,88 @@
         }
       }
       /* Dropdown Styles for additional actions */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
 
-.dropdown-btn {
-  background: transparent;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 0.4rem;
-}
+      .dropdown-btn {
+        background: transparent;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 0.4rem;
+      }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #fff;
-  min-width: 120px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-  border-radius: 4px;
-}
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #fff;
+        min-width: 120px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 4px;
+      }
 
-.dropdown-content a {
-  color: black;
-  padding: 8px 12px;
-  text-decoration: none;
-  display: block;
-  
-}
+      .dropdown-content a {
+        color: black;
+        padding: 8px 12px;
+        text-decoration: none;
+        display: block;
+        
+      }
 
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
 
-.dropdown.show .dropdown-content {
-  display: block;
-}
-html.modal-open, body.modal-open {
-  overflow: hidden !important;
-}
+      .dropdown.show .dropdown-content {
+        display: block;
+      }
+      html.modal-open, body.modal-open {
+        overflow: hidden !important;
+      }
 
-/* Custom Modal Styles for Dialogs */
-#customModalOverlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: rgba(0,0,0,0.5);
-display: none;
-align-items: center;
-justify-content: center;
-z-index: 10000;
-}
-#customModal {
-background: #fff;
-border: 2px solid #ff8c00;
-border-radius: 8px;
-padding: 20px;
-width: 90%;
-max-width: 400px;
-box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-text-align: center;
-}
-#customModal p {
-margin: 20px 0;
-}
-#customModal button {
-background-color: #ff8c00;
-border: none;
-color: #fff;
-padding: 10px 20px;
-margin: 0 10px;
-border-radius: 4px;
-cursor: pointer;
-font-size: 1rem;
-}
-#customModal button:hover {
-background-color: #e37f00;
-}
+      /* Custom Modal Styles for Dialogs */
+      #customModalOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      }
+      #customModal {
+      background: #fff;
+      border: 2px solid #ff8c00;
+      border-radius: 8px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+      }
+      #customModal p {
+      margin: 20px 0;
+      }
+      #customModal button {
+      background-color: #ff8c00;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      }
+      #customModal button:hover {
+      background-color: #e37f00;
+      }
 
     </style>
     <script>
@@ -841,7 +839,6 @@ function closeModal(modalId) {
     document.documentElement.style.overflow = "";
   }
 }
-
     </script>
     <script src="notification.js"></script>
     <script src="index.js"></script>

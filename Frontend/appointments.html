@@ -49,76 +49,74 @@
         overflow: hidden !important;
       }
       /* Constrain the modal’s maximum height and allow internal scrolling */
-#editServiceModal .modal-content {
-  max-height: 90vh;      /* 90% of the viewport height */
-  overflow-y: auto;      /* Enables vertical scrolling if content is too long */
-  margin: 0 1rem;        /* Adds a bit of spacing on smaller screens */
-}
+      #editServiceModal .modal-content {
+        max-height: 90vh;      /* 90% of the viewport height */
+        overflow-y: auto;      /* Enables vertical scrolling if content is too long */
+        margin: 0 1rem;        /* Adds a bit of spacing on smaller screens */
+      }
 
-/* Optionally reduce the default width on smaller screens */
-@media (max-width: 768px) {
-  #editServiceModal .modal-content {
-    width: 95%;
-    margin: 0 auto;
-  }
-}
-/* Adjust modal layout */
-.compact-modal {
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+      /* Optionally reduce the default width on smaller screens */
+      @media (max-width: 768px) {
+        #editServiceModal .modal-content {
+          width: 95%;
+          margin: 0 auto;
+        }
+      }
+      /* Adjust modal layout */
+      .compact-modal {
+        max-width: 700px;
+        margin: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
 
-/* Rows for grouped inputs */
-.modal-row {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-.modal-row.single {
-  flex-direction: column;
-}
+      /* Rows for grouped inputs */
+      .modal-row {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+      .modal-row.single {
+        flex-direction: column;
+      }
 
-/* Each input container */
-.modal-field {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+      /* Each input container */
+      .modal-field {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
 
-/* Make sure selects, inputs, and textarea fill container */
-.modal-field input,
-.modal-field select,
-.modal-row textarea {
-  width: 100%;
-  padding: 8px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-/* Fields inside modal */
-.modal-field input,
-.modal-field select,
-.modal-row textarea {
-  width: 100%;        /* Fixed width */
-  height: 40px;            /* Fixed height for input/select */
-  padding: 6px 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+      /* Make sure selects, inputs, and textarea fill container */
+      .modal-field input,
+      .modal-field select,
+      .modal-row textarea {
+        width: 100%;
+        padding: 8px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      /* Fields inside modal */
+      .modal-field input,
+      .modal-field select,
+      .modal-row textarea {
+        width: 100%;        /* Fixed width */
+        height: 40px;            /* Fixed height for input/select */
+        padding: 6px 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
 
-/* Fix height for textarea separately */
-.modal-row textarea {
-  height: 100px;           /* Fixed height for textarea */
-  resize: none;            /* Optional: disable manual resize */
-}
-
-
+      /* Fix height for textarea separately */
+      .modal-row textarea {
+        height: 100px;           /* Fixed height for textarea */
+        resize: none;            /* Optional: disable manual resize */
+      }
     </style>
     <script>
       (function () {
@@ -134,7 +132,6 @@
         document.addEventListener("DOMContentLoaded", function () {
           document.body.appendChild(modalOverlay);
         });
-
         // Override window.alert to use custom modal
         window.alert = function (message) {
           return new Promise((resolve) => {
@@ -149,7 +146,6 @@
             };
           });
         };
-
         // Override window.confirm to use custom modal, returns true (Yes) or false (No)
         window.confirm = function (message) {
           return new Promise((resolve) => {
@@ -172,7 +168,6 @@
           });
         };
       })();
-      
     </script>
   </head>
   <body>
@@ -209,7 +204,6 @@
         </li>
       </ul>
     </nav>
-
     <!-- Header -->
     <header class="seller-header">
       <div class="seller-info">
@@ -217,10 +211,7 @@
         <div class="seller-details">
           <h1 id="welcomeText"></h1>
           <p class="seller-type">PetPal</p>
-          <p class="seller-description">
-            Manage your shop's orders, products, grooming, and veterinary
-            services
-          </p>
+          <p class="seller-description">Manage your shop's orders, products, grooming, and veterinary services</p>
         </div>
       </div>
       <div class="btn-seller-pref">
@@ -228,33 +219,20 @@
         <button onclick="logout()" class="logout-btn">Logout</button>
       </div>
     </header>
-
     <!-- Main Content -->
     <main class="content">
       <section class="appointments">
         <div class="head-service">
           <h2>Grooming Services</h2>
           <div class="service-buttons">
-            <button
-              class="view-details-btn"
-              onclick="openAddServiceModal('Grooming')"
-            >
-              Add Grooming Service
-            </button>
-            <button
-              class="view-details-btn-l"
-              onclick="viewAppointments('grooming_appointments.html')"
-            >
-              View Grooming Appointments
-            </button>
+            <button class="view-details-btn" onclick="openAddServiceModal('Grooming')">Add Grooming Service</button>
+            <button class="view-details-btn-l" onclick="viewAppointments('grooming_appointments.html')">View Grooming Appointments</button>
           </div>
         </div>
         <table id="groomingServicesTable" class="services-table">
           <thead>
             <tr>
-              <th onclick="sortTable('groomingServicesTable', 0)">
-                Service Name
-              </th>
+              <th onclick="sortTable('groomingServicesTable', 0)">Service Name</th>
               <th onclick="sortTable('groomingServicesTable', 1)">Price</th>
               <th>Description</th>
               <th>Availability</th>
@@ -272,26 +250,14 @@
         <div class="head-service">
           <h2>Veterinary Services</h2>
           <div class="service-buttons">
-            <button
-              class="view-details-btn"
-              onclick="openAddServiceModal('Veterinary')"
-            >
-              Add Veterinary Service
-            </button>
-            <button
-              class="view-details-btn-l"
-              onclick="viewAppointments('grooming_appointments.html')"
-            >
-              View Veterinary Appointments
-            </button>
+            <button class="view-details-btn" onclick="openAddServiceModal('Veterinary')">Add Veterinary Service</button>
+            <button class="view-details-btn-l" onclick="viewAppointments('grooming_appointments.html')">View Veterinary Appointments</button>
           </div>
         </div>
         <table id="veterinaryServicesTable" class="services-table">
           <thead>
             <tr>
-              <th onclick="sortTable('veterinaryServicesTable', 0)">
-                Service Name
-              </th>
+              <th onclick="sortTable('veterinaryServicesTable', 0)">Service Name</th>
               <th onclick="sortTable('veterinaryServicesTable', 1)">Price</th>
               <th>Description</th>
               <th>Availability</th>
@@ -313,7 +279,6 @@
           <h2 id="addServiceModalTitle">Add New Service</h2>
           <button class="cancel-btn" onclick="closeModal('addServiceModal')">×</button>
         </div>
-    
         <form id="addServiceForm">
           <div class="modal-row">
             <div class="modal-field">
@@ -334,7 +299,6 @@
               />
             </div>
           </div>
-    
           <div class="modal-row single">
             <label><strong>Description:</strong></label>
             <textarea
@@ -344,7 +308,6 @@
               maxlength="250"
             ></textarea>
           </div>
-    
           <div class="modal-row">
             <div class="modal-field">
               <label><strong>Start Time:</strong></label>
@@ -355,7 +318,6 @@
               <input type="time" id="endTime" name="end_time" />
             </div>
           </div>
-    
           <div class="modal-row">
             <div class="modal-field">
               <label><strong>Start Day:</strong></label>
@@ -384,18 +346,16 @@
               </select>
             </div>
           </div>
-    
           <div class="modal-row single">
             <label><strong>Service Image:</strong></label>
             <input type="file" id="serviceImage" accept="image/*" required />
           </div>
-    
           <button class="approve-btn" type="submit">Add Service</button>
         </form>
       </div>
     </div>
     
-
+    <!-- Editt Service Modal -->
     <div id="editServiceModal" class="modal">
       <div class="modal-content compact-modal">
         <div class="service-head">
@@ -404,7 +364,6 @@
         </div>
         <form id="editServiceForm">
           <input type="hidden" id="editServiceId" name="service_id" />
-    
           <div class="modal-row">
             <div class="modal-field">
               <label><strong>Service Name:</strong></label>
@@ -415,12 +374,10 @@
               <input type="number" id="editServicePrice" required />
             </div>
           </div>
-    
           <div class="modal-row single">
             <label><strong>Description:</strong></label>
             <textarea id="editServiceDescription" required maxlength="250" placeholder="Enter description"></textarea>
           </div>
-    
           <div class="modal-row">
             <div class="modal-field">
               <label><strong>Start Time:</strong></label>
@@ -431,7 +388,6 @@
               <input type="time" id="editEndTime" />
             </div>
           </div>
-    
           <div class="modal-row">
             <div class="modal-field">
               <label><strong>Start Day:</strong></label>
@@ -450,13 +406,11 @@
               </select>
             </div>
           </div>
-    
           <div class="modal-row single">
             <label><strong>Service Image:</strong></label>
             <input type="file" id="editServiceImage" accept="image/*" />
             <img id="editPreviewImage" src="" alt="Current Image" style="width: 100%; max-height: 150px; object-fit: cover; margin-top: 10px;" />
           </div>
-    
           <div class="modal-button">
             <button class="remove-btn" type="button" onclick="removeServiceFromModal()">Remove Service</button>
             <button class="save-btn" type="submit">Save Changes</button>
@@ -464,10 +418,6 @@
         </form>
       </div>
     </div>
-    
-    
-
-
     <!-- Footer -->
     <footer class="footer">
       <nav class="footer-nav">
@@ -477,8 +427,6 @@
         <a href="privacy.html" class="footer-link">Privacy Policy</a>
       </nav>
     </footer>
-
-    <!-- Integrated JavaScript -->
     <script>
       function viewAppointments(page) {
         window.location.href = page;
@@ -697,21 +645,19 @@
 
         // Open the Edit Service modal and populate with service details
         function openEditModal(service) {
-  console.log("Opening edit modal with service:", service);
-  // Use service_id directly (assuming your backend now returns it)
-  document.getElementById("editServiceId").value = service.service_id || '';
-  document.getElementById("editServiceName").value = service.service_name;
-  document.getElementById("editServicePrice").value = service.price;
-  document.getElementById("editServiceDescription").value = service.description;
-  document.getElementById("editStartTime").value = service.start_time || '';
-  document.getElementById("editEndTime").value = service.end_time || '';
-  document.getElementById("editStartDay").value = service.start_day || '';
-  document.getElementById("editEndDay").value = service.end_day || '';
-  document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${service.image}`;
-  openModal("editServiceModal");
-}
-
-
+        console.log("Opening edit modal with service:", service);
+        // Use service_id directly (assuming your backend now returns it)
+        document.getElementById("editServiceId").value = service.service_id || '';
+        document.getElementById("editServiceName").value = service.service_name;
+        document.getElementById("editServicePrice").value = service.price;
+        document.getElementById("editServiceDescription").value = service.description;
+        document.getElementById("editStartTime").value = service.start_time || '';
+        document.getElementById("editEndTime").value = service.end_time || '';
+        document.getElementById("editStartDay").value = service.start_day || '';
+        document.getElementById("editEndDay").value = service.end_day || '';
+        document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${service.image}`;
+        openModal("editServiceModal");
+      }
         // Remove a service from within the edit modal
         function removeServiceFromModal() {
           const serviceName = document.getElementById("editServiceName").value;
@@ -799,165 +745,152 @@
           }
           return true;
         }
-
-        // ------------------------
-        // Form Submission Handlers
-        // ------------------------
-
-        // Handle edit service form submission
-        
-
         // Handle add service form submission
         document.addEventListener("DOMContentLoaded", function () {
     // Refresh services on page load
         refreshServices();
 
-  // Handle edit service form submission
-  // Single event listener for editServiceForm
-  document.getElementById("editServiceForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  // Use service_id instead of id
-  const service_id = document.getElementById("editServiceId").value;
-  const name = document.getElementById("editServiceName").value;
-  const price = document.getElementById("editServicePrice").value;
-  const description = document.getElementById("editServiceDescription").value;
-  const startTime = document.getElementById("editStartTime").value;
-  const endTime = document.getElementById("editEndTime").value;
-  const startDay = document.getElementById("editStartDay").value;
-  const endDay = document.getElementById("editEndDay").value;
-  const imageFile = document.getElementById("editServiceImage").files[0];
-
-  // Validate price
-  if (isNaN(price) || price < 0) {
-    alert("❌ Please enter a valid price (non-negative number).");
-    return;
-  }
-
-  // Validate time range
-  if (!validateTimeRange(startTime, endTime)) {
-    alert("❌ End time must be after start time.");
-    return;
-  }
-
-  // Validate day range
-  if (!validateDayRange(startDay, endDay)) {
-    alert("❌ End day must be on or after start day in the week.");
-    return;
-  }
-
-  const formData = new FormData();
-  // Append using service_id key
-  formData.append("service_id", service_id);
-  formData.append("service_name", name);
-  formData.append("price", price);
-  formData.append("description", description);
-  formData.append("start_time", startTime || "");
-  formData.append("end_time", endTime || "");
-  formData.append("start_day", startDay || "");
-  formData.append("end_day", endDay || "");
-  if (imageFile) {
-    formData.append("image", imageFile);
-  }
-
-  fetch("http://192.168.1.65/backend/update_service.php", {
-    method: "POST",
-    body: formData,
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`HTTP error! Status: ${res.status}`);
-      }
-      return res.json();
-    })
-    .then((data) => {
-      if (data.success) {
-        alert("✅ Service updated successfully!");
-        if (data.image) {
-          document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${data.image}`;
-        }
-        closeModal("editServiceModal");
-        refreshServices();
-      } else {
-        alert("❌ Update failed: " + (data.error || "Unknown error"));
-      }
-    })
-    .catch((error) => {
-      console.error("Fetch error:", error);
-      alert("❌ Something went wrong: " + error.message);
-    });
-});
-
-
-  // Handle add service form submission
-  // Single event listener for addServiceForm
-  document.getElementById("addServiceForm").addEventListener("submit", function (e) {
+      // Handle edit service form submission
+      // Single event listener for editServiceForm
+      document.getElementById("editServiceForm").addEventListener("submit", function(e) {
       e.preventDefault();
-    const serviceName = document.getElementById("serviceOption").value;
-    const servicePrice = document.getElementById("servicePrice").value;
-    const serviceDescription = document.getElementById("serviceDescription").value;
-    const startTime = document.getElementById("startTime").value;
-    const endTime = document.getElementById("endTime").value;
-    const startDay = document.getElementById("startDay").value;
-    const endDay = document.getElementById("endDay").value;
-    const imageFile = document.getElementById("serviceImage").files[0];
+      // Use service_id instead of id
+      const service_id = document.getElementById("editServiceId").value;
+      const name = document.getElementById("editServiceName").value;
+      const price = document.getElementById("editServicePrice").value;
+      const description = document.getElementById("editServiceDescription").value;
+      const startTime = document.getElementById("editStartTime").value;
+      const endTime = document.getElementById("editEndTime").value;
+      const startDay = document.getElementById("editStartDay").value;
+      const endDay = document.getElementById("editEndDay").value;
+      const imageFile = document.getElementById("editServiceImage").files[0];
 
-    if (!imageFile) {
-      alert("❌ Please select an image.");
-      return;
-    }
+      // Validate price
+      if (isNaN(price) || price < 0) {
+        alert("❌ Please enter a valid price (non-negative number).");
+        return;
+      }
 
-    if (!validateTimeRange(startTime, endTime)) {
-      alert("❌ End time must be after start time.");
-      return;
-    }
+      // Validate time range
+      if (!validateTimeRange(startTime, endTime)) {
+        alert("❌ End time must be after start time.");
+        return;
+      }
 
-    if (!validateDayRange(startDay, endDay)) {
-      alert("❌ End day must be on or after start day in the week.");
-      return;
-    }
+      // Validate day range
+      if (!validateDayRange(startDay, endDay)) {
+        alert("❌ End day must be on or after start day in the week.");
+        return;
+      }
 
-    const formData = new FormData();
-    formData.append("type", currentServiceType);
-    formData.append("service_name", serviceName);
-    formData.append("price", servicePrice);
-    formData.append("description", serviceDescription);
-    formData.append("start_time", startTime || "");
-    formData.append("end_time", endTime || "");
-    formData.append("start_day", startDay || "");
-    formData.append("end_day", endDay || "");
-    formData.append("image", imageFile);
+      const formData = new FormData();
+      // Append using service_id key
+      formData.append("service_id", service_id);
+      formData.append("service_name", name);
+      formData.append("price", price);
+      formData.append("description", description);
+      formData.append("start_time", startTime || "");
+      formData.append("end_time", endTime || "");
+      formData.append("start_day", startDay || "");
+      formData.append("end_day", endDay || "");
+      if (imageFile) {
+        formData.append("image", imageFile);
+      }
 
-    fetch(apiBaseUrl + "create_service.php", {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        return res.json();
+      fetch("http://192.168.1.65/backend/update_service.php", {
+        method: "POST",
+        body: formData,
       })
-      .then((response) => {
-        if (response.success) {
-          alert("✅ Service added successfully!");
-          closeModal("addServiceModal");
-          refreshServices();
-          removeFromDropdown(serviceName);
-        } else {
-          alert("❌ Failed to add service: " + (response.error || "Unknown error"));
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then((data) => {
+          if (data.success) {
+            alert("✅ Service updated successfully!");
+            if (data.image) {
+              document.getElementById("editPreviewImage").src = `http://192.168.1.65/backend/${data.image}`;
+            }
+            closeModal("editServiceModal");
+            refreshServices();
+          } else {
+            alert("❌ Update failed: " + (data.error || "Unknown error"));
+          }
+        })
+        .catch((error) => {
+          console.error("Fetch error:", error);
+          alert("❌ Something went wrong: " + error.message);
+        });
+    });
+
+
+      // Handle add service form submission
+      // Single event listener for addServiceForm
+      document.getElementById("addServiceForm").addEventListener("submit", function (e) {
+          e.preventDefault();
+        const serviceName = document.getElementById("serviceOption").value;
+        const servicePrice = document.getElementById("servicePrice").value;
+        const serviceDescription = document.getElementById("serviceDescription").value;
+        const startTime = document.getElementById("startTime").value;
+        const endTime = document.getElementById("endTime").value;
+        const startDay = document.getElementById("startDay").value;
+        const endDay = document.getElementById("endDay").value;
+        const imageFile = document.getElementById("serviceImage").files[0];
+
+        if (!imageFile) {
+          alert("❌ Please select an image.");
+          return;
         }
-      })
-      .catch((error) => {
-        console.error("Error adding service:", error);
-        alert("❌ Something went wrong: " + error.message);
+
+        if (!validateTimeRange(startTime, endTime)) {
+          alert("❌ End time must be after start time.");
+          return;
+        }
+
+        if (!validateDayRange(startDay, endDay)) {
+          alert("❌ End day must be on or after start day in the week.");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("type", currentServiceType);
+        formData.append("service_name", serviceName);
+        formData.append("price", servicePrice);
+        formData.append("description", serviceDescription);
+        formData.append("start_time", startTime || "");
+        formData.append("end_time", endTime || "");
+        formData.append("start_day", startDay || "");
+        formData.append("end_day", endDay || "");
+        formData.append("image", imageFile);
+
+        fetch(apiBaseUrl + "create_service.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+          })
+          .then((response) => {
+            if (response.success) {
+              alert("✅ Service added successfully!");
+              closeModal("addServiceModal");
+              refreshServices();
+              removeFromDropdown(serviceName);
+            } else {
+              alert("❌ Failed to add service: " + (response.error || "Unknown error"));
+            }
+          })
+          .catch((error) => {
+            console.error("Error adding service:", error);
+            alert("❌ Something went wrong: " + error.message);
+          });
       });
-  });
-});
-
-
-        // ------------------------
-        // Initialization
-        // ------------------------
+    });
 
         document.addEventListener("DOMContentLoaded", function () {
           refreshServices();
@@ -1013,7 +946,6 @@ function closeModal(modalId) {
     window.scrollTo(0, scrollPosition); // Restore scroll position
   }
 }
-
     </script>
     <script src="index.js"></script>
     <script src="notification.js"></script>
